@@ -1,0 +1,24 @@
+site_name: Ferie
+site_description: Research og planlægning af ferier
+site_url: https://larsgammelgaard.github.io/Ferie/
+
+theme:
+  name: material
+  language: da
+  palette:
+    scheme: default
+    primary: teal
+    accent: amber
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
