@@ -16,6 +16,7 @@
     - Aflevering i AGP lufthavn (afrejse 11:05 man 6. apr)
 - [ ] **Arthur: transport fra AGP til Frigiliana** - ankommer 23:55 ons 1. apr. Taxi (~1 time) eller hente ham i lejebil?
 - [ ] **Reserver restauranter** - kan være travlt i påsken, book på forhånd
+- [ ] **Tjek tyrefægtning i Málaga** - [La Malagueta program](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/). Sæson starter typisk i påsken
 
 ## Praktisk at huske
 

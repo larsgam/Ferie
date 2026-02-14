@@ -74,10 +74,11 @@
 | Destination | Kørsel | Highlights |
 |-------------|--------|------------|
 | [Granada & Alhambra](https://tickets.alhambra-patronato.es/en/) | 1t 15m | Nasrid-paladserne, Generalife-haverne, Albaicín-kvarteret. **Book billetter NU!** |
-| Málaga | 1t | Picasso-museet, Alcazaba, Centre Pompidou, havneområdet |
+| Málaga | 1t | Picasso-museet, Alcazaba, Centre Pompidou, havneområdet. Evt. [tyrefægtning i påsken](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) - tjek program |
 | [Caminito del Rey](https://www.caminitodelrey.info/en) | 1t 30m | Spektakulær gangsti på klippevægge, 7,7 km. **Book billetter NU!** Min. alder 8 år. |
 | Ronda | 2t | Puente Nuevo (bro over 120m kløft), tyrefægtningsarena, arabiske bade |
 | Setenil de las Bodegas | 2t | Unik "grotby" med huse bygget ind i klippen. Kombiner med Ronda |
+| Córdoba | 2t 30m | Mezquita-katedralen (moské-katedral), jødisk kvarter. Lang dag - overvej om det kan erstatte en anden dagstur |
 | Cómpeta | 30 min | Smuk hvid bjerglandsby med vinproduktion |
 
 ### Vandaktiviteter (fra april)
