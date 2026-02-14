@@ -15,27 +15,78 @@
 | Dag | Dato | Ugedag | Plan |
 |-----|------|--------|------|
 | 1 | 28. mar | Lørdag | Afrejse CPH 15:20, ankomst AGP 23:05 |
-| 2 | 29. mar | Søndag | |
-| 3 | 30. mar | Mandag | |
-| 4 | 31. mar | Tirsdag | |
-| 5 | 1. apr | Onsdag | Arthur ankommer AGP 23:55 |
-| 6 | 2. apr | Torsdag | |
-| 7 | 3. apr | Fredag | |
-| 8 | 4. apr | Lørdag | |
-| 9 | 5. apr | Søndag | |
+| 2 | 29. mar | Søndag | *Palmesøndag.* Udforsk Frigiliana. Balcón de Europa. Procession i Nerja |
+| 3 | 30. mar | Mandag | *Forslag: Granada & Alhambra (hel dag)* |
+| 4 | 31. mar | Tirsdag | *Forslag: Cueva de Nerja + Rio Chillar vandring* |
+| 5 | 1. apr | Onsdag | *Forslag: Málaga (hel dag).* Arthur ankommer AGP 23:55 |
+| 6 | 2. apr | Torsdag | *Forslag: Caminito del Rey* |
+| 7 | 3. apr | Fredag | *Forslag: Afslapning - Playa de Maro, kajak/SUP* |
+| 8 | 4. apr | Lørdag | *Forslag: Ronda & Setenil de las Bodegas (hel dag)* |
+| 9 | 5. apr | Søndag | *Påskesøndag.* Procession Balcón de Europa kl. 12. Cómpeta |
 | 10 | 6. apr | Mandag | Hjemrejse AGP 11:05, ankomst CPH 14:40 |
+
+## Semana Santa (påskeugen)
+
+!!! info "Ferien falder sammen med Semana Santa (29. mar – 5. apr)"
+    Religiøse processioner i Nerjas gader. Restauranter kan være ekstra travle - reserver bord.
+
+- **Palmesøndag 29. mar:** Procession med palmegrene i Nerja
+- **Onsdag 1. apr:** Procession kl. 19:30 fra kirken El Salvador, Nerja
+- **Påskesøndag 5. apr:** Procession fra Balcón de Europa kl. 12:00
 
 ## Restauranter
 
-| Navn | Sted | Type | Noter |
-|------|------|------|-------|
-|      |      |      |       |
+### Frigiliana
 
-## Seværdigheder
+| Navn | Type | Noter |
+|------|------|-------|
+| La Taberna del Sacristán | Middelhavskok | Smuk udendørs terrasse, friske ingredienser |
+| La Tahona del Zacatín | Pizza & tapas | Familiedrevet, tæt på hovedtorvet |
+| Orihuela | Spansk | Væk fra turiststrømmene, rimelige priser |
+| Old Town Restaurant & Bar | Middelhavskok | Calle San Sebastián, generøse portioner |
 
-| Navn | Sted | Beskrivelse |
-|------|------|-------------|
-|      |      |             |
+### Nerja
+
+| Navn | Type | Noter |
+|------|------|-------|
+| Vitaliano de Cristina | Italiensk | Familiedrevet, hjemmelavet pasta |
+| La Dama | Pizza | Billigt og godt, pizza fra 3,50 EUR |
+| Chiringuitos på Burriana Beach | Strand | Paella og frisk fisk med havudsigt |
+
+!!! tip "Spisetider i Spanien"
+    Frokost kl. 14-15, middag fra kl. 21. "Menú del día" til frokost: ca. 10-15 EUR inkl. forret, hovedret, dessert og drink.
+
+## Seværdigheder og aktiviteter
+
+### Frigiliana & Nerja (lokal)
+
+| Navn | Kørsel | Beskrivelse |
+|------|--------|-------------|
+| Casco Antiguo, Frigiliana | 0 min | Den gamle bydel med hvide huse og maurisk arkitektur |
+| Balcón de Europa, Nerja | 5 min | Dramatisk udsigtsplatform over Middelhavet |
+| Cueva de Nerja | 10 min | Enorme grotter med stalaktitter, verdens største søjle (32m). Entré ~12-15 EUR |
+| Playa Burriana | 5 min | Nerjas største strand med restauranter |
+| Playa de Maro | 15 min | En af Andalusiens smukkeste strande |
+| Rio Chillar vandring | 10 min | 8 km tur-retur i flodlejet gennem en smuk kløft |
+
+### Dagsture
+
+| Destination | Kørsel | Highlights |
+|-------------|--------|------------|
+| Granada & Alhambra | 1t 15m | Nasrid-paladserne, Generalife-haverne, Albaicín-kvarteret. **Book billetter NU!** |
+| Málaga | 1t | Picasso-museet, Alcazaba, Centre Pompidou, havneområdet |
+| Caminito del Rey | 1t 30m | Spektakulær gangsti på klippevægge, 7,7 km. **Book billetter NU!** Min. alder 8 år. |
+| Ronda | 2t | Puente Nuevo (bro over 120m kløft), tyrefægtningsarena, arabiske bade |
+| Setenil de las Bodegas | 2t | Unik "grotby" med huse bygget ind i klippen. Kombiner med Ronda |
+| Cómpeta | 30 min | Smuk hvid bjerglandsby med vinproduktion |
+
+### Vandaktiviteter (fra april)
+
+| Aktivitet | Sted | Ca. pris |
+|-----------|------|----------|
+| Kajak langs Maro-klipperne | Playa Burriana | 28 EUR/voksen, 17 EUR/barn |
+| Stand Up Paddle (SUP) | Burriana Beach | - |
+| Snorkling | Playa de Maro | - |
 
 ## Praktisk info
 
