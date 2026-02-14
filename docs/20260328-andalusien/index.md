@@ -18,10 +18,10 @@
 | 2 | 29. mar | Søndag | *Palmesøndag.* Udforsk Frigiliana. Balcón de Europa. Procession i Nerja |
 | 3 | 30. mar | Mandag | *Forslag: Granada & Alhambra (hel dag)* |
 | 4 | 31. mar | Tirsdag | *Forslag: Cueva de Nerja + Rio Chillar vandring* |
-| 5 | 1. apr | Onsdag | *Forslag: Málaga (hel dag).* Arthur ankommer AGP 23:55 |
-| 6 | 2. apr | Torsdag | *Forslag: Caminito del Rey* |
-| 7 | 3. apr | Fredag | *Forslag: Afslapning - Playa de Maro, kajak/SUP* |
-| 8 | 4. apr | Lørdag | *Forslag: Ronda & Setenil de las Bodegas (hel dag)* |
+| 5 | 1. apr | Onsdag | *Forslag: Caminito del Rey.* Arthur ankommer AGP 23:55 |
+| 6 | 2. apr | Torsdag | *Forslag: Afslapning - Playa de Maro, kajak/SUP* |
+| 7 | 3. apr | Fredag | *Forslag: Ronda & Setenil de las Bodegas (hel dag)* |
+| 8 | 4. apr | Lørdag | **Málaga (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
 | 9 | 5. apr | Søndag | *Påskesøndag.* Procession Balcón de Europa kl. 12. Cómpeta |
 | 10 | 6. apr | Mandag | Hjemrejse AGP 11:05, ankomst CPH 14:40 |
 
