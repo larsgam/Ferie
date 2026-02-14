@@ -40,17 +40,17 @@
 
 | Navn | Type | Noter |
 |------|------|-------|
-| La Taberna del Sacristán | Middelhavskok | Smuk udendørs terrasse, friske ingredienser |
-| La Tahona del Zacatín | Pizza & tapas | Familiedrevet, tæt på hovedtorvet |
-| Orihuela | Spansk | Væk fra turiststrømmene, rimelige priser |
-| Old Town Restaurant & Bar | Middelhavskok | Calle San Sebastián, generøse portioner |
+| [La Taberna del Sacristán](https://latabernadelsacristan.eatbu.com/?lang=en) | Middelhavskok | Smuk udendørs terrasse, friske ingredienser |
+| [La Tahona del Zacatín](https://www.tripadvisor.com/Restaurant_Review-g580274-d6765799-Reviews-La_Tahona_del_Zacatin-Frigiliana_Province_of_Malaga_Andalucia.html) | Pizza & tapas | Familiedrevet, tæt på hovedtorvet |
+| [Orihuela](https://www.tripadvisor.com/Restaurant_Review-g580274-d19289143-Reviews-Cafe_Bar_Orihuela-Frigiliana_Province_of_Malaga_Andalucia.html) | Spansk | Væk fra turiststrømmene, rimelige priser |
+| [Old Town Restaurant & Bar](https://www.tripadvisor.com/Restaurant_Review-g580274-d33084428-Reviews-Old_Town_Restaurant_Bar_Frigiliana-Frigiliana_Province_of_Malaga_Andalucia.html) | Middelhavskok | Calle San Sebastián, generøse portioner |
 
 ### Nerja
 
 | Navn | Type | Noter |
 |------|------|-------|
-| Vitaliano de Cristina | Italiensk | Familiedrevet, hjemmelavet pasta |
-| La Dama | Pizza | Billigt og godt, pizza fra 3,50 EUR |
+| [Vitaliano da Cristina](https://vitalianodacristina.wixsite.com/vitaliano) | Italiensk | Familiedrevet, hjemmelavet pasta |
+| [La Dama](https://www.tripadvisor.com/Restaurant_Review-g315917-d2702296-Reviews-La_Dama-Nerja_Costa_del_Sol_Province_of_Malaga_Andalucia.html) | Pizza | Billigt og godt, pizza fra 3,50 EUR |
 | Chiringuitos på Burriana Beach | Strand | Paella og frisk fisk med havudsigt |
 
 !!! tip "Spisetider i Spanien"
@@ -64,7 +64,7 @@
 |------|--------|-------------|
 | Casco Antiguo, Frigiliana | 0 min | Den gamle bydel med hvide huse og maurisk arkitektur |
 | Balcón de Europa, Nerja | 5 min | Dramatisk udsigtsplatform over Middelhavet |
-| Cueva de Nerja | 10 min | Enorme grotter med stalaktitter, verdens største søjle (32m). Entré ~12-15 EUR |
+| [Cueva de Nerja](https://cuevadenerja.es/en/) | 10 min | Enorme grotter med stalaktitter, verdens største søjle (32m). Entré ~12-15 EUR |
 | Playa Burriana | 5 min | Nerjas største strand med restauranter |
 | Playa de Maro | 15 min | En af Andalusiens smukkeste strande |
 | Rio Chillar vandring | 10 min | 8 km tur-retur i flodlejet gennem en smuk kløft |
@@ -73,9 +73,9 @@
 
 | Destination | Kørsel | Highlights |
 |-------------|--------|------------|
-| Granada & Alhambra | 1t 15m | Nasrid-paladserne, Generalife-haverne, Albaicín-kvarteret. **Book billetter NU!** |
+| [Granada & Alhambra](https://tickets.alhambra-patronato.es/en/) | 1t 15m | Nasrid-paladserne, Generalife-haverne, Albaicín-kvarteret. **Book billetter NU!** |
 | Málaga | 1t | Picasso-museet, Alcazaba, Centre Pompidou, havneområdet |
-| Caminito del Rey | 1t 30m | Spektakulær gangsti på klippevægge, 7,7 km. **Book billetter NU!** Min. alder 8 år. |
+| [Caminito del Rey](https://www.caminitodelrey.info/en) | 1t 30m | Spektakulær gangsti på klippevægge, 7,7 km. **Book billetter NU!** Min. alder 8 år. |
 | Ronda | 2t | Puente Nuevo (bro over 120m kløft), tyrefægtningsarena, arabiske bade |
 | Setenil de las Bodegas | 2t | Unik "grotby" med huse bygget ind i klippen. Kombiner med Ronda |
 | Cómpeta | 30 min | Smuk hvid bjerglandsby med vinproduktion |
