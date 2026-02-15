@@ -15,9 +15,9 @@ Fokuserer på Nordvietnam og Centralvietnam. Dropper syden.
 | 3 | Sapa | Trekking, risterrasser, minoritetslandsbyer | Spektakulært grønt, men vådt |
 | 2 | Ninh Binh | "Ha Long Bay på land", bådtur Tam Coc, cykling mellem kalkstensbjerge | Varmt og fugtigt |
 | 1 | Fly Hanoi → Da Nang | Transfer til Hoi An | |
-| 5 | Hoi An | Gamlebyen (UNESCO), skræddersyet tøj, An Bang Beach, madlavningskursus, cykling i rismarker | **Bedste vejr** |
-| 2 | Hue | Kejserbyen, kongegrave, parfumefloden | Godt vejr |
-| 3 | Da Nang | My Khe Beach, Marble Mountains, Ba Na Hills (Golden Bridge), Hai Van Pass | **Bedste vejr** |
+| 5 | Hoi An | Gamlebyen (UNESCO), skræddersyet tøj, An Bang Beach, Cham Islands snorkling, madlavningskursus, cykling i rismarker | **Bedste vejr** |
+| 2 | Hue | Kejserbyen, kongegrave, parfumefloden, Lang Co Beach (stopover) | Godt vejr |
+| 3 | Da Nang | My Khe Beach, Marble Mountains, Ba Na Hills (Golden Bridge), Son Tra Peninsula | **Bedste vejr** |
 | 2 | Fly Da Nang → Hanoi | Sidste dage i Hanoi, shopping, streetfood | Varmt og fugtigt |
 
 ### Dag-for-dag
@@ -42,13 +42,13 @@ Fokuserer på Nordvietnam og Centralvietnam. Dropper syden.
 | 16 | 21. jul | Tirsdag | Hoi An | Skræddersyet tøj, shopping |
 | 17 | 22. jul | Onsdag | Hoi An | Madlavningskursus |
 | 18 | 23. jul | Torsdag | Hoi An | An Bang Beach, cykling i rismarker |
-| 19 | 24. jul | Fredag | Hoi An | Fridag / ekstra stranddag |
-| 20 | 25. jul | Lørdag | → Hue | Transport til Hue (via Hai Van Pass) |
+| 19 | 24. jul | Fredag | Hoi An | 🏝️ Cham Islands dagstur - snorkling, strand (speedbåd 20 min fra Cua Dai) |
+| 20 | 25. jul | Lørdag | → Hue | Transport til Hue via Hai Van Pass, stop ved Lang Co Beach |
 | 21 | 26. jul | Søndag | Hue | Kejserbyen, parfumefloden, kongegrave |
 | 22 | 27. jul | Mandag | → Da Nang | Hai Van Pass (evt. motorcykeltur med guide) → Da Nang |
-| 23 | 28. jul | Tirsdag | Da Nang | My Khe Beach, Marble Mountains |
+| 23 | 28. jul | Tirsdag | Da Nang | My Khe Beach, Marble Mountains + Non Nuoc Beach |
 | 24 | 29. jul | Onsdag | Da Nang | Ba Na Hills (Golden Bridge) |
-| 25 | 30. jul | Torsdag | Da Nang | Stranddag / afslapning |
+| 25 | 30. jul | Torsdag | Da Nang | 🏖️ Son Tra Peninsula - strand, vandaktiviteter (jetski, SUP), aber i junglen |
 | 26 | 31. jul | Fredag | ✈️ → Hanoi | Fly Da Nang → Hanoi. Sidste aften i Hanoi |
 | 27 | 1. aug | Lørdag | Hanoi | Sidste dag, shopping, streetfood |
 | 28 | 2. aug | Søndag | ✈️ | Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05 |
