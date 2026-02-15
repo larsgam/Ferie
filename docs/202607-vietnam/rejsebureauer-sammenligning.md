@@ -49,17 +49,17 @@
 
 !!! tip "Tre idéer værd at overveje til vores plan"
 
-    1. **Bai Tu Long Bay** i stedet for Ha Long Bay (fra Nyhavn) - samme wow-effekt, langt færre turister
-    2. **Phong Nha National Park** (fra Nyhavn eventyr) - verdens største grotte, passer mellem Ninh Binh og Hoi An
-    3. **Mai Chau-dalen** som supplement til Sapa (fra Nyhavn sommer) - risterrasser + cykling, tættere på Hanoi
+    1. **Bai Tu Long Bay** i stedet for Ha Long Bay (fra [Nyhavn](https://www.nyhavn.dk/vietnam/rejser/kompromisloest-eventyr-i-vietnam)) - samme wow-effekt, langt færre turister
+    2. **Phong Nha National Park** (fra [Nyhavn eventyr](https://www.nyhavn.dk/vietnam/rejser/kompromisloest-eventyr-i-vietnam)) - verdens største grotte, passer mellem Ninh Binh og Hoi An
+    3. **Mai Chau-dalen** som supplement til Sapa (fra [Nyhavn sommer](https://www.nyhavn.dk/vietnam/rejser/sommer-i-vietnam)) - risterrasser + cykling, tættere på Hanoi
 
 | Idé | Fra hvem | Overvej til vores plan |
 |---|---|---|
-| **Bai Tu Long Bay** i stedet for Ha Long Bay | Nyhavn | Mindre turistet, samme oplevelse |
-| **Phong Nha National Park** | Nyhavn (eventyr) | Verdens største grotte, mellem Ninh Binh og Hue |
-| **Mai Chau** som alternativ/supplement til Sapa | Nyhavn (sommer) | Tættere på Hanoi, risterrasser + cykling |
-| **Madlavningskursus i Hoi An** | Nyhavn, flere | Allerede i vores plan! |
-| **Nattog Hanoi → Hue** | Viktors Farmor, Kipling | Oplevelse i sig selv, sparer en dag |
+| **Bai Tu Long Bay** i stedet for Ha Long Bay | [Nyhavn](https://www.nyhavn.dk/vietnam/rejser/kompromisloest-eventyr-i-vietnam) | Mindre turistet, samme oplevelse |
+| **Phong Nha National Park** | [Nyhavn (eventyr)](https://www.nyhavn.dk/vietnam/rejser/kompromisloest-eventyr-i-vietnam) | Verdens største grotte, mellem Ninh Binh og Hue |
+| **Mai Chau** som alternativ/supplement til Sapa | [Nyhavn (sommer)](https://www.nyhavn.dk/vietnam/rejser/sommer-i-vietnam) | Tættere på Hanoi, risterrasser + cykling |
+| **Madlavningskursus i Hoi An** | [Nyhavn](https://www.nyhavn.dk/vietnam/rejser/sommer-i-vietnam), flere | Allerede i vores plan! |
+| **Nattog Hanoi → Hue** | [Viktors Farmor](https://www.viktorsfarmor.dk/rejsemal/asien/vietnam/fantastiske-vietnam), [Kipling](https://www.kiplingtravel.dk/rejser/asien/vietnam/den-store-indokinarejse) | Oplevelse i sig selv, sparer en dag |
 
 ## Konklusion
 
