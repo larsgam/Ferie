@@ -14,6 +14,7 @@
 | **Hanoi** | 4 dage | 4 dage | 3 dage | 4 dage | 2 dage | - |
 | **Ha Long Bay** | 2 dage | 2 dage (Bai Tu Long) | 3 dage (Bai Tu Long) | 1 nat på båd | 1 nat cruise | - |
 | **Sapa** | 3 dage | - | - | - | - | - |
+| **Mai Chau** | - | 2 dage (Ecolodge) | - | - | - | - |
 | **Ninh Binh** | 2 dage | - | - | - | - | - |
 | **Hoi An** | 5 dage | 4 dage | 3 dage | 3 dage | 3 dage | - |
 | **Hue** | 2 dage | - | 2 dage | 2 dage | 1 dag | - |
