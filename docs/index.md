@@ -4,4 +4,5 @@ Oversigt over planlagte ferier og rejseresearch.
 
 | Dato | Destination | Link |
 |------|-------------|------|
-| 28. marts 2026 | Andalusien | [Andalusien](20260328-andalusien/index.md) |
+| Marts 2026 | Andalusien | [Andalusien](202603-andalusien/index.md) |
+| Juli 2026 | Vietnam | [Vietnam](202607-vietnam/index.md) |

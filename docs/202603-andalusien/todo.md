@@ -5,6 +5,7 @@
 - [ ] **Book Alhambra-billetter** - alhambra-patronato.es. Book Nasrid-paladset mindst 3 timer efter I kører hjemmefra (kørsel 1t 15m)
 - [ ] **Book Caminito del Rey-billetter** - caminitodelrey.info. 10 EUR (selvguidet) eller 18 EUR (guidet). Medbring original ID for teenagerne
 
+
 ## Før afrejse
 
 - [ ] **Book lejebil**
