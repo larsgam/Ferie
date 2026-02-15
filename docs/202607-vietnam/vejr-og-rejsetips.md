@@ -23,25 +23,6 @@
 - Mekong-deltaet er dramatisk smukt med grønne rismarker
 - Temperaturer omkring 27-30°C
 
-## Forslag til rute (26 dage, nord → syd)
-
-Med 26 dage kan I dække hele landet. En klassisk nord-syd rute:
-
-| Dage | Sted | Highlights | Vejr-note |
-|------|------|------------|-----------|
-| 3-4 | Hanoi | Gamlebyen, streetfood, Ho Chi Minh-mausoleet, templet ved søen | Varmt og fugtigt, regnbyger |
-| 2-3 | Sapa | Risterrasser, vandreture, etniske minoriteter | Spektakulært grønt, men vådt |
-| 2 | Ha Long Bay | Krydstogt, grotter, kajak | Risiko for aflysninger pga. tyfoner - vær fleksibel |
-| 1 | Fly/tog til Hue | | |
-| 2-3 | Hue | Kejserpaladset, kongegrave, parfumefloden | Godt vejr |
-| 3-4 | Hoi An | Gamlebyen (UNESCO), skræddersyede tøj, strande, lanterne-aften | **Bedste vejr** |
-| 1-2 | Da Nang | Marble Mountains, My Khe Beach, Ba Na Hills | **Bedste vejr** |
-| 2 | Nha Trang | Strandby, snorkling, øhop | Blandet - kan være regn |
-| 1 | Fly til HCMC | | |
-| 3-4 | Ho Chi Minh City | Krigsmuseet, Cu Chi-tunnelerne, Saigon Notre-Dame, Ben Thanh Market | Regnbyger om eftermiddagen |
-| 2-3 | Mekong-deltaet | Flydende markeder, bådture, tropisk frugt | Grønt og frodigt |
-| 2-3 | Phu Quoc | Strandafslapning, snorkling, fiskesovsfabrikker | God afslutning |
-
 ## Fordele ved lavsæson
 
 - **Færre turister** - populære steder som Hoi An og Ha Long Bay er mindre overfyldte

@@ -12,18 +12,10 @@
 
 Booking: Travelis #4497407. Qatar Airways.
 
-## Rejseplan
-
-| Dag | Dato | Ugedag | Plan |
-|-----|------|--------|------|
-| 1 | 6. jul | Mandag | Afrejse CPH 16:00, ankomst DOH 23:00 |
-| 2 | 7. jul | Tirsdag | DOH 02:45 → HAN 13:55. Ankomst Hanoi |
-| ... | | | |
-| 27 | 2. aug | Søndag | Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05 |
-
 ## Research
 
-- [Vejr og rejsetips for juli/august](vejr-og-rejsetips.md) - vejr efter region, ruteforslag, praktiske tips
+- [Udkast til rejseplan](rejseplan-draft.md) - to ruteforslag (nord+central vs. nord→syd) med vurdering
+- [Vejr og rejsetips for juli/august](vejr-og-rejsetips.md) - vejr efter region, praktiske tips
 
 ## Praktisk info
 
