@@ -2,8 +2,12 @@
 
 ## Overblik
 
+!!! warning "Sæson-note"
+    Kun **Nyhavn "Sommer i Vietnam"** er designet specifikt til sommerrejse. De øvrige bureauers ruter er lavet til tørsæsonen (nov-apr) og inkluderer derfor syd-Vietnam uden hensyn til monsunregn i juli-august.
+
 | | **Vores Plan A** | **Nyhavn: Sommer i Vietnam** | **Nyhavn: Kompromisløst eventyr** | **Viktors Farmor** | **Kipling** | **Stjernegaard** |
 |---|---|---|---|---|---|---|
+| **Sæson** | Juli (tilpasset) | **Sommer** | Helår | Faste afgange | Daglige afgange | Primært vinter/forår |
 | **Varighed** | 26 dage | 20 dage | 20 dage | 16 dage | 14-18 dage | 14 dage |
 | **Dækning** | Nord + Central | Nord + Central (+ strand) | Nord → Syd | Nord → Syd | Nord → Syd (eller 3 lande) | Cambodia + Syd |
 | **Pris** | Selvplanlagt | fra 44.000 DKK | 40-50.000 DKK | 24.990 DKK | fra 16.998 DKK | fra 23.990 DKK |
@@ -66,6 +70,7 @@ Vores Plan A dækker nord og central Vietnam grundigere end nogen af bureauernes
 3. **Vi mister HCMC/Mekong** - men vejret er dårligt der i juli-august, så det er en bevidst prioritering
 4. **Overvej Bai Tu Long Bay** frem for Ha Long Bay (Nyhavns tip) - mindre turistet
 5. **Phong Nha** kunne være en interessant tilføjelse mellem Ninh Binh og Hoi An
+6. **Bureauernes nord→syd ruter er lavet til tørsæsonen** - kun Nyhavns "Sommer i Vietnam" er tilpasset sommervejret, og den dropper også syden
 
 ## Kilder
 
