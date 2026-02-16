@@ -34,81 +34,10 @@
 - **Onsdag 1. apr:** Procession kl. 19:30 fra kirken El Salvador, Nerja
 - **Påskesøndag 5. apr:** Procession fra Balcón de Europa kl. 12:00
 
-## Restauranter
+## Indhold
 
-### Frigiliana
-
-| Navn | Type | Noter |
-|------|------|-------|
-| [La Taberna del Sacristán](https://latabernadelsacristan.eatbu.com/?lang=en) | Middelhavskok | Smuk udendørs terrasse, friske ingredienser |
-| [La Tahona del Zacatín](https://www.tripadvisor.com/Restaurant_Review-g580274-d6765799-Reviews-La_Tahona_del_Zacatin-Frigiliana_Province_of_Malaga_Andalucia.html) | Tapas | Raffinerede tapas, hjemmelavede kroketter, terrasse med udsigt |
-| [Orihuela](https://www.tripadvisor.com/Restaurant_Review-g580274-d19289143-Reviews-Cafe_Bar_Orihuela-Frigiliana_Province_of_Malaga_Andalucia.html) | Spansk | Væk fra turiststrømmene, rimelige priser |
-| [Old Town Restaurant & Bar](https://www.tripadvisor.com/Restaurant_Review-g580274-d33084428-Reviews-Old_Town_Restaurant_Bar_Frigiliana-Frigiliana_Province_of_Malaga_Andalucia.html) | Middelhavskok | Calle San Sebastián, generøse portioner |
-| [Gloria Bendita](https://www.tripadvisor.com/Restaurant_Review-g580274-d12022826-Reviews-Restaurante_Gloria_Bendita-Frigiliana_Province_of_Malaga_Andalucia.html) | Middelhavs-/østlig fusion | Kreative retter, vegetar/vegansk/glutenfri. Aubergine-tempura, bao buns |
-| [Bar Virtudes](https://www.tripadvisor.com/Restaurant_Review-g580274-d24064231-Reviews-Restaurante_Bar_Virtudes-Frigiliana_Province_of_Malaga_Andalucia.html) | Andalusisk | Salmorejo, paella, morcilla, spansk omelet |
-| [Las Chinas](https://www.tripadvisor.com/Restaurant_Review-g580274-d1873630-Reviews-Las_Chinas-Frigiliana_Province_of_Malaga_Andalucia.html) | Traditionel spansk | Store portioner, blæksprutte, zarzuela de marisco, lammekoteletter |
-| [El Mirador](https://www.tripadvisor.com/Restaurant_Review-g580274-d1003513-Reviews-Restaurante_El_Mirador-Frigiliana_Province_of_Malaga_Andalucia.html) | Tapas | Havudsigt ved solnedgang, cocktails, vegetariske muligheder |
-| [El Boquetillo](https://www.tripadvisor.com/Restaurant_Review-g580274-d4427107-Reviews-El_Boquetillo_Frigiliana-Frigiliana_Province_of_Malaga_Andalucia.html) | International | Burgere, tacos, lammespyd. To gange vinder af tapa-ruten |
-| [El Casino](https://www.tripadvisor.com/Restaurant_Review-g580274-d1996417-Reviews-El_Casino-Frigiliana_Province_of_Malaga_Andalucia.html) | Spansk | Gedeost med honning, ibérico-skinke, hjemmelavede desserter |
-| [La Bodeguilla](https://www.tripadvisor.com/Restaurant_Review-g580274-d1003470-Reviews-La_Bodeguilla-Frigiliana_Province_of_Malaga_Andalucia.html) | Traditionel spansk | Migas, ajoblanco, gazpacho, autentisk andalusisk gastronomi |
-| [La Tapería](https://www.lataperiafrigiliana.com/) | Tapas | Drevet af dansk par, veganske/vegetariske muligheder, lokale råvarer |
-| [El Picoteo](https://www.tripadvisor.com/Restaurant_Review-g580274-d2218749-Reviews-El_Picoteo-Frigiliana_Province_of_Malaga_Andalucia.html) | Tapas | Dagsmenu, supper og gryderetter, rimelige priser |
-
-### Nerja
-
-| Navn | Type | Noter |
-|------|------|-------|
-| [Vitaliano da Cristina](https://vitalianodacristina.wixsite.com/vitaliano) | Italiensk | Familiedrevet, hjemmelavet pasta |
-| [La Dama](https://www.tripadvisor.com/Restaurant_Review-g315917-d2702296-Reviews-La_Dama-Nerja_Costa_del_Sol_Province_of_Malaga_Andalucia.html) | Pizza | Billigt og godt, pizza fra 3,50 EUR |
-| Chiringuitos på Burriana Beach | Strand | Paella og frisk fisk med havudsigt |
-
-### Michelin Bib Gourmand (inden for 50 km)
-
-!!! info "Bib Gourmand = god kvalitet til rimelig pris (max 35 EUR for 3 retter)"
-
-| Navn | By | Kørsel | Type | Noter |
-|------|-----|--------|------|-------|
-| [El Chiringuito](https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito) | Sedella | 20 min | Andalusisk | Ung kok Víctor Hierrezuelo, trænet hos Arzak og Bardal. Smagsmenuer kræver forudbestilling |
-| [El Chaleco](https://guide.michelin.com/en/andalucia/almunecar/restaurant/el-chaleco) | Almuñécar | 30 min | Fransk | Klassisk restaurant, fransk inspireret. 3-retters eller 5-retters smagsmenu. Tlf: +34 958 63 24 02 |
-| [La Cosmo](https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-cosmo) | Málaga | 1t | Andalusisk | Bag katedralen, åbent køkken. Kok Dani Carnero. Prøv kulmule-salaten! |
-| [Base9](https://guide.michelin.com/en/andalucia/malaga/restaurant/base9) | Málaga | 1t | Moderne | Tapas til deling, japansk-inspireret tortilla. Nær María Zambrano-stationen |
-| [La Taberna de Mike Palmer](https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-taberna-de-mike-palmer) | Málaga | 1t | Traditionelt | I en rideklub i udkanten. Grill, grillede østers, kartoffelomelet med whisky |
-
-!!! tip "Spisetider i Spanien"
-    Frokost kl. 14-15, middag fra kl. 21. "Menú del día" til frokost: ca. 10-15 EUR inkl. forret, hovedret, dessert og drink.
-
-## Seværdigheder og aktiviteter
-
-### Frigiliana & Nerja (lokal)
-
-| Navn | Kørsel | Beskrivelse |
-|------|--------|-------------|
-| Casco Antiguo, Frigiliana | 0 min | Den gamle bydel med hvide huse og maurisk arkitektur |
-| Balcón de Europa, Nerja | 5 min | Dramatisk udsigtsplatform over Middelhavet |
-| [Cueva de Nerja](https://cuevadenerja.es/en/) | 10 min | Enorme grotter med stalaktitter, verdens største søjle (32m). Entré ~12-15 EUR |
-| Playa Burriana | 5 min | Nerjas største strand med restauranter |
-| Playa de Maro | 15 min | En af Andalusiens smukkeste strande |
-| Rio Chillar vandring | 10 min | 8 km tur-retur i flodlejet gennem en smuk kløft |
-
-### Dagsture
-
-| Destination | Kørsel | Highlights |
-|-------------|--------|------------|
-| [Granada & Alhambra](https://tickets.alhambra-patronato.es/en/) | 1t 15m | Nasrid-paladserne, Generalife-haverne, Albaicín-kvarteret. **Book billetter NU!** |
-| Málaga | 1t | Picasso-museet, Alcazaba, Centre Pompidou, havneområdet. Evt. [tyrefægtning i påsken](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) - tjek program |
-| [Caminito del Rey](https://www.caminitodelrey.info/en) | 1t 30m | Spektakulær gangsti på klippevægge, 7,7 km. **Book billetter NU!** Min. alder 8 år. |
-| Ronda | 2t | Puente Nuevo (bro over 120m kløft), tyrefægtningsarena, arabiske bade |
-| Setenil de las Bodegas | 2t | Unik "grotby" med huse bygget ind i klippen. Kombiner med Ronda |
-| Córdoba | 2t 30m | Mezquita-katedralen (moské-katedral), jødisk kvarter. Lang dag - overvej om det kan erstatte en anden dagstur |
-| Cómpeta | 30 min | Smuk hvid bjerglandsby med vinproduktion |
-
-### Vandaktiviteter (fra april)
-
-| Aktivitet | Sted | Ca. pris |
-|-----------|------|----------|
-| Kajak langs Maro-klipperne | Playa Burriana | 28 EUR/voksen, 17 EUR/barn |
-| Stand Up Paddle (SUP) | Burriana Beach | - |
-| Snorkling | Playa de Maro | - |
+- [Restauranter](restauranter.md) - Frigiliana, Nerja, Bib Gourmand
+- [Seværdigheder og aktiviteter](sevaerdigheder.md) - lokale attraktioner, dagsture, vandaktiviteter
 
 ## Praktisk info
 
