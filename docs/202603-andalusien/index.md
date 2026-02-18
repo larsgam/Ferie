@@ -18,8 +18,8 @@
 | 2 | 29. mar | Søndag | *Palmesøndag.* Udforsk Frigiliana. Balcón de Europa. Procession i Nerja |
 | 3 | 30. mar | Mandag | *Forslag: Granada & Alhambra (hel dag)* |
 | 4 | 31. mar | Tirsdag | *Forslag: Cueva de Nerja + Rio Chillar vandring* |
-| 5 | 1. apr | Onsdag | *Forslag: Caminito del Rey.* Arthur ankommer AGP 23:55 |
-| 6 | 2. apr | Torsdag | *Forslag: Afslapning - Playa de Maro, kajak/SUP* |
+| 5 | 1. apr | Onsdag | *Forslag: Afslapning - Playa de Maro, kajak/SUP.* Arthur ankommer AGP 23:55 |
+| 6 | 2. apr | Torsdag | **Caminito del Rey kl. 16:00** (alle 5). Afgang ~14:00, køretid ~1,5t. Retur ~21:00 |
 | 7 | 3. apr | Fredag | *Forslag: Ronda & Setenil de las Bodegas (hel dag)* |
 | 8 | 4. apr | Lørdag | **Málaga (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
 | 9 | 5. apr | Søndag | *Påskesøndag.* Procession Balcón de Europa kl. 12. Cómpeta |
@@ -38,6 +38,7 @@
 
 - [Restauranter](restauranter.md) - Frigiliana, Nerja, Bib Gourmand
 - [Seværdigheder og aktiviteter](sevaerdigheder.md) - lokale attraktioner, dagsture, vandaktiviteter
+- [Cykeludlejning](research/cykeludlejning.md) - leje af racercykel i Nerja-området
 
 ## Praktisk info
 
