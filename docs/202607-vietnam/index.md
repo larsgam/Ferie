@@ -17,6 +17,11 @@ Booking: Travelis #4497407. Qatar Airways.
 - [Udkast til rejseplan](rejseplan-draft.md) - to ruteforslag (nord+central vs. nord→syd) med vurdering
 - [Vejr og rejsetips for juli/august](vejr-og-rejsetips.md) - vejr efter region, praktiske tips
 - [Rejsebureauer - sammenligning](rejsebureauer-sammenligning.md) - Nyhavn, Viktors Farmor, Kipling, Stjernegaard vs. vores plan
+- [Ninh Binh - restauranter og aktiviteter](research/ninh-binh.md) - gedespecialiteter, Tam Coc, Trang An, Mua Cave, Bai Dinh
+- [Hue - restauranter og aktiviteter](research/hue-restauranter-aktiviteter.md) - kejserlig cuisine, bun bo Hue, Imperial City, kongegrave, Perfume River
+- [Hanoi - restauranter og aktiviteter](research/hanoi-restauranter-aktiviteter.md) - streetfood, sit-down restauranter, seværdigheder, ture, teenagervenlige aktiviteter
+- [Strande i Central Vietnam](research/strande-central-vietnam.md)
+- [Sapa - restauranter og aktiviteter](research/sapa-restauranter-aktiviteter.md) - spisesteder, trekking, landsbyer, pakkeliste til regnsæson
 
 ## Praktisk info
 
