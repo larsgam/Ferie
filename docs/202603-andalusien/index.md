@@ -51,6 +51,8 @@
 | Påskesøndag | 5. apr | Virgen de la Aurora + den Opstandne Kristus |
 
 > Kilder: [NerjaLovers](https://www.nerjalovers.com/semana-santa-de-nerja/) · [Frigiliana.info](https://www.frigiliana.info/semana-santa-de-frigiliana.php?tema=1.4.3). Tidspunkter baseret på 2025 - bekræft tættere på.
+>
+> Frigilianas processioner har ingen publicerede klokkeslæt. Ring til turisme-kontoret inden afrejse: **952 53 42 61**
 
 ## Indhold
 
