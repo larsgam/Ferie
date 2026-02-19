@@ -15,24 +15,42 @@
 | Dag | Dato | Ugedag | Plan |
 |-----|------|--------|------|
 | 1 | 28. mar | Lørdag | Afrejse CPH 15:20, ankomst AGP 23:05 |
-| 2 | 29. mar | Søndag | *Palmesøndag.* Udforsk [Frigiliana](sevaerdigheder.md#casco-antiguo-frigiliana). [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja). Procession i Nerja |
+| 2 | 29. mar | Søndag | *Palmesøndag.* Udforsk [Frigiliana](sevaerdigheder.md#casco-antiguo-frigiliana). [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja). Palmeprocession ~11:30 |
 | 3 | 30. mar | Mandag | *Forslag: [Granada & Alhambra](sevaerdigheder.md#granada-alhambra) (hel dag)* |
 | 4 | 31. mar | Tirsdag | *Forslag: [Cueva de Nerja](sevaerdigheder.md#cueva-de-nerja) + [Rio Chillar vandring](sevaerdigheder.md#rio-chillar-vandring)* |
 | 5 | 1. apr | Onsdag | *Forslag: [Ronda](sevaerdigheder.md#ronda) & [Setenil de las Bodegas](sevaerdigheder.md#setenil-de-las-bodegas) (hel dag).* Arthur ankommer AGP 23:55 |
 | 6 | 2. apr | Torsdag | **[Caminito del Rey](sevaerdigheder.md#caminito-del-rey) kl. 16:00** (alle 5). Afgang ~14:00, køretid ~1,5t. Retur ~21:00 |
-| 7 | 3. apr | Fredag | *Forslag: Afslapning - [Playa de Maro](sevaerdigheder.md#playa-de-maro), kajak/SUP* |
-| 8 | 4. apr | Lørdag | **[Málaga](sevaerdigheder.md#málaga) (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
+| 7 | 3. apr | Fredag | *Langfredag.* Afslapning - [Playa de Maro](sevaerdigheder.md#playa-de-maro), kajak/SUP. **Processioner om aftenen** |
+| 8 | 4. apr | Lørdag | *Evt. Soledad-procession i Frigiliana (tidlig morgen).* **[Málaga](sevaerdigheder.md#málaga) (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
 | 9 | 5. apr | Søndag | *Påskesøndag.* Procession [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja) kl. 12. [Cómpeta](sevaerdigheder.md#cómpeta) |
 | 10 | 6. apr | Mandag | Hjemrejse AGP 11:05, ankomst CPH 14:40 |
 
 ## Semana Santa (påskeugen)
 
 !!! info "Ferien falder sammen med Semana Santa (29. mar – 5. apr)"
-    Religiøse processioner i Nerjas gader. Restauranter kan være ekstra travle - reserver bord.
+    Religiøse processioner i Nerja og Frigilianas gader. Restauranter kan være ekstra travle - reserver bord.
 
-- **Palmesøndag 29. mar:** Procession med palmegrene i Nerja
-- **Onsdag 1. apr:** Procession kl. 19:30 fra kirken El Salvador, Nerja
-- **Påskesøndag 5. apr:** Procession fra Balcón de Europa kl. 12:00
+### Nerja
+
+| Dag | Dato | Tid | Procession |
+|-----|------|-----|------------|
+| Palmesøndag | 29. mar | 11:30 | Palmevelsignelse ved Ermita de las Angustias, procession til Balcón de Europa |
+| Onsdag | 1. apr | 19:30 | Jesús Cautivo + María de los Desamparados. Fra Balcón de Europa |
+| Skærtorsdag | 2. apr | 20:30 | Jesús Nazareno + María de la Esperanza. Lang rute via Balcón de Europa |
+| **Langfredag** | **3. apr** | **20:30** | **Santo Entierro + María de los Dolores** (den største procession) |
+| Påskesøndag | 5. apr | 12:00 | Jesús Resucitado + María de la Asunción. Med musikkorps |
+
+### Frigiliana
+
+| Dag | Dato | Procession |
+|-----|------|------------|
+| Palmesøndag | 29. mar | Palmevelsignelse ved Ermita de San Sebastián |
+| Skærtorsdag | 2. apr | Fodvaskning + procession med 1600-tals apostelmasker. Jesús Nazareno + Virgen de los Dolores |
+| **Langfredag** | **3. apr** | **Via Crucis + nedtagning fra korset** (Frigilianas mest berømte dag). Jesús Yacente + Virgen de los Dolores |
+| Påskelørdag | 4. apr | **Soledad-processionen** - tidlig morgen i stilhed ved stearinlys. Kun kvinder i sørgedragt. Unik oplevelse |
+| Påskesøndag | 5. apr | Virgen de la Aurora + den Opstandne Kristus |
+
+> Kilder: [NerjaLovers](https://www.nerjalovers.com/semana-santa-de-nerja/) · [Frigiliana.info](https://www.frigiliana.info/semana-santa-de-frigiliana.php?tema=1.4.3). Tidspunkter baseret på 2025 - bekræft tættere på.
 
 ## Indhold
 
