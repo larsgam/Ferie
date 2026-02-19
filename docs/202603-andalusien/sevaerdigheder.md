@@ -1,5 +1,27 @@
 # Seværdigheder og aktiviteter
 
+## Overblik
+
+| Aktivitet | Type | Planlagt |
+|-----------|------|----------|
+| [Casco Antiguo, Frigiliana](#casco-antiguo-frigiliana) | Lokal | 29. mar (dag 2) |
+| [Balcón de Europa, Nerja](#balcón-de-europa-nerja) | Lokal | 29. mar (dag 2) |
+| [Cueva de Nerja](#cueva-de-nerja) | Lokal | 31. mar (dag 4) |
+| [Playa Burriana](#playa-burriana) | Lokal | - |
+| [Playa de Maro](#playa-de-maro) | Lokal | 3. apr (dag 7) |
+| [Rio Chillar vandring](#rio-chillar-vandring) | Lokal | 31. mar (dag 4) |
+| [Parroquia El Salvador, Nerja](#parroquia-el-salvador-nerja) | Lokal | - |
+| [Cómpeta](#cómpeta) | Lokal | 5. apr (dag 9) |
+| [Granada & Alhambra](#granada-alhambra) | Dagstur | 30. mar (dag 3) |
+| [Málaga](#málaga) | Dagstur | 4. apr (dag 8) |
+| [Caminito del Rey](#caminito-del-rey) | Dagstur | **2. apr (dag 6)** :white_check_mark: |
+| [Ronda](#ronda) | Dagstur | 1. apr (dag 5) |
+| [Setenil de las Bodegas](#setenil-de-las-bodegas) | Dagstur | 1. apr (dag 5) |
+| [Córdoba](#córdoba) | Dagstur | - |
+| [Vandaktiviteter](#vandaktiviteter) | Aktivitet | 3. apr (dag 7) |
+
+---
+
 ## Frigiliana & Nerja (lokal)
 
 ### Casco Antiguo, Frigiliana
@@ -7,6 +29,7 @@
 Den gamle bydel med hvide huse, blå og grønne døre, messingdørhåndtag og 800 års maurisk indflydelse. Labyrintiske, stejle gader med keramikbutikker og lokale vinhandlere (sød moscatel-vin fra området). Husk siesta - butikkerne lukker midt på dagen.
 
 - **Kørsel:** 0 min (vi bor her)
+- **Planlagt:** 29. mar (dag 2)
 
 > [Nerja og Frigiliana: Storslåede udsigter, drypstenshuler og maurisk charme](https://spainbyhanne.dk/nerja-og-frigiliana-storslaaede-udsigter-drypstenshuler-og-maurisk-charme/) - Spain by Hanne
 
@@ -17,6 +40,7 @@ Den gamle bydel med hvide huse, blå og grønne døre, messingdørhåndtag og 80
 Dramatisk udsigtsplatform over Middelhavet med panoramaudsigt helt til Marokkos bjerge. Bygget i 1885 efter et jordskælv, med statue af kong Alfonso XII. Nedenfor ligger Calahonda Beach. Nerja har i alt 16 strande i området.
 
 - **Kørsel:** 5 min
+- **Planlagt:** 29. mar (dag 2)
 
 > [Nerja og Frigiliana: Storslåede udsigter, drypstenshuler og maurisk charme](https://spainbyhanne.dk/nerja-og-frigiliana-storslaaede-udsigter-drypstenshuler-og-maurisk-charme/) - Spain by Hanne
 
@@ -29,6 +53,7 @@ Enorme drypstensgrotter opdaget i 1959, med 60 meter høje søjler og verdens st
 - **Kørsel:** 10 min (i Maro, 8 km fra Nerja)
 - **Entré:** ~12-15 EUR
 - **Web:** [cuevadenerja.es](https://cuevadenerja.es/en/)
+- **Planlagt:** 31. mar (dag 4)
 
 > [Nerja og Frigiliana: Storslåede udsigter, drypstenshuler og maurisk charme](https://spainbyhanne.dk/nerja-og-frigiliana-storslaaede-udsigter-drypstenshuler-og-maurisk-charme/) - Spain by Hanne
 
@@ -47,6 +72,7 @@ Nerjas største strand med restauranter (chiringuitos) direkte på stranden. Udg
 En af Andalusiens smukkeste strande - lille, uberørt og omgivet af klipper.
 
 - **Kørsel:** 15 min
+- **Planlagt:** 3. apr (dag 7)
 
 ---
 
@@ -55,6 +81,7 @@ En af Andalusiens smukkeste strande - lille, uberørt og omgivet af klipper.
 8 km tur-retur vandring i selve flodlejet gennem en smuk, smal kløft. Man vader i vand det meste af turen - medbring vandsko.
 
 - **Kørsel:** 10 min (startpunkt)
+- **Planlagt:** 31. mar (dag 4)
 
 ---
 
@@ -73,6 +100,7 @@ Kirke fra 1505 (nuværende bygning fra 1600-tallet) med fresker fra 1700-tallet.
 Smuk hvid bjerglandsby med vinproduktion (moscatel). Autentisk andalusisk atmosfære, væk fra turisterne.
 
 - **Kørsel:** 30 min
+- **Planlagt:** 5. apr (dag 9)
 
 ---
 
@@ -94,6 +122,7 @@ Alhambra er et gigantisk palads- og fæstningskompleks på 26 hektar med over 1 
 - **Kørsel:** 1t 15m
 - **Billetter:** Book online mindst 3 måneder i forvejen! Ingen billetsalg ved indgangen.
 - **Web:** [tickets.alhambra-patronato.es](https://tickets.alhambra-patronato.es/en/)
+- **Planlagt:** 30. mar (dag 3)
 
 Udforsk også **Albaicín** (det gamle arabiske kvarter) og **Sacromonte** (roma-kvarteret) med stemningsfulde gader og panoramaudsigt.
 
@@ -134,6 +163,7 @@ Udendørs kunstgalleri med verdensklasse street art. Start ved CAC-museet nær P
 **Praktisk:**
 
 - **Kørsel:** 1t
+- **Planlagt:** 4. apr (dag 8)
 - Evt. [tyrefægtning i påsken](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) - tjek program
 
 > [5 byer i Andalusien som du skal se](https://spainbyhanne.dk/5-byer-i-andalusien-som-du-skal-se/) - Spain by Hanne
@@ -148,6 +178,7 @@ Spektakulær gangsti fastgjort på lodrette klippevægge i El Chorro-kløften. 7
 - **Min. alder:** 8 år
 - **Billetter:** Book i forvejen!
 - **Web:** [caminitodelrey.info](https://www.caminitodelrey.info/en)
+- **Planlagt:** **2. apr kl. 16:00 (dag 6)** - booket
 
 ---
 
@@ -165,6 +196,7 @@ Dramatisk klippeby over den 98 meter dybe El Tajo-kløft. Her blev moderne tyref
 **Praktisk:**
 
 - **Kørsel:** 2t
+- **Planlagt:** 1. apr (dag 5)
 - Kombiner med Setenil de las Bodegas (18 km fra Ronda)
 
 > [Oplev det bedste af Andalusien i roligt tempo](https://spainbyhanne.dk/oplev-det-bedste-af-andalusien-i-roligt-tempo/) - Spain by Hanne
@@ -185,6 +217,7 @@ Unik "grotby" med huse og barer bygget direkte ind i klippeoverhæng. Ca. 3.000 
 **Tapas:** Prøv svinekød, ibérico-skinke, ost, asparges og søde kartofler med honning.
 
 - **Kørsel:** 2t (kombiner med Ronda, kun 18 km derfra)
+- **Planlagt:** 1. apr (dag 5)
 
 > [Setenil de las Bodegas: Hvid landsby indbygget i klipper](https://spainbyhanne.dk/setenil-de-las-bodegas-indbygget-i-klipper/) - Spain by Hanne
 
@@ -210,8 +243,8 @@ Hjemsted for den utrolige Mezquita - moské-katedral med 834 stribede søjler. B
 
 ## Vandaktiviteter
 
-| Aktivitet | Sted | Ca. pris |
-|-----------|------|----------|
-| Kajak langs Maro-klipperne | Playa Burriana | 28 EUR/voksen, 17 EUR/barn |
-| Stand Up Paddle (SUP) | Burriana Beach | - |
-| Snorkling | Playa de Maro | - |
+| Aktivitet | Sted | Ca. pris | Planlagt |
+|-----------|------|----------|----------|
+| Kajak langs Maro-klipperne | Playa Burriana | 28 EUR/voksen, 17 EUR/barn | 3. apr (dag 7) |
+| Stand Up Paddle (SUP) | Burriana Beach | - | 3. apr (dag 7) |
+| Snorkling | Playa de Maro | - | - |
