@@ -22,7 +22,7 @@
 | 6 | 2. apr | Torsdag | **[Caminito del Rey](sevaerdigheder.md#caminito-del-rey) kl. 16:00** (alle 5). Afgang ~14:00, køretid ~1,5t. Retur ~21:00 |
 | 7 | 3. apr | Fredag | *Langfredag.* Afslapning - [Playa de Maro](sevaerdigheder.md#playa-de-maro), kajak/SUP. **Processioner om aftenen** |
 | 8 | 4. apr | Lørdag | *Evt. Soledad-procession i Frigiliana (tidlig morgen).* **[Málaga](sevaerdigheder.md#málaga) (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
-| 9 | 5. apr | Søndag | *Påskesøndag.* Procession [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja) kl. 12. [Cómpeta](sevaerdigheder.md#cómpeta). 🚴 **Flandern Rundt** |
+| 9 | 5. apr | Søndag | *Påskesøndag.* Procession [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja) **kl. 12:00**. [Cómpeta](sevaerdigheder.md#cómpeta). 🚴 **Flandern Rundt** |
 | 10 | 6. apr | Mandag | Hjemrejse AGP 11:05, ankomst CPH 14:40 |
 
 > 🚴 **Paris-Roubaix:** 12. april (søndag) – en uge efter hjemkomst
