@@ -61,6 +61,7 @@
 - [Restauranter](restauranter.md) - Frigiliana, Nerja, Bib Gourmand
 - [Seværdigheder og aktiviteter](sevaerdigheder.md) - lokale attraktioner, dagsture, vandaktiviteter
 - [Cykeludlejning](research/cykeludlejning.md) - leje af racercykel i Nerja-området
+- [Biludlejning](research/biludlejning.md) - lejebil til 5 personer fra AGP
 
 ## Praktisk info
 
@@ -68,4 +69,4 @@
 - **Fly Arthur:** CPH → AGP, ons 1. april, 20:15–23:55. Norwegian D85075, LowFare
 - **Fly hjemrejse:** AGP → CPH, man 6. april, 11:05–14:40 (3t 35m, direkte). SK 588, SAS Connect. 5 passagerer (alle)
 - **Bolig:** Lejet hus i Frigiliana, Andalucía 29788, Spanien. [Google Maps](https://www.google.com/maps/place/36°47'58.7%22N+3°54'53.3%22W/@36.7996368,-3.9148121,1124m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d36.7996368!4d-3.9148121?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D)
-- **Transport:** Lejebil (ikke booket endnu)
+- **Transport:** Lejebil (ikke booket endnu) – se [biludlejning](research/biludlejning.md)
