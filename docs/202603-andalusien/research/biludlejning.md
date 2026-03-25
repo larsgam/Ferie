@@ -1,10 +1,10 @@
 # Biludlejning - Málaga Airport (AGP)
 
-Research om lejebi til 5 personer, afhentning lørdag 28. marts ~23:00, aflevering mandag 6. april ~10:30 (9 dage).
+Research om lejebil til 5 personer, afhentning lørdag 28. marts ~23:00, aflevering mandag 6. april ~10:30 (9 dage).
 
 ## Konklusion
 
-**Anbefaling: [MalagaCar.com](https://www.malagacar.com)** – bestil Peugeot 5008 Auto 7-pax eller VW Caddy Maxi (Group PB):
+**Anbefaling: [MalagaCar.com](https://www.malagacar.com)** – bestil en stor 5-sæders SUV (fx VW Tiguan, SEAT Tarraco eller tilsvarende):
 
 - **Fuld forsikring med nul selvrisiko** inkluderet i grundprisen
 - **Gratis ekstra fører** inkluderet
@@ -12,22 +12,36 @@ Research om lejebi til 5 personer, afhentning lørdag 28. marts ~23:00, afleveri
 - 24h service – gratis shuttle fra terminalen
 - **OBS:** +35 EUR for afhentning mellem 23:00–08:00 (gælder jer)
 
-Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente på shuttle kl. 23. Koster ~300–400 EUR mere, men ingen ventetid med træt familie og kufferter.
+En stor 5-sæders SUV er tilstrækkelig til 5 personer med moderat bagage og er billigere og nemmere at parkere end en 7-sæders. 7-sæders er kun nødvendigt ved megen bagage.
+
+Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente på shuttle kl. 23. Koster ~200–300 EUR mere, men ingen ventetid med træt familie og kufferter.
 
 **Sammenlign begge på [DiscoverCars.com](https://www.discovercars.com)** for de præcise datoer – de viser den reelle pris inkl. forsikring.
 
-**Book nu** – 7-sæders biler ved AGP i påskeugen forsvinder hurtigt, og priserne stiger løbende.
+**Book snart** – gode biler i påskeugen forsvinder, og priserne stiger løbende.
 
 ---
 
-## Sammenligning
+## Bilstørrelse
+
+| Kategori | Eksempler | Passer til | Pris (9 dage, est.) |
+|----------|-----------|------------|---------------------|
+| **Stor 5-sæders SUV** ✓ | VW Tiguan, SEAT Tarraco, Skoda Kodiaq | 5 pers + moderat bagage | ~650–850 EUR |
+| Stationcar | Skoda Octavia Combi, VW Passat Variant | 5 pers + moderat bagage | ~550–750 EUR |
+| 7-sæders MPV | Peugeot 5008, VW Caddy Maxi | 5 pers + meget bagage | ~950–1.150 EUR |
+
+SUV anbefales frem for stationcar i Andalusien – bedre vejfrigang på smallere veje og lettere at se ud over bakket terræn.
+
+---
+
+## Sammenligning af udbydere
 
 | Udbyder | Bil | Pris (9 dage) | Forsikring | Km | Ekstra fører | Bemærkning |
 |---------|-----|--------------|------------|-----|-------------|------------|
-| [MalagaCar](https://www.malagacar.com) | Peugeot 5008 Auto / VW Caddy Maxi | ~950–1.150 EUR | Fuld, nul selvrisiko | Ubegrænset | Gratis | +35 EUR natsurcharge. Off-airport shuttle |
-| [Marbesol](https://www.marbesol.com/en/) | Seat Alhambra / Renault Grand Scenic | ~850–1.100 EUR | Total inkl. dæk/glas/bund | 2.000 km | Spørg | Max 2.000 km – kan være for lidt. Off-airport shuttle |
-| [Sixt](https://www.sixt.es) (terminal) | VW Touran eller tilsvarende | ~1.100–1.600 EUR | Basis CDW inkl. Super CDW +20–30 EUR/dag | Ubegrænset | ~10–15 EUR/dag | I terminalen, åbent til 01:00. Bekvemt ved 23:00-ankomst |
-| [DiscoverCars](https://www.discovercars.com) (broker) | Varierer (Delpaso, Centauro m.fl.) | ~600–1.000 EUR | +7–12 EUR/dag via DC | Varierer | Varierer | Sammenligner 20+ udbydere. Viser realpris inkl. forsikring |
+| [MalagaCar](https://www.malagacar.com) | Stor SUV (Tiguan/Tarraco) | ~650–850 EUR | Fuld, nul selvrisiko | Ubegrænset | Gratis | +35 EUR natsurcharge. Off-airport shuttle |
+| [Marbesol](https://www.marbesol.com/en/) | SUV eller stationcar | ~600–800 EUR | Total inkl. dæk/glas/bund | 2.000 km | Spørg | Max 2.000 km – rigeligt til denne tur |
+| [Sixt](https://www.sixt.es) (terminal) | VW Tiguan eller tilsvarende | ~850–1.200 EUR | Basis CDW inkl. Super CDW +20–30 EUR/dag | Ubegrænset | ~10–15 EUR/dag | I terminalen, åbent til 01:00 |
+| [DiscoverCars](https://www.discovercars.com) (broker) | Varierer | ~450–750 EUR | +7–12 EUR/dag via DC | Varierer | Varierer | Sammenligner 20+ udbydere. Viser realpris inkl. forsikring |
 
 ---
 
@@ -37,7 +51,7 @@ Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente
 
 - **Web:** [malagacar.com](https://www.malagacar.com)
 - **Type:** Off-airport, gratis orange shuttle (~15 min), 24h drift
-- **Bil:** Peugeot 5008 Auto 7-pax, VW Caddy Maxi Auto eller Volvo XC90 (premium)
+- **Bil:** VW Tiguan, SEAT Tarraco eller tilsvarende stor SUV
 
 **Fordele:**
 
@@ -51,9 +65,8 @@ Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente
 
 - +35 EUR natsurcharge (23:00–08:00) – kan ikke undgås ved 23:05-ankomst
 - ~15 min shuttlekørsel med bagage og træt familie om natten
-- Nogle rapporter om lidt ældre køretøjer i 7-sæders kategorien
 
-**Estimeret pris:** ~950–1.150 EUR alt inkl.
+**Estimeret pris:** ~650–850 EUR alt inkl.
 
 ---
 
@@ -61,20 +74,20 @@ Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente
 
 - **Web:** [marbesol.com](https://www.marbesol.com/en/)
 - **Type:** Off-airport, gratis shuttle
-- **Biler:** Seat Alhambra, Renault Grand Scenic, VW Touran, Mercedes V Class
+- **Biler:** SUV, stationcar, VW Touran
 
 **Fordele:**
 
-- Total forsikring inkl. dæk, glas, understel, batteri og kobling – usædvanligt bredt dækning
+- Total forsikring inkl. dæk, glas, understel, batteri og kobling – usædvanligt bred dækning
 - Konkurrencedygtig pris
+- 2.000 km-grænse er rigeligt til denne tur (~800–1.000 km estimeret)
 
 **Ulemper:**
 
-- **Max 2.000 km** i lejeperioden (2 EUR/km over) – ved kørsel rundt i Andalusien kan det blive tæt på grænsen
 - Kun kreditkort – ikke Amex, ikke forudbetalte/virtuelle kort
 - +35 EUR natsurcharge
 
-**Estimeret pris:** ~850–1.100 EUR
+**Estimeret pris:** ~600–800 EUR
 
 ---
 
@@ -82,7 +95,7 @@ Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente
 
 - **Web:** [sixt.dk](https://www.sixt.dk)
 - **Type:** I terminalen ved bagagebåndet, åbent til 01:00
-- **Bil:** VW Touran eller tilsvarende 7-sæders
+- **Bil:** VW Tiguan eller tilsvarende
 
 **Fordele:**
 
@@ -91,11 +104,11 @@ Alternativt: **[Sixt](https://www.sixt.dk)** i terminalen, hvis I ikke vil vente
 
 **Ulemper:**
 
-- Dyrere: basis CDW er inkl., men fuld forsikring (Super CDW) koster +20–30 EUR/dag
+- Dyrere: fuld forsikring (Super CDW) koster +20–30 EUR/dag ekstra
 - Ekstra fører: ~10–15 EUR/dag (~90–135 EUR for 9 dage)
-- Aggressivt upsalg af tilvalg ved afhentning
+- Aggressivt upsalg ved afhentning
 
-**Estimeret pris:** ~1.100–1.600 EUR alt inkl.
+**Estimeret pris:** ~850–1.200 EUR alt inkl.
 
 ---
 
@@ -120,12 +133,12 @@ Begge har dokumenterede mønstre med:
 
 ### Brændstof
 - Vælg altid **full-to-full** (fuld tank ved afhentning, returneres fuld)
-- Undgå "prepaid full tank" (du betaler for mere end du bruger) og "empty-to-empty"
+- Undgå "prepaid full tank" og "empty-to-empty"
 - Fotografér måleren ved afhentning
 - Diesel er billigere end benzin i Spanien – tjek hvilken biltypen kræver
 
 ### Dokumentation
-- Optag **video af hele bilen** (eksterior + interier) inden I kører – del til cloud med tidsstempel
+- Optag **video af hele bilen** (eksterior + interiør) inden I kører – del til cloud med tidsstempel
 - Notér alle ridser på udlejningsformularen, uanset hvor små
 
 ### Depositum
@@ -134,13 +147,13 @@ Begge har dokumenterede mønstre med:
 
 ### Kilometer
 - Kørsel i Andalusien: Granada (~100 km), Ronda (~135 km), Málaga (~60 km), Caminito del Rey (~75 km)
-- Estimeret total: ~800–1.100 km for hele turen → Marbesols 2.000 km-grænse er OK, men tjek
+- Estimeret total for hele turen: ~800–1.000 km
 
 ---
 
 ## Links
 
 - [MalagaCar.com](https://www.malagacar.com) – book direkte
-- [Marbesol](https://www.marbesol.com/en/rental-cars/minibus/) – minivan/MPV-side
+- [Marbesol](https://www.marbesol.com/en/) – book direkte
 - [DiscoverCars – AGP](https://www.discovercars.com/spain/malaga-airport) – sammenligning
 - [Sixt Málaga Airport](https://www.sixt.es/alquiler-coches/espana/malaga/aeropuerto-de-malaga/) – book direkte
