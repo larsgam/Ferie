@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andalusien 2026 – Kort</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; flex-direction: column; height: 100vh; }
+
+    #header {
+      background: #1a1a2e;
+      color: white;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    #header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+
+    #filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      border: none;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.2s;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .filter-btn.off { opacity: 0.35; }
+
+    #map { flex: 1; }
+
+    .leaflet-popup-content-wrapper { border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .leaflet-popup-content { margin: 10px 14px; }
+    .popup-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .popup-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 10px;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .popup-body { font-size: 12px; color: #444; line-height: 1.5; }
+    .popup-link { display: inline-block; margin-top: 6px; font-size: 12px; color: #2563eb; text-decoration: none; }
+    .popup-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <h1>✈️ Andalusien · Marts–April 2026</h1>
+  <div id="filters">
+    <button class="filter-btn" data-cat="hjem" style="background:#2563eb">🏠 Bolig</button>
+    <button class="filter-btn" data-cat="planlagt" style="background:#16a34a">✅ Planlagt</button>
+    <button class="filter-btn" data-cat="forslag" style="background:#d97706">📍 Forslag</button>
+    <button class="filter-btn" data-cat="restaurant" style="background:#dc2626">🍽️ Restaurant</button>
+    <button class="filter-btn" data-cat="bib" style="background:#7c3aed">⭐ Bib Gourmand</button>
+  </div>
+</div>
+
+<div id="map"></div>
+
+<script>
+const map = L.map('map').setView([36.87, -4.25], 9);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(map);
+
+const COLORS = {
+  hjem:       '#2563eb',
+  planlagt:   '#16a34a',
+  forslag:    '#d97706',
+  restaurant: '#dc2626',
+  bib:        '#7c3aed'
+};
+
+const CAT_LABELS = {
+  hjem:       'Bolig',
+  planlagt:   'Planlagt',
+  forslag:    'Forslag',
+  restaurant: 'Restaurant',
+  bib:        'Bib Gourmand'
+};
+
+function makeIcon(cat) {
+  const c = COLORS[cat];
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="38" viewBox="0 0 26 38">
+    <path d="M13 0C5.82 0 0 5.82 0 13c0 9.75 13 25 13 25S26 22.75 26 13C26 5.82 20.18 0 13 0z"
+      fill="${c}" stroke="white" stroke-width="2"/>
+    <circle cx="13" cy="13" r="5" fill="white"/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [26, 38],
+    iconAnchor: [13, 38],
+    popupAnchor: [0, -40]
+  });
+}
+
+function popup(cat, title, body, link) {
+  const color = COLORS[cat];
+  const label = CAT_LABELS[cat];
+  const linkHtml = link ? `<a class="popup-link" href="${link}" target="_blank">Mere info →</a>` : '';
+  return `<div>
+    <div class="popup-title">${title}</div>
+    <div class="popup-tag" style="background:${color}">${label}</div>
+    <div class="popup-body">${body}</div>
+    ${linkHtml}
+  </div>`;
+}
+
+const layers = { hjem: [], planlagt: [], forslag: [], restaurant: [], bib: [] };
+
+function addMarker(cat, lat, lng, title, body, link) {
+  const m = L.marker([lat, lng], { icon: makeIcon(cat) })
+    .bindPopup(popup(cat, title, body, link));
+  layers[cat].push(m);
+  m.addTo(map);
+  return m;
+}
+
+// ── BOLIG ────────────────────────────────────────────────
+addMarker('hjem', 36.7936, -3.9027,
+  '🏠 Lejehus, Frigiliana',
+  '28. mar – 6. apr. Base for hele turen.',
+  'https://www.google.com/maps/place/36°47\'58.7"N+3°54\'53.3"W'
+);
+
+// ── PLANLAGTE AKTIVITETER ────────────────────────────────
+addMarker('planlagt', 36.7936, -3.9027,
+  'Casco Antiguo, Frigiliana',
+  'Dag 2 – Palmesøndag.<br>Hvide gader med maurisk indflydelse, keramikbutikker og moscatel-vin.',
+  null
+);
+
+addMarker('planlagt', 36.7506, -3.8732,
+  'Balcón de Europa, Nerja',
+  'Dag 2 – Palmesøndag + Påskesøndag (procession kl. 12:00).<br>Dramatisk udsigtsplatform over Middelhavet.',
+  null
+);
+
+addMarker('planlagt', 36.7590, -3.8363,
+  'Cueva de Nerja',
+  'Dag 4 (31. mar).<br>Enorme drypstensgrotter med verdens største stalagmit. Entré ~12-15 EUR.',
+  'https://cuevadenerja.es/en/'
+);
+
+addMarker('planlagt', 36.7553, -3.8887,
+  'Rio Chillar vandring',
+  'Dag 4 (31. mar).<br>8 km tur-retur vandring i flodlejet. Medbring vandsko.',
+  null
+);
+
+addMarker('planlagt', 36.7532, -3.8198,
+  'Playa de Maro',
+  'Dag 7 – Langfredag (3. apr).<br>En af Andalusiens smukkeste strande. Kajak og SUP.',
+  null
+);
+
+addMarker('planlagt', 37.1772, -3.5886,
+  'Granada & Alhambra',
+  'Dag 3 (30. mar).<br>UNESCO-verdensarv. Book billetter mindst 3 måneder i forvejen!',
+  'https://tickets.alhambra-patronato.es/en/'
+);
+
+addMarker('planlagt', 36.7213, -4.4214,
+  'Málaga',
+  'Dag 8 (4. apr).<br>Picasso-museet, Alcazaba, Soho street art. Evt. tyrefægtning kl. 18:00.',
+  null
+);
+
+addMarker('planlagt', 36.9318, -4.7913,
+  'Caminito del Rey',
+  'Dag 6 (2. apr) kl. 16:00 – booket!<br>7,7 km gangsti på lodrette klippevægge i El Chorro-kløften.',
+  'https://www.caminitodelrey.info/en'
+);
+
+addMarker('planlagt', 36.7461, -5.1615,
+  'Ronda',
+  'Dag 5 (1. apr).<br>Dramatisk klippeby over 98 m dyb kløft. Puente Nuevo, tyrefægtningsarena.',
+  null
+);
+
+addMarker('planlagt', 36.8635, -5.1786,
+  'Setenil de las Bodegas',
+  'Dag 5 (1. apr) – kombineres med Ronda (18 km).<br>Unik by med huse bygget ind i klippeoverhæng.',
+  null
+);
+
+addMarker('planlagt', 36.8339, -3.9851,
+  'Cómpeta',
+  'Dag 9 – Påskesøndag (5. apr).<br>Hvid bjerglandsby med moscatel-vinproduktion.',
+  null
+);
+
+// ── FORSLÅEDE AKTIVITETER ────────────────────────────────
+addMarker('forslag', 36.7457, -3.8748,
+  'Playa Burriana',
+  'Nerjas største strand. Chiringuitos, kajak langs Maro-klipperne.',
+  null
+);
+
+addMarker('forslag', 36.7500, -3.8720,
+  'Parroquia El Salvador, Nerja',
+  'Kirke fra 1505 med fresker fra 1700-tallet.',
+  null
+);
+
+addMarker('forslag', 37.8882, -4.7794,
+  'Córdoba',
+  'Lang dagstur (2,5t).<br>Mezquita-katedralen med 834 søjler. Jødisk kvarter.',
+  null
+);
+
+// ── RESTAURANTER – FRIGILIANA ────────────────────────────
+addMarker('restaurant', 36.7941, -3.9042,
+  'La Taberna del Sacristán',
+  'Frigiliana. Middelhavskok, smuk udendørs terrasse.',
+  'https://latabernadelsacristan.eatbu.com/?lang=en'
+);
+addMarker('restaurant', 36.7935, -3.9028,
+  'La Tahona del Zacatín',
+  'Frigiliana. Tapas, hjemmelavede kroketter, terrasse med udsigt.',
+  null
+);
+addMarker('restaurant', 36.7928, -3.9020,
+  'El Mirador',
+  'Frigiliana. Tapas med havudsigt ved solnedgang, cocktails.',
+  null
+);
+addMarker('restaurant', 36.7944, -3.9032,
+  'La Tapería',
+  'Frigiliana. Drevet af dansk par! Veganske/vegetariske muligheder, lokale råvarer.',
+  'https://www.lataperiafrigiliana.com/'
+);
+addMarker('restaurant', 36.7938, -3.9049,
+  'Gloria Bendita',
+  'Frigiliana. Kreative retter, aubergine-tempura, bao buns.',
+  null
+);
+addMarker('restaurant', 36.7932, -3.9038,
+  'La Bodeguilla',
+  'Frigiliana. Autentisk andalusisk – migas, ajoblanco, gazpacho.',
+  null
+);
+addMarker('restaurant', 36.7948, -3.9015,
+  'El Boquetillo',
+  'Frigiliana. Burgere, tacos, lammespyd. To gange vinder af tapa-ruten.',
+  null
+);
+
+// ── RESTAURANTER – NERJA ─────────────────────────────────
+addMarker('restaurant', 36.7503, -3.8742,
+  'Vitaliano da Cristina',
+  'Nerja. Familiedrevet italiensk, hjemmelavet pasta.',
+  null
+);
+addMarker('restaurant', 36.7495, -3.8725,
+  'La Dama',
+  'Nerja. Pizza fra 3,50 EUR.',
+  null
+);
+addMarker('restaurant', 36.7457, -3.8755,
+  'Chiringuitos, Burriana Beach',
+  'Nerja. Paella og frisk fisk med havudsigt.',
+  null
+);
+
+// ── BIB GOURMAND ─────────────────────────────────────────
+addMarker('bib', 36.8699, -4.0139,
+  '⭐ El Chiringuito – Sedella',
+  '20 min fra Frigiliana.<br>Ung kok Víctor Hierrezuelo (trænet hos Arzak). Smagsmenuer kræver forudbestilling.',
+  'https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito'
+);
+addMarker('bib', 36.7316, -3.6893,
+  '⭐ El Chaleco – Almuñécar',
+  '30 min fra Frigiliana.<br>Klassisk fransk-inspireret. 3- eller 5-retters smagsmenu.',
+  'https://guide.michelin.com/en/andalucia/almunecar/restaurant/el-chaleco'
+);
+addMarker('bib', 36.7200, -4.4190,
+  '⭐ La Cosmo – Málaga',
+  'I Málaga (dag 8).<br>Bag katedralen, åbent køkken. Prøv kulmule-salaten!',
+  'https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-cosmo'
+);
+addMarker('bib', 36.7215, -4.4205,
+  '⭐ Base9 – Málaga',
+  'I Málaga (dag 8).<br>Tapas til deling, japansk-inspireret tortilla.',
+  'https://guide.michelin.com/en/andalucia/malaga/restaurant/base9'
+);
+addMarker('bib', 36.7080, -4.4350,
+  '⭐ La Taberna de Mike Palmer – Málaga',
+  'I Málaga (dag 8).<br>I rideklub i udkanten. Grill og grillede østers.',
+  'https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-taberna-de-mike-palmer'
+);
+
+// ── FILTER LOGIC ─────────────────────────────────────────
+const active = { hjem: true, planlagt: true, forslag: true, restaurant: true, bib: true };
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const cat = btn.dataset.cat;
+    active[cat] = !active[cat];
+    btn.classList.toggle('off', !active[cat]);
+    layers[cat].forEach(m => {
+      if (active[cat]) m.addTo(map);
+      else map.removeLayer(m);
+    });
+  });
+});
+</script>
+</body>
+</html>
