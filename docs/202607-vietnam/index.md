@@ -14,6 +14,7 @@ Booking: Travelis #4497407. Qatar Airways.
 
 ## Research
 
+- [🗺️ Interaktivt kort](kort.html) - alle steder på ét kort
 - [Udkast til rejseplan](rejseplan-draft.md) - to ruteforslag (nord+central vs. nord→syd) med vurdering
 - [Vejr og rejsetips for juli/august](vejr-og-rejsetips.md) - vejr efter region, praktiske tips
 - [Rejsebureauer - sammenligning](rejsebureauer-sammenligning.md) - Nyhavn, Viktors Farmor, Kipling, Stjernegaard vs. vores plan

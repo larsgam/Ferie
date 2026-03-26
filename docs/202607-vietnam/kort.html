@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vietnam 2026 – Kort</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; flex-direction: column; height: 100vh; }
+
+    #header {
+      background: #1a2e1a;
+      color: white;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    #header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+
+    #filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      border: none;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.2s;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .filter-btn.off { opacity: 0.35; }
+
+    #map { flex: 1; }
+
+    .leaflet-popup-content-wrapper { border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .leaflet-popup-content { margin: 10px 14px; }
+    .popup-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .popup-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 10px;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .popup-body { font-size: 12px; color: #444; line-height: 1.5; }
+    .popup-link { display: inline-block; margin-top: 6px; font-size: 12px; color: #2563eb; text-decoration: none; }
+    .popup-link:hover { text-decoration: underline; }
+
+    .route-label {
+      background: rgba(26,46,26,0.8);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <h1>✈️ Vietnam · Juli–August 2026</h1>
+  <div id="filters">
+    <button class="filter-btn" data-cat="hjem" style="background:#2563eb">🏨 Overnatning</button>
+    <button class="filter-btn" data-cat="planlagt" style="background:#16a34a">✅ Aktivitet</button>
+    <button class="filter-btn" data-cat="strand" style="background:#0891b2">🏖️ Strand/natur</button>
+    <button class="filter-btn" data-cat="restaurant" style="background:#dc2626">🍜 Mad</button>
+    <button class="filter-btn" data-cat="forslag" style="background:#d97706">📍 Plan B</button>
+  </div>
+</div>
+
+<div id="map"></div>
+
+<script>
+const map = L.map('map').setView([18.5, 106.5], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(map);
+
+const COLORS = {
+  hjem:       '#2563eb',
+  planlagt:   '#16a34a',
+  strand:     '#0891b2',
+  restaurant: '#dc2626',
+  forslag:    '#d97706'
+};
+
+const CAT_LABELS = {
+  hjem:       'Overnatning',
+  planlagt:   'Aktivitet',
+  strand:     'Strand/Natur',
+  restaurant: 'Mad',
+  forslag:    'Plan B'
+};
+
+function makeIcon(cat) {
+  const c = COLORS[cat];
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="38" viewBox="0 0 26 38">
+    <path d="M13 0C5.82 0 0 5.82 0 13c0 9.75 13 25 13 25S26 22.75 26 13C26 5.82 20.18 0 13 0z"
+      fill="${c}" stroke="white" stroke-width="2"/>
+    <circle cx="13" cy="13" r="5" fill="white"/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [26, 38],
+    iconAnchor: [13, 38],
+    popupAnchor: [0, -40]
+  });
+}
+
+function popup(cat, title, body, link) {
+  const color = COLORS[cat];
+  const label = CAT_LABELS[cat];
+  const linkHtml = link ? `<a class="popup-link" href="${link}" target="_blank">Mere info →</a>` : '';
+  return `<div>
+    <div class="popup-title">${title}</div>
+    <div class="popup-tag" style="background:${color}">${label}</div>
+    <div class="popup-body">${body}</div>
+    ${linkHtml}
+  </div>`;
+}
+
+const layers = { hjem: [], planlagt: [], strand: [], restaurant: [], forslag: [] };
+
+function addMarker(cat, lat, lng, title, body, link) {
+  const m = L.marker([lat, lng], { icon: makeIcon(cat) })
+    .bindPopup(popup(cat, title, body, link));
+  layers[cat].push(m);
+  m.addTo(map);
+  return m;
+}
+
+// ── RUTE-LINJE (Plan A) ──────────────────────────────────
+const routeCoords = [
+  [21.0285, 105.8542], // Hanoi
+  [20.9101, 107.1839], // Ha Long Bay
+  [21.0285, 105.8542], // Hanoi (retur fra Ha Long)
+  [22.3364, 103.8438], // Sapa
+  [21.0285, 105.8542], // Hanoi (retur fra Sapa)
+  [20.2506, 105.9745], // Ninh Binh
+  [16.0544, 108.2022], // Da Nang (via fly)
+  [15.8801, 108.3380], // Hoi An
+  [16.4637, 107.5909], // Hue
+  [16.0544, 108.2022], // Da Nang (retur)
+  [21.0285, 105.8542], // Hanoi (indenrigsfly retur)
+];
+
+L.polyline(routeCoords, {
+  color: '#1a2e1a',
+  weight: 2,
+  opacity: 0.4,
+  dashArray: '6, 8'
+}).addTo(map);
+
+// ── OVERNATNING ───────────────────────────────────────────
+addMarker('hjem', 21.0285, 105.8542,
+  '🏨 Hanoi',
+  'Dag 2–5 (7.–10. jul) + Dag 26–27 (31. jul–1. aug).<br>Old Quarter er base. 4+2 dage i alt.',
+  null
+);
+addMarker('hjem', 22.3364, 103.8438,
+  '🏨 Sapa',
+  'Dag 8–10 (13.–15. jul).<br>Bjerglandsby med risterrasser og minoritetslandsbyer.',
+  null
+);
+addMarker('hjem', 20.2506, 105.9745,
+  '🏨 Ninh Binh',
+  'Dag 12–13 (17.–18. jul).<br>"Ha Long Bay på land" – kalkstensbjerge og bådture.',
+  null
+);
+addMarker('hjem', 15.8801, 108.3380,
+  '🏨 Hoi An',
+  'Dag 15–19 (20.–24. jul).<br>UNESCO gamlebyen. 5 dage: skrædder, strand, madlavning.',
+  null
+);
+addMarker('hjem', 16.4637, 107.5909,
+  '🏨 Hue',
+  'Dag 21 (26. jul).<br>Kejserbyen og parfumefloden.',
+  null
+);
+addMarker('hjem', 16.0544, 108.2022,
+  '🏨 Da Nang',
+  'Dag 23–25 (28.–30. jul).<br>My Khe Beach, Marble Mountains, Ba Na Hills.',
+  null
+);
+
+// ── AKTIVITETER ───────────────────────────────────────────
+
+// Hanoi
+addMarker('planlagt', 21.0327, 105.8488,
+  'Old Quarter, Hanoi',
+  'Dag 3 (8. jul).<br>36 gader med håndværkstraditioner, streetfood, tempelbesøg.',
+  null
+);
+addMarker('planlagt', 21.0368, 105.8342,
+  'Ho Chi Minh-mausoleet',
+  'Dag 4 (9. jul).<br>Ho Chi Minhs balsamerede legeme. Åbent ti. 07:30–10:30 (lukket man+fre).',
+  null
+);
+addMarker('planlagt', 21.0285, 105.8522,
+  'Hoan Kiem-søen',
+  'Hanoi.<br>Søen i hjertet af Hanoi med Ngoc Son-templet på en lille ø.',
+  null
+);
+addMarker('planlagt', 21.0262, 105.8432,
+  'Train Street, Hanoi',
+  'Dag 4 (9. jul).<br>Jernbanegade gennem boligkvarter. Toget kører tæt forbi husene.',
+  null
+);
+addMarker('planlagt', 21.0366, 105.8492,
+  'Dong Xuan Market',
+  'Hanoi.<br>Hanois største marked. Streetfood på 2. sal.',
+  null
+);
+
+// Ha Long Bay
+addMarker('planlagt', 20.9101, 107.1839,
+  'Ha Long Bay',
+  'Dag 6–7 (11.–12. jul).<br>Cruise med kajak, grottetur og badning. 1.969 øer.',
+  null
+);
+
+// Sapa
+addMarker('planlagt', 22.3364, 103.8438,
+  'Risterrasser, Sapa',
+  'Dag 9 (14. jul).<br>Spektakulære terrasser i grønne farver – bedst i regnsæsonen.',
+  null
+);
+addMarker('planlagt', 22.2786, 103.8673,
+  'Cat Cat Landsby',
+  'Sapa-området.<br>Hmong-minoritetslandsby med vandfald, traditionelle huse og håndværk.',
+  null
+);
+
+// Ninh Binh
+addMarker('planlagt', 20.2264, 105.9423,
+  'Tam Coc',
+  'Dag 12 (17. jul).<br>Bådtur i flodlejet forbi tre naturlige grotter i kalkstensbjerge.',
+  null
+);
+addMarker('planlagt', 20.2150, 105.9107,
+  'Trang An',
+  'Dag 13 (18. jul).<br>UNESCO-verdensarv. Bådtur med tunnelpassager og templer.',
+  null
+);
+addMarker('planlagt', 20.3052, 105.8952,
+  'Bai Dinh Pagode',
+  'Dag 13 (18. jul).<br>Vietnams største buddhistiske tempelkompleks.',
+  null
+);
+
+// Hoi An
+addMarker('planlagt', 15.8775, 108.3260,
+  'Gamlebyen, Hoi An',
+  'Dag 15–16 (20.–21. jul).<br>UNESCO-verdensarv med japansk bro, lanterner og skrædderbutikker.',
+  null
+);
+addMarker('planlagt', 15.8760, 108.3240,
+  'Skrædder, Hoi An',
+  'Dag 16 (21. jul).<br>Få syet tøj til mål. Bestil dag 1, prøv dag 2, afhent dag 3.',
+  null
+);
+addMarker('planlagt', 15.8740, 108.3200,
+  'Madlavningskursus, Hoi An',
+  'Dag 17 (22. jul).<br>Besøg marked, lær at lave vietnamesisk mad fra bunden.',
+  null
+);
+
+// Hue
+addMarker('planlagt', 16.4698, 107.5770,
+  'Imperial City, Hue',
+  'Dag 21 (26. jul).<br>Kejserens 19. århundredes citadel med paladser og templer.',
+  null
+);
+addMarker('planlagt', 16.4027, 107.5795,
+  'Kongegrave, Hue',
+  'Dag 21 (26. jul).<br>Elaborate gravmæler for Nguyen-dynastiets kejsere.',
+  null
+);
+addMarker('planlagt', 16.4497, 107.5555,
+  'Perfume River (Huong River)',
+  'Dag 21 (26. jul).<br>Klassisk bådtur på floden forbi templer og grave.',
+  null
+);
+
+// Hai Van Pass
+addMarker('planlagt', 16.1844, 108.1233,
+  'Hai Van Pass',
+  'Dag 22 (27. jul).<br>Dramatisk bjergpas 496 m.o.h. – "Sky Gate". Motorcykeltur med guide.',
+  null
+);
+
+// Da Nang
+addMarker('planlagt', 16.0013, 108.2632,
+  'Marble Mountains',
+  'Dag 23 (28. jul).<br>5 marmorøer med grotter, templer og udsigt over Da Nang.',
+  null
+);
+addMarker('planlagt', 15.9965, 107.9889,
+  'Ba Na Hills / Golden Bridge',
+  'Dag 24 (29. jul).<br>Den berømte bro båret af to kæmpe stenhænder i 1.400 m højde.',
+  null
+);
+
+// ── STRANDE OG NATUR ──────────────────────────────────────
+addMarker('strand', 15.9005, 108.3697,
+  'An Bang Beach, Hoi An',
+  'Dag 18 (23. jul).<br>Rolig strand 5 km fra gamlebyen. Strandbarer, kayak.',
+  null
+);
+addMarker('strand', 15.9477, 108.5242,
+  'Cham Islands snorkling',
+  'Dag 19 (24. jul).<br>Speedbåd 20 min fra Hoi An. Snorkling ved koralrev.',
+  null
+);
+addMarker('strand', 16.0580, 108.2470,
+  'My Khe Beach, Da Nang',
+  'Dag 23 (28. jul).<br>8 km lang sandstrand. Surfspot, beachbarer.',
+  null
+);
+addMarker('strand', 16.1163, 108.2832,
+  'Son Tra Peninsula',
+  'Dag 25 (30. jul).<br>Jungel med aber, strande, jetski og SUP.',
+  null
+);
+addMarker('strand', 16.2328, 108.0786,
+  'Lang Co Beach',
+  'Stopover dag 20 (25. jul) på vej til Hue.<br>Lagune og sandbar ved foden af Hai Van Pass.',
+  null
+);
+
+// ── MAD ──────────────────────────────────────────────────
+addMarker('restaurant', 21.0337, 105.8508,
+  'Pho Thin',
+  'Hanoi. Legendarisk pho bo siden 1979. Kraftig bouillon, stegt løg. ~12 kr.',
+  null
+);
+addMarker('restaurant', 21.0291, 105.8492,
+  'Bun Cha Huong Lien ("Obama Bun Cha")',
+  'Hanoi. Obama og Bourdain spiste her i 2016. Grillede svinekødsfrikadeller med risnudler. ~15 kr.',
+  null
+);
+addMarker('restaurant', 21.0315, 105.8481,
+  'Banh Mi 25',
+  'Hanoi, Old Quarter. Et af Hanois bedste banh mi-steder. ~8-10 kr.',
+  null
+);
+addMarker('restaurant', 21.0321, 105.8476,
+  'Cafe Giang (ægkaffe)',
+  'Hanoi. Fødestedet for ca phe trung (ægkaffe) – grundlagt 1946. ~10-15 kr.',
+  null
+);
+addMarker('restaurant', 21.0310, 105.8460,
+  'Quan An Ngon',
+  'Hanoi. Retter fra alle Vietnams regioner i smuk kolonialvilla. ~30-60 kr/ret.',
+  null
+);
+addMarker('restaurant', 21.0302, 105.8453,
+  'Cha Ca Thang Long',
+  'Hanoi. Hanois signaturret: stegt fisk med dild og risnudler tilberedt ved bordet.',
+  null
+);
+addMarker('restaurant', 15.8772, 108.3254,
+  'White Rose Restaurant, Hoi An',
+  'Hoi An. Berømt for "White Rose" – hvide dampede risnudeldumplings med garnsål.',
+  null
+);
+addMarker('restaurant', 15.8768, 108.3248,
+  'Cao Lau, Hoi An',
+  'Hoi An. Lokalt specialitet: tykke risnudler med svinekød og friske urter – kun i Hoi An.',
+  null
+);
+addMarker('restaurant', 16.4641, 107.5912,
+  'Bun Bo Hue (gaderestaurant)',
+  'Hue. Hues signatursuppe: krydret oksekødssuppe med citrongræs. Skarpere end pho.',
+  null
+);
+
+// ── PLAN B (ikke valgt) ───────────────────────────────────
+addMarker('forslag', 10.8231, 106.6297,
+  'Ho Chi Minh City (Plan B)',
+  'Ikke valgt til Plan A.<br>Krigsmuseet, Cu Chi-tunnelerne, Saigon Notre-Dame, Ben Thanh Market.',
+  null
+);
+addMarker('forslag', 10.0452, 105.7469,
+  'Mekong-deltaet (Plan B)',
+  'Ikke valgt til Plan A.<br>Flydende markeder, bådture, tropisk frugt.',
+  null
+);
+addMarker('forslag', 10.2897, 103.9842,
+  'Phu Quoc (Plan B)',
+  'Ikke valgt til Plan A.<br>Strandafslapning, snorkling, fiskesovsfabrikker.',
+  null
+);
+addMarker('forslag', 12.2388, 109.1967,
+  'Nha Trang (Plan B)',
+  'Ikke valgt til Plan A.<br>Strandby med snorkling og øhop.',
+  null
+);
+
+// ── FILTER LOGIC ─────────────────────────────────────────
+const active = { hjem: true, planlagt: true, strand: true, restaurant: true, forslag: true };
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const cat = btn.dataset.cat;
+    active[cat] = !active[cat];
+    btn.classList.toggle('off', !active[cat]);
+    layers[cat].forEach(m => {
+      if (active[cat]) m.addTo(map);
+      else map.removeLayer(m);
+    });
+  });
+});
+</script>
+</body>
+</html>
