@@ -73,6 +73,7 @@
     <button class="filter-btn" data-cat="forslag" style="background:#d97706">📍 Forslag</button>
     <button class="filter-btn" data-cat="restaurant" style="background:#dc2626">🍽️ Restaurant</button>
     <button class="filter-btn" data-cat="bib" style="background:#7c3aed">⭐ Bib Gourmand</button>
+    <button class="filter-btn" data-cat="booket" style="background:#059669">✅ Booket</button>
   </div>
 </div>
 
@@ -91,7 +92,8 @@ const COLORS = {
   planlagt:   '#16a34a',
   forslag:    '#d97706',
   restaurant: '#dc2626',
-  bib:        '#7c3aed'
+  bib:        '#7c3aed',
+  booket:     '#059669'
 };
 
 const CAT_LABELS = {
@@ -99,7 +101,8 @@ const CAT_LABELS = {
   planlagt:   'Planlagt',
   forslag:    'Forslag',
   restaurant: 'Restaurant',
-  bib:        'Bib Gourmand'
+  bib:        'Bib Gourmand',
+  booket:     'Booket'
 };
 
 function makeIcon(cat) {
@@ -130,7 +133,7 @@ function popup(cat, title, body, link) {
   </div>`;
 }
 
-const layers = { hjem: [], planlagt: [], forslag: [], restaurant: [], bib: [] };
+const layers = { hjem: [], planlagt: [], forslag: [], restaurant: [], bib: [], booket: [] };
 
 function addMarker(cat, lat, lng, title, body, link) {
   const m = L.marker([lat, lng], { icon: makeIcon(cat) })
@@ -288,9 +291,9 @@ addMarker('restaurant', 36.7457, -3.8755,
 );
 
 // ── BIB GOURMAND ─────────────────────────────────────────
-addMarker('bib', 36.8699, -4.0139,
-  '⭐ El Chiringuito – Sedella',
-  '20 min fra Frigiliana.<br>Ung kok Víctor Hierrezuelo (trænet hos Arzak). Smagsmenuer kræver forudbestilling.',
+addMarker('booket', 36.8699, -4.0139,
+  '✅ El Chiringuito – Sedella',
+  '<strong>Booket: 5. apr kl. 19:30</strong><br>Bib Gourmand. Ung kok Víctor Hierrezuelo (trænet hos Arzak). 20 min fra Frigiliana.',
   'https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito'
 );
 addMarker('bib', 36.7316, -3.6893,
@@ -315,7 +318,7 @@ addMarker('bib', 36.7080, -4.4350,
 );
 
 // ── FILTER LOGIC ─────────────────────────────────────────
-const active = { hjem: true, planlagt: true, forslag: true, restaurant: true, bib: true };
+const active = { hjem: true, planlagt: true, forslag: true, restaurant: true, bib: true, booket: true };
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
