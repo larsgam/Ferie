@@ -35,7 +35,7 @@
 
 | Navn | By | Kørsel | Type | Noter |
 |------|-----|--------|------|-------|
-| [El Chiringuito](https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito) | Sedella | 20 min | Andalusisk | Ung kok Víctor Hierrezuelo, trænet hos Arzak og Bardal. Smagsmenuer kræver forudbestilling |
+| [El Chiringuito](https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito) | Sedella | 20 min | Andalusisk | **Booket: 5. apr kl. 19:30** ✅ Ung kok Víctor Hierrezuelo, trænet hos Arzak og Bardal. |
 | [El Chaleco](https://guide.michelin.com/en/andalucia/almunecar/restaurant/el-chaleco) | Almuñécar | 30 min | Fransk | Klassisk restaurant, fransk inspireret. 3-retters eller 5-retters smagsmenu. Tlf: +34 958 63 24 02 |
 | [La Cosmo](https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-cosmo) | Málaga | 1t | Andalusisk | Bag katedralen, åbent køkken. Kok Dani Carnero. Prøv kulmule-salaten! |
 | [Base9](https://guide.michelin.com/en/andalucia/malaga/restaurant/base9) | Málaga | 1t | Moderne | Tapas til deling, japansk-inspireret tortilla. Nær María Zambrano-stationen |
