@@ -61,6 +61,7 @@
 - [🗺️ Interaktivt kort](kort.html) - alle steder på ét kort
 - [Restauranter](restauranter.md) - Frigiliana, Nerja, Bib Gourmand
 - [Seværdigheder og aktiviteter](sevaerdigheder.md) - lokale attraktioner, dagsture, vandaktiviteter
+- [Madlavning og indkøb](research/madlavning-og-indkob.md) - lokale råvarer, opskrifter og markeder
 - [Cykeludlejning](research/cykeludlejning.md) - leje af racercykel i Nerja-området
 - [Biludlejning](research/biludlejning.md) - lejebil til 5 personer fra AGP
 
