@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egypten · Marts 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-accent-teal: #08827c;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 980px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-secondary);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-text); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(180deg, #e8f4f3 0%, #f5f5f7 100%);
+      padding: 80px 22px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-accent-teal);
+      letter-spacing: 0.01em;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 21px;
+      color: var(--color-secondary);
+      font-weight: 400;
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: white;
+      border: 1px solid var(--color-divider);
+      border-radius: 980px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-icon { font-size: 16px; }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 60px 22px;
+    }
+    .section-alt { background: var(--color-section); }
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent-teal);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+    .section-title span { color: var(--color-secondary); }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--color-divider);
+    }
+    .card-alt { background: var(--color-section); border-color: transparent; }
+    .card-dark { background: #1d1d1f; color: white; border-color: transparent; }
+    .card-dark .card-label { color: #6e6e73; }
+    .card-dark .card-value { color: white; }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .card-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+    }
+    .card-body {
+      font-size: 15px;
+      color: var(--color-secondary);
+      line-height: 1.55;
+    }
+    .card-value {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .card-sub {
+      font-size: 13px;
+      color: var(--color-secondary);
+      margin-top: 4px;
+    }
+
+    /* ── INFO TABLE CARD ── */
+    .info-list {
+      list-style: none;
+    }
+    .info-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-divider);
+      font-size: 15px;
+      gap: 16px;
+    }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list .key {
+      color: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .info-list .val {
+      font-weight: 500;
+      text-align: right;
+    }
+    .info-list .val a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    .info-list .val a:hover { text-decoration: underline; }
+
+    /* ── HIGHLIGHT STRIP ── */
+    .highlight-strip {
+      background: #1d1d1f;
+      color: white;
+      padding: 60px 22px;
+    }
+    .highlight-strip .section-title { color: white; }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: #3a3a3c;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .highlight-item {
+      background: #1d1d1f;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .highlight-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+    .highlight-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .highlight-desc {
+      font-size: 14px;
+      color: #a1a1a6;
+      line-height: 1.5;
+    }
+
+    /* ── WEATHER ── */
+    .weather-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .weather-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid var(--color-divider);
+    }
+    .weather-icon { font-size: 40px; margin-bottom: 8px; display: block; }
+    .weather-temp {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .weather-label {
+      font-size: 13px;
+      color: var(--color-secondary);
+      margin-top: 4px;
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: background 0.15s;
+    }
+    .checklist li:hover { background: rgba(0,0,0,0.03); }
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+    .check-done {
+      background: #34c759;
+      color: white;
+    }
+    .check-todo {
+      background: white;
+      border: 2px solid var(--color-divider);
+    }
+    .check-text-done {
+      text-decoration: line-through;
+      color: var(--color-secondary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--color-section);
+      border-top: 1px solid var(--color-divider);
+      padding: 32px 22px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--color-secondary);
+    }
+    footer a { color: var(--color-accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .weather-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .weather-card { padding: 16px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🤿 Egypten · Marts 2026</span>
+    <ul class="nav-links">
+      <li><a href="#praktisk">Praktisk</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#vejr">Vejr</a></li>
+      <li><a href="#todo">To-do</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Efterskolerejse · Spir Waterlife</p>
+  <h1>Egypten</h1>
+  <p class="hero-sub">En uge med dykning, koraller og delfiner ved Det Røde Hav.</p>
+  <div class="hero-badges">
+    <span class="badge"><span class="badge-icon">📅</span> 5–12. marts 2026</span>
+    <span class="badge"><span class="badge-icon">📍</span> Marsa Nakari Village</span>
+    <span class="badge"><span class="badge-icon">🤿</span> PADI Open Water</span>
+    <span class="badge"><span class="badge-icon">✈️</span> Billund → Hurghada</span>
+  </div>
+</section>
+
+<!-- PRAKTISK -->
+<section class="section" id="praktisk">
+  <div class="section-inner">
+    <p class="section-label">Info</p>
+    <h2 class="section-title">Praktisk <span>information</span></h2>
+    <div class="card-grid card-grid-2">
+
+      <div class="card">
+        <span class="card-icon">🏕️</span>
+        <p class="card-label">Overnatning</p>
+        <p class="card-title">Marsa Nakari Village</p>
+        <p class="card-body">Beduintelte nær vandet med senge, belysning, elektricitet og køleskabe. Fælles toilet- og badefaciliteter.</p>
+        <br>
+        <a href="https://www.redsea-divingsafari.com/Villages/marsa-nakari" style="color:var(--color-accent);font-size:14px;text-decoration:none;">Se resort →</a>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✈️</span>
+        <p class="card-label">Transport</p>
+        <p class="card-title">Billund → Hurghada</p>
+        <ul class="info-list" style="margin-top:12px">
+          <li><span class="key">Udrejse</span><span class="val">Tors. 5. marts</span></li>
+          <li><span class="key">Hjemrejse</span><span class="val">Tors. 12. marts (aften)</span></li>
+          <li><span class="key">Bus</span><span class="val">Spir → Billund</span></li>
+          <li><span class="key">Fly</span><span class="val">Info fra skolen</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🎒</span>
+        <p class="card-label">Bagage</p>
+        <p class="card-title">Begrænsninger</p>
+        <div style="display:flex;gap:16px;margin-top:16px">
+          <div style="flex:1;text-align:center;background:var(--color-section);border-radius:12px;padding:16px">
+            <p class="card-value">15 kg</p>
+            <p class="card-sub">Indchecket</p>
+          </div>
+          <div style="flex:1;text-align:center;background:var(--color-section);border-radius:12px;padding:16px">
+            <p class="card-value">5 kg</p>
+            <p class="card-sub">Håndbagage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <p class="card-label">Organisering</p>
+        <p class="card-title">Rejsedetaljer</p>
+        <ul class="info-list" style="margin-top:12px">
+          <li><span class="key">Rejsebureau</span><span class="val">Kingfish</span></li>
+          <li><span class="key">Visum</span><span class="val">Håndteres af Kingfish</span></li>
+          <li><span class="key">Pas gyldig til</span><span class="val">Min. sept. 2026</span></li>
+          <li><span class="key">Inkluderet</span><span class="val">All inclusive</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM HIGHLIGHT -->
+<section class="highlight-strip" id="program">
+  <div class="section-inner">
+    <p class="section-label" style="color:#6e6e73">Program</p>
+    <h2 class="section-title">En uge under vandet.</h2>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <span class="highlight-icon">🤿</span>
+        <p class="highlight-title">PADI Open Water</p>
+        <p class="highlight-desc">Dykkercertifikat ned til 18 m. Erfarne Kingfish-instruktører.</p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🐬</span>
+        <p class="highlight-title">Dolphin House</p>
+        <p class="highlight-desc">Hjem for 150 vilde delfiner, farverige koraller og rigt marineliv.</p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🐠</span>
+        <p class="highlight-title">Koralrev</p>
+        <p class="highlight-desc">Dykning ved lokalt rev med fisk, skildpadder og rokker.</p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🌙</span>
+        <p class="highlight-title">Natdyk</p>
+        <p class="highlight-desc">Mulighed for guidede natdyk for dem med Advanced Open Water.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEJR -->
+<section class="section section-alt" id="vejr">
+  <div class="section-inner">
+    <p class="section-label">Vejr i marts</p>
+    <h2 class="section-title">Perfekte <span>forhold</span></h2>
+    <div class="weather-grid">
+      <div class="weather-card">
+        <span class="weather-icon">☀️</span>
+        <p class="weather-temp">26°C</p>
+        <p class="weather-label">Dagstemperatur</p>
+      </div>
+      <div class="weather-card">
+        <span class="weather-icon">🌙</span>
+        <p class="weather-temp">13°C</p>
+        <p class="weather-label">Nattemperatur</p>
+      </div>
+      <div class="weather-card">
+        <span class="weather-icon">🌊</span>
+        <p class="weather-temp">24°C</p>
+        <p class="weather-label">Vandtemperatur</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VACCINATION & MOBIL -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Forberedelse</p>
+    <h2 class="section-title">Inden <span>afrejse</span></h2>
+    <div class="card-grid card-grid-2">
+
+      <div class="card">
+        <span class="card-icon">💉</span>
+        <p class="card-label">Vaccination</p>
+        <p class="card-title">Hepatitis A + Stivkrampe</p>
+        <ul class="info-list" style="margin-top:12px">
+          <li><span class="key">Tilmelding frist</span><span class="val" style="color:#ff3b30">30. januar</span></li>
+          <li><span class="key">Vaccination dato</span><span class="val">18. februar på Spir</span></li>
+          <li><span class="key">Udbyder</span><span class="val">DLVS</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <p class="card-label">Mobil & Internet</p>
+        <p class="card-title">Forbindelse</p>
+        <p class="card-body">WiFi tilgængeligt i dykkerlejren. Roaming i Egypten er dyrt — overvej lokalt SIM-kort. Info fra Hares.</p>
+        <br>
+        <p class="card-body">Kontakt via <strong>Zenbi</strong>, eller direkte på vagttelefon ved akutte situationer. Lange samtaler via Zoom/Messenger/FaceTime.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TODO -->
+<section class="section section-alt" id="todo">
+  <div class="section-inner">
+    <p class="section-label">Tjekliste</p>
+    <h2 class="section-title">To-do</h2>
+    <div class="card">
+      <ul class="checklist">
+        <li>
+          <span class="check-box check-done">✓</span>
+          <span class="check-text-done">Tjek Arthurs pas (gyldigt til min. sept 2026)</span>
+        </li>
+        <li>
+          <span class="check-box check-todo"></span>
+          <span>Vaccination tilmelding via DLVS <strong>(frist 30. januar)</strong></span>
+        </li>
+        <li>
+          <span class="check-box check-todo"></span>
+          <span>Vaccination på Spir (18. februar)</span>
+        </li>
+        <li>
+          <span class="check-box check-todo"></span>
+          <span>Bestil lokalt SIM-kort (info fra Hares)</span>
+        </li>
+        <li>
+          <span class="check-box check-todo"></span>
+          <span>Pak ifølge pakkeliste (max 15 kg + 5 kg håndbagage)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Egypten · Efterskolerejse med Spir Waterlife · Marts 2026</p>
+  <p style="margin-top:6px"><a href="../index.html">← Alle rejser</a></p>
+</footer>
+
+</body>
+</html>
