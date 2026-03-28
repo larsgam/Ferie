@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spain by Hanne – Noter · Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    /* Article cards */
+    .article-grid { display: grid; gap: 14px; }
+    .article-card {
+      background: var(--color-section);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      border: 1px solid var(--color-divider);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .article-card.not-used { opacity: 0.6; }
+    .article-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .article-content { flex: 1; }
+    .article-title { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .article-title a { color: var(--color-text); text-decoration: none; }
+    .article-title a:hover { color: var(--color-accent); }
+    .article-desc { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .badge-used { display: inline-block; padding: 2px 8px; border-radius: 980px; font-size: 11px; font-weight: 600; background: #e8f5e9; color: #2e7d32; margin-bottom: 6px; }
+    .badge-notused { display: inline-block; padding: 2px 8px; border-radius: 980px; font-size: 11px; font-weight: 600; background: var(--color-section); color: var(--color-secondary); margin-bottom: 6px; border: 1px solid var(--color-divider); }
+
+    /* Insights */
+    .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .insight-card {
+      background: var(--color-section);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .insight-icon { font-size: 24px; margin-bottom: 8px; }
+    .insight-text { font-size: 14px; color: var(--color-text); line-height: 1.6; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">📖 Spain by Hanne</span>
+    <a href="../overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Andalusien 2026</p>
+  <h1>Spain by Hanne</h1>
+  <p class="hero-sub">Research fra <a href="https://spainbyhanne.dk/category/andalusien/" target="_blank" style="color:#a1a1a6">spainbyhanne.dk</a> — lavet februar 2026</p>
+</section>
+
+<!-- NØGLEINDSIGTER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Vigtigst at vide</p>
+    <h2 class="section-title">Nøgleindsigter</h2>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-icon">⛰️</div>
+        <p class="insight-text"><strong>Alpujarras er IKKE egnet som dagstur</strong> fra Nerja/Frigiliana — for langt (72 km bare til Granada, og Alpujarras er endnu længere).</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🏖️</div>
+        <p class="insight-text"><strong>Salobreña (Costa Tropical)</strong> nævnes som afslapningssted — 300 solskinsdage, strand og maurisk fæstning. Ca. 45 min fra Nerja. God alternativ til en rolig dag.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🚗</div>
+        <p class="insight-text"><strong>Museo Automovilístico i Málaga</strong> har Michael Jacksons og John Lennons biler — kan være sjovt for teenagere.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🇩🇰</div>
+        <p class="insight-text"><strong>Museo del Vidrio y Cristal</strong> har dansk designer Per Lütkens værker — oplagt hvis I er til design og kunsthåndværk.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🎨</div>
+        <p class="insight-text"><strong>CAC Málaga</strong> har gratis entré og er Spaniens vigtigste museum for samtidskunst. Ligger i Soho-kvarteret.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🖼️</div>
+        <p class="insight-text"><strong>Soho-kvarteret i Málaga</strong>: Download kort på mausmalaga.com. Start ved CAC for at se MAUS street art-projektet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRUGTE ARTIKLER -->
+<section class="section" style="background:var(--color-section); padding-top:0">
+  <div class="section-inner">
+    <p class="section-label">Brugt i planlægningen</p>
+    <h2 class="section-title">Relevante artikler</h2>
+
+    <div class="article-grid">
+      <div class="article-card">
+        <div class="article-icon">🏘️</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/nerja-og-frigiliana-storslaaede-udsigter-drypstenshuler-og-maurisk-charme/" target="_blank">Nerja og Frigiliana</a></p>
+          <p class="article-desc">Balcón de Europa, Cueva de Nerja, Frigiliana gamlebyen, El Salvador kirke</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🏰</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/alhambra-i-granada-paladset-du-skal-se-foer-du-doer/" target="_blank">Alhambra i Granada</a></p>
+          <p class="article-desc">Detaljeret guide: Nasrid-paladser, Generalife, Carlos V, Alcazaba. Book 3 mdr i forvejen!</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🗺️</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/5-byer-i-andalusien-som-du-skal-se/" target="_blank">5 byer i Andalusien du skal se</a></p>
+          <p class="article-desc">Nerja, Málaga, Marbella, El Gastor, Estepona</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🪨</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/setenil-de-las-bodegas-indbygget-i-klipper/" target="_blank">Setenil de las Bodegas</a></p>
+          <p class="article-desc">Cuevas del Sol/Sombra, Nazari-borgen, kirken, tapas</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🖼️</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/5-oversete-museer-i-malaga/" target="_blank">5 oversete museer i Málaga</a></p>
+          <p class="article-desc">Automovilístico, Vidrio y Cristal, CAC, Jorge Rando, Carmen Thyssen</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🎨</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/malagas-soho-kvarter-er-et-udendoers-galleri-med-kunst-i-verdensklasse/" target="_blank">Málagas Soho-kvarter</a></p>
+          <p class="article-desc">Street art, MAUS-projektet, CAC museum</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-icon">🌍</div>
+        <div class="article-content">
+          <span class="badge-used">Brugt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/oplev-det-bedste-af-andalusien-i-roligt-tempo/" target="_blank">Oplev det bedste af Andalusien</a></p>
+          <p class="article-desc">Ronda, Córdoba, Granada, Salobreña</p>
+        </div>
+      </div>
+      <div class="article-card not-used">
+        <div class="article-icon">⛰️</div>
+        <div class="article-content">
+          <span class="badge-notused">Ikke brugt — for langt</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/alpujarra-smaa-hvide-bjerglandsbyer-er-en-tidslomme-i-uspoleret-natur/" target="_blank">Alpujarras</a></p>
+          <p class="article-desc">Capileira, Bubión, Pampaneira — for langt fra Nerja som dagstur</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IKKE BRUGTE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Potentielt relevante</p>
+    <h2 class="section-title">Artikler ikke brugt</h2>
+
+    <div class="article-grid">
+      <div class="article-card not-used">
+        <div class="article-icon">☕</div>
+        <div class="article-content">
+          <span class="badge-notused">Til Málaga-dagen</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/guide-6-gode-cafeer-i-malaga/" target="_blank">6 gode caféer i Málaga</a></p>
+          <p class="article-desc">Kan bruges til Málaga-dagen</p>
+        </div>
+      </div>
+      <div class="article-card not-used">
+        <div class="article-icon">🕌</div>
+        <div class="article-content">
+          <span class="badge-notused">Hvis Córdoba-dagstur</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/moske-katedralen-i-cordoba/" target="_blank">Moské-katedralen i Córdoba</a></p>
+          <p class="article-desc">Kun relevant hvis Córdoba-dagsturen gennemføres (meget lang kørsel)</p>
+        </div>
+      </div>
+      <div class="article-card not-used">
+        <div class="article-icon">🍷</div>
+        <div class="article-content">
+          <span class="badge-notused">For langt væk</span>
+          <p class="article-title"><a href="https://spainbyhanne.dk/tag-sherrysmagning-jerez-la-frontera/" target="_blank">Sherrysmagning i Jerez</a></p>
+          <p class="article-desc">Jerez er 3+ timer fra Frigiliana — ikke praktisk som dagstur</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Familieferie · Påske 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Andalusien oversigt</a></p>
+</footer>
+
+</body>
+</html>
