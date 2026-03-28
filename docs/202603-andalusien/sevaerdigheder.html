@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seværdigheder · Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --section: #f5f5f7; --text: #1d1d1f; --secondary: #6e6e73;
+      --accent: #0071e3; --warm: #e8640a; --green: #34c759; --divider: #d2d2d7;
+      --font: -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+      --radius: 18px; --max-w: 980px;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--secondary); font-size: 13px; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-back { font-size: 14px; color: var(--accent); text-decoration: none; }
+
+    .hero { background: linear-gradient(175deg, #e8f5e9 0%, #f5f5f7 100%); padding: 60px 22px 52px; text-align: center; }
+    .hero-eyebrow { font-size: 15px; font-weight: 600; color: #2e7d32; margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .hero-sub { font-size: 18px; color: var(--secondary); max-width: 500px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-alt { background: var(--section); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2e7d32; margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    /* Overview table */
+    .overview-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .overview-table th { text-align: left; padding: 10px 14px; background: #1d1d1f; color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .overview-table th:first-child { border-radius: 8px 0 0 8px; }
+    .overview-table th:last-child { border-radius: 0 8px 8px 0; }
+    .overview-table td { padding: 12px 14px; border-bottom: 1px solid var(--divider); vertical-align: middle; }
+    .overview-table tr:last-child td { border-bottom: none; }
+    .overview-table a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .overview-table a:hover { text-decoration: underline; }
+    .planned-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; border-radius: 980px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
+    .booked-tag { background: var(--warm); color: white; }
+    .type-tag { display: inline-block; background: var(--section); border-radius: 980px; padding: 3px 10px; font-size: 12px; color: var(--secondary); }
+
+    /* Activity cards */
+    .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .act-card { background: white; border-radius: var(--radius); padding: 24px; border: 1px solid var(--divider); }
+    .act-card.booked { border-color: var(--warm); background: #fff8ee; }
+    .act-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+    .act-planned { font-size: 12px; font-weight: 600; color: #2e7d32; margin-bottom: 6px; letter-spacing: 0.02em; }
+    .act-name { font-size: 19px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; }
+    .act-body { font-size: 14px; color: var(--secondary); line-height: 1.55; }
+    .act-meta { margin-top: 14px; display: flex; flex-direction: column; gap: 4px; }
+    .act-meta-item { font-size: 13px; display: flex; gap: 6px; }
+    .act-meta-key { color: var(--secondary); }
+    .act-meta-val { font-weight: 500; }
+    .act-link { display: inline-block; margin-top: 12px; font-size: 14px; color: var(--accent); text-decoration: none; }
+    .act-link:hover { text-decoration: underline; }
+
+    /* Water table */
+    .water-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .water-table th { text-align: left; padding: 10px 14px; background: #e3f2fd; color: #1565c0; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 0; }
+    .water-table th:first-child { border-radius: 8px 0 0 8px; }
+    .water-table th:last-child { border-radius: 0 8px 8px 0; }
+    .water-table td { padding: 12px 14px; border-bottom: 1px solid var(--divider); }
+    .water-table tr:last-child td { border-bottom: none; }
+
+    footer { background: var(--section); border-top: 1px solid var(--divider); padding: 28px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--secondary); }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🏛️ Seværdigheder</span>
+    <a href="overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Andalusien · Påske 2026</p>
+  <h1>Seværdigheder</h1>
+  <p class="hero-sub">Lokale attraktioner, dagture og vandaktiviteter.</p>
+</section>
+
+<!-- OVERBLIK -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Alle aktiviteter</p>
+    <h2 class="section-title">Overblik</h2>
+    <table class="overview-table">
+      <thead><tr><th>Aktivitet</th><th>Type</th><th>Planlagt</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#frigiliana">Casco Antiguo, Frigiliana</a></td><td><span class="type-tag">Lokal</span></td><td><span class="planned-tag">29. mar · dag 2</span></td></tr>
+        <tr><td><a href="#balcon">Balcón de Europa, Nerja</a></td><td><span class="type-tag">Lokal</span></td><td><span class="planned-tag">29. mar · dag 2</span></td></tr>
+        <tr><td><a href="#cueva">Cueva de Nerja</a></td><td><span class="type-tag">Lokal</span></td><td><span class="planned-tag">31. mar · dag 4</span></td></tr>
+        <tr><td><a href="#rio">Rio Chillar vandring</a></td><td><span class="type-tag">Lokal</span></td><td><span class="planned-tag">31. mar · dag 4</span></td></tr>
+        <tr><td><a href="#granada">Granada &amp; Alhambra</a></td><td><span class="type-tag">Dagstur</span></td><td><span class="planned-tag">30. mar · dag 3</span></td></tr>
+        <tr><td><a href="#ronda">Ronda + Setenil de las Bodegas</a></td><td><span class="type-tag">Dagstur</span></td><td><span class="planned-tag">1. apr · dag 5</span></td></tr>
+        <tr><td><a href="#caminito">Caminito del Rey</a></td><td><span class="type-tag">Dagstur</span></td><td><span class="planned-tag booked-tag">✅ 2. apr kl. 16:00 · dag 6</span></td></tr>
+        <tr><td><a href="#malaga">Málaga</a></td><td><span class="type-tag">Dagstur</span></td><td><span class="planned-tag">4. apr · dag 8</span></td></tr>
+        <tr><td><a href="#competa">Cómpeta</a></td><td><span class="type-tag">Lokal</span></td><td><span class="planned-tag">5. apr · dag 9</span></td></tr>
+        <tr><td><a href="#vand">Kajak + SUP</a></td><td><span class="type-tag">Aktivitet</span></td><td><span class="planned-tag">3. apr · dag 7</span></td></tr>
+        <tr><td><a href="#maro">Playa de Maro</a></td><td><span class="type-tag">Strand</span></td><td><span class="planned-tag">3. apr · dag 7</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- LOKALT -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Frigiliana &amp; Nerja</p>
+    <h2 class="section-title">Lokale seværdigheder</h2>
+    <div class="act-grid">
+
+      <div class="act-card" id="frigiliana">
+        <span class="act-icon">🕌</span>
+        <p class="act-planned">Dag 2 · 29. marts</p>
+        <p class="act-name">Casco Antiguo, Frigiliana</p>
+        <p class="act-body">Hvide huse, blå og grønne døre og 800 års maurisk indflydelse. Labyrintiske gader med keramikbutikker og moscatel-vin. Husk siesta — butikkerne lukker midt på dagen.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">0 min (vi bor her)</span></div>
+        </div>
+      </div>
+
+      <div class="act-card" id="balcon">
+        <span class="act-icon">🌊</span>
+        <p class="act-planned">Dag 2 · 29. marts</p>
+        <p class="act-name">Balcón de Europa, Nerja</p>
+        <p class="act-body">Dramatisk udsigtsplatform over Middelhavet med panoramaudsigt til Marokkos bjerge. Bygget i 1885 efter et jordskælv. Nedenfor ligger Calahonda Beach.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">5 min</span></div>
+        </div>
+      </div>
+
+      <div class="act-card" id="cueva">
+        <span class="act-icon">🦇</span>
+        <p class="act-planned">Dag 4 · 31. marts</p>
+        <p class="act-name">Cueva de Nerja</p>
+        <p class="act-body">Enorme drypstensgrotter med 60 m høje søjler og verdens største stalagmit (32 m). 589 hulemalerier fra neandertalere, anslået til 43.000 år. Ingen flash-fotografering.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">10 min (Maro)</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Entré:</span><span class="act-meta-val">~12–15 EUR</span></div>
+        </div>
+        <a href="https://cuevadenerja.es/en/" target="_blank" class="act-link">cuevadenerja.es ↗</a>
+      </div>
+
+      <div class="act-card" id="rio">
+        <span class="act-icon">🏞️</span>
+        <p class="act-planned">Dag 4 · 31. marts</p>
+        <p class="act-name">Rio Chillar vandring</p>
+        <p class="act-body">8 km tur-retur vandring i selve flodlejet gennem en smuk, smal kløft. Man vader i vand det meste af turen — medbring vandsko.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">10 min (startpunkt)</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Distance:</span><span class="act-meta-val">8 km t/r</span></div>
+        </div>
+      </div>
+
+      <div class="act-card" id="competa">
+        <span class="act-icon">🍷</span>
+        <p class="act-planned">Dag 9 · 5. april</p>
+        <p class="act-name">Cómpeta</p>
+        <p class="act-body">Smuk hvid bjerglandsby med vinproduktion (moscatel). Autentisk andalusisk atmosfære, langt væk fra turisterne.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">30 min</span></div>
+        </div>
+      </div>
+
+      <div class="act-card" id="maro">
+        <span class="act-icon">🏖️</span>
+        <p class="act-planned">Dag 7 · 3. april</p>
+        <p class="act-name">Playa de Maro</p>
+        <p class="act-body">En af Andalusiens smukkeste strande — lille, uberørt og omgivet af klipper.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">15 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DAGTURE -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Udflugtsmål</p>
+    <h2 class="section-title">Dagture</h2>
+    <div class="act-grid">
+
+      <div class="act-card" id="granada">
+        <span class="act-icon">🏰</span>
+        <p class="act-planned">Dag 3 · 30. marts</p>
+        <p class="act-name">Granada &amp; Alhambra</p>
+        <p class="act-body">Gigantisk palads- og fæstningskompleks på 26 hektar. UNESCO-verdensarv med 2 mio. besøgende årligt. Nasrid-paladserne med Løvernes Gård og Myrte-gården er højdepunkterne. Generalife-haverne giver fantastisk udsigt over Sierra Nevada.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">1t 15m</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">OBS:</span><span class="act-meta-val">Book billetter 3 mdr. i forvejen!</span></div>
+        </div>
+        <a href="https://tickets.alhambra-patronato.es/en/" target="_blank" class="act-link">Køb billetter ↗</a>
+      </div>
+
+      <div class="act-card booked" id="caminito">
+        <span class="act-icon">🧗</span>
+        <p class="act-planned" style="color:var(--warm)">✅ Booket · Dag 6 · 2. april kl. 16:00</p>
+        <p class="act-name">Caminito del Rey</p>
+        <p class="act-body">Spektakulær gangsti fastgjort på lodrette klippevægge i El Chorro-kløften. 7,7 km med hængebroer og svimmelhedsfremkaldende udsigter. Alle 5 er med.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">1t 30m</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Min. alder:</span><span class="act-meta-val">8 år</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Afgang:</span><span class="act-meta-val">~kl. 14:00, retur ~21:00</span></div>
+        </div>
+        <a href="https://www.caminitodelrey.info/en" target="_blank" class="act-link">caminitodelrey.info ↗</a>
+      </div>
+
+      <div class="act-card" id="ronda">
+        <span class="act-icon">🌉</span>
+        <p class="act-planned">Dag 5 · 1. april</p>
+        <p class="act-name">Ronda + Setenil de las Bodegas</p>
+        <p class="act-body"><strong>Ronda:</strong> Dramatisk klippeby over den 98 m dybe El Tajo-kløft. Puente Nuevo-broen, tyrefægtningsarenaen og arabiske bade.<br><br><strong>Setenil:</strong> Huse og barer bygget direkte ind i klippeoverhæng. Berømt for ibérico-tapas.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel Ronda:</span><span class="act-meta-val">2t</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Setenil fra Ronda:</span><span class="act-meta-val">18 km</span></div>
+        </div>
+      </div>
+
+      <div class="act-card" id="malaga">
+        <span class="act-icon">🎨</span>
+        <p class="act-planned">Dag 8 · 4. april</p>
+        <p class="act-name">Málaga</p>
+        <p class="act-body">Pablo Picassos fødeby med over 40 museer. Picasso-museet, Alcazaba (maurisk fæstning fra 1000-tallet), katedralen "La Manquita" og Soho-kvarterets world class street art. Evt. tyrefægtning kl. 18:00.</p>
+        <div class="act-meta">
+          <div class="act-meta-item"><span class="act-meta-key">Kørsel:</span><span class="act-meta-val">1t</span></div>
+          <div class="act-meta-item"><span class="act-meta-key">Street art:</span><span class="act-meta-val">mausmalaga.com</span></div>
+        </div>
+        <a href="https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/" target="_blank" class="act-link">Tyrefægtning kl. 18:00 ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VANDAKTIVITETER -->
+<section class="section" id="vand">
+  <div class="section-inner">
+    <p class="section-label">Dag 7 · 3. april · Playa Burriana</p>
+    <h2 class="section-title">🌊 Vandaktiviteter</h2>
+    <table class="water-table">
+      <thead><tr><th>Aktivitet</th><th>Sted</th><th>Ca. pris</th><th>Planlagt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kajak langs Maro-klipperne</strong></td><td>Playa Burriana</td><td>28 EUR/voksen · 17 EUR/barn</td><td><span class="planned-tag">3. apr · dag 7</span></td></tr>
+        <tr><td><strong>Stand Up Paddle (SUP)</strong></td><td>Burriana Beach</td><td>–</td><td><span class="planned-tag">3. apr · dag 7</span></td></tr>
+        <tr><td><strong>Snorkling</strong></td><td>Playa de Maro</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Seværdigheder · Påske 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Tilbage til Andalusien</a></p>
+</footer>
+</body>
+</html>

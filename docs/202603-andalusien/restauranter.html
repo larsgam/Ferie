@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restauranter · Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --section: #f5f5f7; --text: #1d1d1f; --secondary: #6e6e73;
+      --accent: #0071e3; --warm: #e8640a; --divider: #d2d2d7;
+      --font: -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+      --radius: 18px; --max-w: 980px;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 14px; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: linear-gradient(175deg, #fdf3e7 0%, #f5f5f7 100%); padding: 60px 22px 52px; text-align: center; }
+    .hero-eyebrow { font-size: 15px; font-weight: 600; color: var(--warm); letter-spacing: 0.01em; margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .hero-sub { font-size: 18px; color: var(--secondary); max-width: 500px; margin: 0 auto; line-height: 1.5; }
+
+    .tip-bar { background: #fff8ee; border-top: 3px solid var(--warm); padding: 16px 22px; text-align: center; font-size: 14px; }
+    .tip-bar strong { color: var(--warm); }
+
+    .section { padding: 52px 22px; }
+    .section-alt { background: var(--section); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--warm); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .rest-grid { display: flex; flex-direction: column; gap: 2px; }
+    .rest-item { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 16px; padding: 16px; border-radius: 12px; transition: background 0.15s; }
+    .rest-item:hover { background: rgba(0,0,0,0.03); }
+    .rest-name { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+    .rest-name a { color: var(--text); text-decoration: none; }
+    .rest-name a:hover { color: var(--accent); }
+    .rest-type { font-size: 13px; color: var(--warm); font-weight: 500; margin-bottom: 4px; }
+    .rest-note { font-size: 14px; color: var(--secondary); line-height: 1.4; }
+    .rest-badge { display: inline-block; background: var(--section); border-radius: 980px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--secondary); white-space: nowrap; }
+
+    .michelin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .michelin-card { background: white; border-radius: var(--radius); padding: 24px; border: 1px solid var(--divider); }
+    .michelin-card.booked { border-color: var(--warm); background: #fff8ee; }
+    .mic-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+    .mic-name { font-size: 18px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 4px; }
+    .mic-name a { color: var(--text); text-decoration: none; }
+    .mic-name a:hover { color: var(--accent); }
+    .mic-city { font-size: 13px; color: var(--secondary); }
+    .mic-star { font-size: 24px; }
+    .mic-detail { font-size: 14px; color: var(--secondary); line-height: 1.5; margin-bottom: 12px; }
+    .mic-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mic-tag { background: var(--section); border-radius: 980px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--secondary); }
+    .mic-tag-booked { background: var(--warm); color: white; }
+    .divider { height: 1px; background: var(--divider); margin: 4px 0; }
+
+    footer { background: var(--section); border-top: 1px solid var(--divider); padding: 28px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--secondary); }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🍽️ Restauranter</span>
+    <a href="overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Andalusien · Påske 2026</p>
+  <h1>Restauranter</h1>
+  <p class="hero-sub">Frigiliana, Nerja og Michelin Bib Gourmand inden for 50 km.</p>
+</section>
+
+<div class="tip-bar">
+  <strong>Spisetider i Spanien:</strong> Frokost kl. 14–15 · Middag fra kl. 21 · Menú del día til frokost: ca. 10–15 EUR (3 retter + drink)
+</div>
+
+<!-- FRIGILIANA -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Lokalt</p>
+    <h2 class="section-title">Frigiliana</h2>
+    <div class="rest-grid">
+      <div class="rest-item"><div><p class="rest-name"><a href="https://latabernadelsacristan.eatbu.com/?lang=en" target="_blank">La Taberna del Sacristán ↗</a></p><p class="rest-type">Middelhavskok</p><p class="rest-note">Smuk udendørs terrasse, friske ingredienser.</p></div><span class="rest-badge">🌿 Terrasse</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d6765799" target="_blank">La Tahona del Zacatín ↗</a></p><p class="rest-type">Tapas</p><p class="rest-note">Raffinerede tapas, hjemmelavede kroketter, terrasse med udsigt.</p></div><span class="rest-badge">⭐ Anbefalet</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d19289143" target="_blank">Orihuela ↗</a></p><p class="rest-type">Spansk</p><p class="rest-note">Væk fra turiststrømmene, rimelige priser.</p></div><span class="rest-badge">💰 Budget</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d33084428" target="_blank">Old Town Restaurant &amp; Bar ↗</a></p><p class="rest-type">Middelhavskok</p><p class="rest-note">Calle San Sebastián, generøse portioner.</p></div></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d12022826" target="_blank">Gloria Bendita ↗</a></p><p class="rest-type">Middelhavs/østlig fusion</p><p class="rest-note">Kreative retter, aubergine-tempura, bao buns. Vegetar/vegansk/glutenfri.</p></div><span class="rest-badge">🥦 Vegansk</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d24064231" target="_blank">Bar Virtudes ↗</a></p><p class="rest-type">Andalusisk</p><p class="rest-note">Salmorejo, paella, morcilla, spansk omelet.</p></div></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d1873630" target="_blank">Las Chinas ↗</a></p><p class="rest-type">Traditionel spansk</p><p class="rest-note">Store portioner, blæksprutte, zarzuela de marisco, lammekoteletter.</p></div></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d1003513" target="_blank">El Mirador ↗</a></p><p class="rest-type">Tapas</p><p class="rest-note">Havudsigt ved solnedgang, cocktails, vegetariske muligheder.</p></div><span class="rest-badge">🌅 Udsigt</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d4427107" target="_blank">El Boquetillo ↗</a></p><p class="rest-type">International</p><p class="rest-note">Burgere, tacos, lammespyd. To gange vinder af tapa-ruten.</p></div><span class="rest-badge">🏆 Tapa-vinder</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d1996417" target="_blank">El Casino ↗</a></p><p class="rest-type">Spansk</p><p class="rest-note">Gedeost med honning, ibérico-skinke, hjemmelavede desserter.</p></div></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d1003470" target="_blank">La Bodeguilla ↗</a></p><p class="rest-type">Traditionel spansk</p><p class="rest-note">Migas, ajoblanco, gazpacho — autentisk andalusisk gastronomi.</p></div><span class="rest-badge">🥣 Autentisk</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.lataperiafrigiliana.com/" target="_blank">La Tapería ↗</a></p><p class="rest-type">Tapas</p><p class="rest-note">Drevet af dansk par! Veganske/vegetariske muligheder, lokale råvarer.</p></div><span class="rest-badge">🇩🇰 Dansk ejet</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g580274-d2218749" target="_blank">El Picoteo ↗</a></p><p class="rest-type">Tapas</p><p class="rest-note">Dagsmenu, supper og gryderetter, rimelige priser.</p></div><span class="rest-badge">💰 Budget</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- NERJA -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">5 min kørsel</p>
+    <h2 class="section-title">Nerja</h2>
+    <div class="rest-grid">
+      <div class="rest-item"><div><p class="rest-name"><a href="https://vitalianodacristina.wixsite.com/vitaliano" target="_blank">Vitaliano da Cristina ↗</a></p><p class="rest-type">Italiensk</p><p class="rest-note">Familiedrevet, hjemmelavet pasta.</p></div></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name"><a href="https://www.tripadvisor.com/Restaurant_Review-g315917-d2702296" target="_blank">La Dama ↗</a></p><p class="rest-type">Pizza</p><p class="rest-note">Billigt og godt — pizza fra 3,50 EUR.</p></div><span class="rest-badge">💰 Fra 3,50 EUR</span></div>
+      <div class="divider"></div>
+      <div class="rest-item"><div><p class="rest-name">Chiringuitos, Playa Burriana</p><p class="rest-type">Strand</p><p class="rest-note">Paella og frisk fisk med havudsigt direkte på stranden.</p></div><span class="rest-badge">🏖️ Strand</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MICHELIN -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Inden for 50 km · God kvalitet til rimelig pris (max 35 EUR / 3 retter)</p>
+    <h2 class="section-title">⭐ Michelin Bib Gourmand</h2>
+    <div class="michelin-grid">
+
+      <div class="michelin-card booked">
+        <div class="mic-header">
+          <div>
+            <p class="mic-name"><a href="https://guide.michelin.com/en/andalucia/sedella_1392070/restaurant/el-chiringuito" target="_blank">El Chiringuito ↗</a></p>
+            <p class="mic-city">📍 Sedella · 20 min</p>
+          </div>
+          <span class="mic-star">⭐</span>
+        </div>
+        <p class="mic-detail">Ung kok Víctor Hierrezuelo, trænet hos Arzak og Bardal. Andalusisk køkken i topklasse til bib gourmand-pris.</p>
+        <div class="mic-meta">
+          <span class="mic-tag mic-tag-booked">✅ Booket 5. apr kl. 19:30</span>
+          <span class="mic-tag">Andalusisk</span>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="mic-header">
+          <div>
+            <p class="mic-name"><a href="https://guide.michelin.com/en/andalucia/almunecar/restaurant/el-chaleco" target="_blank">El Chaleco ↗</a></p>
+            <p class="mic-city">📍 Almuñécar · 30 min</p>
+          </div>
+          <span class="mic-star">⭐</span>
+        </div>
+        <p class="mic-detail">Klassisk restaurant med fransk inspiration. 3- eller 5-retters smagsmenu.</p>
+        <div class="mic-meta">
+          <span class="mic-tag">Fransk</span>
+          <span class="mic-tag">📞 +34 958 63 24 02</span>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="mic-header">
+          <div>
+            <p class="mic-name"><a href="https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-cosmo" target="_blank">La Cosmo ↗</a></p>
+            <p class="mic-city">📍 Málaga · 1t</p>
+          </div>
+          <span class="mic-star">⭐</span>
+        </div>
+        <p class="mic-detail">Bag katedralen, åbent køkken. Kok Dani Carnero. Prøv kulmule-salaten!</p>
+        <div class="mic-meta">
+          <span class="mic-tag">Andalusisk</span>
+          <span class="mic-tag">Åbent køkken</span>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="mic-header">
+          <div>
+            <p class="mic-name"><a href="https://guide.michelin.com/en/andalucia/malaga/restaurant/base9" target="_blank">Base9 ↗</a></p>
+            <p class="mic-city">📍 Málaga · 1t</p>
+          </div>
+          <span class="mic-star">⭐</span>
+        </div>
+        <p class="mic-detail">Tapas til deling, japansk-inspireret tortilla. Nær María Zambrano-stationen.</p>
+        <div class="mic-meta">
+          <span class="mic-tag">Moderne tapas</span>
+          <span class="mic-tag">Japansk-inspireret</span>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="mic-header">
+          <div>
+            <p class="mic-name"><a href="https://guide.michelin.com/us/en/andalucia/malaga/restaurant/la-taberna-de-mike-palmer" target="_blank">La Taberna de Mike Palmer ↗</a></p>
+            <p class="mic-city">📍 Málaga · 1t</p>
+          </div>
+          <span class="mic-star">⭐</span>
+        </div>
+        <p class="mic-detail">I en rideklub i udkanten. Grill, grillede østers, kartoffelomelet med whisky.</p>
+        <div class="mic-meta">
+          <span class="mic-tag">Traditionelt</span>
+          <span class="mic-tag">Grill</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Restauranter · Påske 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Tilbage til Andalusien</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madlavning &amp; Indkøb · Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --section: #f5f5f7; --text: #1d1d1f; --secondary: #6e6e73;
+      --accent: #0071e3; --warm: #e8640a; --divider: #d2d2d7;
+      --font: -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+      --radius: 18px; --max-w: 980px;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--secondary); font-size: 13px; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-back { font-size: 14px; color: var(--accent); text-decoration: none; }
+
+    .hero { background: linear-gradient(175deg, #fff8ee 0%, #f5f5f7 100%); padding: 60px 22px 52px; text-align: center; }
+    .hero-eyebrow { font-size: 15px; font-weight: 600; color: var(--warm); margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .hero-sub { font-size: 18px; color: var(--secondary); max-width: 500px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-alt { background: var(--section); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--warm); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .card-grid { display: grid; gap: 16px; }
+    .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .card { background: white; border-radius: var(--radius); padding: 24px; border: 1px solid var(--divider); }
+    .card-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .card-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .card-body { font-size: 14px; color: var(--secondary); line-height: 1.6; }
+    .card-highlight { font-style: normal; color: var(--text); font-weight: 500; }
+
+    /* Season table */
+    .season-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .season-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .season-table th { text-align: left; padding: 8px 12px; background: var(--section); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--secondary); }
+    .season-table th:first-child { border-radius: 8px 0 0 0; }
+    .season-table th:last-child { border-radius: 0 8px 0 0; }
+    .season-table td { padding: 10px 12px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+    .season-table tr:last-child td { border-bottom: none; }
+    .season-table .highlight { color: var(--warm); font-weight: 600; }
+
+    /* Recipes */
+    .recipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .recipe-card { background: white; border-radius: var(--radius); padding: 22px; border: 1px solid var(--divider); }
+    .recipe-cat { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--secondary); margin-bottom: 4px; }
+    .recipe-name { font-size: 16px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .recipe-desc { font-size: 13px; color: var(--secondary); line-height: 1.5; margin-bottom: 10px; }
+    .recipe-diff { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 980px; }
+    .diff-let { background: #e8f5e9; color: #2e7d32; }
+    .diff-middel { background: #fff8e1; color: #f57f17; }
+
+    /* Markets */
+    .market-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .market-table th { text-align: left; padding: 10px 14px; background: #1d1d1f; color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .market-table th:first-child { border-radius: 8px 0 0 8px; }
+    .market-table th:last-child { border-radius: 0 8px 8px 0; }
+    .market-table td { padding: 12px 14px; border-bottom: 1px solid var(--divider); }
+    .market-table tr:last-child td { border-bottom: none; }
+    .market-table .day { font-weight: 700; color: var(--warm); }
+
+    /* Supermarkets */
+    .super-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .super-card { background: white; border-radius: 14px; border: 1px solid var(--divider); padding: 18px; }
+    .super-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .super-detail { font-size: 13px; color: var(--secondary); line-height: 1.4; }
+
+    /* Souvenir */
+    .souvenir-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .souvenir-table th { text-align: left; padding: 10px 14px; background: var(--section); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--secondary); }
+    .souvenir-table th:first-child { border-radius: 8px 0 0 8px; }
+    .souvenir-table th:last-child { border-radius: 0 8px 8px 0; }
+    .souvenir-table td { padding: 12px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+    .souvenir-table tr:last-child td { border-bottom: none; }
+
+    footer { background: var(--section); border-top: 1px solid var(--divider); padding: 28px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--secondary); }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) { .nav-links { display: none; } .season-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🛒 Madlavning &amp; Indkøb</span>
+    <a href="../overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Andalusien · Påske 2026</p>
+  <h1>Madlavning &amp; Indkøb</h1>
+  <p class="hero-sub">Lokale råvarer, andalusiske opskrifter og indkøbssteder i Frigiliana/Nerja.</p>
+</section>
+
+<!-- ANDALUSISK MAD -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Lokal identitet</p>
+    <h2 class="section-title">Andalusisk madkultur</h2>
+    <div class="card-grid card-grid-3">
+      <div class="card"><span class="card-icon">🫒</span><p class="card-title">Olivenolie</p><p class="card-body">Andalusien producerer ~80% af Spaniens olivenolie. I Axarquía dyrkes <em class="card-highlight">Verdial</em> (frugtig) og <em class="card-highlight">Nevadillo</em> (blød, sød). Køb lokal hos Lola i Frigiliana.</p></div>
+      <div class="card"><span class="card-icon">🐟</span><p class="card-title">Frisk fisk</p><p class="card-body">Málaga er berømt for <em class="card-highlight">boquerón</em> (ansjos), sardiner og blæksprutte. April er topkvalitet for ansjos og skaldyr (måneder med "R").</p></div>
+      <div class="card"><span class="card-icon">🍯</span><p class="card-title">Miel de caña</p><p class="card-body">Sukkerrørssirup fremstilles <em class="card-highlight">kun i Frigiliana</em> — eneste sted i kontinental Europa. Uundgåeligt på stegte auberginer. Køb direkte i landsbyen.</p></div>
+      <div class="card"><span class="card-icon">🥩</span><p class="card-title">Jamón ibérico</p><p class="card-body">Tørret skinke er dagligvare og luksus på samme tid. Jabugo og Trevélez er de mest berømte producenter. Køb ved BEHER i Nerja.</p></div>
+      <div class="card"><span class="card-icon">🌿</span><p class="card-title">Choto al ajillo</p><p class="card-body">Axarquías signaturret: ungt gedekid stuvet med masser af hvidløg, vin og laurbær. En af Frigiliana-egnens mest autentiske retter.</p></div>
+      <div class="card"><span class="card-icon">🍇</span><p class="card-title">Lokale vine</p><p class="card-body"><em class="card-highlight">Vino dulce</em> fra Moscatel-druer fra Cómpeta og Frigiliana. Sød vin til dessert og madlavning. Nerja Wine Club har et godt udvalg.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SÆSON -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Marts–april</p>
+    <h2 class="section-title">Hvad er i sæson?</h2>
+    <div class="season-grid">
+      <div>
+        <p style="font-size:15px;font-weight:600;margin-bottom:12px">🥦 Grøntsager</p>
+        <table class="season-table">
+          <thead><tr><th>Råvare</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>Grønne asparges</td><td>Første friske, marts–april</td></tr>
+            <tr><td>Artiskokker</td><td>Perfekt i april</td></tr>
+            <tr><td>Brede bønner (habas)</td><td>Typisk forårsmad</td></tr>
+            <tr><td>Friske ærter</td><td>Marts–maj</td></tr>
+            <tr><td>Vilde asparges</td><td class="highlight">Espárragos trigueros — forårsdelikatesse</td></tr>
+            <tr><td>Tomater</td><td>Sæsonens første gode tomater</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p style="font-size:15px;font-weight:600;margin-bottom:12px">🐟 Fisk og skaldyr</p>
+        <table class="season-table">
+          <thead><tr><th>Art</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Ansjos (boquerón)</td><td class="highlight">Topnotch april–juli ⭐</td></tr>
+            <tr><td>Sardiner</td><td>Tilgængelig fra april</td></tr>
+            <tr><td>Hestemakrel (jurel)</td><td>Klassisk Málaga-fisk</td></tr>
+            <tr><td>Kulmule (merluza)</td><td>God september–april</td></tr>
+            <tr><td>Blæksprutte</td><td>God om foråret</td></tr>
+            <tr><td class="highlight">Rejer (gambas)</td><td class="highlight">Friske er fantastiske nu ⭐</td></tr>
+            <tr><td>Blåskimmel-krabbe</td><td>"R"-måneder = topkvalitet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--secondary);margin-top:16px">💡 <strong>Tommelfingerregel:</strong> Måneder med "R" (september–april) er bedst til skaldyr. April er topkvalitet.</p>
+  </div>
+</section>
+
+<!-- OPSKRIFTER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Hjemmelavet</p>
+    <h2 class="section-title">Retter at lave</h2>
+
+    <p style="font-size:16px;font-weight:600;margin-bottom:16px">🐟 Fisk og skaldyr</p>
+    <div class="recipe-grid" style="margin-bottom:32px">
+      <div class="recipe-card">
+        <p class="recipe-cat">Klassiker</p>
+        <p class="recipe-name">Boquerones fritos</p>
+        <p class="recipe-desc">Andalusiens ikoniske ret. Friske ansjosfileter i mel, friteret hurtigt i varm olivenolie. Sprøde og gyldne, serveres med citron.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Kræver planlægning</p>
+        <p class="recipe-name">Boquerones en vinagre</p>
+        <p class="recipe-desc">Ansjosfileter "kogt" i hvidvinseddike i 24–48 timer. Derefter marineret i olivenolie med hvidløg og persille. OBS: nedfryses min. 48 timer inden (anisakis).</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Grill</p>
+        <p class="recipe-name">Espetos de sardinas</p>
+        <p class="recipe-desc">Friske sardiner på bambusspyd over trækul. Drys rigeligt med groft salt. Brug store, friske sardiner — de er billige og fantastiske.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Tapa</p>
+        <p class="recipe-name">Gambas al ajillo</p>
+        <p class="recipe-desc">Rejer i kogende olivenolie med hvidløg og chili i en lergryde. Gryden skal være brandvarm. Server med brød til at dyppe i olien.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Hverdagsret</p>
+        <p class="recipe-name">Merluza a la malagueña</p>
+        <p class="recipe-desc">Kulmule med hvidløg, mandler, persille og hvidvin. Simpel andalusisk hverdagsret.</p>
+        <span class="recipe-diff diff-let">Let–middel</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Lokalt</p>
+        <p class="recipe-name">El Emblanco</p>
+        <p class="recipe-desc">Nerja-specialitet. Let fiskesuppe med hvid fisk, kartofler, gulerod og laurbær. Nærende og meget nem.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+    </div>
+
+    <p style="font-size:16px;font-weight:600;margin-bottom:16px">🥩 Kød</p>
+    <div class="recipe-grid" style="margin-bottom:32px">
+      <div class="recipe-card">
+        <p class="recipe-cat">Axarquía-signatur</p>
+        <p class="recipe-name">Choto al ajillo</p>
+        <p class="recipe-desc">Ungt gedekid med masser af hvidløg, vin og laurbær. 2–3 timers simring. Laves tidligt på dagen.</p>
+        <span class="recipe-diff diff-middel">Middel</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Søndagsklassiker</p>
+        <p class="recipe-name">Rabo de toro</p>
+        <p class="recipe-desc">Oksehale braiseret med rødvin og grøntsager. 3–4 timer. Lav den fredag aften til lørdag — smagen forbedres natten over!</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Maurisk arv</p>
+        <p class="recipe-name">Pinchitos morunos</p>
+        <p class="recipe-desc">Krydrede svinekødsspyd marineret med spidskommen, koriander, paprika og hvidløg. Mariner min. 4 timer.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+    </div>
+
+    <p style="font-size:16px;font-weight:600;margin-bottom:16px">🥣 Kolde retter og Frigiliana-specialiteter</p>
+    <div class="recipe-grid">
+      <div class="recipe-card">
+        <p class="recipe-cat">Ikonisk</p>
+        <p class="recipe-name">Gazpacho andaluz</p>
+        <p class="recipe-desc">Kold tomatsuppe blenderet med peber, agurk, hvidløg og god olivenolie. Bruges rå for fuld smag.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">Fra Córdoba</p>
+        <p class="recipe-name">Salmorejo</p>
+        <p class="recipe-desc">Tykkere, rigere end gazpacho. Toppes med hakkede æg og jamón serrano. Mere brød i opskriften end gazpacho.</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+      <div class="recipe-card">
+        <p class="recipe-cat">⭐ Frigiliana-specialitet</p>
+        <p class="recipe-name">Berenjenas con miel de caña</p>
+        <p class="recipe-desc">Friterede aubergineskiver hældt med lokal sukkerrørssirup (miel de caña). En af egnens mest elskede retter. Køb miel de caña i Frigiliana!</p>
+        <span class="recipe-diff diff-let">Let</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKEDER -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Frisk mad</p>
+    <h2 class="section-title">Ugentlige markeder</h2>
+    <table class="market-table">
+      <thead><tr><th>By</th><th>Dag</th><th>Tid</th><th>Indhold</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nerja</strong></td><td class="day">Tirsdag ⭐</td><td>08:00–14:00</td><td>Calle Mirto — frisk frugt/grønt, tøj, håndværk. <strong>Vigtigste madmarked.</strong></td></tr>
+        <tr><td><strong>Frigiliana</strong></td><td class="day">Torsdag</td><td>08:00–14:00</td><td>Plaza de las Tres Culturas — ~50 boder: frugt/grønt, keramik, lokale produkter.</td></tr>
+        <tr><td>Torrox Costa</td><td>Mandag</td><td>Morgen</td><td>Frisk frugt/grønt — ca. 10 km fra Nerja.</td></tr>
+        <tr><td>Cómpeta</td><td>Lørdag</td><td>Morgen</td><td>Lille marked — ca. 45 min fra Frigiliana.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--secondary);margin-top:12px">💡 Søndage: De fleste store supermarkeder er lukkede. Covirans og mindre bodegaer er åbne.</p>
+  </div>
+</section>
+
+<!-- SUPERMARKEDER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Nerja</p>
+    <h2 class="section-title">Supermarkeder</h2>
+    <div class="super-grid">
+      <div class="super-card" style="border-color:var(--warm)">
+        <p class="super-name">⭐ Mercadona</p>
+        <p class="super-detail">Calle Chaparil. Man–lør 09:00–21:30. Bedst for frisk fisk og lokale produkter.</p>
+      </div>
+      <div class="super-card">
+        <p class="super-name">Lidl</p>
+        <p class="super-detail">Frigiliana-vejen. Mod Frigiliana ud af Nerja.</p>
+      </div>
+      <div class="super-card">
+        <p class="super-name">Carrefour</p>
+        <p class="super-detail">To lokationer i Nerja.</p>
+      </div>
+      <div class="super-card">
+        <p class="super-name">Coviran</p>
+        <p class="super-detail">Flere i centrum. Åben om søndagen!</p>
+      </div>
+    </div>
+
+    <p style="font-size:15px;font-weight:600;margin:32px 0 12px">🐟 Fisk og skaldyr</p>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <p class="card-title">Pescadería Gutiérrez</p>
+        <p class="card-body">Avenida Castilla Pérez, Nerja. Bruges af lokale restauranter. God selektion af frisk fisk og skaldyr.</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Torre del Mar Mercado</p>
+        <p class="card-body">C/ del Río, Torre del Mar (15–20 min vestpå). Åben man–lør 08:00–14:00. God fiskehal. Kom inden middag for bedste udvalg.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOKALE SPECIALITETER AT TAGE HJEM -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Souvenirs og lokale køb</p>
+    <h2 class="section-title">Lokale produkter</h2>
+    <table class="souvenir-table">
+      <thead><tr><th>Produkt</th><th>Hvor</th><th>Bemærkning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Miel de caña</strong></td><td>Frigiliana-butikker + fabrik</td><td>Unik for Frigiliana. Eneste sted i Europa.</td></tr>
+        <tr><td><strong>Lokal olivenolie</strong> (Nevadillo)</td><td>Lola i Frigiliana, Nerja-deli</td><td>Blød, sød smag. Perfekt til rå brug.</td></tr>
+        <tr><td><strong>Vino dulce / Málaga wine</strong></td><td>Nerja Wine Club, Lola</td><td>Moscatel-baseret sød vin.</td></tr>
+        <tr><td><strong>Jamón ibérico</strong></td><td>BEHER nær Balcón de Europa, Nerja</td><td>Køb et lille ben — holder sig.</td></tr>
+        <tr><td><strong>Lokale mandler</strong></td><td>Markeder</td><td>Til saucer og snacks.</td></tr>
+        <tr><td><strong>Pasas</strong> (rosiner)</td><td>Markeder, supermarkeder</td><td>Axarquía er Spaniens vigtigste rosindyrkningsområde.</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:15px;font-weight:600;margin:28px 0 12px">🏪 Specialforretninger</p>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <p class="card-title">Lola la de Los Vinos</p>
+        <p class="card-body">C/ Real 6, Frigiliana. Lokal vin, miel de caña i alle størrelser, Frigiliana-olivenolie. Ejeren Lola er ekspert og meget hjælpsom. <em>Anbefales!</em></p>
+      </div>
+      <div class="card">
+        <p class="card-title">BEHER Store, Nerja</p>
+        <p class="card-body">Nær Balcón de Europa. Specialiseret i 100% iberico-skinke. Sælger hele ben, skivede pakker og bocadillos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UGEPLANLÆGNING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Tips</p>
+    <h2 class="section-title">Ugeplanlægning</h2>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <span class="card-icon">📅</span>
+        <p class="card-title">Indkøbsplan</p>
+        <p class="card-body">
+          <strong>Tirsdag:</strong> Nerja-marked (08–14) — friske grøntsager + lokale produkter<br><br>
+          <strong>Torsdag:</strong> Frigiliana-marked (08–14) — lokal charme<br><br>
+          <strong>Løbende:</strong> Mercadona i Nerja til frisk fisk og hverdagsvarer<br><br>
+          <strong>En tur til Torre del Mar:</strong> Fiskehal for bredt fiske-udvalg
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🫙</span>
+        <p class="card-title">Altid på lager</p>
+        <p class="card-body">
+          God lokal olivenolie · Hvidløg (masser!) · Miel de caña · Sherry/hvidvin til madlavning · Dåser: tun, kikærter · Chorizo + jamón serrano · Pimentón (røget paprika) · Safran · Laurbær · Spidskommen
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Madlavning &amp; Indkøb · Påske 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Tilbage til Andalusien</a></p>
+</footer>
+</body>
+</html>
