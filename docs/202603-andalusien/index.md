@@ -19,7 +19,7 @@
 | 3 | 30. mar | Mandag | *Forslag: [Granada & Alhambra](sevaerdigheder.md#granada-alhambra) (hel dag)* |
 | 4 | 31. mar | Tirsdag | *Forslag: [Cueva de Nerja](sevaerdigheder.md#cueva-de-nerja) + [Rio Chillar vandring](sevaerdigheder.md#rio-chillar-vandring)* |
 | 5 | 1. apr | Onsdag | *Forslag: [Ronda](sevaerdigheder.md#ronda) & [Setenil de las Bodegas](sevaerdigheder.md#setenil-de-las-bodegas) (hel dag).* Arthur ankommer AGP 23:55 |
-| 6 | 2. apr | Torsdag | **[Caminito del Rey](sevaerdigheder.md#caminito-del-rey) kl. 16:00** (alle 5). Afgang ~14:00, køretid ~1,5t. Retur ~21:00 |
+| 6 | 2. apr | Torsdag | Frigiliana marked 08:00–14:00. **[Caminito del Rey](sevaerdigheder.md#caminito-del-rey) kl. 16:00** (alle 5). Afgang ~14:00, køretid ~1,5t. Retur ~21:00 |
 | 7 | 3. apr | Fredag | *Langfredag.* Afslapning - [Playa de Maro](sevaerdigheder.md#playa-de-maro), kajak/SUP. **Processioner om aftenen** |
 | 8 | 4. apr | Lørdag | *Evt. Soledad-procession i Frigiliana (tidlig morgen).* **[Málaga](sevaerdigheder.md#málaga) (hel dag).** [Tyrefægtning kl. 18:00](https://plazadetoroslamalagueta.com/en/malaga-bullfight-tickets/) |
 | 9 | 5. apr | Søndag | *Påskesøndag.* Procession [Balcón de Europa](sevaerdigheder.md#balcón-de-europa-nerja) **kl. 12:00**. [Cómpeta](sevaerdigheder.md#cómpeta). 🚴 **Flandern Rundt**. **[El Chiringuito](restauranter.md#michelin-bib-gourmand-inden-for-50-km) kl. 19:30** (booket ✅) |
