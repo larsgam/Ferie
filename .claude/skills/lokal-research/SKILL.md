@@ -9,6 +9,8 @@ Opretter en ny thematisk research-side som HTML og linker den fra overview.html.
 
 ## Workflow
 
+Hvis vi er i en aktiv ferie: læs tripens `index.md` — den har hvem der er med, datoer og hvad der allerede er planlagt.
+
 ### 1. Afklar emnet
 - Hvad handler siden om? (vin, mad, aktivitet, transport, kultur, ...)
 - Skal der researches online, eller er materialet allerede tilgængeligt?

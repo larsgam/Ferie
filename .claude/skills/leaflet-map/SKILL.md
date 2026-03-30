@@ -22,6 +22,8 @@ Opretter og opdaterer `kort.html` med interaktivt Leaflet-kort.
 
 Tilføj nye kategorier ved at udvide `COLORS` og `CAT_LABELS` objekterne og tilføje en ny `filter-btn`.
 
+Hvis vi er i en aktiv ferie: læs tripens `index.md` for kontekst — bolig, datoer og hvad der allerede er planlagt.
+
 ## addM() syntaks
 
 ```javascript

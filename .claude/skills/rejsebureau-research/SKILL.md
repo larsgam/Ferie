@@ -9,6 +9,8 @@ Bruger rejsebureauernes ekspertise som kvalitetssikring af jeres egen rejseplan.
 
 ## Workflow
 
+Hvis vi er i en aktiv ferie: læs tripens `index.md` — den har hvem der er med, datoer og hvad der allerede er planlagt.
+
 ### 1. Find relevante rejsebureauer
 Søg efter bureauer der specialiserer sig i destinationen:
 - Skandinaviske bureauer med lokal ekspertise (Bravo Tours, Spies, Star Tour, specialbureauer)

@@ -9,6 +9,8 @@ Researcher og strukturerer restaurantviden til ferien. Kombinerer lokal research
 
 ## Workflow
 
+Hvis vi er i en aktiv ferie: læs tripens `index.md` — den har hvem der er med, datoer og hvad der allerede er planlagt.
+
 ### 1. Afklar scope
 - Hvilken destination/område?
 - Lokal research, Bib Gourmand, eller begge?
