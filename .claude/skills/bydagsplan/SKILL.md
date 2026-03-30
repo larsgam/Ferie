@@ -130,8 +130,4 @@ En dag med 4-5 ting gjort ordenligt er bedre end 8 ting i stress.
 
 ## Familiekontekst
 
-Lars og Helle er 54 år. Børn: Olivia (18), Arthur (16), Roberta (13).
-- Teenagere: shopping, mad, visuel wow-faktor, afslappet tempo
-- Alle: autentiske lokale oplevelser — steder lokale kommer, ikke turistfælder
-- Undgå: tourist trap-restauranter, shopping malls, lange walking tours, museer uden wow-faktor
-- Godt: gågader, hyggelige kvarterer, street food, udsigter, steder med god story, kaffepauser, markeder
+Se `~/.claude/context/personal-profile/profile.md` for hvem vi er og rejsepræferencer.
