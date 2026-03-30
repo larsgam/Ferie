@@ -15,10 +15,12 @@ Planen foregår altid i **to faser**. Spring aldrig direkte til ruten.
 
 ## Hvad du skal vide inden du starter
 
+Hvis vi er i en aktiv ferie: læs `index.md` for den pågældende ferie — den har hvem der er med, hvilke dage og hvad der allerede er planlagt. Brug det frem for at spørge om det.
+
 Spørg Lars hvis det ikke er klart:
 - Hvilken by?
 - Hvilken dato og ugedag? (påvirker åbningstider, markeder, events)
-- Hvem er med? (alle 5, kun nogle?)
+- Hvem er med? (hvis ikke fremgår af index.md)
 - Starter vi tidligt eller sent? Har vi bil eller går vi til fods/offentlig transport?
 - Er der specifikke ting vi SKAL nå (booking, procession, tog)?
 - Budget for dagen?
@@ -130,4 +132,6 @@ En dag med 4-5 ting gjort ordenligt er bedre end 8 ting i stress.
 
 ## Familiekontekst
 
-Se `~/.claude/context/personal-profile/profile.md` for hvem vi er og rejsepræferencer.
+Deltagere: læs tripens `index.md` — den har hvem der er med på netop denne ferie og hvornår de ankommer.
+
+Præferencer: se `~/.claude/context/personal-profile/profile.md`.
