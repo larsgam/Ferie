@@ -134,6 +134,35 @@ En dag med 4-5 ting gjort ordenligt er bedre end 8 ting i stress.
 
 **Ton:** Lokalkendt ven, ikke brochure. "Gå ned ad Calle X, drej venstre ved pladsen..." — aldrig "Det er muligt at besøge...".
 
+### Leverancer efter Fase 2
+
+Når ruten er godkendt, lav altid disse tre uden at spørge:
+
+**1. Google Maps-link**
+Generer en gå-rute URL med alle waypoints i ruterækkefølge:
+```
+https://www.google.com/maps/dir/?api=1&origin=LAT,LNG&destination=LAT,LNG&waypoints=LAT,LNG|LAT,LNG|LAT,LNG&travelmode=walking
+```
+Præsentér linket — det åbner direkte i Google Maps-appen og kan sendes som SMS.
+
+**2. Interaktivt Leaflet-kort**
+Gem som `docs/<tripfolder>/dagstur-<by kebab-case>.html`. Brug samme stil som eksisterende `kort.html` i projektet. Kortet skal have:
+- Nummererede div-ikoner (A1, A2, B1 osv.) med farve efter type: seværdighed (teal #0f766e), kvarter (lilla #7c3aed), mad (rød #dc2626), kaffe (brun #b45309), parkering (grå #374151)
+- Rig popup per stop: badge, titel, tidspunkt, beskrivelse, tip
+- Blå stiplet polyline langs ruten i rækkefølge
+- "🗺️ Google Maps"-knap (grøn) der åbner Google Maps-linket
+- "📡 Find mig"-knap (blå) der viser GPS-position som blå prik
+- Push til GitHub Pages bagefter (`git add`, `git commit`, `git push`)
+
+**3. Briefing `.txt` til AI-rejseguide**
+Gem som `docs/<tripfolder>/dagstur-<by kebab-case>-briefing.txt`. Indhold:
+- Instruktion til AI: kend planen, foreslå kun ændringer hvis spurgt, foreslå aldrig noget der allerede er i planen
+- Fuld plan med timing, stops, restaurantvalg og praktiske tips
+- Familieinfo: antal, alder på teenagere, præferencer
+- Praktisk info: transport, særlige hensyn (Semana Santa, åbningstider osv.)
+
+Filen gemmes i iCloud-synkroniseret mappe så den er tilgængelig via Filer-appen på iPhone → kan uploades til ChatGPT-projekt.
+
 ---
 
 ## Familiekontekst
