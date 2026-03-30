@@ -24,8 +24,7 @@
     #header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
     #header-right { display: flex; align-items: center; gap: 8px; }
 
-    #gps-btn {
-      background: #2563eb;
+    .header-btn {
       color: white;
       border: none;
       border-radius: 20px;
@@ -37,7 +36,11 @@
       align-items: center;
       gap: 5px;
       white-space: nowrap;
+      text-decoration: none;
     }
+    #gmaps-btn { background: #16a34a; }
+    #gmaps-btn:active { background: #15803d; }
+    #gps-btn { background: #2563eb; }
     #gps-btn:active { background: #1d4ed8; }
 
     #map { flex: 1; }
@@ -70,7 +73,8 @@
 <div id="header">
   <h1>📍 Granada · 31. marts 2026</h1>
   <div id="header-right">
-    <button id="gps-btn">📡 Find mig</button>
+    <a id="gmaps-btn" class="header-btn" href="https://www.google.com/maps/dir/?api=1&origin=37.1770,-3.6010&destination=37.1810,-3.5935&waypoints=37.1762,-3.5990|37.1818,-3.5922|37.1792,-3.5908|37.1760,-3.5993|37.1830,-3.5848|37.1785,-3.5950&travelmode=walking" target="_blank">🗺️ Google Maps</a>
+    <button id="gps-btn" class="header-btn">📡 Find mig</button>
   </div>
 </div>
 
