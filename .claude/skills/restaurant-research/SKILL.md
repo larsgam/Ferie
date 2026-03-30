@@ -21,7 +21,7 @@ Researcher og strukturerer restaurantviden til ferien. Kombinerer lokal research
 - Bedst ratede på Google Maps / TripAdvisor for området
 - Lokale specialiteter og hvilke steder der serverer dem bedst
 - Mix af prisniveauer (tapas/street food, middag, special occasion)
-- Familievenlige muligheder (teenagere 13-18 år)
+- Familievenlige muligheder (se profil for børnenes aldre)
 - Strandrestauranter / chiringuitos hvis relevant
 
 **Bib Gourmand — sådan finder du dem:**

@@ -30,7 +30,7 @@ Læs `docs/<tripcode>/index.md` og `sevaerdigheder.md` for at forstå hvad der a
 ### 4. Gap-analyse — tre kategorier
 
 **A. Hvad bureauerne tager med, men planen mangler**
-— Overvej om det er relevant for familien (Lars, Helle, teenagere)
+— Overvej om det er relevant for familien (se profil)
 
 **B. Hvad bureauerne anbefaler, og planen allerede har**
 — Validering: I er på rette spor
