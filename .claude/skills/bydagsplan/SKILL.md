@@ -33,6 +33,8 @@ Research og præsentér alle muligheder i tre kategorier. Beskriv dem præcist i
 
 ### A — Seværdigheder
 
+Nummerér hver seværdighed **A.1, A.2, A.3 ...** så Lars nemt kan referere til dem når han vælger.
+
 For hver seværdighed:
 - Navn og hvad det er
 - Hvorfor relevant for denne familie (wow-faktor, god story, unikt for byen)
@@ -42,6 +44,8 @@ For hver seværdighed:
 Prioritér visuel wow-faktor og steder med en god story. Vær ærlig om hvad der primært interesserer meget engagerede kulturturister.
 
 ### B — Kvarterer og gader
+
+Nummerér hvert kvarter **B.1, B.2, B.3 ...** så Lars nemt kan referere til dem.
 
 For hvert kvarter:
 - Navn og karakter (bohemisk, historisk, lokal hverdagsliv, trendy, ...)
@@ -54,19 +58,21 @@ Familien elsker at snuse rundt i kvarterer — de har brug for at vide præcis h
 
 ### C — Shopping til teenagerne
 
-Find gågader og shoppinggader relevante for 13-18-årige. Tænk Strøget i København — ikke Gucci, aldrig malls.
+Nummerér hvert shopping-område **C.1, C.2, C.3 ...** så Lars nemt kan referere til dem.
 
-For hvert shopping-område:
+For hvert område:
 - Hvilke specifikke gader/område
 - Type butikker (kæder, streetwear, vintage, lokale)
 - Om det er populært blandt unge lokale
 
+Shopping malls er **aldrig** et godt forslag.
+
 ### Afslut Fase 1 med valg
 
-Præsentér de tre kategorier og spørg:
-- Hvilke seværdigheder vil I prioritere?
-- Hvilke kvarterer vil I bruge tid i?
-- Skal shopping med — og hvor meget må det fylde?
+Præsentér de tre kategorier med numre og spørg:
+- Hvilke seværdigheder vil I have med? (fx "A.1 og A.3")
+- Hvilke kvarterer? (fx "B.2")
+- Shopping: hvilke områder og hvor meget tid? (fx "C.1, 30 min")
 
 **Vent på svar. Byg ikke ruten endnu.**
 
