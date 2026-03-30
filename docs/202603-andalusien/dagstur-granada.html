@@ -120,110 +120,102 @@ const C_KV    = '#7c3aed';   // kvarter (lilla)
 const C_MAD   = '#dc2626';   // mad (rød)
 const C_KAFFE = '#b45309';   // kaffestop (brun)
 
-// ── STOP A.1 — Albaicín ──────────────────────────────────────────────────────
-L.marker([37.1818, -3.5922], { icon: stopIcon('A1', C_SEV) })
+// ── STOP 1 — Catedral + Capilla Real ────────────────────────────────────────
+L.marker([37.1762, -3.5990], { icon: stopIcon('1', C_SEV) })
   .addTo(map)
   .bindPopup(`
-    <div class="popup-badge" style="background:${C_SEV}">Seværdighed</div>
-    <div class="popup-title">A.1 · Albaicín + Mirador San Nicolás</div>
+    <div class="popup-badge" style="background:${C_SEV}">Stop 1 · Seværdighed</div>
+    <div class="popup-title">Catedral + Capilla Real</div>
+    <div class="popup-time">⏰ 09:30 — lukker 13:30!</div>
+    <div class="popup-body">
+      Granadas renæssancekatedral + Ferdinand og Isabellas gravsted.
+      Kronjuveler og Isabellas private kunstsamling i Capilla Real.
+    </div>
+    <div class="popup-tip"><b>OBS Semana Santa:</b> Lukker kl. 13:30. Første stop!</div>
+  `);
+
+// ── STOP 2 — Albaicín + Mirador San Nicolás ─────────────────────────────────
+L.marker([37.1818, -3.5922], { icon: stopIcon('2', C_SEV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_SEV}">Stop 2 · Seværdighed</div>
+    <div class="popup-title">Albaicín + Mirador San Nicolás</div>
     <div class="popup-time">⏰ 10:30 — ca. 60 min</div>
     <div class="popup-body">
-      Mørisk kvarter med smalle kalkede gader der snor sig op ad bakken. Gå mod
-      <b>Mirador San Nicolás</b> øverst — den bedste udsigt over Alhambra med Sierra Nevada bag.
-      Tidligt på dagen er det stille og lokalt.
+      Mørisk kvarter med smalle kalkede gader op ad bakken. Gå mod
+      <b>Mirador San Nicolás</b> øverst — bedste udsigt over Alhambra med Sierra Nevada bag.
     </div>
-    <div class="popup-tip"><b>Tip:</b> Sæt bilen på Parking San Agustín og gå derfra.</div>
+    <div class="popup-tip"><b>Tip:</b> Tidligt på dagen er det stille og lokalt.</div>
   `);
 
-// ── STOP A.2 — Catedral + Capilla Real ──────────────────────────────────────
-L.marker([37.1762, -3.5990], { icon: stopIcon('A2', C_SEV) })
+// ── STOP 3 — El Bañuelo ──────────────────────────────────────────────────────
+L.marker([37.1792, -3.5908], { icon: stopIcon('3', C_SEV) })
   .addTo(map)
   .bindPopup(`
-    <div class="popup-badge" style="background:${C_SEV}">Seværdighed</div>
-    <div class="popup-title">A.2 · Catedral + Capilla Real</div>
-    <div class="popup-time">⏰ 09:00–13:30 (lukker tidligst!)</div>
-    <div class="popup-body">
-      Granadas spektakulære renæssancekatedral er fantastisk stor indefra.
-      <b>Capilla Real</b> ved siden af er gravsted for Ferdinand og Isabella — de originale kister,
-      kronjuveler og Isabella's private kunstsamling. Stærk historisk oplevelse.
-    </div>
-    <div class="popup-tip"><b>OBS Semana Santa:</b> Lukker kl. 13:30. Besøg inden frokost!</div>
-  `);
-
-// ── STOP A.3 — Bañuelo ──────────────────────────────────────────────────────
-L.marker([37.1792, -3.5908], { icon: stopIcon('A3', C_SEV) })
-  .addTo(map)
-  .bindPopup(`
-    <div class="popup-badge" style="background:${C_SEV}">Seværdighed</div>
-    <div class="popup-title">A.3 · El Bañuelo (arabisk bad)</div>
+    <div class="popup-badge" style="background:${C_SEV}">Stop 3 · Seværdighed</div>
+    <div class="popup-title">El Bañuelo (arabisk bad)</div>
     <div class="popup-time">⏰ 11:30 — ca. 30 min</div>
     <div class="popup-body">
-      Granadas bedst bevarede møriske bad fra 1000-tallet — de originale
-      stjerneformede lyshuller i hvælvingerne er intakte. Lille, roligt og
-      utroligt velbevaret. Ligger ved Carrera del Darro.
+      Granadas bedst bevarede møriske bad fra 1000-tallet. Stjerneformede
+      lyshuller i hvælvingerne intakte. Lille, roligt, aldrig fyldt.
     </div>
-    <div class="popup-tip"><b>Tip:</b> Gratis indgang. Aldrig fyldt med turister.</div>
+    <div class="popup-tip"><b>Tip:</b> Gratis indgang. Ligger ved Carrera del Darro.</div>
   `);
 
-// ── STOP A.4 — Sacromonte ────────────────────────────────────────────────────
-L.marker([37.1830, -3.5848], { icon: stopIcon('A4', C_SEV) })
+// ── STOP 4 — Frokost: Calle Navas ───────────────────────────────────────────
+L.marker([37.1760, -3.5993], { icon: stopIcon('4', C_MAD) })
   .addTo(map)
   .bindPopup(`
-    <div class="popup-badge" style="background:${C_SEV}">Seværdighed</div>
-    <div class="popup-title">A.4 · Sacromonte</div>
-    <div class="popup-time">⏰ 15:00 — ca. 45 min gåtur</div>
-    <div class="popup-body">
-      Gitano-kvarteret med boliger hugget ind i klippesiden. Gå op ad
-      <b>Camino del Sacromonte</b> for udsigt og stemning. Levende flamenco-tradition
-      og huleboliger der stadig er beboede.
-    </div>
-    <div class="popup-tip"><b>Tip:</b> Gå op ad vejen — du behøver ikke betale for museum.</div>
-  `);
-
-// ── STOP B.1 — Carrera del Darro + Calderería Nueva ─────────────────────────
-L.marker([37.1785, -3.5950], { icon: stopIcon('B1', C_KV) })
-  .addTo(map)
-  .bindPopup(`
-    <div class="popup-badge" style="background:${C_KV}">Kvarter</div>
-    <div class="popup-title">B.1 · Carrera del Darro + Calderería Nueva</div>
-    <div class="popup-time">⏰ 16:00 — slentr rundt</div>
-    <div class="popup-body">
-      <b>Carrera del Darro</b> er den smukkeste gade i Granada — langs floden med
-      Alhambra ovenfor. <b>Calderería Nueva</b> er den "marokkanske gade" med
-      tebutikker, krydderier og håndværk. Unik stemning midt i byen.
-    </div>
-    <div class="popup-tip"><b>Shopping:</b> Calderería Nueva har masser af souvenirs og te til pigerne.</div>
-  `);
-
-// ── FROKOST — Calle Navas ────────────────────────────────────────────────────
-L.marker([37.1760, -3.5993], { icon: stopIcon('🍽', C_MAD) })
-  .addTo(map)
-  .bindPopup(`
-    <div class="popup-badge" style="background:${C_MAD}">Frokost</div>
-    <div class="popup-title">Frokost · Calle Navas</div>
+    <div class="popup-badge" style="background:${C_MAD}">Stop 4 · Frokost</div>
+    <div class="popup-title">Calle Navas</div>
     <div class="popup-time">⏰ ca. 14:00</div>
     <div class="popup-body">
-      Granadas tapas-gade nummer ét. To gode muligheder:<br><br>
-      <b>Bodegas Castañeda</b> — klassisk bodega fra 1800-tallet, lokalt favoritsted,
-      billige tapas og riojavine fra egetønder.<br><br>
-      <b>Bar Los Diamantes</b> — stod i kø for friteret fisk og skaldyr. Stående
-      bardisk, aldrig turistmenu.
+      <b>Bodegas Castañeda</b> — bodega fra 1800-tallet, riojavine fra egetønder.<br><br>
+      <b>Bar Los Diamantes</b> — friteret fisk + skaldyr, stående bardisk.
     </div>
-    <div class="popup-tip"><b>Granada-regel:</b> Gratis tapa med hver drink. Bestil vino tinto eller cerveza.</div>
+    <div class="popup-tip"><b>Granada-regel:</b> Gratis tapa med hver drink.</div>
   `);
 
-// ── TAPAS/KAFFE — Placeta San Miguel Bajo ────────────────────────────────────
-L.marker([37.1810, -3.5935], { icon: stopIcon('☕', C_KAFFE) })
+// ── STOP 5 — Sacromonte ──────────────────────────────────────────────────────
+L.marker([37.1830, -3.5848], { icon: stopIcon('5', C_SEV) })
   .addTo(map)
   .bindPopup(`
-    <div class="popup-badge" style="background:${C_KAFFE}">Kaffestop</div>
+    <div class="popup-badge" style="background:${C_SEV}">Stop 5 · Seværdighed</div>
+    <div class="popup-title">Sacromonte</div>
+    <div class="popup-time">⏰ 15:00 — ca. 45 min</div>
+    <div class="popup-body">
+      Gitano-kvarter med huleboliger hugget ind i klippesiden.
+      Gå op ad <b>Camino del Sacromonte</b> for udsigt og stemning.
+    </div>
+    <div class="popup-tip"><b>Tip:</b> Gå op ad vejen — intet behov for at betale museum.</div>
+  `);
+
+// ── STOP 6 — Carrera del Darro + Calderería Nueva ───────────────────────────
+L.marker([37.1785, -3.5950], { icon: stopIcon('6', C_KV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_KV}">Stop 6 · Kvarter</div>
+    <div class="popup-title">Carrera del Darro + Calderería Nueva</div>
+    <div class="popup-time">⏰ 16:00 — slentretempo</div>
+    <div class="popup-body">
+      <b>Carrera del Darro</b> langs floden med Alhambra ovenover.<br>
+      <b>Calderería Nueva</b> — te, krydderier, håndværk, souvenirs.
+    </div>
+    <div class="popup-tip"><b>Shopping:</b> Calderería Nueva er god for teenagerne.</div>
+  `);
+
+// ── STOP 7 — Kaffestop: Placeta San Miguel Bajo ──────────────────────────────
+L.marker([37.1810, -3.5935], { icon: stopIcon('7', C_KAFFE) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_KAFFE}">Stop 7 · Kaffestop</div>
     <div class="popup-title">Placeta San Miguel Bajo</div>
     <div class="popup-time">⏰ ca. 16:30</div>
     <div class="popup-body">
-      Lille ægte lokal plads i Albaicín — terrasser, kaffe og en øl i solen.
-      Ingen turistmenuer, ingen engelske skilte. Lokale kommer her.
+      Lokal plads i Albaicín — terrasser, kaffe og en øl i solen.
+      Ingen turistmenuer. Lokale kommer her.
     </div>
-    <div class="popup-tip"><b>Tip:</b> Sæt jer udenfor og nyd udsigten over tage og tårne.</div>
+    <div class="popup-tip"><b>Tip:</b> Udsigt over tage og tårne fra terrassen.</div>
   `);
 
 // ── PARKERING ────────────────────────────────────────────────────────────────
@@ -245,8 +237,7 @@ L.marker([37.1770, -3.6010], {
   `);
 
 // ── RUTE-POLYLINE ─────────────────────────────────────────────────────────────
-// Logisk rækkefølge: Parkering → A2 (Capilla Real, tidligst!) → A1 (Albaicín) →
-// A3 (Bañuelo) → Frokost → A4 (Sacromonte) → B1 (Calderería/Darro) → Kaffestop
+// Parkering → 1 Catedral → 2 Albaicín → 3 Bañuelo → 4 Frokost → 5 Sacromonte → 6 Darro → 7 Kaffestop
 const route = [
   [37.1770, -3.6010],   // Parkering
   [37.1762, -3.5990],   // A2 Catedral
