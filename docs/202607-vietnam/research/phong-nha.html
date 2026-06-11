@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phong Nha – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 860px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 580px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .card-body strong { color: var(--color-text); }
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p, .verdict li { font-size: 15px; color: #374151; line-height: 1.7; }
+    .verdict ul { margin: 8px 0 0 18px; }
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr.highlight td { font-weight: 600; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🦇 Phong Nha</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Phong Nha-Ke Bang</h1>
+  <p class="hero-sub">UNESCO-nationalpark med verdens største grottesystemer. Karstbjerge, jungle og en afslappet flodby — langt mindre turistudviklet end Sapa eller Ha Long. Passer geografisk perfekt mellem Ninh Binh og Hue.</p>
+</section>
+
+<!-- HVORFOR -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Hvorfor</p>
+    <h2 class="section-title">Hvorfor Phong Nha?</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🌏</div><div class="card-title">Verdensklasse, få turister</div><p class="card-body">UNESCO-naturarv med de største grotter i verden — heriblandt Son Doong. Stadig en rolig flodby, ikke en turistmaskine.</p></div>
+      <div class="card"><div class="card-icon">🧗</div><div class="card-title">Teen-magnet</div><p class="card-body">Dark Cave (zipline + mudderbad) er stort set designet til teenagere. Sandsynligvis Arthur, Roberta og Hugos højdepunkt på hele turen.</p></div>
+      <div class="card"><div class="card-icon">❄️</div><div class="card-title">Juli-bonus</div><p class="card-body">Grotterne holder konstant 20-22°C — perfekt flugt fra 35-37°C udenfor. Juli er tørsæson (grotterne oversvømmes først sep-nov).</p></div>
+      <div class="card"><div class="card-icon">🚆</div><div class="card-title">Logistik går op</div><p class="card-body">Pu Luong-byttet frigør netop rejsedagen Phong Nha kræver. Ruten når Central Vietnam over land — så flyet Hanoi→Da Nang bortfalder.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Highlights</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">1. Dark Cave (Hang Toi) — must-do for teenagerne</p>
+      <div class="activity-body">
+        <p>Zipline ind til grotteåbningen → svøm/kajak ind ad Chay-floden → udforskning med pandelamper → <strong>mudderbad</strong> inde i grotten (man flyder i mudderet) → svøm tilbage + vandaktiviteter ved floden.</p>
+        <ul>
+          <li><strong>Krav:</strong> over 1,3-1,4 m og svømmefærdighed (redningsveste udleveres). Fint for alle 6 (yngste 14 år)</li>
+          <li><strong>Varighed:</strong> 3-4 timer inkl. omklædning</li>
+          <li><strong>Pris:</strong> ca. 270.000 VND / 75 DKK — ofte i kombi-tur med Paradise Cave</li>
+        </ul>
+        <p><a href="https://junglebosstours.com/explorer/tourism-blog/dark-cave-phong-nha" target="_blank">Jungle Boss — Dark Cave guide ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">2. Paradise Cave (Thien Duong) — Asiens længste tørgrotte</p>
+      <div class="activity-body">
+        <p>31 km lang (man går de første ~1 km på træplatforme). Katedral-agtige drypstenshaller, kæmpe kamre. Let gang, men trappe op til indgangen.</p>
+        <ul>
+          <li><strong>Entré:</strong> ca. 250.000 VND / 70 DKK · <strong>Varighed:</strong> 2-3 timer</li>
+          <li><strong>Kom kl. 8</strong> — vietnamesiske busgrupper fylder den midt på dagen (det eneste "turistede" øjeblik i Phong Nha)</li>
+        </ul>
+        <p><strong>Tip:</strong> Kombinér Dark Cave (formiddag) + Paradise Cave (eftermiddag) på samme dag.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">3. Phong Nha Cave — bådtur ad den underjordiske flod</p>
+      <div class="activity-body">
+        <p>Sejles ind i grotten med træbåd ad Son-floden. Den klassiske, rolige grotteoplevelse — drypsten spejlet i vandet.</p>
+        <p><strong>Båd:</strong> ca. 550.000 VND / 150 DKK pr. båd (op til ~12 personer — del med gruppen) · <strong>Varighed:</strong> 1-1,5 time</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">4. Bong Lai-dalen + The Duck Stop — landlig eftermiddag</p>
+      <div class="activity-body">
+        <p>Rolig dal til cykel eller scooter. Stop ved "The Duck Stop" (Mr. Quack tager jer ind til ænderne, fodring, en and går på din arm — inkl. drikkevare og banh xeo-pandekager, ~30 DKK/person) og "The Pub With Cold Beer". 12 km loop, perfekt halvdagstur i afslappet tempo — ren kontrast til grotterne.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERNATNING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">6 personer</p>
+    <h2 class="section-title">Overnatning</h2>
+    <div class="activity">
+      <p class="activity-title">1. Phong Nha Farmstay (klassikeren)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Landlig guesthouse på kanten af Bong Lai-dalen, ~8 km fra byen.</p>
+        <p>Den oprindelige overnatning i Phong Nha. Pool, udsigt over rismarker, familieværelse muligt. Rolig base hvis I vil væk fra byen.</p>
+        <p><a href="https://phongnhafarmstay.com/" target="_blank">phongnhafarmstay.com ↗</a></p>
+      </div>
+    </div>
+    <div class="activity">
+      <p class="activity-title">2. Hoteller/homestays i Phong Nha by</p>
+      <div class="activity-body">
+        <p>Overraskende stort udvalg i selve byen — hoteller, homestays, hostels langs floden. Praktisk hvis I vil være tæt på restauranter og tur-afgange. Søg familieværelser på Booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Logistik</p>
+    <h2 class="section-title">Transport</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Strækning</th><th>Tid</th><th>Løsning</th></tr></thead>
+        <tbody>
+          <tr><td>Ninh Binh → Phong Nha</td><td>~6-7 t</td><td><strong>Nattog</strong> Ninh Binh → Dong Hoi (soft-sleeper, ~10 t, 700-800.000 VND/2. kl.) + 45 min taxa Dong Hoi → Phong Nha. Alternativt privat bil (~6 t) eller dagbus</td></tr>
+          <tr><td>Phong Nha → Hue</td><td>~3,5-4 t</td><td>Privat bil — kan inkludere DMZ-stop (Vinh Moc-tunnellerne, Ben Hai-floden, den 17. breddegrad)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:15px; line-height:1.7"><strong>Note:</strong> Dong Hoi er gateway-byen, 45 km fra Phong Nha. Nattoget sparer en hotelnat og en rejsedag på én gang.</p>
+  </div>
+</section>
+
+<!-- VEJR -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Tørsæson</p>
+    <h2 class="section-title">Juli-vejr</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">☀️</div><div class="card-title">Udenfor</div><p class="card-body">Varmt, op til 35-37°C, høj sol. Pak let tøj, solcreme, masser af vand.</p></div>
+      <div class="card"><div class="card-icon">❄️</div><div class="card-title">I grotterne</div><p class="card-body">Konstant 20-22°C — herligt køligt.</p></div>
+      <div class="card"><div class="card-icon">📅</div><div class="card-title">Sæson</div><p class="card-body">Juli er tørsæson — den gode tid. Grotterne lukker først ved oversvømmelser sep-nov.</p></div>
+      <div class="card"><div class="card-icon">🎒</div><div class="card-title">Pak</div><p class="card-body">Badetøj (Dark Cave), sandaler der kan blive våde, tørt skift, vandtæt telefonpose.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORSLAG -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Mellem Ninh Binh og Hue</p>
+    <h2 class="section-title">Forslag: 2 dage i Phong Nha</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Plan</th></tr></thead>
+        <tbody>
+          <tr><td>Ankomst</td><td>Nattog/bil fra Ninh Binh, ankomst formiddag. Check ind. Eftermiddag: Bong Lai-dalen på cykel + The Duck Stop</td></tr>
+          <tr class="highlight"><td>Fuld dag</td><td>Dark Cave (formiddag — zipline + mudderbad) + Paradise Cave (eftermiddag). Aften ved floden</td></tr>
+          <tr><td>Afrejse</td><td>Evt. Phong Nha Cave bådtur om morgenen → privat bil til Hue (~4 t, evt. DMZ-stop)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--color-secondary); line-height:1.7">Kilder: <a href="https://junglebosstours.com/explorer/tourism-blog/dark-cave-phong-nha" target="_blank">Jungle Boss — Dark Cave</a> · <a href="https://vietnam.travel/things-to-do/complete-guide-phong-nha" target="_blank">Vietnam Tourism</a> · <a href="https://phongnhafarmstay.com/to-phong-nha/" target="_blank">Phong Nha Farmstay — getting there</a> · <a href="https://www.hostelworld.com/blog/solo-travel/vietnam/phong-nha/2-days-in-phong-nha/" target="_blank">Hostelworld — 2 days in Phong Nha</a> · <a href="https://culturephamtravel.com/car-rentals/phong-nha-to-hue/" target="_blank">Culture Pham — Phong Nha to Hue</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

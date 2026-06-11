@@ -16,6 +16,7 @@ Booking: Travelis #4497407. Qatar Airways. **OBS: Bookingen dækker 5 personer �
 ## Research
 
 - [🗺️ Interaktivt kort](kort.html) - alle steder på ét kort
+- [⭐ Revideret plan (med Pu Luong + Phong Nha)](rejseplan-ny.md) - anbefalet rute, dag-for-dag + sammenligning med Plan A
 - [Udkast til rejseplan](rejseplan-draft.md) - to ruteforslag (nord+central vs. nord→syd) med vurdering
 - [Vejr og rejsetips for juli/august](vejr-og-rejsetips.md) - vejr efter region, praktiske tips
 - [Rejsebureauer - sammenligning](rejsebureauer-sammenligning.md) - Nyhavn, Viktors Farmor, Kipling, Stjernegaard vs. vores plan
@@ -25,6 +26,7 @@ Booking: Travelis #4497407. Qatar Airways. **OBS: Bookingen dækker 5 personer �
 - [Strande i Central Vietnam](research/strande-central-vietnam.md)
 - [Sapa - restauranter og aktiviteter](research/sapa-restauranter-aktiviteter.md) - spisesteder, trekking, landsbyer, pakkeliste til regnsæson
 - [Pu Luong - alternativ til Sapa](research/pu-luong.md) - lodges, trekruter, Mai Chau-vurdering, 3-dages forslag
+- [Phong Nha - verdens største grotter](research/phong-nha.md) - Dark Cave, Paradise Cave, Bong Lai-dalen, 2-dages forslag
 
 ## Praktisk info
 
