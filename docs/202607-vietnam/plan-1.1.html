@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revideret plan med Phong Nha – Vietnam 2026</title>
+  <title>Plan v1.1 · Nord og mellem Vietnam incl Pu Luong og Phong Nha</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -59,6 +59,15 @@
     a { color: var(--color-accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .info-banner { background: #fffaf0; border: 1px solid #f0d9b0; border-radius: var(--radius); padding: 18px 22px; font-size: 14px; line-height: 1.6; margin-bottom: 28px; }
+    .version-bar { background: var(--color-section); border-bottom: 1px solid var(--color-divider); padding: 16px 22px; }
+    .version-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+    .vtag { font-weight: 700; padding: 3px 12px; border-radius: 980px; font-size: 13px; }
+    .vtag-num { background: #0071e3; color: white; }
+    .vtag-master { background: #2e9e5b; color: white; }
+    .vtag-archived { background: #c7c7cc; color: #1d1d1f; }
+    .version-bar .vdate { color: var(--color-secondary); }
+    .version-bar .vall { margin-left: auto; color: var(--color-accent); text-decoration: none; }
+    .version-bar .vall:hover { text-decoration: underline; }
     footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
     footer p { font-size: 13px; color: var(--color-secondary); }
     @media (max-width: 640px) { .day-item { grid-template-columns: 36px 1fr; } .day-date, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
@@ -68,16 +77,26 @@
 
 <nav>
   <div class="nav-inner">
-    <span class="nav-title">🗺️ Revideret plan</span>
-    <a href="overview.html" class="nav-back">← Vietnam</a>
+    <span class="nav-title">🗺️ Plan v1.1</span>
+    <a href="planer.html" class="nav-back">← Alle planer</a>
   </div>
 </nav>
 
 <section class="hero">
-  <p class="hero-eyebrow">Forslag · Vietnam 2026</p>
-  <h1>Revideret plan med Phong Nha</h1>
-  <p class="hero-sub">Bygger videre på Plan A med fire ændringer: Sapa → Pu Luong, tilføjer Phong Nha (2 nætter), −1 dag i Hanoi og −1 dag i Da Nang. Stadig 26 nætter — og ét indenrigsfly mindre.</p>
+  <p class="hero-eyebrow">Plan · Vietnam 2026</p>
+  <h1>Nord og mellem Vietnam<br>incl Pu Luong og Phong Nha</h1>
+  <p class="hero-sub">Bygger videre på Plan v1.0 med fire ændringer: Sapa → Pu Luong, tilføjer Phong Nha (2 nætter), −1 dag i Hanoi og −1 dag i Da Nang. Stadig 26 nætter — og ét indenrigsfly mindre.</p>
 </section>
+
+<div class="version-bar">
+  <div class="version-bar-inner">
+    <span class="vtag vtag-num">v1.1</span>
+    <span><strong>Nord og mellem Vietnam</strong> — incl Pu Luong og Phong Nha</span>
+    <span class="vdate">Lavet 11. jun 2026</span>
+    <span class="vtag vtag-master">★ MASTER</span>
+    <a href="planer.html" class="vall">Alle versioner →</a>
+  </div>
+</div>
 
 <!-- RUTE -->
 <section class="section">
@@ -195,7 +214,7 @@
 
 <footer>
   <p>Vietnam · Familieferie · Juli 2026</p>
-  <p style="margin-top:6px">Se også: <a href="research/pu-luong.html">Pu Luong</a> · <a href="research/phong-nha.html">Phong Nha</a> · <a href="rejseplan-draft.html">Oprindelig Plan A/B</a> · <a href="overview.html">Vietnam oversigt</a></p>
+  <p style="margin-top:6px">Se også: <a href="research/pu-luong.html">Pu Luong</a> · <a href="research/phong-nha.html">Phong Nha</a> · <a href="planer.html">Alle planer</a> · <a href="overview.html">Vietnam oversigt</a></p>
 </footer>
 
 </body>

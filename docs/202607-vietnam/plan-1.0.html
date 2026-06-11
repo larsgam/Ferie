@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan v1.0 · Nord og mellem Vietnam</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 900px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+    .version-bar { background: var(--color-section); border-bottom: 1px solid var(--color-divider); padding: 16px 22px; }
+    .version-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+    .vtag { font-weight: 700; padding: 3px 12px; border-radius: 980px; font-size: 13px; }
+    .vtag-num { background: #0071e3; color: white; }
+    .vtag-master { background: #2e9e5b; color: white; }
+    .vtag-archived { background: #c7c7cc; color: #1d1d1f; }
+    .version-bar .vdate { color: var(--color-secondary); }
+    .version-bar .vall { margin-left: auto; color: var(--color-accent); text-decoration: none; }
+    .version-bar .vall:hover { text-decoration: underline; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 24px; }
+    .route-pill { background: var(--color-section); border: 1px solid var(--color-divider); border-radius: var(--radius); padding: 18px 22px; font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+    .route-pill strong { color: var(--color-accent); }
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .day-list { display: flex; flex-direction: column; gap: 2px; }
+    .day-item { display: grid; grid-template-columns: 48px 92px 110px 1fr; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; }
+    .day-item:hover { background: rgba(0,0,0,0.03); }
+    .day-item.travel { background: #f0f6ff; }
+    .day-num { font-size: 20px; font-weight: 700; color: var(--color-secondary); }
+    .day-date { font-size: 13px; color: var(--color-secondary); }
+    .day-place { font-size: 13px; font-weight: 600; }
+    .day-desc { font-size: 14px; line-height: 1.4; }
+    .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pros, .cons { border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--color-divider); }
+    .pros { background: #f0faf2; border-color: #bfe6c8; }
+    .cons { background: #fdf6ec; border-color: #f0d9b0; }
+    .pros h4, .cons h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .pros ul, .cons ul { margin-left: 18px; }
+    .pros li, .cons li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    @media (max-width: 640px) { .day-item { grid-template-columns: 36px 1fr; } .day-date, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗺️ Plan v1.0</span>
+    <a href="planer.html" class="nav-back">← Alle planer</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Plan · Vietnam 2026</p>
+  <h1>Nord og mellem Vietnam</h1>
+  <p class="hero-sub">Den oprindelige plan (Plan A). Fokus på Nord- og Centralvietnam — dropper syden for at undgå monsunregn. Senere afløst af v1.1, som bytter Sapa ud med Pu Luong og tilføjer Phong Nha.</p>
+</section>
+
+<div class="version-bar">
+  <div class="version-bar-inner">
+    <span class="vtag vtag-num">v1.0</span>
+    <span><strong>Nord og mellem Vietnam</strong></span>
+    <span class="vdate">Lavet 15. feb 2026</span>
+    <span class="vtag vtag-archived">Arkiveret</span>
+    <a href="planer.html" class="vall">Alle versioner →</a>
+  </div>
+</div>
+
+<!-- RUTE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Rute-overblik</p>
+    <h2 class="section-title">26 nætter, nord + central</h2>
+    <div class="route-pill">
+      Hanoi 4 → Ha Long 2 → <strong>Sapa 3</strong> → Ninh Binh 2 → Hoi An 5 → Hue 2 → Da Nang 3
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Sted</th><th>Dage</th><th>Highlights</th><th>Vejr</th></tr></thead>
+        <tbody>
+          <tr><td>Hanoi</td><td>4</td><td>Old Quarter, streetfood, Train Street, mausoleet, vespa-tour</td><td>Varmt, fugtigt</td></tr>
+          <tr><td>Ha Long / Lan Ha Bay</td><td>2</td><td>Cruise, kajak, badning, grottetur</td><td>Risiko for aflysning (tyfon)</td></tr>
+          <tr><td>Sapa</td><td>3</td><td>Trekking, risterrasser, minoritetslandsbyer</td><td>Spektakulært grønt, men vådt</td></tr>
+          <tr><td>Ninh Binh</td><td>2</td><td>Tam Coc, cykling mellem kalkstensbjerge</td><td>Varmt, fugtigt</td></tr>
+          <tr><td>Hoi An</td><td>5</td><td>Gamlebyen, skrædder, An Bang Beach, Cham Islands, madlavning</td><td>Bedste vejr</td></tr>
+          <tr><td>Hue</td><td>2</td><td>Kejserbyen, kongegrave, parfumefloden</td><td>Godt vejr</td></tr>
+          <tr><td>Da Nang</td><td>3</td><td>My Khe Beach, Marble Mountains, Ba Na Hills, Son Tra</td><td>Bedste vejr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DAG FOR DAG -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">28 dage</p>
+    <h2 class="section-title">Dag for dag</h2>
+    <div class="day-list">
+      <div class="day-item travel"><span class="day-num">1</span><span class="day-date">Man 6. jul</span><span class="day-place">✈️</span><span class="day-desc">Afrejse CPH 16:00 → DOH 23:00</span></div>
+      <div class="day-item travel"><span class="day-num">2</span><span class="day-date">Tir 7. jul</span><span class="day-place">Hanoi</span><span class="day-desc">DOH 02:45 → HAN 13:55. Ankomst Hanoi, check ind</span></div>
+      <div class="day-item"><span class="day-num">3</span><span class="day-date">Ons 8. jul</span><span class="day-place">Hanoi</span><span class="day-desc">Old Quarter, streetfood tour</span></div>
+      <div class="day-item"><span class="day-num">4</span><span class="day-date">Tor 9. jul</span><span class="day-place">Hanoi</span><span class="day-desc">Ho Chi Minh-mausoleet, Train Street</span></div>
+      <div class="day-item"><span class="day-num">5</span><span class="day-date">Fre 10. jul</span><span class="day-place">Hanoi</span><span class="day-desc">Vespa-tour / cykeltur</span></div>
+      <div class="day-item travel"><span class="day-num">6</span><span class="day-date">Lør 11. jul</span><span class="day-place">Ha Long</span><span class="day-desc">Afrejse til cruise, kajak, grottetur</span></div>
+      <div class="day-item travel"><span class="day-num">7</span><span class="day-date">Søn 12. jul</span><span class="day-place">Ha Long</span><span class="day-desc">Cruise dag 2, badning. Retur Hanoi</span></div>
+      <div class="day-item travel"><span class="day-num">8</span><span class="day-date">Man 13. jul</span><span class="day-place">→ Sapa</span><span class="day-desc">Transport til Sapa (nattog eller bus)</span></div>
+      <div class="day-item"><span class="day-num">9</span><span class="day-date">Tir 14. jul</span><span class="day-place">Sapa</span><span class="day-desc">Trekking, risterrasser</span></div>
+      <div class="day-item"><span class="day-num">10</span><span class="day-date">Ons 15. jul</span><span class="day-place">Sapa</span><span class="day-desc">Minoritetslandsbyer, vandreture</span></div>
+      <div class="day-item travel"><span class="day-num">11</span><span class="day-date">Tor 16. jul</span><span class="day-place">→ Ninh Binh</span><span class="day-desc">Transport til Ninh Binh</span></div>
+      <div class="day-item"><span class="day-num">12</span><span class="day-date">Fre 17. jul</span><span class="day-place">Ninh Binh</span><span class="day-desc">Bådtur Tam Coc, cykling mellem kalkstensbjerge</span></div>
+      <div class="day-item"><span class="day-num">13</span><span class="day-date">Lør 18. jul</span><span class="day-place">Ninh Binh</span><span class="day-desc">Trang An, Bai Dinh-pagoden</span></div>
+      <div class="day-item travel"><span class="day-num">14</span><span class="day-date">Søn 19. jul</span><span class="day-place">✈️ → Hoi An</span><span class="day-desc">Fly Hanoi → Da Nang, transfer til Hoi An</span></div>
+      <div class="day-item"><span class="day-num">15</span><span class="day-date">Man 20. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Gamlebyen (UNESCO), lanterner</span></div>
+      <div class="day-item"><span class="day-num">16</span><span class="day-date">Tir 21. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Skræddersyet tøj, shopping</span></div>
+      <div class="day-item"><span class="day-num">17</span><span class="day-date">Ons 22. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Madlavningskursus</span></div>
+      <div class="day-item"><span class="day-num">18</span><span class="day-date">Tor 23. jul</span><span class="day-place">Hoi An</span><span class="day-desc">An Bang Beach, cykling i rismarker</span></div>
+      <div class="day-item"><span class="day-num">19</span><span class="day-date">Fre 24. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Cham Islands dagstur — snorkling, strand</span></div>
+      <div class="day-item travel"><span class="day-num">20</span><span class="day-date">Lør 25. jul</span><span class="day-place">→ Hue</span><span class="day-desc">Transport til Hue via Hai Van Pass, stop ved Lang Co Beach</span></div>
+      <div class="day-item"><span class="day-num">21</span><span class="day-date">Søn 26. jul</span><span class="day-place">Hue</span><span class="day-desc">Kejserbyen, parfumefloden, kongegrave</span></div>
+      <div class="day-item travel"><span class="day-num">22</span><span class="day-date">Man 27. jul</span><span class="day-place">→ Da Nang</span><span class="day-desc">Hai Van Pass (evt. motorcykeltur med guide) → Da Nang</span></div>
+      <div class="day-item"><span class="day-num">23</span><span class="day-date">Tir 28. jul</span><span class="day-place">Da Nang</span><span class="day-desc">My Khe Beach, Marble Mountains + Non Nuoc Beach</span></div>
+      <div class="day-item"><span class="day-num">24</span><span class="day-date">Ons 29. jul</span><span class="day-place">Da Nang</span><span class="day-desc">Ba Na Hills (Golden Bridge)</span></div>
+      <div class="day-item"><span class="day-num">25</span><span class="day-date">Tor 30. jul</span><span class="day-place">Da Nang</span><span class="day-desc">Son Tra Peninsula — strand, vandaktiviteter, aber i junglen</span></div>
+      <div class="day-item travel"><span class="day-num">26</span><span class="day-date">Fre 31. jul</span><span class="day-place">✈️ → Hanoi</span><span class="day-desc">Fly Da Nang → Hanoi. Sidste aften i Hanoi</span></div>
+      <div class="day-item"><span class="day-num">27</span><span class="day-date">Lør 1. aug</span><span class="day-place">Hanoi</span><span class="day-desc">Sidste dag, shopping, streetfood</span></div>
+      <div class="day-item travel"><span class="day-num">28</span><span class="day-date">Søn 2. aug</span><span class="day-place">✈️</span><span class="day-desc">Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05</span></div>
+    </div>
+    <p style="font-size:13px; color:var(--color-secondary); margin-top:14px">⚠️ Returflyet afgår fra Hanoi (HAN) — indenrigsfly Da Nang → Hanoi nødvendigt inden hjemrejsen.</p>
+  </div>
+</section>
+
+<!-- VURDERING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Vurdering</p>
+    <h2 class="section-title">Fordele og ulemper</h2>
+    <div class="col2">
+      <div class="pros">
+        <h4>✅ Fordele</h4>
+        <ul>
+          <li>Mere tid pr. sted = mindre stress, bedre for teenagere</li>
+          <li>Ninh Binh er en perle de fleste turister springer over</li>
+          <li>5 dage i Hoi An giver tid til skrædder, strand og madlavning</li>
+          <li>Undgår den værste regn i syd (HCMC/Mekong)</li>
+          <li>Færre indenrigsfly = mindre rejsetid og CO2</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>⚖️ Ulemper</h4>
+        <ul>
+          <li>Mister HCMC (Krigsmuseet, Cu Chi-tunnelerne)</li>
+          <li>Mister Mekong-deltaet</li>
+          <li>Kræver retur til Hanoi pga. flyafgang fra HAN</li>
+          <li>Mere regn i nord end syd i juli</li>
+          <li>Sapa er efterhånden ret turistet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px">Se også: <a href="plan-1.1.html">v1.1 (master)</a> · <a href="plan-2.0.html">v2.0 (Nord og Syd)</a> · <a href="planer.html">Alle planer</a> · <a href="overview.html">Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

@@ -29,11 +29,15 @@ docs/<tripcode>/
 ├── todo.md
 ├── restauranter.md
 ├── sevaerdigheder.md
-├── overview.html
+├── overview.html     (trip-hub — Apple-stil)
+├── planer.html       (versionsoversigt over rejseplaner — se afsnit "Versionsstyring")
+├── plan-1.0.html     (første plan — master ved oprettelse)
 ├── kort.html         (tom til at starte med — brug leaflet-map skill)
 ├── documents/
 └── research/
 ```
+
+> **HTML er standard.** Alle rejser er HTML-sider (ikke kun markdown). Hver rejse skal have et link fra forsiden `docs/home.html` (se trin 7).
 
 ### 3. index.md — kun bekræftet info
 ```markdown
@@ -69,12 +73,24 @@ Opret med standard-sektioner: Bookning, Praktisk, Research, Inden afrejse.
 Tomme filer med overskrift og placeholder-tabel.
 
 ### 6. overview.html
-Apple-stil HTML med nav, hero, link-cards til alle faste sider. Se `references/apple-html.md` for CSS og struktur.
+Apple-stil HTML med nav, hero, link-cards til alle faste sider. Se `references/apple-html.md` for CSS og struktur. Skal indeholde et link-card til `planer.html` (versionsoversigt) under en "Planer"-sektion.
 
-### 7. Tilføj til forsiden
-Tilføj en ny række i `docs/index.md` rejsetabellen.
+### 7. Versionsstyring af rejseplaner
+Hver rejse har **visuel versionsstyring** af planer. Mønstret er fast (kopiér fra Vietnam: `docs/202607-vietnam/planer.html` + `plan-*.html`):
 
-### 8. Spørg om Bib Gourmand
+- **`planer.html`** — oversigtssiden, linket fra `overview.html`. Indeholder:
+  - Et **master-kort** øverst med den gældende plans navn, version, dato og rute-resumé + knap til planen
+  - Et **skema** (tabel): kolonner = Version · Navn & beskrivelse · Dato · Status · Åbn-link
+  - En forklaring af versionsnumre nederst
+- **Én HTML-side pr. plan**: `plan-<major>.<minor>.html` (fx `plan-1.0.html`, `plan-1.1.html`, `plan-2.0.html`)
+  - Hver plan-side har en **version-bar** lige under hero: versionsnummer (blå), navn, dato, status-tag (`★ Master` grøn / `Arkiveret` grå) og "Alle versioner →"-link
+- **Versionsnummerering:** hovednummer = rute-koncept (1.x = ét koncept, 2.x = et andet). Under-nummer = revision inden for samme koncept (1.0 → 1.1). **Kun én plan er master ad gangen.**
+- Ved oprettelse: lav `plan-1.0.html` som master. Når planen revideres væsentligt, lav en ny `plan-X.Y.html`, markér den som master i både `planer.html` og plan-siden, og sæt den gamle til "Arkiveret".
+
+### 8. Tilføj til forsiden (home.html)
+Forsiden er `docs/home.html` (live: https://larsgam.github.io/Ferie/home.html). Tilføj et nyt `trip-card` (kopiér mønstret fra et eksisterende kort) der linker til `<tripcode>/overview.html`, og opdatér stat-tællerne (antal rejser, dage, lande). Tilføj også en række i `docs/index.md` (MkDocs-tabellen).
+
+### 9. Spørg om Bib Gourmand
 Spørg Lars om han vil have en Bib Gourmand-søgning med det samme (brug `restaurant-research` skill).
 
 ## Reference
