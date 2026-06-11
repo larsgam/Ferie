@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ninh Binh – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-meta { font-size: 13px; color: var(--color-secondary); margin-bottom: 8px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .card-body strong { color: var(--color-text); }
+
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p, .verdict li { font-size: 15px; color: #374151; line-height: 1.7; }
+    .verdict ul { margin: 8px 0 0 18px; }
+
+    .warning-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #7f1d1d; line-height: 1.6; margin-bottom: 16px; }
+    .warning-box strong { color: #991b1b; }
+    .note-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #1e3a8a; line-height: 1.6; margin-bottom: 16px; }
+    .tip-box { background: #fef9e7; border: 1px solid #f0d060; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #5c4500; line-height: 1.6; margin-bottom: 16px; }
+    .tip-box ul { margin: 8px 0 0 18px; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+    .activity-body strong { font-weight: 600; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🛶 Ninh Binh</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Ninh Binh</h1>
+  <p class="hero-sub">Restauranter og aktiviteter — research til 2 dage i Ninh Binh (dag 12-13, 17.-18. juli 2026)</p>
+</section>
+
+<!-- PRAKTISK -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Inden I tager afsted</p>
+    <h2 class="section-title">Praktisk</h2>
+    <div class="note-box">
+      <strong>Praktisk:</strong> Ninh Binh ligger ca. 2 timer syd for Hanoi. De fleste seværdigheder ligger i Tam Coc-området eller Trang An-området, som er ca. 7 km fra hinanden. Det meste af det interessante ligger inden for en radius af 15 km.
+    </div>
+    <div class="warning-box">
+      <strong>Juli-vejr:</strong> Juli er midt i regnsæsonen. Forvent 30-35°C, høj luftfugtighed og daglige regnbyger (ofte om eftermiddagen). Landskabet er til gengæld ekstra grønt og smukt. Medtag regnponcho, vandtæt taske til elektronik og vandsko.
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANTER -->
+<section class="section" style="background:var(--color-section); ">
+  <div class="section-inner">
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+    <div class="card-grid">
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🐐</div>
+        <div class="card-title">1. Trung Tuyet Restaurant</div>
+        <p class="card-meta">Lokal vietnamesisk, specialiseret i gedekød · Ninh Binh by</p>
+        <p class="card-body">Et af de mest kendte steder for Ninh Binhs berømte gedespecialiteter. Gedekødet serveres på flere måder: grillet, kogt i hot pot, stegt med citrongræs, og som ged-spring rolls. Autentisk lokal oplevelse med enkelt indretning.<br><strong>Pris:</strong> 150.000-300.000 VND/person (~45-90 DKK)<br><a href="https://www.tripadvisor.com/Restaurant_Review-g1009804-d4944444-Reviews-Trung_Tuyet_Restaurant-Ninh_Binh_Ninh_Binh_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🍺</div>
+        <div class="card-title">2. Chookie's Beer Garden</div>
+        <p class="card-meta">International/vietnamesisk fusion · Tam Coc</p>
+        <p class="card-body">Populært blandt rejsende i Tam Coc-området. Serverer både vietnamesiske retter og vestlig mad. God stemning, udendørs siddepladser, kolde fadøl. Velegnet til familier med teenagere der måske savner et burger-alternativ.<br><strong>Pris:</strong> 80.000-200.000 VND/person (~25-60 DKK)<br><a href="https://www.tripadvisor.com/Restaurant_Review-g1009804-d12170498-Reviews-Chookie_s_Beer_Garden-Ninh_Binh_Ninh_Binh_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🌾</div>
+        <div class="card-title">3. Tam Coc Garden Restaurant</div>
+        <p class="card-meta">Vietnamesisk, tilknyttet Tam Coc Garden Resort · Tam Coc-området</p>
+        <p class="card-body">Smukt beliggende restaurant i frodige omgivelser med udsigt til risterrasser og kalkstensbjerge. Serverer traditionel vietnamesisk mad med lokale specialiteter. Fredeligt og stemningsfuldt - godt til en lidt finere middag.<br><strong>Pris:</strong> 150.000-350.000 VND/person (~45-105 DKK)<br><a href="https://tamcocgarden.com/" target="_blank">tamcocgarden.com ↗</a></p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">⛰️</div>
+        <div class="card-title">4. Hai Nui (Mountain Goat Restaurant)</div>
+        <p class="card-meta">Lokal gedespecialist · Ninh Binh by</p>
+        <p class="card-body">Endnu et fremragende sted for Ninh Binhs gedespecialiteter. Gederne er typisk opdrættet på de lokale kalkstensbjerge, hvilket giver kødet en særlig smag. Prøv "de syv retter af ged" - et komplet måltid med ged tilberedt på syv forskellige måder.<br><strong>Pris:</strong> 200.000-400.000 VND/person (~60-120 DKK)<br>Søg "Hai Nui Ninh Binh" på Google Maps</p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🍜</div>
+        <div class="card-title">5. Ngoc Anh Restaurant &amp; Homestay</div>
+        <p class="card-meta">Vietnamesisk hjemmemad · Tam Coc</p>
+        <p class="card-body">Lille familiedrevet restaurant i Tam Coc med autentisk hjemmelavet vietnamesisk mad. Kendt for venlig service og store portioner. Spring rolls, pho, fried rice og lokale retter. Perfekt til en uformel frokost efter bådturen.<br><strong>Pris:</strong> 60.000-150.000 VND/person (~20-45 DKK)<br>Søg "Ngoc Anh Tam Coc" på TripAdvisor</p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🦜</div>
+        <div class="card-title">6. Thung Nham Bird Garden Restaurant</div>
+        <p class="card-meta">Vietnamesisk, beliggende i naturpark · Thung Nham (ca. 10 km fra Tam Coc)</p>
+        <p class="card-body">Restaurant inde i Thung Nham fuglereservat. Serverer lokale retter i smukke naturomgivelser. Kan kombineres med et besøg i fugleparken. Specialiteter inkluderer ged, fisk fra lokale floder og vilde grøntsager.<br><strong>Pris:</strong> 100.000-250.000 VND/person (~30-75 DKK)<br>Søg "Thung Nham Ninh Binh" på Google Maps</p>
+      </div>
+
+      <div class="card" style="background:white">
+        <div class="card-icon">🥢</div>
+        <div class="card-title">7. Lieu's Family Restaurant</div>
+        <p class="card-meta">Hjemmelavet vietnamesisk · Tam Coc</p>
+        <p class="card-body">Meget populær familierestaurant i Tam Coc-området. Lieu og familien laver autentisk mad med friske ingredienser. Berømt for deres spring rolls, banana flower salad og stegte nudler. Lille og hyggeligt - book evt. bord i højsæsonen.<br><strong>Pris:</strong> 60.000-120.000 VND/person (~20-35 DKK)<br>Søg "Lieu's Restaurant Tam Coc" på TripAdvisor</p>
+      </div>
+
+    </div>
+
+    <div class="tip-box" style="margin-top:24px">
+      <strong>Gedespecialiteter i Ninh Binh:</strong> Gedekød (<em>thit de</em>) er DEN lokale specialitet i Ninh Binh. Gederne lever vildt eller semi-vildt på kalkstensbjergene, og kødet er magert med en karakteristisk smag. De mest populære tilberedninger:
+      <ul>
+        <li><strong>De nuong</strong> - grillet ged</li>
+        <li><strong>De tai chanh</strong> - rå ged med lime (carpaccio-agtigt)</li>
+        <li><strong>De xao lan</strong> - ged i karry</li>
+        <li><strong>De hap</strong> - dampet ged</li>
+        <li><strong>Lau de</strong> - gede-hot pot (perfekt til deling med familien)</li>
+      </ul>
+      <p style="margin-top:8px">En komplet "7-retters gede-middag" er en klassisk Ninh Binh-oplevelse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og seværdigheder</h2>
+
+    <div class="activity">
+      <p class="activity-title">1. Tam Coc bådtur ("Ha Long Bay på land")</p>
+      <div class="activity-body">
+        <p>En af Ninh Binhs mest ikoniske oplevelser. En roer (typisk med fødderne!) sejler jer i en lille sampan ad Ngo Dong-floden gennem tre naturlige grotter (<em>Tam Coc</em> = "tre grotter") omgivet af dramatiske kalkstensbjerge og oversvømmede risterrasser. Turen tager ca. 2 timer.</p>
+        <p><strong>Praktisk info:</strong></p>
+        <ul>
+          <li><strong>Pris:</strong> 150.000 VND/person for bådturen + 30.000 VND entre til området</li>
+          <li><strong>Åbningstid:</strong> 7:00-17:00 (sæsonbestemt). Start tidligt (7:00-8:00) for at undgå varme og folkemængder</li>
+          <li><strong>Varighed:</strong> Ca. 2 timer (tur/retur)</li>
+          <li>Hver båd tager max 2 passagerer + roer. En familie på 5 skal bruge 3 både</li>
+          <li>Tag solcreme, hat, vand og regnponcho med</li>
+        </ul>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li>Roerne forventer drikkepenge (50.000-100.000 VND pr. båd er rimeligt)</li>
+          <li>Nogle roere forsøger at sælge souvenirs undervejs - høfligt nej er fint</li>
+          <li>Tidlig morgen = bedst lys til fotos og færre turister</li>
+          <li>I juli er rismarkerne grønne og frodige - fantastisk til fotos</li>
+        </ul>
+        <p><a href="https://vietnam.travel/things-to-do/cruise-through-caves-tam-coc" target="_blank">vietnam.travel - Tam Coc ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">2. Trang An Scenic Landscape Complex (UNESCO)</p>
+      <div class="activity-body">
+        <p>UNESCO-verdensarvssted og en længere, mere eventyrlig bådtur end Tam Coc. Turen går gennem et netværk af grotter og laguner omgivet af kalkstensbjerge dækket af jungle. Op til 9 grotter at sejle igennem, flere er lange og mørke (spændende for teenagere!). Inkluderer stop ved templer undervejs. Her blev dele af filmen <em>Kong: Skull Island</em> (2017) optaget.</p>
+        <p><strong>Praktisk info:</strong></p>
+        <ul>
+          <li><strong>Pris:</strong> 200.000-250.000 VND/person (entre + bådtur inkluderet)</li>
+          <li><strong>Varighed:</strong> 2,5-3 timer afhængigt af rute (3 ruter at vælge imellem)</li>
+          <li><strong>Åbningstid:</strong> 7:00-16:00</li>
+          <li>Større både end Tam Coc (op til 4 passagerer + roer)</li>
+          <li>Rute 1 og 2 er mest populære. Rute 3 inkluderer Kong: Skull Island-lokationen</li>
+        </ul>
+        <p><a href="https://www.trangangninhbinh.com/" target="_blank">trangangninhbinh.com ↗</a></p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px">3. Tam Coc vs. Trang An</p>
+    <h3 style="font-size:20px; font-weight:700; margin-bottom:16px">Sammenligning</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th></th><th>Tam Coc</th><th>Trang An</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Type</strong></td><td>Åben flodtur med risterrasser</td><td>Grotte-eventyr med laguner</td></tr>
+          <tr><td><strong>UNESCO</strong></td><td>Nej (men del af Trang An-verdensarv)</td><td>Ja, UNESCO-verdensarvssted</td></tr>
+          <tr><td><strong>Grotter</strong></td><td>3 korte grotter</td><td>Op til 9 grotter, mange lange og mørke</td></tr>
+          <tr><td><strong>Landskab</strong></td><td>Risterrasser + kalkstensbjerge</td><td>Jungle-dækkede bjerge + skjulte laguner</td></tr>
+          <tr><td><strong>Varighed</strong></td><td>Ca. 2 timer</td><td>Ca. 2,5-3 timer</td></tr>
+          <tr><td><strong>Pris</strong></td><td>Ca. 180.000 VND</td><td>Ca. 200.000-250.000 VND</td></tr>
+          <tr><td><strong>Båd</strong></td><td>Max 2 passagerer</td><td>Max 4 passagerer</td></tr>
+          <tr><td><strong>Stemning</strong></td><td>Fredeligere, mere fotogent</td><td>Mere eventyrligt, mere varieret</td></tr>
+          <tr><td><strong>Film</strong></td><td>-</td><td>Kong: Skull Island</td></tr>
+          <tr><td><strong>Bedst til jer</strong></td><td>Smukkest visuelt, bedst om morgenen</td><td>Mest spændende for teenagere</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-label">Anbefaling for jeres familie</p>
+      <h3>Lav begge!</h3>
+      <p>I har 2 dage i Ninh Binh. Tam Coc om morgenen dag 1 (fotogent, fredeligere), Trang An dag 2 (mere action, grotter). Teenagerne vil elske Trang An-grotterne, mens Tam Coc giver de klassiske Vietnam-billeder med risterrasser. De to oplevelser er meget forskellige trods det umiddelbare overlap.</p>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">4. Mua Cave (Hang Mua) - udsigtspost</p>
+      <div class="activity-body">
+        <p>En af de mest populære seværdigheder i Ninh Binh. Bestig ca. 500 stentrin op til toppen af Mua-bjerget for en betagende panoramaudsigt over Tam Coc-dalen, Ngo Dong-floden og de uendelige kalkstensbjerge. Oppe på toppen er en drage-statue og en lille pavillon.</p>
+        <p><strong>Praktisk info:</strong></p>
+        <ul>
+          <li><strong>Pris:</strong> 100.000 VND/person</li>
+          <li><strong>Varighed:</strong> Ca. 1-1,5 time (inkl. op og ned + tid på toppen)</li>
+          <li><strong>500 trin</strong> - moderat krævende. I juli-varmen er det hårdt! Gå tidligt morgen eller sent eftermiddag</li>
+          <li>Tag masser af vand med</li>
+          <li>Trinene er ujævne og kan være glatte i regn - gode sko er et must</li>
+        </ul>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li>Solnedgang fra toppen er fantastisk, men også mest crowded</li>
+          <li>Kombiner med Tam Coc-bådturen (ligger lige ved siden af)</li>
+          <li>Teenagerne klarer trappen fint, men det er en svedtur for alle i juli!</li>
+        </ul>
+        <p>Søg "Hang Mua Viewpoint" på Google Maps</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">5. Bai Dinh Pagode</p>
+      <div class="activity-body">
+        <p>Det største buddhistiske tempelkompleks i Vietnam og et af de største i Sydøstasien. Imponerende anlæg med 500 Arhat-statuer langs en lang korridor, en 10 meter høj bronze-Buddha, og en gigantisk klokke. Komplekset strækker sig over et stort bjergområde med både gamle og nye templer.</p>
+        <p><strong>Praktisk info:</strong></p>
+        <ul>
+          <li><strong>Pris:</strong> 50.000 VND entre + 30.000 VND for elkøretøj (anbefales - området er enormt)</li>
+          <li><strong>Varighed:</strong> 2-3 timer</li>
+          <li>Brug elkøretøjet fra indgangen op til tempeltrapperne - det sparer 2-3 km gang i varmen</li>
+          <li>Knap 300 trin op til det øverste tempel</li>
+          <li>Passende påklædning (dæk skuldre og knæ)</li>
+        </ul>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li>Kombiner med Trang An (ligger kun 5 km derfra) - perfekt som morgenbesøg inden Trang An-bådturen</li>
+          <li>Anlægget er relativt nyt (2010'erne) og imponerer mest ved sin størrelse</li>
+        </ul>
+        <p><a href="https://vietnam.travel/things-to-do/discover-bai-dinh-pagoda" target="_blank">vietnam.travel - Bai Dinh ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">6. Cykling i Tam Coc-området</p>
+      <div class="activity-body">
+        <p>En af de bedste måder at opleve Ninh Binh-landskabet. Flade veje snor sig mellem risterrasser, kalkstensbjerge og små landsbyer. Perfekt til familiecykling - terrænet er fladt og trafikken er begrænset på de små veje.</p>
+        <p><strong>Praktisk info:</strong></p>
+        <ul>
+          <li>De fleste hoteller og guesthouses udlejer cykler for 30.000-50.000 VND/dag (~10-15 DKK)</li>
+          <li>Populære ruter: Tam Coc → Bich Dong Pagode (ca. 2 km), rundt om Thung Nham-området, langs flodbredden</li>
+          <li>Bedst tidlig morgen (6:00-9:00) eller sen eftermiddag (16:00-18:00) pga. varmen</li>
+          <li>Flade veje - ingen bjerge at cykle op ad</li>
+        </ul>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li>Bich Dong Pagode er en skjult perle - tre templer bygget ind i en klippevæg, ca. 2 km fra Tam Coc. Gratis adgang</li>
+          <li>Stop ved lokale stande og køb frisk sukkerrørsjuice</li>
+          <li>Tag badevand med og hav regnponcho klar</li>
+        </ul>
+        <p>Spørg jeres hotel om cykeludlejning og rutekort</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">7. Hoa Lu - den gamle hovedstad</p>
+      <div class="activity-body">
+        <p>Vietnams gamle hovedstad fra 968-1010 e.Kr. To restaurerede templer dedikeret til de to dynastier der regerede herfra (Dinh og Le). Mindre besøgt end de andre attraktioner, men historisk interessant og smukt beliggende i en dal omgivet af kalkstensbjerge.</p>
+        <ul>
+          <li><strong>Pris:</strong> 20.000 VND/person</li>
+          <li><strong>Varighed:</strong> Ca. 1 time</li>
+          <li>Ligger ca. 12 km fra Tam Coc</li>
+          <li>Kan kombineres med cykeltur fra Tam Coc (flad rute, ca. 30-40 min)</li>
+        </ul>
+        <p><a href="https://vietnam.travel/things-to-do/uncover-hoa-lu-ancient-capital" target="_blank">vietnam.travel - Hoa Lu ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">8. Bich Dong Pagode ("den anden smukkeste grotte i Vietnam")</p>
+      <div class="activity-body">
+        <p>Tre buddhistiske templer bygget ind i og oven på en kalkstensklippe. Langt mindre besøgt end de store attraktioner, men utroligt stemningsfuldt. Stien fører op gennem tropisk vegetation til grottetempler med udsigt over rismarkerne.</p>
+        <ul>
+          <li><strong>Pris:</strong> Gratis (donation velkommen)</li>
+          <li><strong>Varighed:</strong> 30-45 minutter</li>
+          <li>Kun 2 km fra Tam Coc bådlandingsplads - let at kombinere med cykeltur</li>
+          <li>Lidt klatring påkrævet, men overkommeligt</li>
+        </ul>
+        <p>Søg "Bich Dong Pagoda" på Google Maps</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">9. Thung Nham Bird Garden</p>
+      <div class="activity-body">
+        <p>Et naturreservat med tusindvis af fugle, især stærke i de tidlige morgentimer og ved solnedgang. Inkluderer også en grotte, bådtur ad en underjordisk flod, og frodig vegetation. Mindre turistet end de store attraktioner.</p>
+        <ul>
+          <li><strong>Pris:</strong> 100.000 VND/person</li>
+          <li><strong>Varighed:</strong> 2-3 timer</li>
+          <li>Bedst ved solopgang eller solnedgang for fugleobservation</li>
+          <li>Inkluderer en bådtur i en mørk grotte</li>
+        </ul>
+        <p>Søg "Thung Nham Bird Garden" på TripAdvisor</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">10. Van Long Nature Reserve</p>
+      <div class="activity-body">
+        <p>Et fredfyldt vådområde med bådture gennem oversvømmede landskaber. Langt færre turister end Tam Coc og Trang An. Mulighed for at se sjældne Delacour-langurer (truet abeart). Stille, meditativt og naturskønt.</p>
+        <ul>
+          <li><strong>Pris:</strong> Ca. 90.000 VND/person</li>
+          <li><strong>Varighed:</strong> 1,5-2 timer</li>
+          <li>Ligger ca. 20 km fra Tam Coc</li>
+          <li>Bedst til dem der ønsker en roligere alternativ til de populære bådture</li>
+        </ul>
+        <p>Søg "Van Long Nature Reserve" på Google Maps</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">2 dage</p>
+    <h2 class="section-title">Forslag til 2-dages program</h2>
+
+    <h3 style="font-size:18px; font-weight:700; margin-bottom:14px">Dag 1 (17. juli - fredag): Tam Coc-siden</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Tid</th><th>Aktivitet</th></tr></thead>
+        <tbody>
+          <tr><td>7:00</td><td>Tidlig start - Tam Coc bådtur (2 timer, undgå varme og trængsel)</td></tr>
+          <tr><td>9:30</td><td>Lej cykler - cykeltur til Bich Dong Pagode (2 km)</td></tr>
+          <tr><td>11:00</td><td>Frokost ved Tam Coc (Ngoc Anh eller Lieu's Restaurant)</td></tr>
+          <tr><td>12:00-15:00</td><td>Hvil/pool på hotel (det er VARMT om middagen i juli)</td></tr>
+          <tr><td>15:30</td><td>Mua Cave / Hang Mua (500 trin - gør det sent pga. varme)</td></tr>
+          <tr><td>17:30</td><td>Nyd udsigten fra toppen ved solnedgang</td></tr>
+          <tr><td>19:00</td><td>Middag med gedespecialiteter (Trung Tuyet eller Hai Nui)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:18px; font-weight:700; margin:24px 0 14px">Dag 2 (18. juli - lørdag): Trang An-siden</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Tid</th><th>Aktivitet</th></tr></thead>
+        <tbody>
+          <tr><td>7:30</td><td>Bai Dinh Pagode (2-3 timer, tag elkøretøjet)</td></tr>
+          <tr><td>10:30</td><td>Trang An bådtur (2,5-3 timer, vælg rute med Kong: Skull Island)</td></tr>
+          <tr><td>13:30</td><td>Frokost nær Trang An</td></tr>
+          <tr><td>14:30</td><td>Hoa Lu gamle hovedstad (1 time) eller hvil inden afrejse</td></tr>
+          <tr><td>16:00</td><td>Transport mod Hanoi (for fly til Da Nang næste dag)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Regnsæson</p>
+    <h2 class="section-title">Praktiske tips til juli</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🌡️</div><div class="card-title">Varme</div><p class="card-body">30-35°C med høj luftfugtighed. Planlæg udendørsaktiviteter tidligt morgen og sent eftermiddag.</p></div>
+      <div class="card"><div class="card-icon">🌧️</div><div class="card-title">Regn</div><p class="card-body">Daglige regnbyger, typisk om eftermiddagen. Medtag regnponchoer (køb billigt lokalt for ca. 10.000 VND).</p></div>
+      <div class="card"><div class="card-icon">🩴</div><div class="card-title">Vandsko</div><p class="card-body">Nyttige til bådture og våde stier.</p></div>
+      <div class="card"><div class="card-icon">🧴</div><div class="card-title">Solbeskyttelse</div><p class="card-body">Solcreme, hat og solbriller er essentielle.</p></div>
+      <div class="card"><div class="card-icon">💧</div><div class="card-title">Vand</div><p class="card-body">Drik masser af vand - dehydrering er en reel risiko.</p></div>
+      <div class="card"><div class="card-icon">🦟</div><div class="card-title">Myg</div><p class="card-body">Juli er højsæson for myg. Tag myggespray med, særligt til aftener.</p></div>
+      <div class="card"><div class="card-icon">🌾</div><div class="card-title">Risterrasser</div><p class="card-body">I juli er rismarkerne dybgrønne - det mest fotogene tidspunkt! (Gule risterrasser er august-september.)</p></div>
+      <div class="card"><div class="card-icon">⚠️</div><div class="card-title">Oversvømmelse</div><p class="card-body">Ved kraftig regn kan nogle veje blive oversvømmet. Hold øje med vejrudsigten.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

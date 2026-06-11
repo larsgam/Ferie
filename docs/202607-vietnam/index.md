@@ -9,8 +9,9 @@
 | Olivia | 19 | XIYN5O |
 | Arthur | 16 | XIYN5O |
 | Roberta | 14 | XIYN5O |
+| Hugo | ? | *(egen booking — afklar fly)* |
 
-Booking: Travelis #4497407. Qatar Airways.
+Booking: Travelis #4497407. Qatar Airways. **OBS: Bookingen dækker 5 personer — Hugos flybillet skal afklares/bookes separat.**
 
 ## Research
 
@@ -23,11 +24,12 @@ Booking: Travelis #4497407. Qatar Airways.
 - [Hanoi - restauranter og aktiviteter](research/hanoi-restauranter-aktiviteter.md) - streetfood, sit-down restauranter, seværdigheder, ture, teenagervenlige aktiviteter
 - [Strande i Central Vietnam](research/strande-central-vietnam.md)
 - [Sapa - restauranter og aktiviteter](research/sapa-restauranter-aktiviteter.md) - spisesteder, trekking, landsbyer, pakkeliste til regnsæson
+- [Pu Luong - alternativ til Sapa](research/pu-luong.md) - lodges, trekruter, Mai Chau-vurdering, 3-dages forslag
 
 ## Praktisk info
 
 - **Fly udrejse:** CPH → DOH → HAN, man 6. juli, 16:00–13:55+1 (Qatar Airways QR160 + QR976). Layover Doha 3t 45m
 - **Fly hjemrejse:** HAN → DOH → CPH, søn 2. august, 03:00–14:05 (Qatar Airways QR985 + QR159). Layover Doha 2t 50m
-- **Passagerer:** 5 (Lars, Helle, Olivia, Arthur, Roberta)
+- **Passagerer:** 6 (Lars, Helle, Olivia, Arthur, Roberta, Hugo). *Travelis-bookingen dækker de første 5 — Hugos billet afklares separat*
 - **Bagage:** 1 indchecket taske (30 kg) + 1 kabine (7 kg) pr. person inkluderet
 - **Varighed:** 26 nætter

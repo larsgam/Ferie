@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hue – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-meta { font-size: 13px; color: var(--color-secondary); margin-bottom: 8px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .card-body strong { color: var(--color-text); }
+
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p, .verdict li { font-size: 15px; color: #374151; line-height: 1.7; }
+
+    .note-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #1e3a8a; line-height: 1.6; margin-bottom: 16px; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-sub { font-size: 16px; font-weight: 700; margin: 14px 0 6px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">👑 Hue</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Hue</h1>
+  <p class="hero-sub">Restauranter og aktiviteter (2 dage). Research lavet feb 2026. I er i Hue dag 20-21 (25.-26. juli 2026).</p>
+</section>
+
+<!-- SPECIALITETER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+    <p style="font-size:15px; line-height:1.7; margin-bottom:24px">Hue er Vietnams gastronomiske hovedstad for kejserlig cuisine - den eneste by i Vietnam med en egentlig hofkøkken-tradition. Maden er mere raffineret, mere krydret og mere kompleks end i Hanoi eller HCMC.</p>
+
+    <h3 style="font-size:20px; font-weight:700; margin-bottom:16px">Hue-specialiteter I skal prøve</h3>
+    <div class="card-grid" style="margin-bottom:32px">
+      <div class="card"><div class="card-icon">🍲</div><div class="card-title">Bun bo Hue</div><p class="card-body">Den berømte krydrede oksekødssuppe med risnudler, citrongræs og rejecreme. Bedre her end noget andet sted i verden.</p></div>
+      <div class="card"><div class="card-icon">🍤</div><div class="card-title">Banh beo</div><p class="card-body">Små dampede rismelskager med tørrede rejer og sprøde svær.</p></div>
+      <div class="card"><div class="card-icon">🍃</div><div class="card-title">Banh nam / banh loc</div><p class="card-body">Flade dampede riskager med rejer/svinekød, pakket i bananblad.</p></div>
+      <div class="card"><div class="card-icon">🍢</div><div class="card-title">Nem lui</div><p class="card-body">Grillet kød på citrongræsstængler, dyppes i peanutsauce.</p></div>
+      <div class="card"><div class="card-icon">🦪</div><div class="card-title">Com hen</div><p class="card-body">Ris med små muslinger, urter og sprøde toppings.</p></div>
+      <div class="card"><div class="card-icon">🥞</div><div class="card-title">Banh khoai</div><p class="card-body">Hue-version af banh xeo (sprød pandekage), mindre og mere sprød.</p></div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">1. Quan Hanh (Bun Bo Hue)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Gadekøkken / lokal nudelshop</p>
+        <p>Regnes af mange lokale som den bedste bun bo Hue i byen. Simpelt gadekøkken med plastikstole, men suppen er ekstraordinær - dyb, kompleks bouillon med perfekt balance af krydderier. Serverer kun bun bo Hue.</p>
+        <p><strong>Pris:</strong> 25.000-40.000 VND (7-11 DKK) pr. skål · <strong>Adresse:</strong> 19 Pham Hong Thai, Hue</p>
+        <p><strong>Tip:</strong> Kom tidligt (før 8:00), de løber tit tør</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">2. Madam Thu Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Traditionelt Hue-køkken</p>
+        <p>Populær blandt både lokale og turister for autentisk Hue-mad. Serverer det fulde udvalg af Hue-specialiteter: banh beo, banh nam, banh loc, nem lui. God introduktion til Hue-køkkenet. Venligt personale der gerne forklarer retterne.</p>
+        <p><strong>Pris:</strong> 40.000-120.000 VND (11-33 DKK) pr. ret · <strong>Adresse:</strong> 3 Vo Thi Sau, Hue</p>
+        <p><a href="https://www.tripadvisor.com/Restaurant_Review-g293926-d7311792-Reviews-Madam_Thu_Restaurant-Hue_Thua_Thien_Hue_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">3. Hanh Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Hue royal cuisine</p>
+        <p>Specialiserer sig i kejserlig Hue-cuisine med moderne præsentation. Retterne er inspireret af det gamle kejserhofs køkken, hvor maden skulle være smuk at se på og kompleks i smag. Smagsmenu med mange små retter er den bedste måde at opleve det på.</p>
+        <p><strong>Pris:</strong> 100.000-250.000 VND (28-70 DKK) pr. ret · <strong>Adresse:</strong> 11 Pho Duc Chinh, Hue</p>
+        <p><a href="https://www.tripadvisor.com/Restaurant_Review-g293926-d3562197-Reviews-Hanh_Restaurant-Hue_Thua_Thien_Hue_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">4. Ancient Hue Garden Houses Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Kejserlig Hue-cuisine i historiske omgivelser</p>
+        <p>Serverer royal cuisine i et restaureret traditionelt havehus fra 1800-tallet. Maden er præsenteret i kejserlig stil med mange små retter. Huset selv er en attraktion med klassisk Hue-arkitektur og have. Giv jer god tid - dette er en oplevelsesmiddag.</p>
+        <p><strong>Pris:</strong> 150.000-350.000 VND (42-98 DKK) pr. person for smagsmenu · <strong>Adresse:</strong> 30/8 Kim Long, Hue (i det historiske kvarter)</p>
+        <p><a href="https://www.tripadvisor.com/Restaurant_Review-g293926-d1493498-Reviews-Ancient_Hue_Garden_Houses-Hue_Thua_Thien_Hue_Province.html" target="_blank">TripAdvisor ↗</a></p>
+        <p><strong>Tip:</strong> Reserver på forhånd. Ligger lidt uden for centrum, tag Grab</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">5. Lac Thien / Lac Thanh</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Lokalt, uformelt</p>
+        <p>Historisk familierestaurant drevet af døve ejere. Kommunikation sker via gestus og pegetavler, hvilket er en oplevelse i sig selv. Serverer gode Hue-specialiteter til lave priser. Autentisk stemning. OBS: Der er flere restauranter med lignende navne i gaden - det originale sted er Lac Thien på 6 Dinh Tien Hoang.</p>
+        <p><strong>Pris:</strong> 30.000-80.000 VND (8-22 DKK) pr. ret · <strong>Adresse:</strong> 6 Dinh Tien Hoang, Hue</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">6. Dong Ba Market (madafsnit)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Marked / street food</p>
+        <p>Hues største marked med et fantastisk madafsnit. Her kan I prøve alle Hue-specialiteterne billigt og autentisk: banh beo, banh khoai, bun bo Hue, com hen og meget mere. Sæt jer ved en bod og peg på hvad der ser godt ud. Perfekt til frokost. OBS: Vær forberedt på varme, fugt og kaotisk stemning - men det er en del af oplevelsen.</p>
+        <p><strong>Pris:</strong> 15.000-40.000 VND (4-11 DKK) pr. ret · <strong>Adresse:</strong> Tran Hung Dao, Hue (sydøstsiden af Perfume River) · <strong>Åbningstid:</strong> Ca. 6:00-18:00, bedst om formiddagen</p>
+        <p><strong>Tip:</strong> Prøv banh beo og banh khoai fra boderne i den overdækkede hal</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">7. Les Jardins de La Carambole</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk-fransk fusion</p>
+        <p>Elegant restaurant i et fransk kolonialhus nær Kejserbyen. Serverer en blanding af Hue-specialiteter og fransk-vietnamesisk fusion. Pæne omgivelser med have. Godt valg til en finere aften uden at det koster en formue.</p>
+        <p><strong>Pris:</strong> 120.000-300.000 VND (33-84 DKK) pr. ret · <strong>Adresse:</strong> 32 Dang Tran Con, Hue</p>
+        <p><a href="https://www.tripadvisor.com/Restaurant_Review-g293926-d1168618-Reviews-Les_Jardins_de_La_Carambole-Hue_Thua_Thien_Hue_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">8. Nook Cafe &amp; Bar</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Moderne cafe / bistro</p>
+        <p>Afslappet cafe ved floden med god kaffe, smoothies og lette retter. Godt sted til at trække vejret mellem seværdigheder. Teenagervenligt med AC og wifi. Serverer både vietnamesisk og vestlig mad.</p>
+        <p><strong>Pris:</strong> 40.000-100.000 VND (11-28 DKK) pr. ret · <strong>Adresse:</strong> Nær flodbredden, centrum af Hue</p>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Michelin Bib Gourmand:</strong> Michelin Guide er lanceret i Vietnam (Hanoi og HCMC), men dækker endnu ikke Hue specifikt. Hue har dog en stærk lokal madscene, og ovenstående restauranter er blandt de bedst vurderede.
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og seværdigheder</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">1. Kejserbyen / Imperial City (Dai Noi)</p>
+      <div class="activity-body">
+        <p>Hues absolutte hovedattraktion. Det enorme citadel og kejserpalads fra Nguyen-dynastiet (1802-1945), inspireret af Den Forbudte By i Beijing. UNESCO Verdensarv. Meget af komplekset blev ødelagt under Tet-offensiven i 1968, men er under løbende restaurering. Highlights: Ngo Mon-porten (hovedindgangen), Thai Hoa-paladset (tronsalen), de kejserlige haver, Forbidden Purple City (Den Forbudte Purpurby) og bibliotekets pavillon.</p>
+        <ul>
+          <li><strong>Tid:</strong> Afsæt minimum 2-3 timer. Med teenagere der kan miste interessen, kan 2 timer være nok</li>
+          <li><strong>Billet:</strong> 200.000 VND (56 DKK) pr. person. Kombibillet med kongegrave findes</li>
+          <li><strong>Åbningstid:</strong> 7:00-17:30 (sidste indgang 17:00)</li>
+        </ul>
+        <p><strong>Tip:</strong> Kom tidligt om morgenen (7:00-8:00) for at undgå varmen og de store grupper. Juli er VARMT (35°C+) - medbring vand, hat og solcreme. Der er begrænset skygge inde i komplekset.</p>
+        <p><a href="https://huemonuments.vn/" target="_blank">Hue Monuments ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">2. Kongegravene (Royal Tombs)</p>
+      <div class="activity-body">
+        <p>Hue har syv kongegrave spredt i bakkerne syd for byen. De tre vigtigste:</p>
+
+        <p class="activity-sub">Tu Duc-graven (anbefalet som nr. 1)</p>
+        <p>Den mest maleriske og poetiske af gravene. Kejser Tu Duc (1848-1883) designede den selv som et rekreativt palads med søer, pavilloner, haver og et lille teater. Fredelig stemning med lotus-søer. Ironisk nok er hans faktiske gravsted aldrig fundet - de 200 arbejdere der gravede den hemmelige grav blev alle henrettet.</p>
+        <ul><li><strong>Tid:</strong> 1-1,5 timer · <strong>Billet:</strong> 150.000 VND (42 DKK) · <strong>Afstand:</strong> 6 km syd for centrum (15 min i Grab)</li></ul>
+
+        <p class="activity-sub">Khai Dinh-graven (anbefalet som nr. 2)</p>
+        <p>Den mest spektakulære arkitektonisk. Kejser Khai Dinh (1916-1925) blandede vietnamesisk, kinesisk og europæisk stil i et dramatisk kompleks på en bjergsøjle. Indvendigt er gravkammeret dækket af detaljerede mosaik- og glasdekorationer. Mest "Instagram-venlig" af gravene. Trapper op ad bakken - god motion.</p>
+        <ul><li><strong>Tid:</strong> 45 min - 1 time · <strong>Billet:</strong> 150.000 VND (42 DKK) · <strong>Afstand:</strong> 10 km syd for centrum</li></ul>
+
+        <p class="activity-sub">Minh Mang-graven</p>
+        <p>Den mest grandiose og symmetriske. Bygget efter kinesisk feng shui-principper med søer, broer, templer og haver i perfekt balance. Smuk arkitektur men mindre personlighed end Tu Duc og Khai Dinh.</p>
+        <ul><li><strong>Tid:</strong> 45 min - 1 time · <strong>Billet:</strong> 150.000 VND (42 DKK) · <strong>Afstand:</strong> 12 km syd for centrum</li></ul>
+
+        <p><strong>Anbefaling:</strong> Med 2 dage i Hue, besøg Tu Duc + Khai Dinh. De to giver den bedste kontrast (poetisk vs. dramatisk). Minh Mang kan tilføjes hvis I har tid.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">3. Parfumefloden / Perfume River (Song Huong) - bådtur</p>
+      <div class="activity-body">
+        <p>En bådtur på Parfumefloden er en klassisk Hue-oplevelse. Floden løber gennem byen og forbi pagoder, grave og landsbyer. Den hedder Parfumefloden fordi blomster fra frugttræer langs bredden falder i vandet og dufter (mest udtalt om foråret). Typisk rute: fra centrum til Thien Mu Pagoda (30 min), evt. videre til kongegravene.</p>
+        <p><strong>Muligheder:</strong></p>
+        <ul>
+          <li><strong>Dragebed (traditionel):</strong> 1-2 timer, ca. 200.000-400.000 VND (56-112 DKK) for hele båden (forhandles)</li>
+          <li><strong>Halvdagstur:</strong> Inkluderer Thien Mu Pagoda + 1-2 kongegrave, ca. 400.000-600.000 VND (112-168 DKK) pr. person</li>
+          <li><strong>Solnedgangstur:</strong> 1,5 timer om aftenen, stemningsfuld med lanterner</li>
+        </ul>
+        <p><strong>Tip:</strong> Kombiner bådturen med besøg ved Thien Mu Pagoda - det er den mest naturlige rute. Aftal pris FØR I går ombord.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">4. Thien Mu Pagoda (Himmelens Frue)</p>
+      <div class="activity-body">
+        <p>Hues mest ikoniske pagode og byens uofficielle symbol. Den syvtågede Phuoc Duyen-tårn (21 m) er fra 1844 og er synlig fra floden. Bag tårnet ligger et aktivt buddhistisk kloster med smukke haver. Her står også den berømte Austin-bil som munken Thich Quang Duc kørte til Saigon i 1963, hvor han brændte sig selv i protest mod regimet - et af Vietnamkrigens mest ikoniske billeder.</p>
+        <ul>
+          <li><strong>Tid:</strong> 30-45 minutter · <strong>Billet:</strong> Gratis · <strong>Afstand:</strong> 4 km vest for centrum, langs Perfume River</li>
+        </ul>
+        <p><strong>Tip:</strong> Kombiner med bådtur på Perfume River. Klæd jer respektfuldt (dæk knæ og skuldre).</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">5. Dong Ba Market</p>
+      <div class="activity-body">
+        <p>Hues største og ældste marked (grundlagt 1899). To etager med alt fra tøj og souvenirs til krydderier, te og frisk mad. Madafsnittet på 1. sal er et must - her kan I smage alle Hue-specialiteterne billigt. Kaotisk og autentisk. God mulighed for teenagerne at øve forhandling.</p>
+        <ul>
+          <li><strong>Tid:</strong> 1-1,5 timer · <strong>Billet:</strong> Gratis · <strong>Åbningstid:</strong> 6:00-18:00 (bedst 7:00-11:00)</li>
+          <li><strong>Adresse:</strong> Tran Hung Dao, sydøst-bredden af Perfume River</li>
+        </ul>
+        <p><strong>Tip:</strong> Gå tidligt om morgenen for at undgå den værste varme. Pas på lommetyve i menneskemængden.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">6. Hai Van Pass (Hai Van-passet)</p>
+      <div class="activity-body">
+        <p>"Skyernes pas" - et af Sydøstasiens mest spektakulære bjergpas. 21 km slingrende vej over Truong Son-bjergkæden mellem Hue og Da Nang, op til 496 m over havet. Berømt fra Top Gear Vietnam Special. Udsigt over havet, bjerge og skyer. I toppen ligger et gammelt fransk fort og bunkers.</p>
+        <p><strong>Praktisk info:</strong> I kører Hai Van Pass på dag 20 (Hoi An → Hue) og/eller dag 22 (Hue → Da Nang). Turen tager ca. 1 time uden stop, men afsæt 2 timer med fotostop.</p>
+        <p><strong>Muligheder:</strong></p>
+        <ul>
+          <li><strong>Privat bil/minibus:</strong> Nemmest med hele familien og bagage</li>
+          <li><strong>Motorcykel med guide:</strong> Populær oplevelse, men kræver erfaring. Olivia (19) kan evt. køre med en guide på en scooter, mens resten kører i bil</li>
+        </ul>
+        <p><strong>Tip:</strong> Stop ved Lang Co Beach på Hue-siden for frokost og svømmetur.</p>
+        <p><strong>OBS:</strong> Haiwan-tunnelen er den hurtige rute, men den er kedelig. Insister på at køre over passet.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">7. DMZ-dagstur (Demilitariseret Zone)</p>
+      <div class="activity-body">
+        <p>Den Demilitariserede Zone langs den 17. breddegrad delte Vietnam i nord og syd fra 1954-1975. Området nord for Hue rummer nogle af Vietnamkrigens vigtigste slagmarker. Highlights: Vinh Moc-tunnelerne (imponerende tunnelnetværk hvor 300 mennesker boede i op til 6 år), Khe Sanh Combat Base, Ben Hai-floden (den faktiske grænse) og Hien Luong-broen.</p>
+        <ul>
+          <li><strong>Tid:</strong> Heldagstur (6:00-17:00), ca. 10-12 timer</li>
+          <li><strong>Pris:</strong> 700.000-1.200.000 VND (196-336 DKK) pr. person med guide og transport</li>
+          <li><strong>Afstand:</strong> 80-100 km nord for Hue</li>
+        </ul>
+        <p><strong>Overvejelse:</strong> Med kun 2 dage i Hue er en hel dag til DMZ meget. Det kræver at I dropper Kejserbyen ELLER kongegravene. <strong>Anbefaling:</strong> Skip DMZ og fokuser på Hue by, medmindre det er højt prioriteret. Vinh Moc-tunnelerne er dog utroligt gribende, og teenagerne kan få meget ud af det historisk.</p>
+        <p><a href="https://www.tripadvisor.com/Attractions-g293926-Activities-c42-t175-Hue_Thua_Thien_Hue_Province.html" target="_blank">DMZ Tours ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">8. Gåtur i Hue by</p>
+      <div class="activity-body">
+        <p>Hue er en behagelig by at gå rundt i (meget mere rolig end Hanoi/HCMC). Sydbredden af Perfume River har cafeer, restauranter og det franske kolonialkvarter. Nordbredden har citadellet og det gamle kejserlige kvarter. Om aftenen er Trang Tien-broen oplyst med skiftende farver.</p>
+        <p><strong>Highlights:</strong></p>
+        <ul>
+          <li><strong>Le Loi-gaden:</strong> Hovedgaden med butikker og cafeer</li>
+          <li><strong>Trang Tien Bridge:</strong> Smuk bro oplyst med LED om aftenen</li>
+          <li><strong>Walking Street:</strong> Aftenstemarked med mad og souvenirs</li>
+          <li><strong>Vo Thi Sau-gaden:</strong> Restaurantgade med mange lokale spisesteder</li>
+        </ul>
+        <p><strong>Tid:</strong> 1-2 timer for en aftentur</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">9. Thanh Toan-broen (overdækket japansk bro)</p>
+      <div class="activity-body">
+        <p>En smuk overdækket træbro fra 1776 i en lille landsby 7 km øst for Hue. Mindre turistet end Hoi Ans japanske bro og i mere autentiske omgivelser midt i rismarker. Et lille landsbymuseum ved siden af viser traditionelt bondeliv.</p>
+        <ul><li><strong>Tid:</strong> 1 time inkl. transport · <strong>Billet:</strong> Gratis</li></ul>
+        <p><strong>Tip:</strong> Kombiner med en cykeltur ud gennem rismarkerne - fladt terræn, nem rute.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">10. Vejr i juli</p>
+      <div class="activity-body">
+        <ul>
+          <li><strong>Temperatur:</strong> 33-38°C om dagen, 25-27°C om natten</li>
+          <li><strong>Fugtighed:</strong> 70-80%</li>
+          <li><strong>Regn:</strong> Juli er relativt tør i Hue sammenlignet med efteråret (monsun sept-nov). Korte eftermiddagsbyger kan forekomme men varer sjældent længe</li>
+          <li><strong>Sol:</strong> Ca. 7-8 timers sol om dagen</li>
+        </ul>
+        <p><strong>Tip:</strong> Planlæg udendørs aktiviteter tidligt om morgenen (7:00-10:00) og sen eftermiddag (15:30+). Middagstimerne (11:00-15:00) er brutalt varme - brug dem på museum, marked eller restaurant med AC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">2 dage</p>
+    <h2 class="section-title">Forslag til 2-dages program</h2>
+
+    <h3 style="font-size:18px; font-weight:700; margin-bottom:14px">Dag 1 (ankomst fra Hoi An via Hai Van Pass)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Tid</th><th>Aktivitet</th></tr></thead>
+        <tbody>
+          <tr><td>Morgen</td><td>Afrejse fra Hoi An, kør Hai Van Pass med fotostop</td></tr>
+          <tr><td>Middag</td><td>Stop ved Lang Co Beach - frokost og svømmetur</td></tr>
+          <tr><td>14:00</td><td>Ankomst Hue, check ind på hotel</td></tr>
+          <tr><td>15:30</td><td>Dong Ba Market (mad + shopping)</td></tr>
+          <tr><td>17:00</td><td>Bådtur på Parfumefloden (solnedgang)</td></tr>
+          <tr><td>19:00</td><td>Aftensmad: Ancient Hue Garden Houses eller Madam Thu</td></tr>
+          <tr><td>21:00</td><td>Gåtur over Trang Tien Bridge (oplyst)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:18px; font-weight:700; margin:24px 0 14px">Dag 2 (fuld dag i Hue)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Tid</th><th>Aktivitet</th></tr></thead>
+        <tbody>
+          <tr><td>7:00</td><td>Tidlig morgenmad, evt. bun bo Hue hos Quan Hanh</td></tr>
+          <tr><td>8:00</td><td>Kejserbyen / Imperial City (2-3 timer)</td></tr>
+          <tr><td>11:00</td><td>Bådtur til Thien Mu Pagoda (30 min)</td></tr>
+          <tr><td>11:30</td><td>Thien Mu Pagoda (30-45 min)</td></tr>
+          <tr><td>12:30</td><td>Frokost nær pagoden eller retur til centrum</td></tr>
+          <tr><td>14:00</td><td>Pause i varmen (hotel/cafe med AC)</td></tr>
+          <tr><td>15:30</td><td>Tu Duc-graven (1-1,5 timer)</td></tr>
+          <tr><td>17:00</td><td>Khai Dinh-graven (45 min - 1 time)</td></tr>
+          <tr><td>19:00</td><td>Aftensmad: Les Jardins de La Carambole eller Lac Thien</td></tr>
+          <tr><td>Aften</td><td>Afslappet aften ved floden</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:14px; color:var(--color-secondary); line-height:1.6"><strong>Næste morgen:</strong> Videre til Da Nang (evt. via Hai Van Pass igen, eller tunnelen hvis I allerede kørte passet)</p>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

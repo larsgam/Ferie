@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Udkast til rejseplan – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 980px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .draft-bar { background: #fef2f2; border-top: 3px solid #dc2626; border-bottom: 1px solid #fecaca; padding: 16px 22px; text-align: center; font-size: 15px; color: #7f1d1d; font-weight: 600; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .sub-title { font-size: 19px; font-weight: 700; margin: 28px 0 14px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--color-divider); }
+    .card-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .card-body { font-size: 14px; line-height: 1.7; }
+    .card-body ul { margin: 4px 0 0 18px; }
+    .card-body li { margin-bottom: 5px; }
+    .card.pros { border-left: 4px solid #16a34a; }
+    .card.cons { border-left: 4px solid #dc2626; }
+
+    .warning-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #7f1d1d; line-height: 1.6; margin: 16px 0; }
+    .warning-box strong { color: #991b1b; }
+
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p, .verdict li { font-size: 15px; color: #374151; line-height: 1.7; }
+    .verdict ol { margin: 8px 0 0 20px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗓️ Udkast til rejseplan</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Planlægning · Vietnam 2026</p>
+  <h1>Udkast til rejseplan</h1>
+  <p class="hero-sub">To ruteforslag — Plan A (nord + central) og Plan B (nord → syd) — med dag-for-dag plan og vurdering</p>
+</section>
+
+<div class="draft-bar">⚠️ DRAFT — intet er fastlagt endnu</div>
+
+<!-- PLAN A -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Foretrukket</p>
+    <h2 class="section-title">Plan A: Nord + Central</h2>
+    <p style="font-size:15px; line-height:1.7; margin-bottom:24px">Fokuserer på Nordvietnam og Centralvietnam. Dropper syden.</p>
+
+    <h3 class="sub-title">Overblik</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dage</th><th>Sted</th><th>Highlights</th><th>Vejr-note</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>Hanoi</td><td>Old Quarter, streetfood tour, Train Street, Ho Chi Minh-mausoleet, vespa-tour</td><td>Varmt og fugtigt, regnbyger</td></tr>
+          <tr><td>2</td><td>Ha Long Bay / Lan Ha Bay</td><td>Cruise med kajak, badning, grottetur</td><td>Risiko for aflysning - book fleksibelt</td></tr>
+          <tr><td>3</td><td>Sapa</td><td>Trekking, risterrasser, minoritetslandsbyer</td><td>Spektakulært grønt, men vådt</td></tr>
+          <tr><td>2</td><td>Ninh Binh</td><td>"Ha Long Bay på land", bådtur Tam Coc, cykling mellem kalkstensbjerge</td><td>Varmt og fugtigt</td></tr>
+          <tr><td>1</td><td>Fly Hanoi → Da Nang</td><td>Transfer til Hoi An</td><td></td></tr>
+          <tr><td>5</td><td>Hoi An</td><td>Gamlebyen (UNESCO), skræddersyet tøj, An Bang Beach, Cham Islands snorkling, madlavningskursus, cykling i rismarker</td><td><strong>Bedste vejr</strong></td></tr>
+          <tr><td>2</td><td>Hue</td><td>Kejserbyen, kongegrave, parfumefloden, Lang Co Beach (stopover)</td><td>Godt vejr</td></tr>
+          <tr><td>3</td><td>Da Nang</td><td>My Khe Beach, Marble Mountains, Ba Na Hills (Golden Bridge), Son Tra Peninsula</td><td><strong>Bedste vejr</strong></td></tr>
+          <tr><td>2</td><td>Fly Da Nang → Hanoi</td><td>Sidste dage i Hanoi, shopping, streetfood</td><td>Varmt og fugtigt</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Dag-for-dag</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Dato</th><th>Ugedag</th><th>Sted</th><th>Plan</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>6. jul</td><td>Mandag</td><td>✈️</td><td>Afrejse CPH 16:00 → DOH 23:00</td></tr>
+          <tr><td>2</td><td>7. jul</td><td>Tirsdag</td><td>Hanoi</td><td>DOH 02:45 → HAN 13:55. Ankomst Hanoi, check ind</td></tr>
+          <tr><td>3</td><td>8. jul</td><td>Onsdag</td><td>Hanoi</td><td>Old Quarter, streetfood tour</td></tr>
+          <tr><td>4</td><td>9. jul</td><td>Torsdag</td><td>Hanoi</td><td>Ho Chi Minh-mausoleet, Train Street</td></tr>
+          <tr><td>5</td><td>10. jul</td><td>Fredag</td><td>Hanoi</td><td>Vespa-tour / cykeltur</td></tr>
+          <tr><td>6</td><td>11. jul</td><td>Lørdag</td><td>Ha Long Bay</td><td>Afrejse til cruise, kajak, grottetur</td></tr>
+          <tr><td>7</td><td>12. jul</td><td>Søndag</td><td>Ha Long Bay</td><td>Cruise dag 2, badning. Retur Hanoi</td></tr>
+          <tr><td>8</td><td>13. jul</td><td>Mandag</td><td>→ Sapa</td><td>Transport til Sapa (nattog eller bus)</td></tr>
+          <tr><td>9</td><td>14. jul</td><td>Tirsdag</td><td>Sapa</td><td>Trekking, risterrasser</td></tr>
+          <tr><td>10</td><td>15. jul</td><td>Onsdag</td><td>Sapa</td><td>Minoritetslandsbyer, vandreture</td></tr>
+          <tr><td>11</td><td>16. jul</td><td>Torsdag</td><td>→ Ninh Binh</td><td>Transport til Ninh Binh</td></tr>
+          <tr><td>12</td><td>17. jul</td><td>Fredag</td><td>Ninh Binh</td><td>Bådtur Tam Coc, cykling mellem kalkstensbjerge</td></tr>
+          <tr><td>13</td><td>18. jul</td><td>Lørdag</td><td>Ninh Binh</td><td>Trang An, Bai Dinh-pagoden</td></tr>
+          <tr><td>14</td><td>19. jul</td><td>Søndag</td><td>✈️ → Hoi An</td><td>Fly Hanoi → Da Nang, transfer til Hoi An</td></tr>
+          <tr><td>15</td><td>20. jul</td><td>Mandag</td><td>Hoi An</td><td>Gamlebyen (UNESCO), lanterner</td></tr>
+          <tr><td>16</td><td>21. jul</td><td>Tirsdag</td><td>Hoi An</td><td>Skræddersyet tøj, shopping</td></tr>
+          <tr><td>17</td><td>22. jul</td><td>Onsdag</td><td>Hoi An</td><td>Madlavningskursus</td></tr>
+          <tr><td>18</td><td>23. jul</td><td>Torsdag</td><td>Hoi An</td><td>An Bang Beach, cykling i rismarker</td></tr>
+          <tr><td>19</td><td>24. jul</td><td>Fredag</td><td>Hoi An</td><td>🏝️ Cham Islands dagstur - snorkling, strand (speedbåd 20 min fra Cua Dai)</td></tr>
+          <tr><td>20</td><td>25. jul</td><td>Lørdag</td><td>→ Hue</td><td>Transport til Hue via Hai Van Pass, stop ved Lang Co Beach</td></tr>
+          <tr><td>21</td><td>26. jul</td><td>Søndag</td><td>Hue</td><td>Kejserbyen, parfumefloden, kongegrave</td></tr>
+          <tr><td>22</td><td>27. jul</td><td>Mandag</td><td>→ Da Nang</td><td>Hai Van Pass (evt. motorcykeltur med guide) → Da Nang</td></tr>
+          <tr><td>23</td><td>28. jul</td><td>Tirsdag</td><td>Da Nang</td><td>My Khe Beach, Marble Mountains + Non Nuoc Beach</td></tr>
+          <tr><td>24</td><td>29. jul</td><td>Onsdag</td><td>Da Nang</td><td>Ba Na Hills (Golden Bridge)</td></tr>
+          <tr><td>25</td><td>30. jul</td><td>Torsdag</td><td>Da Nang</td><td>🏖️ Son Tra Peninsula - strand, vandaktiviteter (jetski, SUP), aber i junglen</td></tr>
+          <tr><td>26</td><td>31. jul</td><td>Fredag</td><td>✈️ → Hanoi</td><td>Fly Da Nang → Hanoi. Sidste aften i Hanoi</td></tr>
+          <tr><td>27</td><td>1. aug</td><td>Lørdag</td><td>Hanoi</td><td>Sidste dag, shopping, streetfood</td></tr>
+          <tr><td>28</td><td>2. aug</td><td>Søndag</td><td>✈️</td><td>Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box">
+      <strong>Returfly afgår fra Hanoi (HAN):</strong> Indenrigsfly Da Nang → Hanoi nødvendigt inden hjemrejsen. Book på forhånd.
+    </div>
+  </div>
+</section>
+
+<!-- PLAN B -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Alternativ</p>
+    <h2 class="section-title">Plan B: Nord → Syd</h2>
+    <p style="font-size:15px; line-height:1.7; margin-bottom:24px">Klassisk rute der dækker hele landet.</p>
+
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>Dage</th><th>Sted</th><th>Highlights</th><th>Vejr-note</th></tr></thead>
+        <tbody>
+          <tr><td>3-4</td><td>Hanoi</td><td>Gamlebyen, streetfood, Ho Chi Minh-mausoleet, templet ved søen</td><td>Varmt og fugtigt, regnbyger</td></tr>
+          <tr><td>2-3</td><td>Sapa</td><td>Risterrasser, vandreture, etniske minoriteter</td><td>Spektakulært grønt, men vådt</td></tr>
+          <tr><td>2</td><td>Ha Long Bay</td><td>Krydstogt, grotter, kajak</td><td>Risiko for aflysninger pga. tyfoner - vær fleksibel</td></tr>
+          <tr><td>1</td><td>Fly/tog til Hue</td><td></td><td></td></tr>
+          <tr><td>2-3</td><td>Hue</td><td>Kejserpaladset, kongegrave, parfumefloden</td><td>Godt vejr</td></tr>
+          <tr><td>3-4</td><td>Hoi An</td><td>Gamlebyen (UNESCO), skræddersyede tøj, strande, lanterne-aften</td><td><strong>Bedste vejr</strong></td></tr>
+          <tr><td>1-2</td><td>Da Nang</td><td>Marble Mountains, My Khe Beach, Ba Na Hills</td><td><strong>Bedste vejr</strong></td></tr>
+          <tr><td>2</td><td>Nha Trang</td><td>Strandby, snorkling, øhop</td><td>Blandet - kan være regn</td></tr>
+          <tr><td>1</td><td>Fly til HCMC</td><td></td><td></td></tr>
+          <tr><td>3-4</td><td>Ho Chi Minh City</td><td>Krigsmuseet, Cu Chi-tunnelerne, Saigon Notre-Dame, Ben Thanh Market</td><td>Regnbyger om eftermiddagen</td></tr>
+          <tr><td>2-3</td><td>Mekong-deltaet</td><td>Flydende markeder, bådture, tropisk frugt</td><td>Grønt og frodigt</td></tr>
+          <tr><td>2-3</td><td>Phu Quoc</td><td>Strandafslapning, snorkling, fiskesovsfabrikker</td><td>God afslutning</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box">
+      <strong>Returfly er fra Hanoi:</strong> Kræver fly fra HCMC/Phu Quoc → Hanoi (lang omvej). Overvej at ændre returbillet til SGN.
+    </div>
+  </div>
+</section>
+
+<!-- VURDERING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Vurdering</p>
+    <h2 class="section-title">Plan A vs. Plan B</h2>
+
+    <h3 class="sub-title">Plan A: Nord + Central (anbefalet for juli-august)</h3>
+    <div class="card-grid" style="margin-bottom:24px">
+      <div class="card pros">
+        <p class="card-title">Fordele</p>
+        <div class="card-body">
+          <ul>
+            <li>Mere tid pr. sted = mindre stress, bedre for teenagere</li>
+            <li>Ninh Binh er en perle de fleste turister springer over</li>
+            <li>5 dage i Hoi An giver tid til at nyde byen (skrædder, strand, madlavning)</li>
+            <li>Undgår den værste regn i syd (HCMC/Mekong har kraftig monsun i juli-august)</li>
+            <li>Færre indenrigsfly = mindre rejsetid og CO2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card cons">
+        <p class="card-title">Ulemper</p>
+        <div class="card-body">
+          <ul>
+            <li>Mister HCMC (Krigsmuseet, Cu Chi-tunnelerne er stærke oplevelser)</li>
+            <li>Mister Mekong-deltaet (flydende markeder er unikt)</li>
+            <li>Kræver retur til Hanoi pga. flyafgang fra HAN (ekstra indenrigsfly + 2 ekstra dage i Hanoi)</li>
+            <li>Mere regn i nord end syd i juli</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Plan B: Nord → Syd</h3>
+    <div class="card-grid" style="margin-bottom:32px">
+      <div class="card pros">
+        <p class="card-title">Fordele</p>
+        <div class="card-body">
+          <ul>
+            <li>Ser hele Vietnam - fra risterrasser til Mekong-deltaet</li>
+            <li>Historisk vigtige steder i syd (Krigsmuseet, Cu Chi-tunnelerne)</li>
+            <li>Phu Quoc som afslappende afslutning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card cons">
+        <p class="card-title">Ulemper</p>
+        <div class="card-body">
+          <ul>
+            <li>Mere rejsetid, flere fly, mindre tid pr. sted</li>
+            <li>Returfly er fra Hanoi - kræver fly HCMC/Phu Quoc → Hanoi (lang omvej)</li>
+            <li>Kraftig monsunregn i HCMC og Mekong i juli-august</li>
+            <li>Kan føles hektisk med teenagere (mange skift)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-label">Konklusion</p>
+      <h3>Plan A er bedst for jeres tur</h3>
+      <p>Primært fordi:</p>
+      <ol>
+        <li>Vejret er bedre i nord+central end i syd i juli-august</li>
+        <li>Mere tid pr. destination = bedre med 3 teenagere</li>
+        <li>Returflyet er fra Hanoi, så nord+central undgår den store omvej sydpå og retur</li>
+        <li>Ninh Binh tilfører noget unikt som Plan B mangler</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

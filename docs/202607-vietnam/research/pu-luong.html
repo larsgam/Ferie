@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pu Luong – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 540px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-meta { font-size: 13px; color: var(--color-secondary); margin-bottom: 8px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .card-body strong { color: var(--color-text); }
+
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p, .verdict li { font-size: 15px; color: #374151; line-height: 1.7; }
+    .verdict ul { margin: 8px 0 0 18px; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr.highlight td { font-weight: 600; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🌾 Pu Luong</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Pu Luong</h1>
+  <p class="hero-sub">Alternativ til Sapa. Research lavet juni 2026. Pu Luong Nature Reserve er et fredet naturreservat i Thanh Hoa-provinsen, ca. 160 km sydvest for Hanoi. Risterrasser, jungleklædte bjerge, Thai-minoritetslandsbyer og bambusvandhjul — samme ingredienser som Sapa, men uden masseturismen. I juli: terrasserne på deres grønneste, 22-25°C i højden (køligere end lavlandet).</p>
+</section>
+
+<!-- SAMMENLIGNING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Sammenligning</p>
+    <h2 class="section-title">Hvorfor Pu Luong i stedet for Sapa?</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th></th><th>Pu Luong</th><th>Sapa</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Turistniveau</strong></td><td>Lavt — begrænset udvikling, ingen by</td><td>Højt — hotelbyggeri, svævebane, sælgere på trek-ruterne</td></tr>
+          <tr><td><strong>Landskab</strong></td><td>Risterrasser, jungle, vandfald — mindre skala, mere uberørt</td><td>Dramatiske bjergpanoramaer (ofte i skyer i juli)</td></tr>
+          <tr><td><strong>Transport fra Hanoi</strong></td><td>4-5 timer</td><td>5-6 timer</td></tr>
+          <tr class="highlight"><td><strong>Videre til Ninh Binh</strong></td><td>~3 timer — ligger næsten på vejen</td><td>7-8 timer (hele vejen tilbage gennem Hanoi)</td></tr>
+          <tr><td><strong>Trekking</strong></td><td>Ægte stier gennem landsbyer og rismarker</td><td>Veletablerede ruter, de populære er trafikerede</td></tr>
+          <tr><td><strong>Faciliteter</strong></td><td>Eco-lodges med pool, homestays</td><td>Stort udvalg i alle prisklasser</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verdict">
+      <p class="verdict-label">Konklusion</p>
+      <h3>Pu Luong løser turist-bekymringen</h3>
+      <p>Pu Luong løser turist-bekymringen og sparer samtidig en hel rejsedag i ruten (Sapa→Ninh Binh-transferen var Plan A's svageste led).</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVERNATNING -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">6 personer = 2-3 værelser/bungalows</p>
+    <h2 class="section-title">Overnatning</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">1. Pu Luong Retreat (mest kendte)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Eco-lodge, 31 bungalows/villaer, 500 m.o.h.</p>
+        <p>Reservatets ikoniske lodge med infinity-pool ud over risterrasserne. Bungalows med panoramaudsigt, åben restaurant med lokal mad, massage/yoga. Arrangerer guidede treks, bambusrafting, kajak og cykelture direkte fra lodgen. OBS: eco-profil = ingen aircon/TV (i 22-25°C er det fint).</p>
+        <p><strong>Pris:</strong> ca. 500-900 DKK/nat pr. bungalow afhængigt af type og sæson</p>
+        <p><a href="https://puluongretreat.com/en" target="_blank">puluongretreat.com ↗</a> · <a href="https://www.booking.com/hotel/vn/puluong-retreat.html" target="_blank">Booking.com ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">2. Pu Luong Eco Garden</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Eco-resort med familieværelser</p>
+        <p>8 deluxe-værelser (dobbelt/familie) + suite med stor terrasse. Pool, restaurant, ro. Lidt mindre poleret end Retreat, men gode familieværelser og samme udsigt.</p>
+        <p><strong>Pris:</strong> ca. 350-700 DKK/nat pr. værelse</p>
+        <p><a href="https://puluongecogarden.com/" target="_blank">puluongecogarden.com ↗</a> · <a href="https://www.tripadvisor.com/Hotel_Review-g14794534-d15132512-Reviews-Pu_Luong_Eco_Garden-Ba_Thuoc_Thanh_Hoa_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">3. Homestay i Don eller Hieu landsby (autentisk alternativ)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Traditionelt Thai-stilthus, hjemmelavet mad inkluderet</p>
+        <p>Den mest autentiske mulighed — sov i stilthus hos en Thai-familie, spis med familien. Basale faciliteter (fælles bad, madras på gulv med myggenet). Med 6 personer fylder I et helt stilthus = privat alligevel.</p>
+        <p><strong>Pris:</strong> ca. 200-350 DKK/person/nat inkl. måltider</p>
+        <p><strong>Tip:</strong> Kombinér — fx 1 nat homestay på trek + 1-2 nætter eco-lodge med pool. Bedste af begge verdener for teenagere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og trekruter</h2>
+
+    <div class="activity">
+      <p class="activity-title">1. Kho Muong-dalen + Bat Cave (must-do)</p>
+      <div class="activity-body">
+        <p>Pu Luongs smukkeste og mest uberørte landsby — stilthuse spredt mellem rismarker i en lukket dal. Trek dertil gennem terrasserne med panoramaudsigt. I dalens ende ligger Bat Cave (Hang Doi), en 2,5 km dyb kalkstensgrotte med flagermus og drypsten.</p>
+        <p><strong>Praktisk:</strong> Halvdags- eller heldagstrek fra lodge-området (6-12 km). Let-moderat — fint til alle 6. Lokal guide arrangeres via lodgen.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">2. Hieu-vandfaldet og Ban Hieu</p>
+      <div class="activity-body">
+        <p>Landsby med ~100 traditionelle huse langs en flod med flertrins-kalkstensvandfald. Trek langs vandløbet, badning i vandfaldets bassiner (forfriskende i juli-varmen). I regnsæsonen er vandfaldet på sit mest imponerende.</p>
+        <p><strong>Praktisk:</strong> Heldagstur eller del af 2-dages trek med homestay-overnatning.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">3. Bambusvandhjul ved Cham-floden</p>
+      <div class="activity-body">
+        <p>Pu Luongs signatur: store traditionelle vandhjul af bambus, der vander rismarkerne ved flodens kraft. Fotogent og helt unikt for området. Ligger ved Ban Don-området.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">4. Bambusrafting på Cham-floden</p>
+      <div class="activity-body">
+        <p>Rolig tømmerflåde-sejlads på bambusflåder gennem dalen — ikke vildt vand, mere "stille glid gennem landskabet". God pause-aktivitet mellem treks. Arrangeres via lodge.</p>
+        <p><strong>Pris:</strong> ca. 80-150 DKK/person</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">5. Cykling gennem dalen</p>
+      <div class="activity-body">
+        <p>Dalvejene er rolige og cykelvenlige — rismarker, landsbyer, vandhjul i eget tempo. Lodges udlejer cykler. God aktivitet på egen hånd uden guide.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">6. Pu Luong Peak (1.700 m) — kun for de friske</p>
+      <div class="activity-body">
+        <p>Toppen af reservatet, 2-dages trek med camp. <strong>Frarådes i juli</strong> — glat og skyet. Nævnt for fuldstændighed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAI CHAU -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">På vejen</p>
+    <h2 class="section-title">Mai Chau: kombinere eller springe over?</h2>
+    <div class="verdict" style="background:linear-gradient(135deg,#fef9e7 0%,#fdf0c8 100%); border-color:#f0d060;">
+      <p class="verdict-label" style="color:#92400e">Kort svar</p>
+      <h3>Kør igennem og stop et par timer — men brug ikke en overnatning</h3>
+      <ul>
+        <li>Mai Chau ligger <strong>på vejen</strong> Hanoi→Pu Luong (3,5 t fra Hanoi, derfra ~1,5 t til Pu Luong), så et stop koster næsten ingen tid</li>
+        <li>Mai Chau er den <em>bløde</em> udgave af samme oplevelse: flad dal, rismarker, cykling — men <strong>mere turistet end Pu Luong</strong> (landsbyerne, især Lac, har taget imod turister i årtier og bærer præg af det)</li>
+        <li>Når I netop fravælger Sapa pga. turisme, er en overnatning i Mai Chau et skridt i den forkerte retning — Pu Luong er bedre på alle de parametre, I går efter</li>
+        <li><strong>Anbefaling:</strong> Frokoststop + 1-2 timers cykeltur i Mai Chau-dalen på vejen ned, og brug nætterne i Pu Luong</li>
+      </ul>
+      <p style="margin-top:10px">Standard-arrangerede ture kombinerer typisk Mai Chau (1 nat) + Pu Luong (1 nat) + Ninh Binh — men med jeres 26 dage er det bedre at give Pu Luong 2-3 nætter og springe Mai Chau-overnatningen over.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Logistik</p>
+    <h2 class="section-title">Transport og logistik</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Strækning</th><th>Tid</th><th>Løsning</th></tr></thead>
+        <tbody>
+          <tr><td>Hanoi → (Mai Chau) → Pu Luong</td><td>4-5 t</td><td>Privat bil/minivan med chauffør (standard i Vietnam, ~1.200-1.800 DKK for minivan til 6 pers. + bagage). Limousine-busser findes også (~150 DKK/person) men privat bil giver Mai Chau-stoppet</td></tr>
+          <tr><td>Pu Luong → Ninh Binh</td><td>~3 t</td><td>Samme model — privat minivan</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:15px; line-height:1.7"><strong>Sådan bookes det:</strong> Book lodge direkte (mail/Booking.com) → bed lodgen arrangere guide til treks (200-350 DKK/dag for hele gruppen) → book privat bil via lodge eller Hanoi-hotel. Med 6 personer er privat arrangement prismæssigt på niveau med gruppeture — og I bestemmer selv tempoet.</p>
+  </div>
+</section>
+
+<!-- VEJR -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Regnsæson</p>
+    <h2 class="section-title">Juli-vejr</h2>
+    <div class="card-grid">
+      <div class="card" style="background:white"><div class="card-icon">🌡️</div><div class="card-title">Temperatur</div><p class="card-body">22-25°C i højden (behageligt), varmere i dalbunden.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🌧️</div><div class="card-title">Nedbør</div><p class="card-body">Regnsæson — korte, kraftige byger, typisk eftermiddag. Trek om formiddagen.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">✅</div><div class="card-title">Fordele</div><p class="card-body">Terrasserne maksimalt grønne, vandfald imponerende, få turister.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🎒</div><div class="card-title">Pakkeliste</div><p class="card-body">Samme som Sapa-listen — vandtætte sko, regnjakke/poncho, myggespray, igle-opmærksomhed på våde stier (spørg guiden).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORSLAG -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Erstatter Sapa-dagene i Plan A</p>
+    <h2 class="section-title">Forslag: 3 dage i Pu Luong</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Plan</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Afgang Hanoi tidligt. Frokost + cykelstop Mai Chau. Ankomst Pu Luong-lodge ~15. Pool/afslapning, solnedgang over terrasserne</td></tr>
+          <tr><td>2</td><td>Guidet heldagstrek: Kho Muong + Bat Cave. Aften: middag på lodge eller i landsby</td></tr>
+          <tr><td>3</td><td>Formiddag: bambusrafting + vandhjulene ved Ban Don. Eftermiddag: pool. (Alternativ: 2-dages trek med homestay-nat i Hieu i stedet for dag 2-3)</td></tr>
+          <tr><td>4</td><td>Afgang efter morgenmad → Ninh Binh (~3 t)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--color-secondary); line-height:1.7">Kilder: <a href="https://puluongretreat.com/en" target="_blank">Pu Luong Retreat</a> · <a href="https://oxalisadventure.com/pu-luong/" target="_blank">Oxalis Adventure</a> · <a href="https://www.handspan.com/en/spots-in-pu-luong-nature-reserve.html" target="_blank">Handspan — Top 7 spots</a> · <a href="https://puluongtrekking.com/pu-luong-vs-mai-chau-trekking/" target="_blank">Pu Luong vs Mai Chau</a> · <a href="https://izitour.com/en/blog/sapa-or-pu-luong" target="_blank">IZITOUR — Sapa or Pu Luong</a> · <a href="https://authentiktravel.com/mai-chau-pu-luong-circuit-what-see-and-do" target="_blank">Authentik Travel — Mai Chau-Pu Luong circuit</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

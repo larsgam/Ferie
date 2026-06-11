@@ -2,6 +2,8 @@
 
 ## Book snart
 
+- [ ] **Afklar Hugos flybillet** - Travelis #4497407 dækker kun 5 personer. Book samme Qatar-afgange (QR160/QR976 ud, QR985/QR159 hjem) hvis muligt
+- [ ] **E-visum til alle 6** - inkl. Hugo (pasoplysninger nødvendige)
 - [ ] **Book Ha Long Bay cruise** - 1 nat / 2 dage. Vælg cruise med fleksibel afbestilling (tyfon-risiko). Lan Ha Bay er mindre turistet alternativ
 - [ ] **Book indenrigsfly Da Nang → Hanoi** - ca. 31. jul. Vietnam Airlines, VietJet eller Bamboo Airways
 - [ ] **Book indenrigsfly Hanoi → Da Nang** - ca. 19. jul

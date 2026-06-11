@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sapa – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">⛰️ Sapa</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Sapa</h1>
+  <p class="hero-sub">Restauranter og aktiviteter. Research lavet feb 2026. Sapa i juli: spektakulært grønne risterrasser, men våd sæson med daglige regnbyger. Temp 20-25°C (køligt ift. resten af Vietnam).</p>
+</section>
+
+<!-- RESTAURANTER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+
+    <div class="activity">
+      <p class="activity-title">1. The Hill Station Signature Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Moderne vietnamesisk / Hmong-inspireret</p>
+        <p>Sapas mest anerkendte restaurant, beliggende i et renoveret kolonialt hus. Menuen fokuserer på minoritetskøkkenet fra regionen - røget bøffelbibimbap, lokale urter, Hmong-inspirerede retter. Flot udsigt over dalen fra terrassen.</p>
+        <p><strong>Prisniveau:</strong> Middel (150.000-300.000 VND / 40-80 DKK pr. ret) · <a href="https://www.thehillstation.com" target="_blank">thehillstation.com ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">2. Little Sapa Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk / lokale specialiteter</p>
+        <p>Populær blandt både turister og lokale. Serverer klassiske vietnamesiske retter og Sapa-specialiteter som thang co (traditionel Hmong-suppe med hestekød/bøffel), grillet vildsvin og bamboo tube rice. Beliggende centralt i byen.</p>
+        <p><strong>Prisniveau:</strong> Budget-middel (80.000-200.000 VND / 20-55 DKK pr. ret) · <a href="https://www.tripadvisor.com/Restaurant_Review-g311304-d4944770-Reviews-Little_Sapa-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">3. Sapa Moments</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk / vestligt / café</p>
+        <p>Hyggelig restaurant med fantastisk udsigt over Muong Hoa-dalen. God til frokost efter trekking. Serverer både vietnamesisk mad og vestlige retter. Perfekt til familier med teenagere der ønsker variation.</p>
+        <p><strong>Prisniveau:</strong> Middel (120.000-250.000 VND / 30-65 DKK pr. ret) · <a href="https://www.tripadvisor.com/Restaurant_Review-g311304-d12209067-Reviews-Sapa_Moments-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">4. A Phu Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk / Hmong-køkken</p>
+        <p>Autentisk lokal restaurant med lav pris, drevet af en Hmong-familie. Specialitet er lau (hot pot) med lokale grøntsager og kød, samt grillede retter. Simpel indretning men ægte smagsoplevelser. Godt sted at prøve thang co.</p>
+        <p><strong>Prisniveau:</strong> Budget (50.000-120.000 VND / 13-32 DKK pr. ret) · <a href="https://www.tripadvisor.com/Restaurant_Review-g311304-d8504949-Reviews-A_Phu_Restaurant-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">5. Le Gecko Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Europæisk-vietnamesisk fusion</p>
+        <p>Længe etableret restaurant i Sapa centrum. Serverer en blanding af vietnamesisk og vestlig mad. Kendt for god pho, spring rolls og steaks. Hyggelig atmosfære med pejs (rart i Sapas kølige aftener). Terrasse med udsigt.</p>
+        <p><strong>Prisniveau:</strong> Middel (100.000-250.000 VND / 27-65 DKK pr. ret) · <a href="https://www.tripadvisor.com/Restaurant_Review-g311304-d2295766-Reviews-Le_Gecko-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">6. Barbecue Sapa (Sapa Night Market)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Gadestand / street food</p>
+        <p>Sapas natmarked (nær kirken i centrum) har fantastisk street food. Grillede pølser, kyllingefødder, bambusstang-ris, søde kartofler og lokale snacks. Perfekt aften-aktivitet med teenagere. Køb fra flere stande og sæt jer ved et bord.</p>
+        <p><strong>Prisniveau:</strong> Budget (20.000-80.000 VND / 5-20 DKK pr. portion) · Sapa Night Market, nær Sapa Church</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">7. Hmong Sisters Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Hmong / vietnamesisk</p>
+        <p>Familiedrevet restaurant med fokus på Hmong-traditioner. Varm og venlig atmosfære. Prøv den sorte Hmong-kyllingesuppe, bambus-ris og lokale grønne grøntsager. Ejerne fortæller gerne om Hmong-kultur og mad.</p>
+        <p><strong>Prisniveau:</strong> Budget-middel (70.000-180.000 VND / 18-48 DKK pr. ret) · <a href="https://www.tripadvisor.com/Restaurant_Review-g311304-d15158523-Reviews-Hmong_Sisters_Restaurant-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">8. Homestay-middag (anbefalet oplevelse)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Hjemmelavet minoritetsmad</p>
+        <p>Den bedste madoplevelse i Sapa er middag hos en lokal Hmong- eller Dao-familie under en homestay. Maden er hjemmelavet med lokale ingredienser - typisk ris, kylling, grøntsager, bambussuppe og risvin. Arrangeres som del af en trek-tur med overnatning, eller som selvstændig middag via din guide/hotel.</p>
+        <p><strong>Prisniveau:</strong> Inkluderet i homestay (100.000-200.000 VND / 27-55 DKK ekstra for separate middage)</p>
+        <p><strong>Tip:</strong> Bed jeres trekking-guide om at arrangere dette. Det er en autentisk og mindeværdig oplevelse for hele familien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og seværdigheder</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">1. Muong Hoa Valley trek (risterrasser)</p>
+      <div class="activity-body">
+        <p>Sapas mest berømte trek går ned i Muong Hoa-dalen, som rummer spektakulære risterrasser og flere minoritetslandsbyer (Y Linh Ho, Lao Chai, Ta Van). I juli er rismarkerne i deres grønneste tilstand - et utroligt smukt syn. Terrasserne er plantet og vokser kraftigt.</p>
+        <ul>
+          <li>Sværhedsgrad: Let-moderat (velegnet for teenagere). 6-10 km afhængigt af rute</li>
+          <li>Varighed: Halvdag (4-5 timer) eller hel dag (6-8 timer med landsbybesøg)</li>
+          <li>Guide anbefales stærkt - brug en lokal Hmong-guide for den bedste oplevelse</li>
+          <li>Pris: 300.000-500.000 VND / 80-130 DKK pr. person (gruppetur) eller 800.000-1.200.000 VND / 210-320 DKK (privat guide)</li>
+        </ul>
+        <p><strong>Juli-note:</strong> Stierne kan være mudrede og glatte. Vandtætte vandresko er et must. Regn bør forventes, men det gør landskabet endnu smukkere.</p>
+        <p><a href="https://www.sapatourism.com" target="_blank">sapatourism.com ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">2. Cat Cat Village</p>
+      <div class="activity-body">
+        <p>Den nærmeste og mest tilgængelige minoritetslandsby fra Sapa by (3 km). Beboet af den Sorte Hmong-minoritet. Vandring ned gennem landsbyen langs en smuk sti med risterrasser, et vandfald og demonstrationer af traditionelt håndværk (vævning, batik-farvning). Der er et kulturcenter og en bro over et vandfald i bunden.</p>
+        <ul>
+          <li>Entre: 100.000 VND / 27 DKK pr. person</li>
+          <li>Varighed: 2-3 timer</li>
+          <li>Sværhedsgrad: Let (trappegang ned, stejlt op ad på vej retur). Mulighed for el-bil op</li>
+          <li>Kan gøres på egen hånd, men en guide giver bedre indsigt</li>
+          <li>Bedst tidligt om morgenen inden turistbusserne ankommer</li>
+        </ul>
+        <p><strong>OBS:</strong> Ret kommercielt og turistet efterhånden. Stadig værd at se, men forvent souvenirboder. Overvej også mere autentiske landsbyer (se punkt 4 og 5).</p>
+        <p><a href="https://goo.gl/maps/sapa-cat-cat" target="_blank">Google Maps ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">3. Fansipan Peak - "Indokinas tag"</p>
+      <div class="activity-body">
+        <p>Indokinas højeste bjerg (3.143 m). Kan nås med svævebane fra Sapa by til toppen på ca. 20 minutter. Fra toppen er der (på en klar dag) panoramaudsigt over bjergene. Der er en stort tempelkompleks og trapper op til selve toppen. Teenagere vil elske svævebanen - den er en af verdens længste (6.293 m).</p>
+        <ul>
+          <li>Svævebane: ca. 700.000-900.000 VND / 185-240 DKK pr. person (voksen). Rabat for børn under 1,3 m</li>
+          <li>Varighed: 3-4 timer (inkl. kø, svævebane, tempel, toppen)</li>
+          <li>Kø kan være lang - gå tidligt (inden kl. 9) eller sent (efter kl. 14)</li>
+          <li>Juli: Ofte tåget/overskyet ved toppen. Udsigten er IKKE garanteret. Kan stadig være en fed oplevelse</li>
+        </ul>
+        <p><strong>Alternativ:</strong> Vandring til toppen tager 2 dage og kræver god kondition. Ikke anbefalet i juli pga. glatte stier og dårlig sigtbarhed.</p>
+        <p><a href="https://fansipanlegend.sunworld.vn" target="_blank">fansipanlegend.sunworld.vn ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">4. Ta Phin Village (Red Dao-minoritet)</p>
+      <div class="activity-body">
+        <p>Landsby 12 km fra Sapa, beboet af Red Dao-folket (genkendelige på deres røde hovedtørklæder). Mindre turistet end Cat Cat. Her kan I se traditionel medicin med urter og urtebade, broderi og vævning. Red Dao-kvinderne er berømte for deres medicinske urtebade - en unik oplevelse.</p>
+        <ul>
+          <li>Transport: Scooter, taxa eller som del af trek</li>
+          <li>Varighed: 2-3 timer</li>
+          <li>Urtebad: ca. 100.000-150.000 VND / 27-40 DKK pr. person</li>
+          <li>Kombiner med besøg i en nærliggende grotte</li>
+        </ul>
+        <p><strong>Etikette:</strong> Spørg altid om lov inden I tager billeder af mennesker. Køb gerne lokalt produceret broderi direkte fra kvinderne - det støtter landsbyen.</p>
+        <p><a href="https://www.tripadvisor.com/Attraction_Review-g311304-d7168020-Reviews-Ta_Phin_Village-Sapa_Lao_Cai_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">5. Y Linh Ho og Lao Chai landsbyer (Sorte Hmong)</p>
+      <div class="activity-body">
+        <p>To landsbyer i Muong Hoa-dalen, typisk besøgt som del af en dagstur-trek. Mere autentiske end Cat Cat. Y Linh Ho er en lille Hmong-landsby ved floden, og Lao Chai er lidt større. Her ser I dagliglivet - rismarker, bøfler, børn der leger, kvinder der væver. Landskabet mellem landsbyerne er fantastisk.</p>
+        <ul>
+          <li>Nås via trek fra Sapa (2-3 timer ned)</li>
+          <li>Brug lokal Hmong-guide - det giver bedre kontakt med landsbybeboerne</li>
+          <li>Kan kombineres med Ta Van for en heldagstrek</li>
+          <li>Mulighed for homestay-overnatning i Ta Van</li>
+        </ul>
+        <p><strong>Etikette:</strong> Opfør jer respektfuldt. Tag ikke billeder uden tilladelse. Køb gerne håndlavede souvenirs direkte. Lad være med at give penge eller slik til børn (det skaber afhængighed).</p>
+        <p>Del af standard Sapa-trekking-ruter</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">6. Sapa Market (Love Market Square)</p>
+      <div class="activity-body">
+        <p>Sapas daglige marked i centrum (nær kirken og Love Market Square) er et farverigt kaos af frisk frugt, grøntsager, krydderier og minoritetsfolkenes håndværk. Om lørdagen er der et udvidet marked med minoritetsfolk fra hele regionen. Bac Ha Market (søndag, 70 km fra Sapa) er endnu mere autentisk men kræver en hel dag.</p>
+        <ul>
+          <li>Dagligt marked: Morgen til frokost</li>
+          <li>Lørdagsmarked: Større, mere minoritetsfolk, start tidligt</li>
+          <li>Bac Ha Sunday Market: 2 timer fra Sapa, heldagstur. Farverigt Flower Hmong-marked</li>
+          <li>Prut om prisen - men vær fair</li>
+        </ul>
+        <p><strong>Tip for teenagere:</strong> Prøv lokale street food-snacks på markedet - grillet kød på spyd, bambusris, søde kartofler.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">7. Ham Rong Mountain (Dragon Mountain)</p>
+      <div class="activity-body">
+        <p>Lille bjerg midt i Sapa by med orkidé-have, stenstier og en udsigtsplatform med panoramaudsigt over byen og dalen. Let tilgængeligt og godt til en rolig morgen eller eftermiddag, specielt hvis vejret er for dårligt til trekking.</p>
+        <ul>
+          <li>Entre: 70.000 VND / 18 DKK pr. person</li>
+          <li>Varighed: 1-2 timer</li>
+          <li>Sværhedsgrad: Let-moderat (trapper)</li>
+          <li>Bedst om morgenen for udsigt (ofte tåge om eftermiddagen)</li>
+        </ul>
+        <p><a href="https://goo.gl/maps/hamrongmountain" target="_blank">Google Maps ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">8. Silver Waterfall (Thac Bac) og Love Waterfall (Thac Tinh Yeu)</p>
+      <div class="activity-body">
+        <p>To vandfald ca. 12-15 km fra Sapa by ad vejen mod Fansipan. Silver Waterfall er 200 m højt og synligt fra vejen. Love Waterfall kræver en 1 km vandring gennem skoven. I juli er vandfaldene på deres mest dramatiske pga. regnsæsonen - kraftigt vandfald.</p>
+        <ul>
+          <li>Silver Waterfall entre: 20.000 VND / 5 DKK</li>
+          <li>Love Waterfall entre: 45.000 VND / 12 DKK</li>
+          <li>Transport: Scooter eller taxa (15-20 min fra Sapa)</li>
+          <li>Varighed: 1-2 timer for begge</li>
+          <li>Juli: Vandfaldene er FANTASTISKE i regntiden. Medbring regnjakke.</li>
+        </ul>
+        <p><strong>Tip:</strong> Kombiner med Fansipan-svævebanen på samme dag.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">9. Indigo Cat værksted (Hmong-håndværk)</p>
+      <div class="activity-body">
+        <p>Besøg et traditionelt Hmong indigo-farveri og væveværksted i Sapa. Lær om den traditionelle proces med at farve stof med indigoplanter - en teknik der bruges af Sorte Hmong-folket (deraf navnet). Nogle værksteder tilbyder workshops hvor I selv kan prøve.</p>
+        <ul>
+          <li>Flere værksteder i Sapa by og Cat Cat Village</li>
+          <li>Workshop: ca. 200.000-400.000 VND / 55-105 DKK pr. person</li>
+          <li>Varighed: 1-3 timer afhængigt af workshop</li>
+          <li>God aktivitet på en regndag</li>
+        </ul>
+        <p>Spørg jeres hotel om lokale indigo-workshops</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">10. O Quy Ho Pass (scenisk køretur)</p>
+      <div class="activity-body">
+        <p>Dramatisk bjergpas vest for Sapa med fantastisk udsigt. Vejen snor sig gennem skyer og bjergtoppe. Stopper ved Tram Ton Pass (Vietnams højeste bjergpas, 1.900 m) og videre mod Lai Chau. I juli er der ofte skyer under jer - spektakulært.</p>
+        <ul>
+          <li>Scooter eller taxa/bil med chauffør</li>
+          <li>Kombiner med Silver/Love Waterfall (ligger på ruten)</li>
+          <li>Varighed: Halvdag</li>
+          <li>OBS: Vejen kan være glat og tåget i juli. Lej bil med chauffør fremfor selv at køre scooter i regnvejr.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEJR OG PAKKELISTE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Regnsæson</p>
+    <h2 class="section-title">Juli-vejr og pakkeliste til Sapa</h2>
+
+    <h3 style="font-size:19px; font-weight:700; margin-bottom:14px">Vejr i juli</h3>
+    <div class="card-grid" style="margin-bottom:32px">
+      <div class="card"><div class="card-icon">🌡️</div><div class="card-title">Temperatur</div><p class="card-body">20-25°C om dagen, 15-18°C om natten (køligt!)</p></div>
+      <div class="card"><div class="card-icon">🌧️</div><div class="card-title">Nedbør</div><p class="card-body">Juli er den vådeste måned - forvent daglige regnbyger, ofte om eftermiddagen.</p></div>
+      <div class="card"><div class="card-icon">🌫️</div><div class="card-title">Sigtbarhed</div><p class="card-body">Tåge og skyer er almindelige, specielt om morgenen og aftenen.</p></div>
+      <div class="card"><div class="card-icon">✅</div><div class="card-title">Fordele</div><p class="card-body">Risterrasserne er på deres absolut grønneste. Vandfaldene er dramatiske. Færre turister end i tørsæsonen.</p></div>
+      <div class="card"><div class="card-icon">⚠️</div><div class="card-title">Ulemper</div><p class="card-body">Mudrede stier, glat terræn, risiko for jordskred (sjældent men muligt). Udsigt fra Fansipan ofte blokeret af skyer.</p></div>
+    </div>
+
+    <h3 style="font-size:19px; font-weight:700; margin-bottom:14px">Pakkeliste til trekking i regnsæson</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Ting</th><th>Hvorfor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Vandtætte vandresko</strong> med godt greb</td><td>Mudrede, glatte stier. Sandaler/sneakers duer IKKE</td></tr>
+          <tr><td><strong>Regnjakke</strong> (let, pakbar)</td><td>Daglige regnbyger</td></tr>
+          <tr><td><strong>Regnbukser</strong> eller hurtigtørrende bukser</td><td>Vådt græs og mudder</td></tr>
+          <tr><td><strong>Poncho</strong> (kan købes i Sapa for 20-50.000 VND)</td><td>Billig lokal løsning, dækker rygsæk</td></tr>
+          <tr><td><strong>Vandtæt rygsæk-cover</strong></td><td>Beskytter elektronik og tørt tøj</td></tr>
+          <tr><td><strong>Vandtæt pose til telefon</strong></td><td>Til at tage billeder i regnvejr</td></tr>
+          <tr><td><strong>Ekstra sokker</strong> (2-3 par)</td><td>Våde fødder er uundgåeligt</td></tr>
+          <tr><td><strong>Lag-på-lag tøj</strong></td><td>15-25°C temperatursvingninger, køligt om aftenen</td></tr>
+          <tr><td><strong>Fleece eller let varm trøje</strong></td><td>Til aftener og tidlige morgener</td></tr>
+          <tr><td><strong>Solcreme og hat</strong></td><td>Solen steger når den er fremme mellem bygerne</td></tr>
+          <tr><td><strong>Myggespray</strong></td><td>Myg i dalene, specielt ved solnedgang</td></tr>
+          <tr><td><strong>Vandreflaske</strong></td><td>Vigtigt at holde sig hydreret</td></tr>
+          <tr><td><strong>Trekking-stave</strong> (valgfrit)</td><td>Hjælper på glatte stier. Kan lejes i Sapa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:19px; font-weight:700; margin:24px 0 14px">Praktiske tips</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🏠</div><div class="card-title">Book guide med overnatning</div><p class="card-body">En 2-dags/1-nat trek med homestay i Muong Hoa-dalen er den bedste måde at opleve Sapa. Dag 1: Trek til landsbyerne, overnat i homestay. Dag 2: Trek videre og retur.</p></div>
+      <div class="card"><div class="card-icon">🌅</div><div class="card-title">Tidlig start</div><p class="card-body">Vejret er typisk bedst om morgenen. Regn kommer ofte om eftermiddagen.</p></div>
+      <div class="card"><div class="card-icon">🥾</div><div class="card-title">Lej støvler lokalt</div><p class="card-body">Hvis I ikke vil slæbe vandrestøvler med, kan de lejes i Sapa for ca. 50.000-100.000 VND / 13-27 DKK pr. dag.</p></div>
+      <div class="card"><div class="card-icon">🧪</div><div class="card-title">Highlanderspray</div><p class="card-body">Lokal igle-spray. Igler kan forekomme i vådt terræn - spørg jeres guide.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

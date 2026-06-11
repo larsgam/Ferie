@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanoi – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 980px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .sub-title { font-size: 19px; font-weight: 700; margin: 28px 0 14px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+
+    .note-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #1e3a8a; line-height: 1.6; margin-bottom: 24px; }
+    .warning-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #7f1d1d; line-height: 1.6; margin-bottom: 16px; }
+    .warning-box strong { color: #991b1b; }
+    .tip-box { background: #fef9e7; border: 1px solid #f0d060; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #5c4500; line-height: 1.6; margin: 16px 0; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🛵 Hanoi</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Hanoi</h1>
+  <p class="hero-sub">Restauranter og aktiviteter — research til 4+2 dage i Hanoi (dag 2-5 og dag 26-27)</p>
+</section>
+
+<!-- RESTAURANTER -->
+<section class="section">
+  <div class="section-inner">
+    <div class="note-box">
+      <strong>Bemærk:</strong> Priserne er vejledende og baseret på 2024/2025-niveau. Tjek altid aktuelle priser og åbningstider inden besøg.
+    </div>
+
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+
+    <h3 class="sub-title">Streetfood og lokale specialiteter</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Pho Thin</strong></td><td>Pho bo (oksekødssuppe)</td><td>Legendarisk pho-bod i Old Quarter, grundlagt i 1979. Kendt for den mørke, kraftige bouillon med stegt løg og oksekød. Simpelt setup med små plastikstole - autentisk Hanoi-oplevelse.</td><td>~40.000 VND (~12 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d1197498-Reviews-Pho_Thin-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>2</td><td><strong>Bun Cha Huong Lien ("Obama Bun Cha")</strong></td><td>Bun cha</td><td>Verdensberømt efter Barack Obamas besøg i 2016 med Anthony Bourdain. Serverer fantastisk bun cha (grillede svinekødsfrikadeller med risnudler og dipsauce). Bordet hvor Obama sad er gemt bag glas.</td><td>~50.000 VND (~15 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d10348348-Reviews-Bun_Cha_Huong_Lien-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>3</td><td><strong>Banh Mi 25</strong></td><td>Banh mi (vietnamesisk sandwich)</td><td>Et af Hanois bedste banh mi-steder, beliggende i Old Quarter. Sprødt brød fyldt med pate, grøntsager, koriander og chili. Flere varianter inkl. kylling og æg. Altid kø - tegn på kvalitet.</td><td>~25.000-35.000 VND (~8-10 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d8676498-Reviews-Banh_Mi_25-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>4</td><td><strong>Bun Bo Nam Bo</strong></td><td>Bun bo nam bo (nudler med oksekød)</td><td>Ikonisk lille bod på Hang Dieu-gaden. Specialiseret i kun en ret: tørre risnudler med stegt oksekød, friske urter, peanuts og nuoc cham-sauce. Perfekt til frokost.</td><td>~50.000 VND (~15 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d2321786-Reviews-Bun_Bo_Nam_Bo-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>5</td><td><strong>Dong Xuan Market (streetfood-område)</strong></td><td>Diverse streetfood</td><td>Hanois største overdækkede marked med et stort streetfood-område på 2. sal og i gaderne omkring. Prøv banh cuon (dampede risruller), nem ran (forårsruller) og che (vietnamesisk dessert). Perfekt til at smage mange ting.</td><td>~20.000-50.000 VND pr. ret</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d311078-Reviews-Dong_Xuan_Market-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Æg-kaffe og cafeliv</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td><strong>Cafe Giang</strong></td><td>Ca phe trung (ægkaffe)</td><td>Fødestedet for Hanois berømte ægkaffe, grundlagt i 1946. Kaffen toppes med en cremet blanding af æggeblomme, sukker og condenseret mælk. Caféen ligger gemt i en lille gyde nær Hoan Kiem-søen. Et must-try i Hanoi.</td><td>~35.000-50.000 VND (~10-15 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d12145498-Reviews-Cafe_Giang-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>7</td><td><strong>Cafe Dinh (Hidden Cafe)</strong></td><td>Kaffe og drinks</td><td>Stemningsfuld café på 2. sal med udsigt over Hoan Kiem-søen. Populær blandt lokale. Man finder indgangen gennem en smal trappe i en gyde. Teenagerne vil elske den "hemmelige" følelse. God vietnamesisk iskaffe.</td><td>~30.000-60.000 VND (~9-18 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d6871498-Reviews-Cafe_Dinh-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Sit-down restauranter (familievenlige)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td><strong>Quan An Ngon</strong></td><td>Vietnamesisk (alle regioner)</td><td>Populær restaurant i en smuk gammel villa med åbent køkken-stationer rundt om i gården. Serverer retter fra alle Vietnams regioner - perfekt til at prøve mange forskellige ting. Familievenlig med stort menukort. Kan være travl - book bord.</td><td>100.000-200.000 VND/ret (~30-60 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d1137754-Reviews-Quan_An_Ngon-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>9</td><td><strong>Madame Hien</strong></td><td>Finere vietnamesisk</td><td>Elegant restaurant i en restaureret fransk kolonialvilla, startet af Didier Corlou. Serverer raffineret vietnamesisk køkken i smukke omgivelser. God til en "pæn" familieaften. Aircon og behagelig atmosfære - rart i juliheden.</td><td>150.000-300.000 VND/ret (~45-90 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d3383011-Reviews-Madame_Hien-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>10</td><td><strong>Cha Ca Thang Long</strong></td><td>Cha ca (Hanoi-specialitet)</td><td>Specialiseret i Hanois signaturret: cha ca - stegt fisk (malle) med dild og risnudler. Fisken tilberedes ved bordet i en sizzling pande. En unik oplevelse man kun får i Hanoi. Simpelt men autentisk.</td><td>~120.000-150.000 VND (~35-45 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d2439488-Reviews-Cha_Ca_Thang_Long-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>11</td><td><strong>Pizza 4P's</strong></td><td>Japansk-italiensk fusion</td><td>Populær kæde med fantastisk pizza og mozzarella lavet in-house. Ikke vietnamesisk, men teenagervenligt alternativ når man trænger til en pause fra lokal mad. Moderne indretning, gode cocktails/smoothies.</td><td>150.000-250.000 VND/ret (~45-75 kr)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g293924-d14130498-Reviews-Pizza_4P_s-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>12</td><td><strong>The Grill (Sedona Suites)</strong></td><td>Internationalt/steakhouse</td><td>Rooftop-restaurant med udsigt over byen. Godt alternativ til en aften med vestlig mad. Gode burgere og steaks. Teenagerne vil sætte pris på den moderne stemning og udsigten.</td><td>200.000-400.000 VND/ret (~60-120 kr)</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Retter I skal prøve i Hanoi</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Ret</th><th>Beskrivelse</th><th>Hvor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Pho bo</strong></td><td>Hanois signatursuppe med oksebouillon, risnudler, urter</td><td>Pho Thin, Pho 10</td></tr>
+          <tr><td><strong>Bun cha</strong></td><td>Grillede svinekødsfrikadeller med risnudler og dipsauce</td><td>Bun Cha Huong Lien</td></tr>
+          <tr><td><strong>Banh mi</strong></td><td>Vietnamesisk sandwich i sprødt baguettebrød</td><td>Banh Mi 25</td></tr>
+          <tr><td><strong>Cha ca</strong></td><td>Stegt malle med dild, peanuts og nudler (kun i Hanoi)</td><td>Cha Ca Thang Long</td></tr>
+          <tr><td><strong>Ca phe trung</strong></td><td>Ægkaffe - espresso toppet med cremet æggeblomme</td><td>Cafe Giang</td></tr>
+          <tr><td><strong>Bun bo nam bo</strong></td><td>Tørre risnudler med oksekød, peanuts og urter</td><td>Bun Bo Nam Bo</td></tr>
+          <tr><td><strong>Banh cuon</strong></td><td>Dampede risruller med svinefarce og svampe</td><td>Dong Xuan Market</td></tr>
+          <tr><td><strong>Nem ran</strong></td><td>Sprøde forårsruller med svinekød</td><td>Overalt i Old Quarter</td></tr>
+          <tr><td><strong>Che</strong></td><td>Vietnamesisk dessertsuppe med bønner, gelé og kokosmælk</td><td>Gadeboder og markeder</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og seværdigheder</h2>
+
+    <h3 class="sub-title">Old Quarter og byoplevelser</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Old Quarter (Pho Co)</strong></td><td>Hanois historiske gamle bydel med 36 gader, hver opkaldt efter de varer der traditionelt blev solgt der. Perfekt til at vandre rundt, shoppe, spise streetfood og opleve det kaotiske byliv. I weekenden (fredag-søndag aften) lukkes gaderne omkring Hoan Kiem-søen for biltrafik og bliver til et kæmpe gågade-/underholdningsområde med livemusik og gadespil.</td><td><strong>Adresse:</strong> Hoan Kiem District. <strong>Weekend Night Market:</strong> Fre-søn 18:00-23:00 på Hang Dao/Hang Ngang. Gratis at gå rundt.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d311073-Reviews-Old_Quarter-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>2</td><td><strong>Hoan Kiem-søen og Ngoc Son-templet</strong></td><td>Den smukke sø i hjertet af Hanoi med det ikoniske røde Huc-bro der fører til Ngoc Son-templet på en lille ø. Perfekt morgentur - lokale laver tai chi ved søen tidligt om morgenen. Templet er dedikeret til bl.a. en kæmpeskilpadde fra søen.</td><td><strong>Åbningstider:</strong> 07:00-18:00 dagligt. <strong>Entré:</strong> 30.000 VND (~9 kr). <strong>Adresse:</strong> Dinh Tien Hoang St, Hoan Kiem.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d455950-Reviews-Ngoc_Son_Temple-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>3</td><td><strong>Train Street (Pho Phung Hung)</strong></td><td>Den berømte gade hvor toget kører få centimeter fra husene. Myndighederne har gentagne gange lukket gaden for turister af sikkerhedsgrunde, men den genåbnes ofte. <strong>Status pr. 2025:</strong> Caféerne langs banen er officielt lukket, men gaden kan stadig opleves. Tjek den aktuelle status inden besøg - det ændrer sig ofte. Toget kører typisk kl. 15:30 og 19:00.</td><td><strong>Adresse:</strong> Pho Phung Hung (nær Hanoi Station) og Ngo 224 Le Duan. <strong>Tip:</strong> Selv hvis caféerne er lukkede, kan man se toget passere fra broer og sideveje i området.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d17437537-Reviews-Train_Street-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Ho Chi Minh-komplekset</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td><strong>Ho Chi Minh-mausoleet</strong></td><td>Det imposante mausoleum hvor Ho Chi Minhs balsamerede krop ligger. En stærk og højtidelig oplevelse. Man går i en lang kø forbi kroppen - besøget tager ca. 15-20 min inde i mausoleet. <strong>Vigtigt:</strong> Streng dresscode - knæ og skuldre skal være dækkede, ingen shorts/tanktops. Ingen kameraer/telefoner inde i mausoleet.</td><td><strong>Åbningstider:</strong> Tir-tor 07:30-10:30, lør-søn 07:30-11:00. <strong>Lukket:</strong> Mandag, fredag, og normalt okt-nov for vedligeholdelse. <strong>Entré:</strong> Gratis. <strong>Tip:</strong> Kom tidligt (før 08:00) for at undgå lang kø.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d311052-Reviews-Ho_Chi_Minh_Mausoleum-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>5</td><td><strong>Ho Chi Minhs pælehus og præsidentpalads</strong></td><td>I den smukke have bag mausoleet ligger Ho Chi Minhs beskedne træhus på pæle, hvor han boede i stedet for i det store præsidentpalads. Giver et indblik i hans enkle livsstil. Den botaniske have rundt om er smuk og skyggefuld - rart i varmen.</td><td><strong>Åbningstider:</strong> 07:30-11:00, 14:00-16:00. <strong>Entré:</strong> 40.000 VND (~12 kr). Samme område som mausoleet.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d455007-Reviews-Ho_Chi_Minh_s_Stilt_House-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>6</td><td><strong>One Pillar Pagoda (Chua Mot Cot)</strong></td><td>Lille men ikonisk pagode bygget på en enkelt søjle over en lotusdam. Oprindeligt fra 1049, genopbygget flere gange. Ligger i gåafstand fra mausoleet - tag den med i samme besøg.</td><td><strong>Åbningstider:</strong> 07:00-18:00. <strong>Entré:</strong> Gratis. Lige ved mausoleet.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d455006-Reviews-One_Pillar_Pagoda-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <strong>Plan for mausoleet:</strong> Besøg hele Ho Chi Minh-komplekset på en formiddag: Mausoleet → Pælehuset → One Pillar Pagoda → Ho Chi Minh-museet. Regn med 2-3 timer total. Husk dresscode!
+    </div>
+
+    <h3 class="sub-title">Kultur og historie</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td><strong>Temple of Literature (Van Mieu)</strong></td><td>Vietnams første universitet, grundlagt i 1070. Smuk tempelkompleks med fem gårde, lotusdam og stensteler med navnene på doktorer fra kejserlige eksamener. En af Hanois bedst bevarede historiske seværdigheder. Roligt og fredfyldt selv midt i det kaotiske Hanoi.</td><td><strong>Åbningstider:</strong> 08:00-17:00 dagligt (sommertid til 18:00). <strong>Entré:</strong> 30.000 VND (~9 kr). <strong>Adresse:</strong> 58 Quoc Tu Giam, Dong Da. Regn med 1-1,5 time.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d311060-Reviews-Temple_of_Literature_National_University-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>8</td><td><strong>Hoa Lo-fængslet ("Hanoi Hilton")</strong></td><td>Det berygtede fængsel brugt af franskmændene under kolonitiden og senere til at holde amerikanske krigsfanger under Vietnamkrigen (bl.a. John McCain). Stærk og tankevækkende oplevelse. Teenagerne vil finde det historisk interessant - god kombination med skolepensum.</td><td><strong>Åbningstider:</strong> 08:00-17:00 dagligt. <strong>Entré:</strong> 30.000 VND (~9 kr). <strong>Adresse:</strong> 1 Hoa Lo, Hoan Kiem. Regn med 1 time.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d455005-Reviews-Hoa_Lo_Prison-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>9</td><td><strong>Thang Long Water Puppet Theatre</strong></td><td>Traditionelt vietnamesisk vanddukkeateater ved Hoan Kiem-søen. Dukkerne bevæges over vand af skjulte dukkespillere, ledsaget af livemusik. Forestillingerne viser vietnamesiske folkeeventyr og dagligdags scener. Underholdende for hele familien - også teenagere.</td><td><strong>Åbningstider:</strong> Forestillinger kl. 15:00, 16:10, 17:20, 18:30, 20:00 dagligt. <strong>Entré:</strong> 100.000 VND (~30 kr). <strong>Varighed:</strong> 50 min. <strong>Adresse:</strong> 57B Dinh Tien Hoang, Hoan Kiem. <strong>Tip:</strong> Book billetter på forhånd - forestillingerne sælges ofte ud.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d455009-Reviews-Thang_Long_Water_Puppet_Theatre-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Ture og oplevelser</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td><strong>Vespa/scooter-tour (aften streetfood)</strong></td><td>Oplev Hanoi bag på en Vespa med lokal guide. De fleste ture inkluderer 5-6 streetfood-stop, besøg på lokale barer og ture gennem Old Quarter om aftenen. Sjov og actionfyldt oplevelse der kombinerer mad og sightseeing. Teenagerne vil elske hastigheden og maden. Flere udbydere, bl.a. Hanoi Vespa Adventures og XO Tours.</td><td><strong>Varighed:</strong> 4-4,5 timer (typisk 17:30-22:00). <strong>Pris:</strong> ~$65-85 USD/person inkl. al mad og drikkevarer. Børn under 6 sidder foran på scooteren. <strong>Tip:</strong> Book i god tid - populære ture sælger hurtigt ud i højsæsonen.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d7167775-Reviews-Hanoi_Vespa_Adventures-Hanoi.html" target="_blank">Vespa Adventures ↗</a></td></tr>
+          <tr><td>11</td><td><strong>Streetfood walking tour</strong></td><td>Guidede vandreture gennem Old Quarter med 8-10 smagsprøver. Lær om vietnamesisk madkultur, besøg lokale boder og markeder man ikke selv ville finde. De fleste ture varer 2,5-3 timer. Gode udbydere: Hanoi Street Food Tours, Secret Food Tours Hanoi.</td><td><strong>Varighed:</strong> 2,5-3 timer. <strong>Pris:</strong> ~$30-45 USD/person. Typisk morgen (09:00) eller aften (17:00). Al mad inkluderet.</td><td><a href="https://www.tripadvisor.com/Attractions-g293924-Activities-c36-t203-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>12</td><td><strong>Cykeltur i Hanoi</strong></td><td>Mere rolig alternativ til Vespa-tur. Kør gennem Old Quarter, forbi Long Bien-broen, og langs Red River. Nogle ture tager jer ud til landsbyer uden for byen. God måde at se en anden side af Hanoi. Passer til aktive teenagere.</td><td><strong>Varighed:</strong> 3-4 timer. <strong>Pris:</strong> ~$30-50 USD/person inkl. cykel og guide. Morgen er bedst (mindre varme og trafik).</td><td><a href="https://www.tripadvisor.com/Attractions-g293924-Activities-c61-t214-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Shopping og markeder</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>13</td><td><strong>Dong Xuan Market</strong></td><td>Hanois største og ældste overdækkede marked (fra 1889). Tre etager med tøj, souvenirs, køkkenudstyr og mad. Streetfood-området på og omkring markedet er fantastisk. Perfekt til at opleve det lokale hverdagsliv. Husk at prutte!</td><td><strong>Åbningstider:</strong> 06:00-18:00 dagligt. <strong>Adresse:</strong> Dong Xuan, Hoan Kiem. Gratis adgang. I weekenden er der natmarked i gaderne omkring (18:00-23:00).</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d311078-Reviews-Dong_Xuan_Market-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>14</td><td><strong>Hang Gai Street ("Silk Street")</strong></td><td>Gaden for silke, broderi og skræddersyet tøj. God til souvenirs og gaver. Mange butikker tilbyder skræddersyet tøj på 24-48 timer (men kvaliteten i Hoi An er typisk bedre). Perfekt til at bruge de sidste dage i Hanoi.</td><td><strong>Adresse:</strong> Hang Gai Street, Hoan Kiem (Old Quarter). Butikkerne er åbne ca. 08:00-21:00.</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Teenagervenlige aktiviteter</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="background:white; border-radius:12px">
+        <thead><tr><th>#</th><th>Aktivitet</th><th>Beskrivelse</th><th>Praktisk info</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>15</td><td><strong>Long Bien Bridge</strong></td><td>Historisk stålbro bygget af franskmændene (1898-1902), bombet under Vietnamkrigen men aldrig ødelagt. Stadig i brug for tog, scootere og fodgængere. Fantastisk til fotos, især ved solnedgang. Man kan gå halvvejs ud og se toget passere.</td><td><strong>Adresse:</strong> Nær Old Quarter, nordøstlig retning. Gratis. Bedst ved solnedgang. <strong>Tip:</strong> Pas på trafikken - broen er smal.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d7104282-Reviews-Long_Bien_Bridge-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>16</td><td><strong>Lotte Tower Observation Deck</strong></td><td>65. etage af Hanois højeste bygning med 360-graders panoramaudsigt. Sky Walk med glasbund for de modige. God aktivitet til en regnvejrsdag eller til at få overblik over byen. Teenagerne vil elske glasbunden.</td><td><strong>Åbningstider:</strong> 09:00-22:00 dagligt. <strong>Entré:</strong> 230.000 VND (~70 kr). <strong>Adresse:</strong> 54 Lieu Giai, Ba Dinh.</td><td><a href="https://www.tripadvisor.com/Attraction_Review-g293924-d10474781-Reviews-Lotte_Center_Hanoi_Observation_Deck-Hanoi.html" target="_blank">TripAdvisor ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Program</p>
+    <h2 class="section-title">Foreslået program for Hanoi-dagene</h2>
+
+    <h3 class="sub-title">Dag 2-5 (7.-10. juli): Første besøg</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Formiddag</th><th>Eftermiddag</th><th>Aften</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dag 2</strong> (tir)</td><td>Ankomst kl. 13:55, check ind, hvil</td><td>Gåtur ved Hoan Kiem-søen, Ngoc Son-templet</td><td>Old Quarter, ægkaffe på Cafe Giang, streetfood</td></tr>
+          <tr><td><strong>Dag 3</strong> (ons)</td><td>Streetfood walking tour (09:00)</td><td>Temple of Literature, Hoa Lo-fængslet</td><td>Vanddukkeateater, aftensmad Quan An Ngon</td></tr>
+          <tr><td><strong>Dag 4</strong> (tor)</td><td>Ho Chi Minh-komplekset (kom kl. 07:30)</td><td>Train Street-området, Long Bien Bridge</td><td>Bun Cha Huong Lien, Old Quarter natmarked</td></tr>
+          <tr><td><strong>Dag 5</strong> (fre)</td><td>Vespa/streetfood-tour (aften) eller cykeltur (morgen)</td><td>Fri tid, Dong Xuan Market</td><td>Vespa-tur (17:30-22:00) inkl. aftensmad</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Dag 26-27 (31. jul - 1. aug): Sidste besøg</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Formiddag</th><th>Eftermiddag</th><th>Aften</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dag 26</strong> (fre)</td><td>Ankomst fra Da Nang, check ind</td><td>Shopping Hang Gai Street</td><td>Afskeds-streetfood-runde i Old Quarter</td></tr>
+          <tr><td><strong>Dag 27</strong> (lør)</td><td>Lotte Tower (hvis ikke set), souvenirs</td><td>Sidste shopping, pho-frokost</td><td>Pak sammen - fly kl. 03:00 natten til søndag</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box">
+      <strong>Husk: Returfly.</strong> Flyet hjem afgår søndag 2. august kl. 03:00 om natten. I skal til lufthavnen senest kl. 00:00-00:30 lørdag aften/nat.
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Godt at vide</p>
+    <h2 class="section-title">Praktiske tips til Hanoi i juli</h2>
+    <div class="card-grid">
+      <div class="card" style="background:white"><div class="card-icon">🌡️</div><div class="card-title">Vejr</div><p class="card-body">30-35 grader, meget fugtigt, daglige regnbyger (typisk om eftermiddagen). Medbring regntøj/paraply.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🛵</div><div class="card-title">Trafik</div><p class="card-body">Kaotisk - kig aldrig til venstre eller højre, bare gå langsomt og forudsigeligt over gaden. Trafikken flyder udenom jer.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">💧</div><div class="card-title">Drikkevand</div><p class="card-body">Drik kun flaskevand. Is i drinks er typisk okay i restauranter.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🤝</div><div class="card-title">Prutning</div><p class="card-body">Forventet på markeder. Start med at byde 40-50% af den opgivne pris.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">📱</div><div class="card-title">Grab</div><p class="card-body">Vietnams svar på Uber. Download appen - billig og nem transport. Bedre end at prutte med taxaer.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">💵</div><div class="card-title">Kontanter</div><p class="card-body">Mange steder tager kun kontanter. Hæv VND i pengeautomater (Vietcombank og BIDV har lave gebyrer).</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>
