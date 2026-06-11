@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rejseplaner · versionsoversigt – Vietnam 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -56,6 +58,17 @@
     .open-link { font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; white-space: nowrap; }
     .open-link:hover { text-decoration: underline; }
     .legend { font-size: 13px; color: var(--color-secondary); line-height: 1.7; margin-top: 18px; }
+    /* MAP */
+    .map-toggles { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .map-toggle { border: none; border-radius: 980px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .map-toggle.off { opacity: 0.35; }
+    #plan-map { height: 460px; border-radius: var(--radius); border: 1px solid var(--color-divider); overflow: hidden; }
+    .leaflet-popup-content-wrapper { border-radius: 10px; }
+    .leaflet-popup-content { margin: 10px 14px; }
+    .map-pop-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .map-pop-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 980px; color: white; margin-bottom: 6px; }
+    .map-pop-body { font-size: 12px; color: #444; line-height: 1.5; }
+    .map-pop-plans { font-size: 11px; color: var(--color-secondary); margin-top: 6px; }
     a { color: var(--color-accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
@@ -92,6 +105,23 @@
       </div>
       <a href="plan-1.1.html" class="master-btn">Åbn master-planen →</a>
     </div>
+  </div>
+</section>
+
+<!-- KORT -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Geografisk sammenligning</p>
+    <h2 class="section-title">Kort: master vs. øvrige planer</h2>
+    <p style="font-size:15px; color:var(--color-secondary); line-height:1.6; margin-bottom:18px;">
+      Grønne stop = master-planen (v1.1), forbundet i rejserækkefølge. ★ markerer steder der <em>kun</em> er på master. De farvede markører viser, hvor de øvrige planer afviger.
+    </p>
+    <div class="map-toggles">
+      <button class="map-toggle" data-group="master" style="background:#2e9e5b">★ Master (v1.1)</button>
+      <button class="map-toggle" data-group="v10" style="background:#d97706">v1.0 · Sapa</button>
+      <button class="map-toggle" data-group="v20" style="background:#7c3aed">v2.0 · Syd</button>
+    </div>
+    <div id="plan-map"></div>
   </div>
 </section>
 
@@ -149,6 +179,94 @@
   <p>Vietnam · Familieferie · Juli 2026</p>
   <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
 </footer>
+
+<script>
+const map = L.map('plan-map', { scrollWheelZoom: false }).setView([19.3, 105.6], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+}).addTo(map);
+
+const GROUP_COLORS = { master: '#2e9e5b', v10: '#d97706', v20: '#7c3aed' };
+
+function makePin(color, star) {
+  const inner = star
+    ? `<text x="14" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="${color}">★</text>`
+    : `<circle cx="14" cy="14" r="5.5" fill="white"/>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">
+    <path d="M14 0C6.3 0 0 6.3 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.3 21.7 0 14 0z" fill="${color}" stroke="white" stroke-width="2"/>
+    <circle cx="14" cy="14" r="7" fill="white"/>${inner}</svg>`;
+  return L.divIcon({ html: svg, className: '', iconSize: [28, 40], iconAnchor: [14, 40], popupAnchor: [0, -42] });
+}
+
+function popupHtml(group, title, body, plans) {
+  const color = GROUP_COLORS[group];
+  const tag = { master: '★ Master · v1.1', v10: 'v1.0', v20: 'v2.0' }[group];
+  return `<div>
+    <div class="map-pop-title">${title}</div>
+    <div class="map-pop-tag" style="background:${color}">${tag}</div>
+    <div class="map-pop-body">${body}</div>
+    <div class="map-pop-plans">På planerne: ${plans}</div>
+  </div>`;
+}
+
+const groups = { master: [], v10: [], v20: [] };
+
+function addPlace(group, lat, lng, title, body, plans, star) {
+  const m = L.marker([lat, lng], { icon: makePin(GROUP_COLORS[group], star) })
+    .bindPopup(popupHtml(group, title, body, plans));
+  groups[group].push(m);
+  return m;
+}
+
+// ── MASTER (v1.1) — i rejserækkefølge ──
+addPlace('master', 21.0285, 105.8542, '🏙️ Hanoi', 'Start 3 nætter + slut 2 nætter. Old Quarter, streetfood.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 20.9101, 107.1839, '⛵ Ha Long Bay', 'Cruise 1 nat — kajak, grottetur, badning.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 20.4500, 105.1600, '🌾 Pu Luong', 'Risterrasser, Kho Muong + Bat Cave, bambusrafting. 3 nætter. Erstatter Sapa.', 'Kun v1.1', true);
+addPlace('master', 20.2506, 105.9745, '⛰️ Ninh Binh', 'Tam Coc, Trang An, Mua Cave. 3 nætter.', 'v1.1, v1.0', false);
+addPlace('master', 17.5880, 106.2840, '🦇 Phong Nha', 'Verdens største grotter — Dark Cave, Paradise Cave. 2 nætter.', 'Kun v1.1', true);
+addPlace('master', 16.4637, 107.5909, '🏯 Hue', 'Kejserbyen, kongegrave, parfumefloden. 2 nætter.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 16.0544, 108.2022, '🌉 Da Nang', 'My Khe Beach, Marble Mountains, Ba Na Hills. 3 nætter.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 15.8801, 108.3380, '🏮 Hoi An', 'Gamlebyen, skrædder, strand, madlavning, Cham Islands. 6 nætter.', 'v1.1, v1.0, v2.0', false);
+
+// ── MASTER RUTELINJE (overland) + returfly ──
+const masterRoute = [
+  [21.0285,105.8542],[20.9101,107.1839],[21.0285,105.8542],[20.4500,105.1600],
+  [20.2506,105.9745],[17.5880,106.2840],[16.4637,107.5909],[16.0544,108.2022],[15.8801,108.3380]
+];
+const routeLine = L.polyline(masterRoute, { color: '#2e9e5b', weight: 3, opacity: 0.7 });
+const returnLine = L.polyline([[15.8801,108.3380],[21.0285,105.8542]], { color: '#2e9e5b', weight: 2, opacity: 0.4, dashArray: '4,8' });
+
+// ── v1.0-only (amber) ──
+addPlace('v10', 22.3364, 103.8438, '🏔️ Sapa', 'Bjerg-trekking, risterrasser. Master bruger Pu Luong i stedet.', 'v1.0 og v2.0 (ikke master)', false);
+
+// ── v2.0-only (lilla) ──
+addPlace('v20', 12.2388, 109.1967, '🏖️ Nha Trang', 'Strandby, snorkling, øhop.', 'Kun v2.0', false);
+addPlace('v20', 10.8231, 106.6297, '🏛️ Ho Chi Minh City', 'Krigsmuseet, Cu Chi-tunnelerne, Ben Thanh Market.', 'Kun v2.0', false);
+addPlace('v20', 10.0452, 105.7469, '🛶 Mekong-deltaet', 'Flydende markeder, bådture, tropisk frugt.', 'Kun v2.0', false);
+addPlace('v20', 10.2897, 103.9842, '🌴 Phu Quoc', 'Strandafslapning, snorkling.', 'Kun v2.0', false);
+
+// ── TÆND/SLUK (default: master + v1.0 på, v2.0 af) ──
+const active = { master: true, v10: true, v20: false };
+
+function renderGroup(g) {
+  groups[g].forEach(m => active[g] ? m.addTo(map) : map.removeLayer(m));
+  if (g === 'master') {
+    if (active.master) { routeLine.addTo(map); returnLine.addTo(map); }
+    else { map.removeLayer(routeLine); map.removeLayer(returnLine); }
+  }
+}
+['master','v10','v20'].forEach(renderGroup);
+
+document.querySelectorAll('.map-toggle').forEach(btn => {
+  const g = btn.dataset.group;
+  btn.classList.toggle('off', !active[g]);
+  btn.addEventListener('click', () => {
+    active[g] = !active[g];
+    btn.classList.toggle('off', !active[g]);
+    renderGroup(g);
+  });
+});
+</script>
 
 </body>
 </html>
