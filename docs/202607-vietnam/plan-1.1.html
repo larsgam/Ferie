@@ -37,12 +37,14 @@
     .data-table tr:last-child td { border-bottom: none; }
     .data-table tr.highlight td { background: #fffaf0; font-weight: 600; }
     .day-list { display: flex; flex-direction: column; gap: 2px; }
-    .day-item { display: grid; grid-template-columns: 48px 92px 110px 1fr; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; }
+    .day-item { display: grid; grid-template-columns: 48px 92px 100px 110px 1fr; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; }
     .day-item:hover { background: rgba(0,0,0,0.03); }
     .day-item.travel { background: #f0f6ff; }
     .day-item.highlight { background: #fffaf0; }
     .day-num { font-size: 20px; font-weight: 700; color: var(--color-secondary); }
     .day-date { font-size: 13px; color: var(--color-secondary); }
+    .day-segment { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); padding: 2px 8px; border-radius: 980px; background: var(--color-section); border: 1px solid var(--color-divider); white-space: nowrap; }
+    .day-item.travel .day-segment { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
     .day-place { font-size: 13px; font-weight: 600; }
     .day-desc { font-size: 14px; line-height: 1.4; }
     .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-top: 8px; }
@@ -70,7 +72,7 @@
     .version-bar .vall:hover { text-decoration: underline; }
     footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
     footer p { font-size: 13px; color: var(--color-secondary); }
-    @media (max-width: 640px) { .day-item { grid-template-columns: 36px 1fr; } .day-date, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .day-item { grid-template-columns: 36px 1fr; } .day-date, .day-segment, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -131,34 +133,34 @@
     <p class="section-label">28 dage</p>
     <h2 class="section-title">Dag for dag</h2>
     <div class="day-list">
-      <div class="day-item travel"><span class="day-num">1</span><span class="day-date">Man 6. jul</span><span class="day-place">✈️</span><span class="day-desc">Afrejse CPH 16:00 → DOH 23:00</span></div>
-      <div class="day-item travel"><span class="day-num">2</span><span class="day-date">Tir 7. jul</span><span class="day-place">Hanoi</span><span class="day-desc">DOH 02:45 → HAN 13:55. Ankomst, check ind, Old Quarter om aftenen</span></div>
-      <div class="day-item"><span class="day-num">3</span><span class="day-date">Ons 8. jul</span><span class="day-place">Hanoi</span><span class="day-desc">Streetfood-tour, Train Street, Hoan Kiem-søen</span></div>
-      <div class="day-item"><span class="day-num">4</span><span class="day-date">Tor 9. jul</span><span class="day-place">Hanoi</span><span class="day-desc">Ho Chi Minh-mausoleet, vespa-/cyklo-tur</span></div>
-      <div class="day-item travel"><span class="day-num">5</span><span class="day-date">Fre 10. jul</span><span class="day-place">Ha Long</span><span class="day-desc">Transfer til cruise, kajak, grottetur, badning</span></div>
-      <div class="day-item travel"><span class="day-num">6</span><span class="day-date">Lør 11. jul</span><span class="day-place">→ Hanoi</span><span class="day-desc">Cruise dag 2, retur Hanoi (transitnat)</span></div>
-      <div class="day-item travel"><span class="day-num">7</span><span class="day-date">Søn 12. jul</span><span class="day-place">→ Pu Luong</span><span class="day-desc">Kørsel via Mai Chau (frokost + cykelstop). Ankomst lodge, pool, solnedgang</span></div>
-      <div class="day-item highlight"><span class="day-num">8</span><span class="day-date">Man 13. jul</span><span class="day-place">Pu Luong</span><span class="day-desc">Guidet heldagstrek: Kho Muong + Bat Cave</span></div>
-      <div class="day-item"><span class="day-num">9</span><span class="day-date">Tir 14. jul</span><span class="day-place">Pu Luong</span><span class="day-desc">Bambusrafting, vandhjul ved Ban Don, pool</span></div>
-      <div class="day-item travel"><span class="day-num">10</span><span class="day-date">Ons 15. jul</span><span class="day-place">→ Ninh Binh</span><span class="day-desc">Kørsel (~3 t). Eftermiddag ved kalkstensbjergene</span></div>
-      <div class="day-item"><span class="day-num">11</span><span class="day-date">Tor 16. jul</span><span class="day-place">Ninh Binh</span><span class="day-desc">Bådtur Tam Coc, cykling mellem bjergene</span></div>
-      <div class="day-item"><span class="day-num">12</span><span class="day-date">Fre 17. jul</span><span class="day-place">Ninh Binh</span><span class="day-desc">Trang An, Mua Cave (500 trin, udsigt), Bai Dinh</span></div>
-      <div class="day-item travel"><span class="day-num">13</span><span class="day-date">Lør 18. jul</span><span class="day-place">→ Phong Nha</span><span class="day-desc">Transport fra Ninh Binh (nattog/bil). Eftermiddag: Bong Lai-dalen + The Duck Stop</span></div>
-      <div class="day-item highlight"><span class="day-num">14</span><span class="day-date">Søn 19. jul</span><span class="day-place">Phong Nha</span><span class="day-desc">🦇 Dark Cave (zipline + mudderbad) + Paradise Cave</span></div>
-      <div class="day-item travel"><span class="day-num">15</span><span class="day-date">Man 20. jul</span><span class="day-place">→ Hue</span><span class="day-desc">Privat bil (~4 t), evt. DMZ-stop (Vinh Moc-tunnellerne)</span></div>
-      <div class="day-item"><span class="day-num">16</span><span class="day-date">Tir 21. jul</span><span class="day-place">Hue</span><span class="day-desc">Kejserbyen, kongegrave, parfumefloden</span></div>
-      <div class="day-item travel"><span class="day-num">17</span><span class="day-date">Ons 22. jul</span><span class="day-place">→ Da Nang</span><span class="day-desc">Hai Van Pass (evt. motorcykeltur med guide) → Da Nang</span></div>
-      <div class="day-item"><span class="day-num">18</span><span class="day-date">Tor 23. jul</span><span class="day-place">Da Nang</span><span class="day-desc">My Khe Beach, Marble Mountains + Non Nuoc Beach</span></div>
-      <div class="day-item"><span class="day-num">19</span><span class="day-date">Fre 24. jul</span><span class="day-place">Da Nang</span><span class="day-desc">Ba Na Hills (Golden Bridge)</span></div>
-      <div class="day-item travel"><span class="day-num">20</span><span class="day-date">Lør 25. jul</span><span class="day-place">→ Hoi An</span><span class="day-desc">Transfer (~30 min). Gamlebyen, lanterner om aftenen</span></div>
-      <div class="day-item"><span class="day-num">21</span><span class="day-date">Søn 26. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Skrædder, shopping i gamlebyen</span></div>
-      <div class="day-item"><span class="day-num">22</span><span class="day-date">Man 27. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Madlavningskursus</span></div>
-      <div class="day-item"><span class="day-num">23</span><span class="day-date">Tir 28. jul</span><span class="day-place">Hoi An</span><span class="day-desc">An Bang Beach, cykling i rismarker</span></div>
-      <div class="day-item highlight"><span class="day-num">24</span><span class="day-date">Ons 29. jul</span><span class="day-place">Hoi An</span><span class="day-desc">🏝️ Cham Islands dagstur — snorkling, strand</span></div>
-      <div class="day-item"><span class="day-num">25</span><span class="day-date">Tor 30. jul</span><span class="day-place">Hoi An</span><span class="day-desc">Buffer/afslapning, sidste shopping</span></div>
-      <div class="day-item travel"><span class="day-num">26</span><span class="day-date">Fre 31. jul</span><span class="day-place">✈️ → Hanoi</span><span class="day-desc">Fly Da Nang → Hanoi. Sidste aften i Hanoi</span></div>
-      <div class="day-item"><span class="day-num">27</span><span class="day-date">Lør 1. aug</span><span class="day-place">Hanoi</span><span class="day-desc">Sidste dag, shopping, streetfood</span></div>
-      <div class="day-item travel"><span class="day-num">28</span><span class="day-date">Søn 2. aug</span><span class="day-place">✈️</span><span class="day-desc">Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05</span></div>
+      <div class="day-item travel"><span class="day-num">1</span><span class="day-date">Man 6. jul</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Afrejse CPH 16:00 → DOH 23:00</span></div>
+      <div class="day-item travel"><span class="day-num">2</span><span class="day-date">Tir 7. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">DOH 02:45 → HAN 13:55. Ankomst, check ind, Old Quarter om aftenen</span></div>
+      <div class="day-item"><span class="day-num">3</span><span class="day-date">Ons 8. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Streetfood-tour, Train Street, Hoan Kiem-søen</span></div>
+      <div class="day-item"><span class="day-num">4</span><span class="day-date">Tor 9. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Ho Chi Minh-mausoleet, vespa-/cyklo-tur</span></div>
+      <div class="day-item travel"><span class="day-num">5</span><span class="day-date">Fre 10. jul</span><span class="day-segment">Ha Long</span><span class="day-place">Ha Long</span><span class="day-desc">Transfer til cruise, kajak, grottetur, badning</span></div>
+      <div class="day-item travel"><span class="day-num">6</span><span class="day-date">Lør 11. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hanoi</span><span class="day-desc">Cruise dag 2, retur Hanoi (transitnat)</span></div>
+      <div class="day-item travel"><span class="day-num">7</span><span class="day-date">Søn 12. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Pu Luong</span><span class="day-desc">Kørsel via Mai Chau (frokost + cykelstop). Ankomst lodge, pool, solnedgang</span></div>
+      <div class="day-item highlight"><span class="day-num">8</span><span class="day-date">Man 13. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Guidet heldagstrek: Kho Muong + Bat Cave</span></div>
+      <div class="day-item"><span class="day-num">9</span><span class="day-date">Tir 14. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Bambusrafting, vandhjul ved Ban Don, pool</span></div>
+      <div class="day-item travel"><span class="day-num">10</span><span class="day-date">Ons 15. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Ninh Binh</span><span class="day-desc">Kørsel (~3 t). Eftermiddag ved kalkstensbjergene</span></div>
+      <div class="day-item"><span class="day-num">11</span><span class="day-date">Tor 16. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Bådtur Tam Coc, cykling mellem bjergene</span></div>
+      <div class="day-item"><span class="day-num">12</span><span class="day-date">Fre 17. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Trang An, Mua Cave (500 trin, udsigt), Bai Dinh</span></div>
+      <div class="day-item travel"><span class="day-num">13</span><span class="day-date">Lør 18. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Phong Nha</span><span class="day-desc">Transport fra Ninh Binh (nattog/bil). Eftermiddag: Bong Lai-dalen + The Duck Stop</span></div>
+      <div class="day-item highlight"><span class="day-num">14</span><span class="day-date">Søn 19. jul</span><span class="day-segment">Phong Nha</span><span class="day-place">Phong Nha</span><span class="day-desc">🦇 Dark Cave (zipline + mudderbad) + Paradise Cave</span></div>
+      <div class="day-item travel"><span class="day-num">15</span><span class="day-date">Man 20. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hue</span><span class="day-desc">Privat bil (~4 t), evt. DMZ-stop (Vinh Moc-tunnellerne)</span></div>
+      <div class="day-item"><span class="day-num">16</span><span class="day-date">Tir 21. jul</span><span class="day-segment">Hue</span><span class="day-place">Hue</span><span class="day-desc">Kejserbyen, kongegrave, parfumefloden</span></div>
+      <div class="day-item travel"><span class="day-num">17</span><span class="day-date">Ons 22. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Da Nang</span><span class="day-desc">Hai Van Pass (evt. motorcykeltur med guide) → Da Nang</span></div>
+      <div class="day-item"><span class="day-num">18</span><span class="day-date">Tor 23. jul</span><span class="day-segment">Da Nang</span><span class="day-place">Da Nang</span><span class="day-desc">My Khe Beach, Marble Mountains + Non Nuoc Beach</span></div>
+      <div class="day-item"><span class="day-num">19</span><span class="day-date">Fre 24. jul</span><span class="day-segment">Da Nang</span><span class="day-place">Da Nang</span><span class="day-desc">Ba Na Hills (Golden Bridge)</span></div>
+      <div class="day-item travel"><span class="day-num">20</span><span class="day-date">Lør 25. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hoi An</span><span class="day-desc">Transfer (~30 min). Gamlebyen, lanterner om aftenen</span></div>
+      <div class="day-item"><span class="day-num">21</span><span class="day-date">Søn 26. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Skrædder, shopping i gamlebyen</span></div>
+      <div class="day-item"><span class="day-num">22</span><span class="day-date">Man 27. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Madlavningskursus</span></div>
+      <div class="day-item"><span class="day-num">23</span><span class="day-date">Tir 28. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">An Bang Beach, cykling i rismarker</span></div>
+      <div class="day-item highlight"><span class="day-num">24</span><span class="day-date">Ons 29. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">🏝️ Cham Islands dagstur — snorkling, strand</span></div>
+      <div class="day-item"><span class="day-num">25</span><span class="day-date">Tor 30. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Buffer/afslapning, sidste shopping</span></div>
+      <div class="day-item travel"><span class="day-num">26</span><span class="day-date">Fre 31. jul</span><span class="day-segment">Transit</span><span class="day-place">✈️ → Hanoi</span><span class="day-desc">Fly Da Nang → Hanoi. Sidste aften i Hanoi</span></div>
+      <div class="day-item"><span class="day-num">27</span><span class="day-date">Lør 1. aug</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Sidste dag, shopping, streetfood</span></div>
+      <div class="day-item travel"><span class="day-num">28</span><span class="day-date">Søn 2. aug</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Hjemrejse HAN 03:00 → DOH 05:50 → CPH 14:05</span></div>
     </div>
   </div>
 </section>
