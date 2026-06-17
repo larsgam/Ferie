@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { parseActivityTables } from './parse-research'
+import { parseActivityTables, type ParsedActivity } from './parse-research'
 
 const sb = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -20,6 +20,13 @@ const DESTINATIONS: { name: string; lat: number; lng: number; nights: number; fi
   { name: 'Pu Luong', lat: 20.4500, lng: 105.1600, nights: 3, file: 'research/pu-luong.md' },
 ]
 
+// Files that use section format (### N. Name + bullet fields) instead of pipe tables
+const SECTION_FORMAT_FILES = new Set([
+  'research/phong-nha.md',
+  'research/hoi-an-restauranter-aktiviteter.md',
+  'research/pu-luong.md',
+])
+
 const INFO: { slug: string; title: string; file: string }[] = [
   { slug: 'vejr', title: 'Vejr og rejsetips', file: 'vejr-og-rejsetips.md' },
   { slug: 'rejsebureauer', title: 'Rejsebureauer — sammenligning', file: 'rejsebureauer-sammenligning.md' },
@@ -28,12 +35,103 @@ const INFO: { slug: string; title: string; file: string }[] = [
 function read(rel: string): string {
   return readFileSync(join(RESEARCH, rel), 'utf8')
 }
+
 function categoryFor(md: string, name: string): string {
   const idx = md.indexOf(name)
   const before = md.slice(0, idx).toLowerCase()
   const lastRest = before.lastIndexOf('restaurant')
   const lastAct = before.lastIndexOf('aktivitet')
   return lastRest > lastAct ? 'restaurant' : 'sight'
+}
+
+/**
+ * Parses section-style markdown files where each activity is a numbered heading:
+ *   ### N. Name — subtitle
+ *   - **Beskrivelse:** text
+ *   - **Pris:** text
+ *   - **Praktisk:** text
+ *   - **Link:** [label](url)
+ */
+function parseSectionActivities(md: string): ParsedActivity[] {
+  const lines = md.split('\n')
+  const out: ParsedActivity[] = []
+
+  // Match ### N. Name or #### N. Name headings
+  const headingRe = /^#{2,4}\s+\d+\.\s+(.+)$/
+  const fieldRe = /^-\s+\*\*([^*]+)\*\*:?\s*(.*)$/
+  const urlRe = /\((https?:\/\/[^)]+)\)/
+
+  let current: Partial<ParsedActivity> | null = null
+  let inSection = false
+  // Track whether we're inside a non-activity top-level section (e.g. overnatning, transport)
+  let skipH2Section = false
+
+  const flush = () => {
+    if (current?.name) {
+      out.push({
+        name: current.name,
+        description: current.description ?? null,
+        price_text: current.price_text ?? null,
+        opening_hours: current.opening_hours ?? null,
+        url: current.url ?? null,
+      })
+    }
+    current = null
+    inSection = false
+  }
+
+  for (const line of lines) {
+    // Track ## level sections to know when we're in accommodation/logistics
+    if (/^##\s/.test(line) && !/^#{3,}/.test(line)) {
+      flush()
+      const sectionTitle = line.replace(/^#+\s*/, '').toLowerCase()
+      skipH2Section = /overnatning|transport|logistik|juli-vejr|forslag|mai chau|how to|kilder/.test(sectionTitle)
+      continue
+    }
+
+    if (skipH2Section) continue
+
+    const headingMatch = line.match(headingRe)
+    if (headingMatch) {
+      flush()
+      // Strip markdown links and bold from heading name
+      const rawName = headingMatch[1]
+        .replace(/\*\*/g, '')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .trim()
+      current = { name: rawName }
+      inSection = true
+      continue
+    }
+
+    if (!inSection || !current) continue
+
+    const fieldMatch = line.match(fieldRe)
+    if (fieldMatch) {
+      const key = fieldMatch[1].toLowerCase().trim()
+      const val = fieldMatch[2].replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim()
+      if (key.startsWith('beskrivelse')) {
+        current.description = val || null
+      } else if (key.startsWith('pris')) {
+        current.price_text = val || null
+      } else if (key.startsWith('praktisk')) {
+        current.opening_hours = val || null
+      } else if (key === 'link') {
+        const urlMatch = fieldMatch[2].match(urlRe)
+        current.url = urlMatch ? urlMatch[1] : null
+      }
+    }
+  }
+  flush()
+
+  return out
+}
+
+function parseActivities(md: string, file: string): ParsedActivity[] {
+  if (SECTION_FORMAT_FILES.has(file)) {
+    return parseSectionActivities(md)
+  }
+  return parseActivityTables(md)
 }
 
 async function main() {
@@ -56,7 +154,7 @@ async function main() {
       trip_id: tripId, name: d.name, lat: d.lat, lng: d.lng, nights: d.nights, sort_order: order++,
     }).select().single()
     const md = read(d.file)
-    const acts = parseActivityTables(md)
+    const acts = parseActivities(md, d.file)
     for (const a of acts) {
       const nameIdx = md.indexOf(a.name)
       const tags = /teenager/i.test(md.slice(Math.max(0, nameIdx - 400), nameIdx)) ? ['teen'] : []
