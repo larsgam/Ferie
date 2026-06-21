@@ -36,6 +36,9 @@
     .urgent .check-item { background: #fdf2f0; border-color: #f3c9c2; }
     .urgent .check-box { border-color: #c0392b; }
     .info-banner { background: #f0f6ff; border: 1px solid #c2dbff; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    .booked-item { display: flex; gap: 14px; padding: 16px 18px; background: #f4fbf6; border: 1px solid #b8e4c7; border-radius: 14px; margin-bottom: 10px; align-items: flex-start; }
+    .booked-check { width: 22px; height: 22px; background: #2e9e5b; border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; font-weight: 700; }
+    .booked-label { display: inline-block; background: #2e9e5b; color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 980px; margin-left: 6px; vertical-align: middle; }
     a { color: var(--color-accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
@@ -59,7 +62,15 @@
 
 <section class="section urgent">
   <div class="section-inner">
-    <div class="info-banner">ℹ️ Master-planen er nu <a href="plan-1.1.html">v1.1 (Pu Luong + Phong Nha)</a>: <strong>Sapa-trekking → Pu Luong</strong>, og <strong>flyet Hanoi→Da Nang bortfalder</strong> (kun Da Nang→Hanoi skal bookes).</div>
+    <div class="info-banner">ℹ️ Master-planen er nu <a href="plan-3.0.html">v3.0 (med Cambodia-sidetur)</a>: <strong>Sapa-trekking → Pu Luong</strong>, sidetur til <strong>Angkor Wat 15.–18. juli</strong>, og videre til Da Nang. Fly Hanoi→Da Nang bortfalder (Hanoi→Siem Reap→Da Nang i stedet).</div>
+
+    <p class="section-label" style="color:#2e9e5b">Booket</p>
+    <h2 class="section-title" style="margin-bottom:16px">Bekræftede fly ✅</h2>
+    <ul class="check-list" style="margin-bottom:32px">
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Hanoi → Siem Reap <span class="booked-label">Booket</span></strong><span class="note">Ons. 15. jul. · 16:20–18:05 · VietJet VJ913 · Booking: 4QW3QH</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Siem Reap → Da Nang <span class="booked-label">Booket</span></strong><span class="note">Lør. 18. jul. · 14:05–16:00 · Air Cambodia K6840</span></span></li>
+    </ul>
+
     <p class="section-label">Book snart</p>
     <h2 class="section-title">Haster</h2>
     <ul class="check-list">
