@@ -150,66 +150,72 @@ function addMarker(cat, lat, lng, title, body, link) {
   return m;
 }
 
-// ── RUTE-LINJE (master v1.1) ─────────────────────────────
-const routeCoords = [
+// ── RUTE-LINJE (master v3.2) ─────────────────────────────
+// Overland: Hanoi → Ha Long → Hanoi → Pu Luong
+L.polyline([
   [21.0285, 105.8542], // Hanoi
   [20.9101, 107.1839], // Ha Long Bay
-  [21.0285, 105.8542], // Hanoi (transit retur fra Ha Long)
+  [21.0285, 105.8542], // Hanoi (transit)
   [20.4500, 105.1600], // Pu Luong
-  [20.2506, 105.9745], // Ninh Binh
-  [17.5880, 106.2840], // Phong Nha
-  [16.4637, 107.5909], // Hue
-  [16.0544, 108.2022], // Da Nang (via Hai Van Pass)
+], { color: '#2e9e5b', weight: 2.5, opacity: 0.6, dashArray: '6,8' }).addTo(map);
+
+// Fly: Hanoi → Siem Reap (Cambodia)
+L.polyline([
+  [21.0285, 105.8542], // Hanoi/Noi Bai
+  [13.3671, 103.8448], // Siem Reap
+], { color: '#f59e0b', weight: 2, opacity: 0.7, dashArray: '4,6' }).addTo(map);
+
+// Fly: Siem Reap → Da Nang → Hoi An
+L.polyline([
+  [13.3671, 103.8448], // Siem Reap
+  [16.0544, 108.2022], // Da Nang (lufthavn)
   [15.8801, 108.3380], // Hoi An
-];
+], { color: '#f59e0b', weight: 2, opacity: 0.7, dashArray: '4,6' }).addTo(map);
 
-L.polyline(routeCoords, {
-  color: '#1a2e1a',
-  weight: 2,
-  opacity: 0.4,
-  dashArray: '6, 8'
-}).addTo(map);
+// Overland nordpå: Hoi An → Hue → Phong Nha → Ninh Binh → Hanoi
+L.polyline([
+  [15.8801, 108.3380], // Hoi An
+  [16.4637, 107.5909], // Hue
+  [17.5880, 106.2840], // Phong Nha
+  [20.2506, 105.9745], // Ninh Binh
+  [21.0285, 105.8542], // Hanoi
+], { color: '#2e9e5b', weight: 2.5, opacity: 0.6, dashArray: '6,8' }).addTo(map);
 
-// Returfly Da Nang → Hanoi
-L.polyline([[15.8801, 108.3380],[21.0285, 105.8542]], {
-  color: '#1a2e1a', weight: 1.5, opacity: 0.25, dashArray: '3, 9'
-}).addTo(map);
-
-// ── OVERNATNING (master v1.1) ─────────────────────────────
+// ── OVERNATNING (master v3.2) ─────────────────────────────
 addMarker('hjem', 21.0285, 105.8542,
   '🏨 Hanoi',
-  'Dag 2–4 (7.–9. jul) + transitnat dag 6 + slut dag 26–27 (31. jul–1. aug).<br>Old Quarter er base.',
+  'Dag 2–3 (7.–9. jul) + transitnat dag 5 + slut dag 26–27 (31. jul–2. aug).<br>Conifer Boutique Hotel (booket ✅).',
   null
 );
 addMarker('hjem', 20.4500, 105.1600,
   '🏨 Pu Luong',
-  'Dag 7–9 (12.–14. jul).<br>Risterrasser, trekking og eco-lodge. Erstatter Sapa — mindre turistet.',
+  'Dag 7–9 (12.–15. jul) · 3 nætter.<br>Risterrasser, trekking og eco-lodge.<br>Pu Luong Boutique Garden Spa (booket ✅ — ekstra nat mangler ⚠️).',
   'research/pu-luong.html'
 );
-addMarker('hjem', 20.2506, 105.9745,
-  '🏨 Ninh Binh',
-  'Dag 10–12 (15.–17. jul).<br>"Ha Long Bay på land" – kalkstensbjerge og bådture.',
-  'research/ninh-binh.html'
+addMarker('hjem', 13.3671, 103.8448,
+  '🛕 Siem Reap, Cambodja',
+  'Dag 10–12 (15.–18. jul) · 3 nætter.<br>Angkor Wat, Angkor Thom, Bayon, Ta Prohm.<br>Chhouy Vathna Angkor Boutique (booket ✅).',
+  null
 );
-addMarker('hjem', 17.5880, 106.2840,
-  '🏨 Phong Nha',
-  'Dag 13–14 (18.–19. jul).<br>Verdens største grotter. Dark Cave (zipline + mudderbad), Paradise Cave.',
-  'research/phong-nha.html'
+addMarker('hjem', 15.8801, 108.3380,
+  '🏨 Hoi An (An Bang Beach)',
+  'Dag 13–17 (18.–23. jul) · 5 nætter.<br>Gamlebyen, skrædder, Cham Islands, Ba Na Hills dagstur.<br>Ikke booket endnu.',
+  'research/hoi-an-restauranter-aktiviteter.html'
 );
 addMarker('hjem', 16.4637, 107.5909,
   '🏨 Hue',
-  'Dag 15–16 (20.–21. jul).<br>Kejserbyen og parfumefloden.',
+  'Dag 18–20 (23.–26. jul) · 3 nætter.<br>Kejserbyen, kongegrave, parfumefloden, Thien Mu.<br>Ikke booket endnu.',
   'research/hue-restauranter-aktiviteter.html'
 );
-addMarker('hjem', 16.0544, 108.2022,
-  '🏨 Da Nang',
-  'Dag 17–19 (22.–24. jul).<br>My Khe Beach, Marble Mountains, Ba Na Hills.',
-  'research/da-nang-restauranter-aktiviteter.html'
+addMarker('hjem', 17.5880, 106.2840,
+  '🏨 Phong Nha',
+  'Dag 21–22 (26.–28. jul) · 2 nætter.<br>Dark Cave (zipline + mudderbad), Paradise Cave.<br>Ikke booket endnu.',
+  'research/phong-nha.html'
 );
-addMarker('hjem', 15.8801, 108.3380,
-  '🏨 Hoi An',
-  'Dag 20–25 (25.–30. jul).<br>UNESCO gamlebyen. 6 dage: skrædder, strand, madlavning, Cham Islands.',
-  'research/hoi-an-restauranter-aktiviteter.html'
+addMarker('hjem', 20.2506, 105.9745,
+  '🏨 Ninh Binh',
+  'Dag 24–25 (29.–31. jul) · 2 nætter.<br>Tam Coc, Trang An, Mua Cave.<br>ChezCao Rice Field Ecolodge (booket ✅).',
+  'research/ninh-binh.html'
 );
 
 // ── AKTIVITETER ───────────────────────────────────────────
