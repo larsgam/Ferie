@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fausto Coppi 2026 🚴</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --red: #c0392b; --red-bg: #fdf2f0; --red-border: #f3c9c2;
+      --green: #2e9e5b; --green-bg: #f0fdf4; --green-border: #b8e4c7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 760px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero { background: #1a1a2e; background: linear-gradient(160deg, #1a0a0a 0%, #2d0a0a 50%, #1a0a1a 100%); padding: 64px 22px 52px; text-align: center; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; color: #c0392b; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(30px, 6vw, 52px); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.1; margin-bottom: 10px; }
+    .hero-sub { font-size: 16px; color: #a1a1a6; margin-bottom: 24px; }
+    .hero-badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 980px; padding: 7px 14px; font-size: 13px; color: #e5e5e7; font-weight: 500; }
+    .badge-red { background: rgba(192,57,43,0.2); border-color: rgba(192,57,43,0.4); color: #f4856e; }
+
+    /* Sections */
+    .section { padding: 36px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-alt { background: var(--color-section); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 20px; }
+
+    /* Alert */
+    .alert { background: var(--red-bg); border: 1px solid var(--red-border); border-radius: 14px; padding: 14px 16px; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+    .alert strong { color: var(--red); }
+    .info-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 14px; padding: 14px 16px; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+
+    /* Roller */
+    .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    .role-card { background: white; border: 1px solid var(--color-divider); border-radius: 14px; padding: 14px 16px; }
+    .role-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .role-title { font-size: 12px; color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .role-desc { font-size: 13px; color: var(--color-secondary); line-height: 1.4; }
+
+    /* Dag-for-dag timeline */
+    .day-block { margin-bottom: 24px; }
+    .day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .day-dot { width: 36px; height: 36px; border-radius: 50%; background: var(--color-section); border: 2px solid var(--color-divider); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .day-dot.race { background: var(--red); border-color: var(--red); }
+    .day-dot.race span { color: white; font-size: 14px; }
+    .day-meta { flex: 1; }
+    .day-date { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); }
+    .day-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+    .day-events { border-left: 2px solid var(--color-divider); margin-left: 17px; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .event { display: flex; gap: 10px; align-items: flex-start; }
+    .event-time { font-size: 12px; font-weight: 700; color: var(--color-secondary); flex-shrink: 0; min-width: 42px; margin-top: 2px; }
+    .event-body { flex: 1; }
+    .event-title { font-size: 15px; font-weight: 600; line-height: 1.3; }
+    .event-note { font-size: 13px; color: var(--color-secondary); margin-top: 2px; line-height: 1.4; }
+    .event-highlight { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 8px 12px; }
+    .event-highlight .event-title { color: #c2410c; }
+    .event-race { background: var(--red-bg); border: 1px solid var(--red-border); border-radius: 10px; padding: 10px 12px; }
+    .event-race .event-title { color: var(--red); font-size: 16px; }
+    .event-vip { background: #f0f6ff; border: 1px solid #c2dbff; border-radius: 10px; padding: 8px 12px; }
+
+    /* Pakkeliste */
+    .progress-track { background: var(--color-divider); border-radius: 4px; height: 5px; overflow: hidden; margin-bottom: 6px; }
+    .progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.3s; }
+    .progress-label { font-size: 12px; color: var(--color-secondary); margin-bottom: 16px; }
+    .cat-header { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); padding: 14px 0 8px; border-bottom: 1px solid var(--color-divider); margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center; }
+    .cat-check-all { font-size: 11px; color: var(--color-accent); cursor: pointer; font-weight: 600; text-transform: none; letter-spacing: 0; }
+    .cat-check-all:hover { text-decoration: underline; }
+    .check-list { list-style: none; margin-bottom: 4px; }
+    .check-item { display: flex; align-items: center; gap: 12px; padding: 10px 6px; border-bottom: 1px solid #f0f0f2; cursor: pointer; border-radius: 6px; -webkit-tap-highlight-color: transparent; }
+    .check-item:last-child { border-bottom: none; }
+    .check-item:hover { background: var(--color-section); }
+    .check-box { width: 22px; height: 22px; border: 2px solid var(--color-divider); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .check-item:hover .check-box { border-color: var(--green); }
+    .check-item.checked .check-box { background: var(--green); border-color: var(--green); }
+    .check-item.checked .check-box::after { content: ''; display: block; width: 5px; height: 9px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg) translate(-1px, -1px); }
+    .check-item.checked .check-text { color: var(--color-secondary); text-decoration: line-through; text-decoration-color: #ccc; }
+    .check-text { font-size: 15px; line-height: 1.4; }
+    .check-text .note { display: block; font-size: 13px; color: var(--color-secondary); margin-top: 2px; }
+    .check-item.checked .note { text-decoration: line-through; text-decoration-color: #ccc; }
+    .btn-reset { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 980px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--color-divider); background: white; color: var(--color-secondary); margin-bottom: 16px; }
+    .btn-reset:hover { background: var(--color-section); }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 28px 22px; text-align: center; margin-top: 24px; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🚴 Fausto Coppi 2026</span>
+    <a href="../home.html" class="nav-back">← Ferier</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Granfondo · Cuneo · Piemonte</p>
+  <h1>Fausto Coppi<br>Crunshers 🚴</h1>
+  <p class="hero-sub">171 km · Cuneo · 28. juni 2026</p>
+  <div class="hero-badges">
+    <span class="badge">📅 25.–30. juni 2026</span>
+    <span class="badge">👥 Lars · Frederik · Majer · Bo · Rodes</span>
+    <span class="badge badge-red">🏁 171 km</span>
+  </div>
+</section>
+
+<!-- LOGISTIK -->
+<section class="section">
+<div class="section-inner">
+  <p class="section-label">Vigtige tider</p>
+  <h2 class="section-title">Logistik</h2>
+
+  <div class="alert">
+    ⚠️ <strong>Færge Rødby kl. 20:30</strong> — kør SHARP! Afgang KBH kl. 18:00. Rodes samler op:
+    Frederik + Majer kl. 17:30 → Lars kl. 17:45.
+  </div>
+  <div class="info-box">
+    🚗 <strong>Biltur:</strong> Hold af 2 med 4-timers vagter. Altid 2 vågne. Kør via Schweiz → Torino → Cuneo. Forventet ankomst fredag formiddag.
+    <br><br>
+    🍺 <strong>Ramme øl på færgen?</strong> Kan købes ombord!<br>
+    🥐 Frede laver carbosnacks · Lars sørger for hydrering · Rodes: transport
+  </div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <p class="role-title">Transport</p>
+      <p class="role-name">Rodes</p>
+      <p class="role-desc">Organiserer alt transport</p>
+    </div>
+    <div class="role-card">
+      <p class="role-title">Carbosnacks</p>
+      <p class="role-name">Frederik</p>
+      <p class="role-desc">Laver carbo-snacks til bilturen</p>
+    </div>
+    <div class="role-card">
+      <p class="role-title">Hydrering</p>
+      <p class="role-name">Lars</p>
+      <p class="role-desc">Sørger for vand og drikke til turen</p>
+    </div>
+    <div class="role-card">
+      <p class="role-title">Hjelm</p>
+      <p class="role-name">Lars → Majer</p>
+      <p class="role-desc">Lars har ny hjelm til Majer med</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section section-alt">
+<div class="section-inner">
+  <p class="section-label">Dag for dag</p>
+  <h2 class="section-title">Program</h2>
+
+  <!-- Torsdag 25/6 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-dot"><span>🚗</span></div>
+      <div class="day-meta">
+        <p class="day-date">Torsdag · 25. juni</p>
+        <p class="day-name">Afrejse fra København</p>
+      </div>
+    </div>
+    <div class="day-events">
+      <div class="event">
+        <span class="event-time">17:30</span>
+        <div class="event-body">
+          <p class="event-title">Rodes henter Frederik + Majer</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">17:45</span>
+        <div class="event-body event-highlight">
+          <p class="event-title">⚠️ Rodes henter Lars — klar til afhentning!</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">18:00</span>
+        <div class="event-body">
+          <p class="event-title">Afgang fra København</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">20:30</span>
+        <div class="event-body event-highlight">
+          <p class="event-title">⚠️ Færge Rødby — DEADLINE</p>
+          <p class="event-note">Ingen ventetid. Kør sharp!</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">Nat</span>
+        <div class="event-body">
+          <p class="event-title">Biltur: Schweiz → Torino → Cuneo</p>
+          <p class="event-note">Hold af 2 · 4-timers vagter · altid 2 vågne. Nakkepude + høreværn!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fredag 26/6 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-dot"><span>🏨</span></div>
+      <div class="day-meta">
+        <p class="day-date">Fredag · 26. juni</p>
+        <p class="day-name">Ankomst · Hotel · VIP-besøg</p>
+      </div>
+    </div>
+    <div class="day-events">
+      <div class="event">
+        <span class="event-time">Formiddag</span>
+        <div class="event-body">
+          <p class="event-title">Ankomst Cuneo 🇮🇹</p>
+          <p class="event-note">Hotel Palazzo Lovera — 2 suiter. Nær startlinjen. Check-in + evt. lur.</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">15:00</span>
+        <div class="event-body event-vip">
+          <p class="event-title">🏭 Officine Mattio — VIP guests</p>
+          <p class="event-note">Besøg hos det italienske cykelværksted som VIP-gæster</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">20:00</span>
+        <div class="event-body event-vip">
+          <p class="event-title">🇩🇰 Dansk æresmiddag</p>
+          <p class="event-note">Piazza Galimberti 6, Cuneo · €22/person · Ambassadør Peter Taksøe-Jensen · Carboload!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lørdag 27/6 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-dot"><span>🚴</span></div>
+      <div class="day-meta">
+        <p class="day-date">Lørdag · 27. juni</p>
+        <p class="day-name">Social ride + carboload</p>
+      </div>
+    </div>
+    <div class="day-events">
+      <div class="event">
+        <span class="event-time">Morgen</span>
+        <div class="event-body">
+          <p class="event-title">Social ride ~50 km med Officine Mattio</p>
+          <p class="event-note">Let ben — gem kræfterne til søndag</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">Dag</span>
+        <div class="event-body">
+          <p class="event-title">Hæng ud · expo på pladsen</p>
+          <p class="event-note">Energibars, gels og udstyr kan købes på pladsen</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">Aften</span>
+        <div class="event-body">
+          <p class="event-title">Evt. middag med Jens Veggerby · Carboload!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Søndag 28/6 — RACE DAY -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-dot race"><span>🏁</span></div>
+      <div class="day-meta">
+        <p class="day-date">Søndag · 28. juni — RACE DAY</p>
+        <p class="day-name">Fausto Coppi 171 km 🚴</p>
+      </div>
+    </div>
+    <div class="day-events">
+      <div class="event">
+        <span class="event-time"></span>
+        <div class="event-body event-race">
+          <p class="event-title">🏁 Granfondo Fausto Coppi — 171 km</p>
+          <p class="event-note">Start i Cuneo · ingen vind · let skyet · 28–29 °C · Vi kører det!</p>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-time">Efter</span>
+        <div class="event-body">
+          <p class="event-title">🍺 Fadøl — vel fortjent</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mandag/Tirsdag -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-dot"><span>🏠</span></div>
+      <div class="day-meta">
+        <p class="day-date">Mandag 29/6 · evt. Tirsdag 30/6</p>
+        <p class="day-name">Hjemtur mod Danmark</p>
+      </div>
+    </div>
+    <div class="day-events">
+      <div class="event">
+        <span class="event-time">07:00</span>
+        <div class="event-body">
+          <p class="event-title">Afgang mod DK — gerne 07:00 eller tidligere</p>
+          <p class="event-note">Bo stopper af i Basel. Resten kører mod København.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- PAKKELISTE -->
+<section class="section">
+<div class="section-inner">
+  <p class="section-label">Inden afrejse</p>
+  <h2 class="section-title">Pakkeliste · 40L duffelbag</h2>
+
+  <div class="progress-track"><div class="progress-fill" id="pFill" style="width:0%"></div></div>
+  <p class="progress-label" id="pLabel">0 af 0 pakket</p>
+  <button class="btn-reset" onclick="resetAll()">↩ Nulstil</button>
+
+  <div class="cat-header">Til bilturen <span class="cat-check-all" onclick="checkAllCat('bil')">Markér alle</span></div>
+  <ul class="check-list" id="cat-bil">
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Nakkepude<span class="note">VIGTIGT — lang nat i bilen</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Høreværn eller ørepropper<span class="note">VIGTIGT — sov i bilen</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Hydrering til bilturen<span class="note">Lars sørger for drikkevarer til hele holdet</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Oplader til telefon (12V eller powerbank)</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lidt snacks til natten</span></li>
+  </ul>
+
+  <div class="cat-header">Cykeltøj & udstyr <span class="cat-check-all" onclick="checkAllCat('cykel')">Markér alle</span></div>
+  <ul class="check-list" id="cat-cykel">
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">2–3 sæt cykeltøj<span class="note">Sort bib shorts til den trøje vi får. Hav ekstra — lørdag socialride + søndag race.</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Cykelhjelm<span class="note">Lars har ny hjelm til Majer med</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Cykelsko</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Cykelhandsker</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Cyclingstrømper, 2–3 par</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solbriller (cykling)<span class="note">28–29 °C, let skyet men stærk sol i bjergene</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Gilet / vindjakke til nedstigninger<span class="note">Kan køle hurtigt ned i bjergene efter hård klatring</span></span></li>
+  </ul>
+
+  <div class="cat-header">Til løbet <span class="cat-check-all" onclick="checkAllCat('loeb')">Markér alle</span></div>
+  <ul class="check-list" id="cat-loeb">
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Energibars<span class="note">Kan suppleres på expo på pladsen fredag/lørdag</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Gels<span class="note">171 km er lang — medbring nok</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Drikkedunke til cyklen, 2 stk.</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solcreme SPF 50+<span class="note">28–29 °C + 171 km i solen — smør godt på</span></span></li>
+  </ul>
+
+  <div class="cat-header">Reservedele & vedligehold <span class="cat-check-all" onclick="checkAllCat('reservedele')">Markér alle</span></div>
+  <ul class="check-list" id="cat-reservedele">
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Reserveslanger, 2–3 stk.</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">CO2-kartridger eller miniluftpumpe<span class="note">Rodes har pumpe, sealant og GAS</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Oplader til gear (Shimano/SRAM Di2 / AXS)<span class="note">Oplad INDEN afrejse + tag kabler med</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Multiværktøj</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Cykelcomputer + oplader</span></li>
+  </ul>
+
+  <div class="cat-header">Tøj & personligt <span class="cat-check-all" onclick="checkAllCat('toj')">Markér alle</span></div>
+  <ul class="check-list" id="cat-toj">
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Casual tøj til fredag aftenmiddag<span class="note">Dansk æresmiddag kl. 20:00 med ambassadøren — smart casual</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Aftentøj til lørdag (evt. Veggerby middag)</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Casual shorts + T-shirt til hvile-dage</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Sandaler / flip-flops</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Toilettaske + personlig medicin</span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Pas / ID<span class="note">Schengen-tur men godt at have passet med</span></span></li>
+    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Kreditkort + kontanter (EUR)<span class="note">Middag €22/pers + expo-køb</span></span></li>
+  </ul>
+
+</div>
+</section>
+
+<footer>
+  <p>Fausto Coppi Crunshers · Cuneo · Juni 2026</p>
+  <p style="margin-top:6px"><a href="../home.html">← Alle ferier</a></p>
+</footer>
+
+<script>
+  const SK = 'fc2026';
+
+  function getState() { try { return JSON.parse(localStorage.getItem(SK)) || {}; } catch { return {}; } }
+  function saveState(s) { localStorage.setItem(SK, JSON.stringify(s)); }
+  function itemKey(item) { return item.querySelector('.check-text').textContent.trim().slice(0, 55); }
+
+  function toggle(item) {
+    item.classList.toggle('checked');
+    const s = getState();
+    s[itemKey(item)] = item.classList.contains('checked');
+    saveState(s);
+    updateProgress();
+  }
+
+  function checkAllCat(catId) {
+    const ul = document.getElementById('cat-' + catId);
+    const items = [...ul.querySelectorAll('.check-item')];
+    const allOn = items.every(i => i.classList.contains('checked'));
+    const s = getState();
+    items.forEach(i => { i.classList.toggle('checked', !allOn); s[itemKey(i)] = !allOn; });
+    saveState(s);
+    updateProgress();
+  }
+
+  function resetAll() {
+    if (!confirm('Nulstil alle afkrydsninger?')) return;
+    localStorage.removeItem(SK);
+    document.querySelectorAll('.check-item.checked').forEach(i => i.classList.remove('checked'));
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.check-item');
+    const done = document.querySelectorAll('.check-item.checked').length;
+    const pct = all.length ? Math.round(done / all.length * 100) : 0;
+    document.getElementById('pFill').style.width = pct + '%';
+    document.getElementById('pLabel').textContent = done + ' af ' + all.length + ' pakket';
+  }
+
+  (function restore() {
+    const s = getState();
+    document.querySelectorAll('.check-item').forEach(i => { if (s[itemKey(i)]) i.classList.add('checked'); });
+    updateProgress();
+  })();
+</script>
+
+</body>
+</html>
