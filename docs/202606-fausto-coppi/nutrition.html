@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ernæring – Fausto Coppi 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --red: #c0392b;
+      --gold: #d97706;
+      --green: #16a34a;
+      --max-w: 860px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0a1a0a 0%, #1a3a1a 100%);
+      padding: 80px 22px 70px;
+      text-align: center;
+    }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6ee7b7; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.05; margin-bottom: 14px; }
+    .hero-sub { font-size: 18px; color: #9ca3af; max-width: 520px; margin: 0 auto; line-height: 1.55; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .hero-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 980px; padding: 6px 16px; font-size: 13px; color: #e5e7eb; font-weight: 500; }
+
+    /* SECTIONS */
+    .section { padding: 52px 22px; }
+    .section-alt { background: var(--color-section); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; line-height: 1.1; }
+
+    /* TIMELINE — days before */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: grid; grid-template-columns: 100px 1fr; gap: 0 20px; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+    .tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .tl-line { width: 2px; background: var(--color-divider); flex: 1; margin-top: 4px; }
+    .tl-day { font-size: 12px; font-weight: 700; color: var(--color-secondary); text-align: right; padding-right: 0; line-height: 1.2; margin-top: -2px; }
+    .tl-right { padding-bottom: 28px; }
+    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .tl-body { font-size: 15px; color: var(--color-secondary); line-height: 1.6; }
+    .tl-body strong { color: var(--color-text); }
+    .tl-item:last-child .tl-line { display: none; }
+
+    /* CARDS */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: var(--color-section); border-radius: 18px; padding: 22px; }
+    .card-icon { font-size: 28px; margin-bottom: 12px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .card-body strong { color: var(--color-text); }
+    .card-accent { background: #fff7ed; border: 1px solid #fed7aa; }
+    .card-accent .card-title { color: var(--gold); }
+    .card-green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .card-green .card-title { color: var(--green); }
+    .card-red { background: #fef2f2; border: 1px solid #fecaca; }
+    .card-red .card-title { color: var(--red); }
+
+    /* BIG CALLOUT */
+    .callout { border-radius: 18px; padding: 24px 28px; margin: 0; }
+    .callout-orange { background: #fff7ed; border: 2px solid #fdba74; }
+    .callout-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--gold); }
+    .callout-body { font-size: 15px; color: #7c2d12; line-height: 1.6; }
+    .callout-body strong { color: #92400e; }
+
+    /* DEPOT TABLE */
+    .depot-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .depot-table th { text-align: left; padding: 10px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); border-bottom: 2px solid var(--color-divider); }
+    .depot-table td { padding: 12px 14px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .depot-table tr:last-child td { border-bottom: none; }
+    .depot-table tr:hover td { background: var(--color-section); }
+    .km-badge { display: inline-block; background: #1d1d1f; color: white; border-radius: 980px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
+    .action-tag { display: inline-block; background: #dbeafe; color: #1d4ed8; border-radius: 980px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-top: 4px; }
+    .action-tag.orange { background: #ffedd5; color: #c2410c; }
+    .action-tag.green { background: #dcfce7; color: #15803d; }
+    .action-tag.red { background: #fee2e2; color: #b91c1c; }
+
+    /* MYTH BOX */
+    .myth-grid { display: flex; flex-direction: column; gap: 14px; }
+    .myth-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; background: var(--color-section); border-radius: 14px; padding: 16px 18px; }
+    .myth-icon { font-size: 22px; text-align: center; margin-top: 2px; }
+    .myth-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .myth-body { font-size: 14px; color: var(--color-secondary); line-height: 1.5; }
+    .myth-body strong { color: var(--color-text); }
+
+    /* RACE DAY BOX */
+    .race-day { background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 100%); border-radius: 18px; padding: 28px; color: white; }
+    .race-day h3 { font-size: 20px; font-weight: 700; color: #6ee7b7; margin-bottom: 20px; }
+    .rd-step { display: flex; gap: 14px; margin-bottom: 16px; }
+    .rd-step:last-child { margin-bottom: 0; }
+    .rd-time { font-size: 12px; font-weight: 700; color: #6ee7b7; min-width: 70px; padding-top: 2px; }
+    .rd-text { font-size: 14px; color: #e5e7eb; line-height: 1.55; }
+    .rd-text strong { color: white; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 28px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🥗 Ernæring & Hydrering</span>
+    <a href="overview.html" class="nav-back">← Program</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">Fausto Coppi · 28. juni 2026</p>
+  <h1>Ernæring<br>& Hydrering</h1>
+  <p class="hero-sub">172 km · 4.300 hm · Piemontesiske alper i juni-varme. Hvad du spiser og drikker afgør om du kommer i mål.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🌡️ Varm dag forventet</span>
+    <span class="hero-badge">⏱️ ~8–10 timers løb</span>
+    <span class="hero-badge">🧂 6 depoter på ruten</span>
+  </div>
+</div>
+
+<!-- MYTERNE -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Videnskab</p>
+    <h2 class="section-title">Hvad virker — og hvad er myter?</h2>
+    <div class="myth-grid">
+      <div class="myth-item">
+        <div class="myth-icon">❌</div>
+        <div>
+          <p class="myth-title">Myte: Loader elektrolytter i dagene før</p>
+          <p class="myth-body">Du kan ikke lagre natrium. Nyrerne skiller overskydende ud — <strong>et par dages ekstra elektrolytter er stort set urineret væk inden start.</strong> Spis normalt saltet mad, det er nok.</p>
+        </div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-icon">❌</div>
+        <div>
+          <p class="myth-title">Myte: Krampe skyldes primært dehydrering og salttab</p>
+          <p class="myth-body">Nyere forskning (Schwellnus m.fl.) peger på at <strong>træningskramper primært skyldes neuromuskulær træthed</strong> — du kører hårdere eller længere end trænet til. Dehydrering og elektrolyttab spiller en birolle, ikke hovedrollen.</p>
+        </div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-icon">✅</div>
+        <div>
+          <p class="myth-title">Virker: Natrium-preload på selve løbsdagen</p>
+          <p class="myth-body"><strong>En koncentreret elektrolytdrik 1–2 timer før start (1000+ mg natrium)</strong> udvider plasmavolumen. Dette er en veldokumenteret strategi til varme løb — og dét er forskellen fra multi-dages loading.</p>
+        </div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-icon">✅</div>
+        <div>
+          <p class="myth-title">Virker: Konservativ start-pacing</p>
+          <p class="myth-body">Krampe-forebyggelse starter med at <strong>ikke køre for hårdt fra starten.</strong> Det er formentlig den enkeltfaktor der bedst forebygger kramper på 172 km.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAGENE FØR -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Forberedelse</p>
+    <h2 class="section-title">Dagene op til løbet</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left">
+          <p class="tl-day">Tor 25/6<br>Fre 26/6</p>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Køretur og ankomst — spis normalt</p>
+          <p class="tl-body">Ingen grund til ekstrem carbo-loading endnu. <strong>Spis normalt saltet mad</strong> — undgå at restriktere salt. Drik rigeligt vand til måltiderne. Undgå alkohol i store mængder og fedtsvær mad der kan give maveproblemer.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <p class="tl-day">Lør 27/6</p>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Aktiv carbo-dag — fyld depoterne</p>
+          <p class="tl-body">
+            <strong>Frokost:</strong> store portioner pasta/ris, lidt protein, lavt fedt. Undgå for megen fiber.<br>
+            <strong>Aften (Veggerby/middag):</strong> god pasta-aften er perfekt — spis dig mæt, men ikke ubehageligt fuld. Salt gerne ekstra.<br>
+            <strong>Hydrering:</strong> urin skal være lys gul ved sengetid. Drik løbende, ikke på én gang.
+          </p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <p class="tl-day">Søn 28/6<br>Løbsdag</p>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Løbsdagsmorgenen — kritisk timing</p>
+          <p class="tl-body">
+            <strong>Morgenmad 2–3 timer før start:</strong> havregryn, toast + nutella, banan, evt. ris. Lavt fedt og fiber. Kaffé er fint — øger fedtforbrænding og er veldokumenteret.<br>
+            <strong>1–2 timer før start:</strong> 500 ml elektrolytdrik med <strong>1000+ mg natrium</strong> — dette er din reelle preload. Intet andet end kendte produkter herfra.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LØBSDAGSPLAN -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Race day</p>
+    <h2 class="section-title">Løbsdagsplan</h2>
+    <div class="race-day">
+      <h3>⏱️ Timing og mål</h3>
+      <div class="rd-step">
+        <div class="rd-time">06:00–06:30</div>
+        <div class="rd-text"><strong>Morgenmad.</strong> Havregrød, toast, banan. Rigelig kaffé. 500 ml vand.</div>
+      </div>
+      <div class="rd-step">
+        <div class="rd-time">07:30</div>
+        <div class="rd-text"><strong>Natrium-preload.</strong> 500–750 ml elektrolytdrik med ≥1000 mg Na. SiS Hydro, Precision Hydration 1500 el. lign. — ikke alm. sportsdrik.</div>
+      </div>
+      <div class="rd-step">
+        <div class="rd-time">08:00</div>
+        <div class="rd-text"><strong>Energibar eller gel</strong> 15 min før start. Glykolytisk top-up.</div>
+      </div>
+      <div class="rd-step">
+        <div class="rd-time">På ruten</div>
+        <div class="rd-text"><strong>Drik konstant:</strong> sigt mod 500–750 ml/time afhængig af varme og sved. <strong>500–1000 mg natrium pr. liter</strong> — mere hvis du ser hvide saltrande på trøjen ("salty sweater"). Tag altid noget fra hvert depot.</div>
+      </div>
+      <div class="rd-step">
+        <div class="rd-time">Kalorier</div>
+        <div class="rd-text"><strong>60–90 g kulhydrat/time</strong> fra km 30+. Brug Fredes carbosnacks + gel fra depoter. Bland gerne maltodextrin og fruktose (1:0,8 ratio for max optagelse). Spis noget fast (banan, bar) på depoter — ikke kun gels.</div>
+      </div>
+      <div class="rd-step">
+        <div class="rd-time">Klatringer</div>
+        <div class="rd-text">På lange stigninger: <strong>drik mere, spis fast.</strong> Hjernen bliver træt og glemmer at drikke på lange klatringer — sæt alarm på computer hvert 15. min hvis muligt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOT-STRATEGI -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Depoter på ruten</p>
+    <h2 class="section-title">Hvad du gør ved hvert depot</h2>
+    <div class="callout callout-orange" style="margin-bottom: 24px;">
+      <p class="callout-title">⏱️ Tidsbomme = ingen pause</p>
+      <p class="callout-body">Ved km ~65 (Colle Sampeyre) og km ~140 (Festiona) er der tidsbomme. Her skal du <strong>tage vand i farten</strong> og ikke stoppe. Fyld op ved depot inden tidsbommen — ikke ved selve bomben.</p>
+    </div>
+    <table class="depot-table">
+      <thead>
+        <tr>
+          <th>Km</th>
+          <th>Sted</th>
+          <th>Din strategi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="km-badge">~20</span></td>
+          <td>Colletta di Rossana<br><small style="color:var(--color-secondary)">617 m</small></td>
+          <td>
+            Fyld begge flasker op. Første check: drikker du nok?<br>
+            <span class="action-tag green">Tag en gel eller bar</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="km-badge">~40</span></td>
+          <td>Sampeyre (landsby)<br><small style="color:var(--color-secondary)">Prima Sampeyre-klatringen</small></td>
+          <td>
+            <strong>VIGTIGT:</strong> Fyld op her inden den første store stigning. Spis noget fast — banan, bar.<br>
+            <span class="action-tag orange">Stor stigning følger</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="km-badge">~65</span></td>
+          <td>Colle di Sampeyre<br><small style="color:var(--color-secondary)">2.284 m ⏱️ TIDSBOMME</small></td>
+          <td>
+            Tag vand og gel i bevægelse. Ingen stop. Nedkørslen kommer — drik her.<br>
+            <span class="action-tag red">Ingen pause — tidsbomme</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="km-badge">~110</span></td>
+          <td>Fauniera-området<br><small style="color:var(--color-secondary)">Under Colle Fauniera (KOM)</small></td>
+          <td>
+            Fyld ALT op. Colle Fauniera er 22,3 km og den hårdeste stigning. Spis en hel bar + gel nu.<br>
+            <span class="action-tag orange">👑 KOM-stigning følger</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="km-badge">~140</span></td>
+          <td>Festiona<br><small style="color:var(--color-secondary)">⏱️ TIDSBOMME</small></td>
+          <td>
+            Tag vand i farten. Næste depot er tæt på — Madonna del Colletto om få km.<br>
+            <span class="action-tag red">Ingen pause — tidsbomme</span>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="km-badge">~145</span></td>
+          <td>Madonna del Colletto<br><small style="color:var(--color-secondary)">1.304 m</small></td>
+          <td>
+            Fyld op en sidste gang. 27 km tilbage. Spis det resterende fast food du har. Kør hjem.<br>
+            <span class="action-tag green">Finish indenfor rækkevidde</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- EFTER LØBET -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Recovery</p>
+    <h2 class="section-title">Efter mål — de første 60 minutter</h2>
+    <div class="card-grid">
+      <div class="card card-green">
+        <p class="card-icon">🥤</p>
+        <p class="card-title">Rehydrering</p>
+        <p class="card-body">Drik <strong>1,5 × det tabte</strong> over de næste 2–3 timer. Sodavand og fadøl tæller ikke — drink vand og elektrolytter FØRST. Dernæst kan fadøllen nydes.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="card-icon">🍌</p>
+        <p class="card-title">Kulhydrater indenfor 30 min</p>
+        <p class="card-body"><strong>1–1,2 g kulhydrat pr. kg legemsvægt</strong> i det første vindue. Banan, pasta, ris eller recovery-drik med protein. Muskler er sultne og optager hurtigt.</p>
+      </div>
+      <div class="card">
+        <p class="card-icon">🥩</p>
+        <p class="card-title">Protein (20–40 g)</p>
+        <p class="card-body">Protein inden for 2 timer accelererer muskelreparation. Æg, kød, mælk, proteinbar. Kombineret med kulhydrater er optaget bedre.</p>
+      </div>
+      <div class="card card-red">
+        <p class="card-icon">🍺</p>
+        <p class="card-title">Alkohol — tag det roligt</p>
+        <p class="card-body">Alkohol hæmmer proteinsynteser og dehydrerer. <strong>Den ene fejrede fadøl er okay.</strong> Store mængder alkohol i de første 4 timer efter løbet forsinker recovery mærkbart.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKNING: HVAD SKAL MED -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Pakkeliste</p>
+    <h2 class="section-title">Ernærings-udstyr der skal med</h2>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-icon">🧂</p>
+        <p class="card-title">Natrium-preload drik</p>
+        <p class="card-body">SiS Hydro Tabs, Precision Hydration 1500, Maurten 320 el. tilsvarende — <strong>≥1000 mg natrium pr. portion.</strong> Alm. sportsdrik er IKKE nok til preload.</p>
+      </div>
+      <div class="card">
+        <p class="card-icon">🍫</p>
+        <p class="card-title">Gels og bars på cyklen</p>
+        <p class="card-body">Minimum <strong>8–10 gels + 4–6 bars</strong> til 172 km. Bland produkter du kender — ingen eksperimenter løbsdagen. Koffein-gels bruges senest km 120–140.</p>
+      </div>
+      <div class="card">
+        <p class="card-icon">💧</p>
+        <p class="card-title">Drikkedunke</p>
+        <p class="card-body">2 × 750 ml eller 2 × 500 ml. Vær sikker på de sidder fast — det er lange klatringer og du taber dunke lettere når du er træt.</p>
+      </div>
+      <div class="card">
+        <p class="card-icon">🔵</p>
+        <p class="card-title">Elektrolyttabletter til flaskerne</p>
+        <p class="card-body">Tag ekstra til at putte i flaskerne undervejs — <strong>500–1000 mg Na/liter</strong> afhængig af varme og svedniveau. Nuun, SiS Go Electrolyte el. tilsvarende.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Fausto Coppi 2026 · Ernæringsguide · Baseret på aktuel sportsfysiologisk forskning</p>
+</footer>
+
+</body>
+</html>
