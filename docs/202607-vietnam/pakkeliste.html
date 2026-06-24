@@ -9,7 +9,7 @@
     :root {
       --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
       --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
-      --color-green: #2e9e5b; --color-green-bg: #f4fbf6; --color-green-border: #b8e4c7;
+      --color-green: #2e9e5b; --color-green-bg: #f0fdf4; --color-green-border: #b8e4c7;
       --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
       --radius: 18px; --max-w: 860px;
     }
@@ -19,52 +19,85 @@
     .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
     .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
     .nav-back:hover { text-decoration: underline; }
-    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
-    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
-    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
-    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 540px; margin: 0 auto 28px; line-height: 1.5; }
-    .hero-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 980px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: opacity 0.2s; }
+
+    .hero { background: #1d1d1f; padding: 56px 22px 48px; text-align: center; }
+    .hero-eyebrow { font-size: 12px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 12px; }
+    .hero-sub { font-size: 16px; color: #a1a1a6; max-width: 520px; margin: 0 auto 24px; line-height: 1.5; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 980px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: opacity 0.2s; }
     .btn:hover { opacity: 0.8; }
-    .btn-primary { background: var(--color-green); color: white; }
-    .btn-secondary { background: rgba(255,255,255,0.15); color: white; }
-    .progress-bar { max-width: var(--max-w); margin: 0 auto; padding: 16px 22px 0; }
-    .progress-track { background: var(--color-divider); border-radius: 4px; height: 6px; overflow: hidden; }
-    .progress-fill { height: 100%; background: var(--color-green); border-radius: 4px; transition: width 0.4s ease; }
-    .progress-label { font-size: 13px; color: var(--color-secondary); margin-top: 8px; }
-    .tabs { max-width: var(--max-w); margin: 0 auto; padding: 24px 22px 0; display: flex; gap: 8px; border-bottom: 1px solid var(--color-divider); }
-    .tab { padding: 10px 18px; font-size: 14px; font-weight: 600; color: var(--color-secondary); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; }
-    .tab.active { color: var(--color-text); border-bottom-color: var(--color-text); }
-    .tab:hover:not(.active) { color: var(--color-text); }
+    .btn-ghost { background: rgba(255,255,255,0.12); color: white; }
+
+    .progress-wrap { max-width: var(--max-w); margin: 0 auto; padding: 16px 22px 0; }
+    .progress-track { background: var(--color-divider); border-radius: 4px; height: 5px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--color-green); border-radius: 4px; transition: width 0.35s ease; }
+    .progress-label { font-size: 12px; color: var(--color-secondary); margin-top: 7px; }
+
+    .main-tabs { max-width: var(--max-w); margin: 0 auto; padding: 20px 22px 0; display: flex; gap: 6px; border-bottom: 1px solid var(--color-divider); }
+    .main-tab { padding: 9px 16px; font-size: 14px; font-weight: 600; color: var(--color-secondary); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; }
+    .main-tab.active { color: var(--color-text); border-bottom-color: var(--color-text); }
+    .main-tab:hover:not(.active) { color: var(--color-text); }
+
+    .person-selector { max-width: var(--max-w); margin: 0 auto; padding: 16px 22px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .person-tab { padding: 7px 14px; border-radius: 980px; font-size: 13px; font-weight: 600; cursor: pointer; border: 2px solid var(--color-divider); background: white; color: var(--color-secondary); transition: all 0.15s; user-select: none; }
+    .person-tab.active { border-color: var(--color-text); color: var(--color-text); background: var(--color-section); }
+
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-    .section { padding: 32px 22px 44px; }
+    .section { padding: 24px 22px 48px; }
     .section-inner { max-width: var(--max-w); margin: 0 auto; }
-    .cat-header { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); padding: 20px 0 10px; border-bottom: 1px solid var(--color-divider); margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center; }
+
+    .alert-banner { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 14px; padding: 14px 16px; font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+    .alert-banner strong { color: #c2410c; }
+    .info-banner { background: #f0f6ff; border: 1px solid #c2dbff; border-radius: 14px; padding: 14px 16px; font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+
+    .cat-header { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); padding: 18px 0 8px; border-bottom: 1px solid var(--color-divider); margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center; }
     .cat-check-all { font-size: 11px; color: var(--color-accent); cursor: pointer; font-weight: 600; text-transform: none; letter-spacing: 0; }
     .cat-check-all:hover { text-decoration: underline; }
-    .check-list { list-style: none; margin-bottom: 4px; }
-    .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid #f0f0f2; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+    .check-list { list-style: none; }
+    .check-item { display: flex; align-items: center; gap: 12px; padding: 10px 6px; border-bottom: 1px solid #f0f0f2; transition: background 0.15s; border-radius: 6px; }
     .check-item:last-child { border-bottom: none; }
-    .check-item:hover .check-box { border-color: var(--color-green); }
-    .check-box { width: 22px; height: 22px; border: 2px solid var(--color-divider); border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .check-item:hover { background: var(--color-section); }
+    /* Alle-mode row states */
+    .check-item.alle-all { background: #f0fdf4; }
+    .check-item.alle-partial { background: #fffbeb; }
+
+    /* Checkbox (person mode) */
+    .check-box { width: 22px; height: 22px; border: 2px solid var(--color-divider); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; cursor: pointer; }
     .check-item.checked .check-box { background: var(--color-green); border-color: var(--color-green); }
     .check-item.checked .check-box::after { content: ''; display: block; width: 5px; height: 9px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg) translate(-1px, -1px); }
-    .check-item.checked .check-text { color: var(--color-secondary); text-decoration: line-through; }
-    .check-text { font-size: 15px; line-height: 1.45; flex: 1; }
+    .check-item.checked .check-text { color: var(--color-secondary); text-decoration: line-through; text-decoration-color: #ccc; }
+    .check-item.checked .note { text-decoration: line-through; text-decoration-color: #ccc; }
+
+    .check-text { font-size: 15px; line-height: 1.4; flex: 1; min-width: 0; }
     .check-text .note { display: block; font-size: 13px; color: var(--color-secondary); margin-top: 2px; }
-    .check-item.checked .check-text .note { text-decoration: line-through; }
-    .alert-banner { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 14px; padding: 16px 18px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-    .alert-banner strong { color: #c2410c; }
-    .info-banner { background: #f0f6ff; border: 1px solid #c2dbff; border-radius: 14px; padding: 16px 18px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-    .person-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-    .person-tab { padding: 7px 14px; border-radius: 980px; font-size: 13px; font-weight: 600; cursor: pointer; border: 2px solid var(--color-divider); background: white; color: var(--color-secondary); transition: all 0.15s; }
-    .person-tab.active { border-color: var(--color-text); color: var(--color-text); background: var(--color-section); }
-    .person-tab .badge-count { display: inline-block; background: var(--color-green); color: white; font-size: 10px; border-radius: 980px; padding: 1px 5px; margin-left: 4px; }
-    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+
+    /* Person dots (alle mode) */
+    .person-dots { display: none; flex-shrink: 0; gap: 4px; }
+    .pdot { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--color-divider); background: var(--color-section); color: var(--color-secondary); font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; user-select: none; }
+    .pdot:hover { border-color: var(--color-green); }
+    .pdot.checked { background: var(--color-green); border-color: var(--color-green); color: white; }
+
+    /* Mode classes applied to panel-personal */
+    .mode-alle .check-box { display: none !important; }
+    .mode-alle .person-dots { display: flex !important; }
+    .mode-alle .check-item:hover { cursor: default; }
+    .mode-alle .check-item.checked .check-text { color: var(--color-text); text-decoration: none; }
+    .mode-alle .check-item.checked .note { text-decoration: none; }
+    .mode-person .check-box { display: flex !important; }
+    .mode-person .person-dots { display: none !important; }
+    .mode-person .check-item { cursor: pointer; }
+    .mode-person .check-item:hover .check-box { border-color: var(--color-green); }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; margin-top: 24px; }
     footer p { font-size: 13px; color: var(--color-secondary); }
     footer a { color: var(--color-accent); text-decoration: none; }
-    @media (max-width: 640px) { .tabs { overflow-x: auto; padding-bottom: 0; } .tab { white-space: nowrap; } }
+    @media (max-width: 580px) {
+      .pdot { width: 20px; height: 20px; font-size: 8px; }
+      .person-dots { gap: 3px; }
+      .main-tabs { overflow-x: auto; }
+    }
   </style>
 </head>
 <body>
@@ -79,20 +112,28 @@
 <section class="hero">
   <p class="hero-eyebrow">Vietnam + Cambodja · Juli 2026</p>
   <h1>Pakkeliste</h1>
-  <p class="hero-sub">26 nætter · Hot + humid + monsun · 6 personer · Mix af strand, grotter, byer og tempel</p>
-  <div class="hero-actions">
-    <button class="btn btn-secondary" onclick="resetAll()">↩ Nulstil alle</button>
-  </div>
+  <p class="hero-sub">26 nætter · Hot + humid + monsun · 6 personer</p>
+  <button class="btn btn-ghost" onclick="resetAll()">↩ Nulstil alle</button>
 </section>
 
-<div class="progress-bar">
+<div class="progress-wrap">
   <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-  <p class="progress-label" id="progressLabel">0 af 0 pakket</p>
+  <p class="progress-label" id="progressLabel">Indlæser…</p>
 </div>
 
-<div class="tabs" id="mainTabs">
-  <button class="tab active" onclick="switchTab('personal')">🧳 Pr. person</button>
-  <button class="tab" onclick="switchTab('shared')">👨‍👩‍👧‍👦 Fælles</button>
+<div class="main-tabs">
+  <button class="main-tab active" onclick="switchMainTab('personal', this)">🧳 Pr. person</button>
+  <button class="main-tab" onclick="switchMainTab('shared', this)">👨‍👩‍👧‍👦 Fælles</button>
+</div>
+
+<div class="person-selector" id="personSelector">
+  <button class="person-tab active" onclick="switchPerson('alle')" id="ptab-alle">👨‍👩‍👧‍👦 Alle</button>
+  <button class="person-tab" onclick="switchPerson('lars')" id="ptab-lars">Lars</button>
+  <button class="person-tab" onclick="switchPerson('helle')" id="ptab-helle">Helle</button>
+  <button class="person-tab" onclick="switchPerson('hugo')" id="ptab-hugo">Hugo</button>
+  <button class="person-tab" onclick="switchPerson('olivia')" id="ptab-olivia">Olivia</button>
+  <button class="person-tab" onclick="switchPerson('arthur')" id="ptab-arthur">Arthur</button>
+  <button class="person-tab" onclick="switchPerson('roberta')" id="ptab-roberta">Roberta</button>
 </div>
 
 <!-- ══════════ PR. PERSON ══════════ -->
@@ -101,91 +142,60 @@
 <div class="section-inner">
 
   <div class="alert-banner">
-    ⚠️ <strong>Lars — nødde-allergi (alvorlig):</strong> Pak et allergi-kort på vietnamesisk + khmer. Brug Google Translate til at skrive: "Jeg er allergisk over for nødder (undtagen jordnødder og mandler). Brug heller ikke valmuefrø. Det er alvorligt." Tag altid antihistamin med.
+    ⚠️ <strong>Lars — nødde-allergi (alvorlig):</strong> Pak allergi-kort på vietnamesisk + khmer inden afrejse. Brug Google Translate: "Jeg er allergisk over for nødder — undtagen jordnødder og mandler. Valmuefrø er livsfarligt for mig." Hav antihistamin i dagsrygsæk altid.
   </div>
-
   <div class="info-banner">
-    💡 Vietnam har gode vaskemuligheder overalt — du behøver ikke tage tøj til 26 dage. Plan: vask ca. hvert 5.-6. dag via hotellet eller lokal laundry (billigt + hurtigt).
+    💡 Vietnam har vask overalt og billigt. Planlæg vask ca. hvert 5. dag — du behøver ikke tøj til 26 dage.
   </div>
 
-  <div class="person-tabs" id="personTabs">
-    <button class="person-tab active" onclick="switchPerson('alle')" id="ptab-alle">👨‍👩‍👧‍👦 Alle</button>
-    <button class="person-tab" onclick="switchPerson('lars')" id="ptab-lars">👨 Lars</button>
-    <button class="person-tab" onclick="switchPerson('helle')" id="ptab-helle">👩 Helle</button>
-    <button class="person-tab" onclick="switchPerson('hugo')" id="ptab-hugo">🧑 Hugo</button>
-    <button class="person-tab" onclick="switchPerson('olivia')" id="ptab-olivia">👧 Olivia</button>
-    <button class="person-tab" onclick="switchPerson('arthur')" id="ptab-arthur">👦 Arthur</button>
-    <button class="person-tab" onclick="switchPerson('roberta')" id="ptab-roberta">🧒 Roberta</button>
-  </div>
-
-  <!-- DOKUMENTER -->
-  <div class="cat-header">
-    Dokumenter
-    <span class="cat-check-all" onclick="checkAll('docs')">Markér alle</span>
-  </div>
+  <div class="cat-header">Dokumenter <span class="cat-check-all" onclick="checkAllCat('docs')">Markér alle</span></div>
   <ul class="check-list" id="cat-docs">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Pas<span class="note">Gyldigt mindst 6 måneder efter 2. august 2026. Tjek udløbsdato nu.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Visum Vietnam (printet)<span class="note">E-visum — print bekræftelsen + gem digitalt</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Visum Cambodja (printet)<span class="note">E-visum fra evisa.gov.kh</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Flybekræftelser (printede)<span class="note">CPH→HAN, HAN→REP, REP→DAD — alle tre. Pas på at alle 6 er dækket.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Rejseforsikring<span class="note">Kortet + telefonnummeret til skadeservice i lommen</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Kreditkort + debetkort (min. 2 kort)<span class="note">Mastercard/Visa bredt accepteret. Vis det ene, gem det andet et andet sted.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">USD kontanter (ca. 50–100 USD pr. person)<span class="note">Til ankomst og tips. Skift resten til VND i Hanoi lufthavn eller via hæveautomat.</span></span></li>
+    <li class="check-item" data-key="pas"><div class="check-box"></div><span class="check-text">Pas<span class="note">Gyldigt mindst 6 mdr. efter 2. august 2026 — tjek udløbsdato nu</span></span></li>
+    <li class="check-item" data-key="visum-vn"><div class="check-box"></div><span class="check-text">Visum Vietnam (printet)<span class="note">E-visum-bekræftelse — print + gem digitalt</span></span></li>
+    <li class="check-item" data-key="visum-kh"><div class="check-box"></div><span class="check-text">Visum Cambodja (printet)<span class="note">E-visum fra evisa.gov.kh</span></span></li>
+    <li class="check-item" data-key="flybekr"><div class="check-box"></div><span class="check-text">Flybekræftelser (printede)<span class="note">CPH→HAN, HAN→REP, REP→DAD — alle tre</span></span></li>
+    <li class="check-item" data-key="forsikring"><div class="check-box"></div><span class="check-text">Rejseforsikring<span class="note">Kort + skadeservice-telefonnummer i lommen</span></span></li>
+    <li class="check-item" data-key="kort"><div class="check-box"></div><span class="check-text">Kreditkort + debetkort (min. 2)<span class="note">Vis ét, gem det andet et andet sted</span></span></li>
+    <li class="check-item" data-key="kontanter"><div class="check-box"></div><span class="check-text">USD kontanter (50–100 USD pr. person)<span class="note">Til ankomst og tips. Skift til VND i Hanoi lufthavn.</span></span></li>
   </ul>
 
-  <!-- TØJ -->
-  <div class="cat-header">
-    Tøj
-    <span class="cat-check-all" onclick="checkAll('clothes')">Markér alle</span>
-  </div>
+  <div class="cat-header">Tøj <span class="cat-check-all" onclick="checkAllCat('clothes')">Markér alle</span></div>
   <ul class="check-list" id="cat-clothes">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lette T-shirts, 5–6 stk.<span class="note">Bomuld eller teknisk stof. Vietnam er 30–35 °C og fugtigt.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Shorts, 3–4 stk.</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lange lette bukser/kjole, 1–2 stk.<span class="note">Nødvendigt til templer i Hue + Angkor Wat (skuldre + knæ dækket). Også godt i kølede restauranter.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Badetøj, 2 sæt<span class="note">Ha Long Bay, An Bang Beach (Hoi An) og evt. hotel-pool</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Undertøj + sokker, 6 sæt</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Let regnjakke eller poncho<span class="note">VIGTIGT — monsuntiden. Passer i lommen. Køb evt. en poncho der nede (~50 DKK).</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lette vandresko / sneakers<span class="note">Til trekking i Pu Luong og Phong Nha-grotter</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Sandaler / flip-flops<span class="note">Til stranden og bysladsk. Flip-flops er let at tage af ved templerne.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solhat eller kasket<span class="note">Vigtigt — stærk sol, lange dage udendørs</span></span></li>
+    <li class="check-item" data-key="t-shirts"><div class="check-box"></div><span class="check-text">Lette T-shirts, 5–6 stk.<span class="note">Bomuld eller teknisk stof. 30–35 °C og fugtigt.</span></span></li>
+    <li class="check-item" data-key="shorts"><div class="check-box"></div><span class="check-text">Shorts, 3–4 stk.</span></li>
+    <li class="check-item" data-key="lange-bukser"><div class="check-box"></div><span class="check-text">Lange lette bukser / kjole, 1–2 stk.<span class="note">Nødvendigt til templer (Hue, Angkor Wat). Også godt i kølede restauranter.</span></span></li>
+    <li class="check-item" data-key="badeto"><div class="check-box"></div><span class="check-text">Badetøj, 2 sæt<span class="note">Ha Long Bay, An Bang Beach (Hoi An), hotel-pool</span></span></li>
+    <li class="check-item" data-key="undertoj"><div class="check-box"></div><span class="check-text">Undertøj + sokker, 6 sæt</span></li>
+    <li class="check-item" data-key="regnjakke"><div class="check-box"></div><span class="check-text">Let regnjakke eller poncho<span class="note">VIGTIGT — monsuntiden. Kompakt til lommen.</span></span></li>
+    <li class="check-item" data-key="vandresko"><div class="check-box"></div><span class="check-text">Lette vandresko / sneakers<span class="note">Pu Luong (risterrasser + trekking) + Phong Nha-grotter</span></span></li>
+    <li class="check-item" data-key="sandaler"><div class="check-box"></div><span class="check-text">Sandaler / flip-flops<span class="note">Strand + bysladsk. Lette at tage af ved templerne.</span></span></li>
+    <li class="check-item" data-key="hat"><div class="check-box"></div><span class="check-text">Solhat eller kasket</span></li>
   </ul>
 
-  <!-- SUNDHED & HYGIEJNE -->
-  <div class="cat-header">
-    Sundhed & hygiejne
-    <span class="cat-check-all" onclick="checkAll('health')">Markér alle</span>
-  </div>
+  <div class="cat-header">Sundhed & hygiejne <span class="cat-check-all" onclick="checkAllCat('health')">Markér alle</span></div>
   <ul class="check-list" id="cat-health">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solcreme SPF 50+, rigeligt<span class="note">Dyr og svær at finde i Vietnam. Tag hjemmefra.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Myggespray med DEET<span class="note">Dengue-risiko om dagen (Aedes-myg). DEET 30–50 % er mest effektiv.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Personlig medicin (ekstra forsyning)<span class="note">Tag til mindst 26 dage + buffer. Recept i kuffert, ikke kun håndbagage.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Antihistamin (allergi)<span class="note">Lars: tag altid med i dagtaske. Til nødde-reaktion.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Håndsprit (lille flaske til lommen)</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Toilettaske med personlige plejeprodukter</span></li>
+    <li class="check-item" data-key="solcreme"><div class="check-box"></div><span class="check-text">Solcreme SPF 50+, rigeligt<span class="note">Dyr og svær at finde i Vietnam — tag hjemmefra</span></span></li>
+    <li class="check-item" data-key="myggespray"><div class="check-box"></div><span class="check-text">Myggespray med DEET<span class="note">Dengue-risiko om dagen (Aedes-myg). DEET 30–50 % er mest effektiv.</span></span></li>
+    <li class="check-item" data-key="medicin"><div class="check-box"></div><span class="check-text">Personlig medicin (ekstra forsyning)<span class="note">Tag til min. 26 dage + buffer. Recept i kuffert, ikke kun håndbagage.</span></span></li>
+    <li class="check-item" data-key="antihistamin"><div class="check-box"></div><span class="check-text">Antihistamin<span class="note">Lars: ALTID i dagsrygsæk. Til nøddeallergi-reaktion.</span></span></li>
+    <li class="check-item" data-key="haandsprit"><div class="check-box"></div><span class="check-text">Håndsprit (lille til lommen)</span></li>
+    <li class="check-item" data-key="toilettaske"><div class="check-box"></div><span class="check-text">Toilettaske med personlige plejeprodukter</span></li>
   </ul>
 
-  <!-- ELEKTRONIK -->
-  <div class="cat-header">
-    Elektronik
-    <span class="cat-check-all" onclick="checkAll('tech')">Markér alle</span>
-  </div>
+  <div class="cat-header">Elektronik <span class="cat-check-all" onclick="checkAllCat('tech')">Markér alle</span></div>
   <ul class="check-list" id="cat-tech">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Telefon + oplader</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Powerbank<span class="note">Vigtigt til lange dage ude — ladestationer ikke altid tilgængelige</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Øretelefoner / headphones<span class="note">Til fly (10+ timer) og lange busture</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Stikadapter<span class="note">Vietnam: Type A (US-stik 2-ben) + Type C. Danske Schuko-stik kræver adapter.</span></span></li>
+    <li class="check-item" data-key="telefon"><div class="check-box"></div><span class="check-text">Telefon + oplader</span></li>
+    <li class="check-item" data-key="powerbank"><div class="check-box"></div><span class="check-text">Powerbank<span class="note">Vigtig til lange dage ude — ladestationer ikke altid tilgængelige</span></span></li>
+    <li class="check-item" data-key="oeretelefoner"><div class="check-box"></div><span class="check-text">Øretelefoner / headphones<span class="note">Til fly (10+ timer) og lange busture</span></span></li>
+    <li class="check-item" data-key="stikadapter"><div class="check-box"></div><span class="check-text">Stikadapter<span class="note">Vietnam: Type A (US 2-ben) + Type C. Danske Schuko-stik kræver adapter.</span></span></li>
   </ul>
 
-  <!-- PRAKTISK PR. PERSON -->
-  <div class="cat-header">
-    Praktisk
-    <span class="cat-check-all" onclick="checkAll('misc')">Markér alle</span>
-  </div>
+  <div class="cat-header">Praktisk <span class="cat-check-all" onclick="checkAllCat('misc')">Markér alle</span></div>
   <ul class="check-list" id="cat-misc">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lille dagsrygsæk<span class="note">Til udflugter — hav plads til vandflaske, regntøj og telefon</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Genanvendelig vandflaske / termodunk<span class="note">Drik ALTID filtreret eller købt vand. Fyll op fra store tanke på hotellerne.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solbriller</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lille hængelås til rygsæk<span class="note">Til Ha Long-cruise, busser og travle steder</span></span></li>
+    <li class="check-item" data-key="dagsrygsoek"><div class="check-box"></div><span class="check-text">Lille dagsrygsæk<span class="note">Til udflugter — plads til vandflaske, regntøj og telefon</span></span></li>
+    <li class="check-item" data-key="vandflaske"><div class="check-box"></div><span class="check-text">Genanvendelig vandflaske<span class="note">Drik ALTID filtreret vand. Fyld op fra store tanke på hotellerne.</span></span></li>
+    <li class="check-item" data-key="solbriller"><div class="check-box"></div><span class="check-text">Solbriller</span></li>
+    <li class="check-item" data-key="haengelaas"><div class="check-box"></div><span class="check-text">Lille hængelås til rygsæk<span class="note">Ha Long-cruise, busser, travle steder</span></span></li>
   </ul>
 
 </div>
@@ -197,70 +207,48 @@
 <div class="section">
 <div class="section-inner">
 
-  <!-- DOKUMENTER & PENGE -->
-  <div class="cat-header">
-    Dokumenter & økonomi (fælles)
-    <span class="cat-check-all" onclick="checkAll('sh-docs')">Markér alle</span>
-  </div>
+  <div class="cat-header">Dokumenter & økonomi <span class="cat-check-all" onclick="checkAllCat('sh-docs')">Markér alle</span></div>
   <ul class="check-list" id="cat-sh-docs">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Alle bookingbekræftelser samlet ét sted<span class="note">Samlet mappe eller app — fly, hoteller, cruise. Alle 6 skal have adgang.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Nødtelefonnumre (forsikring, ambassade)<span class="note">DK Ambassade Bangkok (nærmeste): +66 2 343 1100. Rejseforsikringens alarmcentral.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">USD kontanter til fælles udgifter<span class="note">Ca. 200–300 USD til tips, Angkor Wat-entré (37 USD/voksen/dag), tuk-tuk osv.</span></span></li>
+    <li class="check-item" data-key="sh-bookinger" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Alle bookingbekræftelser samlet ét sted<span class="note">Mappe eller app — fly, hoteller, cruise. Alle 6 har adgang.</span></span></li>
+    <li class="check-item" data-key="sh-nodnumre" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Nødtelefonnumre gemt<span class="note">Rejseforsikringens alarmcentral + DK Ambassade Bangkok: +66 2 343 1100</span></span></li>
+    <li class="check-item" data-key="sh-kontanter" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">USD kontanter til fælles udgifter<span class="note">Ca. 200–300 USD til tips, Angkor-entré, tuk-tuk osv.</span></span></li>
   </ul>
 
-  <!-- HELSE FÆLLES -->
-  <div class="cat-header">
-    Fælles førstehjælpskasse
-    <span class="cat-check-all" onclick="checkAll('sh-health')">Markér alle</span>
-  </div>
+  <div class="cat-header">Fælles førstehjælpskasse <span class="cat-check-all" onclick="checkAllCat('sh-health')">Markér alle</span></div>
   <ul class="check-list" id="cat-sh-health">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Plaster (assorterede størrelser)</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Ibuprofen + paracetamol</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Imodium / loperamid (mavemidler)<span class="note">VIGTIGT i Vietnam — mavetarminfektion er meget almindeligt</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Rehydreringssalte (ORS-poser)<span class="note">Til dehydrering ved diarre eller kraftig sved i varmen</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Antiseptisk middel (Bactroban, Betadine eller lignende)</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Termometer</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Insektbid-creme (f.eks. hydrocortison)</span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Allergi-kort til Lars (på vietnamesisk + khmer)<span class="note">Brug Google Translate til at skrive: "Jeg er allergisk over for nødder (undtagen jordnødder og mandler). Valmuefrø er farligt for mig. Det er alvorligt." Print og laminér.</span></span></li>
+    <li class="check-item" data-key="sh-plaster" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Plaster (assorterede størrelser)</span></li>
+    <li class="check-item" data-key="sh-ibuprofen" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Ibuprofen + paracetamol</span></li>
+    <li class="check-item" data-key="sh-imodium" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Imodium / loperamid<span class="note">VIGTIGT i Vietnam — mavetarminfektion er meget almindeligt</span></span></li>
+    <li class="check-item" data-key="sh-ors" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Rehydreringssalte (ORS-poser)<span class="note">Til diarre eller kraftig sved i varmen</span></span></li>
+    <li class="check-item" data-key="sh-antiseptisk" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Antiseptisk middel (Bactroban eller Betadine)</span></li>
+    <li class="check-item" data-key="sh-termometer" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Termometer</span></li>
+    <li class="check-item" data-key="sh-insektbid" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Insektbid-creme (f.eks. hydrocortison)</span></li>
+    <li class="check-item" data-key="sh-allergikort" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Allergi-kort til Lars (vietnamesisk + khmer)<span class="note">Brug Google Translate: "Jeg er allergisk over for nødder (undtagen jordnødder og mandler). Valmuefrø er livsfarligt for mig." — print og laminér.</span></span></li>
   </ul>
 
-  <!-- ELEKTRONIK FÆLLES -->
-  <div class="cat-header">
-    Elektronik & logistik (fælles)
-    <span class="cat-check-all" onclick="checkAll('sh-tech')">Markér alle</span>
-  </div>
+  <div class="cat-header">Elektronik & apps <span class="cat-check-all" onclick="checkAllCat('sh-tech')">Markér alle</span></div>
   <ul class="check-list" id="cat-sh-tech">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Stikadaptere, 2–3 stk.<span class="note">Vietnam: Type A (US 2-ben) og Type C. Tag ekstra til rejsegruppen.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Nok opladningskabler til alle<span class="note">USB-C, Lightning — tjek hvad de 6 bruger</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lokale SIM-kort (Vietnam) ELLER bærbar WiFi<span class="note">Vietnamesisk SIM (Viettel/Vinaphone) ca. 60–100 DKK / 30 dage med data. Alternativt: 1 bærbar WiFi-enhed til alle.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Grab-appen installeret på alle telefoner<span class="note">= Uber i Vietnam og Cambodja. Søg "Grab" i App Store/Google Play.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Google Translate offline-pakker downloadet<span class="note">Vietnamesisk + khmer (Cambodja). Download inden afrejse — virker uden internet.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Google Maps offline-kort downloadet<span class="note">Vietnam (nord, central) + Cambodja (Siem Reap). Gem inden afrejse.</span></span></li>
+    <li class="check-item" data-key="sh-adaptere" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Stikadaptere, 2–3 stk. (fælles reserve)</span></li>
+    <li class="check-item" data-key="sh-kabler" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Nok opladningskabler til alle<span class="note">USB-C, Lightning — tjek hvad de 6 bruger</span></span></li>
+    <li class="check-item" data-key="sh-sim" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Lokale SIM-kort (Vietnam) ELLER bærbar WiFi<span class="note">Viettel/Vinaphone SIM ca. 60–100 DKK / 30 dage med data</span></span></li>
+    <li class="check-item" data-key="sh-grab" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Grab-app installeret på alle telefoner<span class="note">= Uber i Vietnam + Cambodja. Download fra App Store / Google Play inden afrejse.</span></span></li>
+    <li class="check-item" data-key="sh-translate" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Google Translate offline — vietnamesisk + khmer<span class="note">Download sprogpakker inden afrejse — virker uden internet</span></span></li>
+    <li class="check-item" data-key="sh-maps" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Google Maps offline-kort downloadet<span class="note">Vietnam nord + central + Cambodja (Siem Reap). Gem inden afrejse.</span></span></li>
   </ul>
 
-  <!-- PRAKTISK FÆLLES -->
-  <div class="cat-header">
-    Praktisk (fælles)
-    <span class="cat-check-all" onclick="checkAll('sh-misc')">Markér alle</span>
-  </div>
+  <div class="cat-header">Praktisk (fælles) <span class="cat-check-all" onclick="checkAllCat('sh-misc')">Markér alle</span></div>
   <ul class="check-list" id="cat-sh-misc">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Vandtætte poser / zip-lock poser (assorterede)<span class="note">Til telefon, pas og penge i monsunregn + Ha Long Bay-aktiviteter</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Kortspil eller rejsespil<span class="note">Til lange flyture og busture. UNO, Motala — noget der virker med 6 spillere.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Snacks til flyture (10+ timer)<span class="note">Qatar Airways serverer mad, men eget snack er godt at have</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Kamera (hvis nogen medbringer)<span class="note">Vietnam er fotogenisk — Ha Long, Pu Luong-risterrasser, Angkor Wat, Hoi An-lanterner</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Tøjvask-strategi aftalt<span class="note">Snak om hvornår vi sender tøj på vask (f.eks. Hanoi dag 2, Pu Luong, Hoi An, Ninh Binh). Hoteller vasker hurtigt og billigt.</span></span></li>
+    <li class="check-item" data-key="sh-vandposer" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Vandtætte poser / zip-lock (assorterede)<span class="note">Til telefon, pas og penge i monsunregn + Ha Long Bay</span></span></li>
+    <li class="check-item" data-key="sh-kortspil" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Kortspil eller rejsespil<span class="note">Til fly + busture. UNO virker med 6. Tag hvad I har.</span></span></li>
+    <li class="check-item" data-key="sh-snacks" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Snacks til flyture</span></li>
+    <li class="check-item" data-key="sh-vask" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Vaskeplan aftalt<span class="note">F.eks. Hanoi dag 2, Hoi An, Ninh Binh. Hoteller vasker hurtigt og billigt.</span></span></li>
   </ul>
 
-  <!-- ANGKOR WAT SPECIFIKT -->
-  <div class="cat-header">
-    Angkor Wat (15.–18. jul) — særlige krav
-    <span class="cat-check-all" onclick="checkAll('sh-angkor')">Markér alle</span>
-  </div>
+  <div class="cat-header">Angkor Wat — særlige krav <span class="cat-check-all" onclick="checkAllCat('sh-angkor')">Markér alle</span></div>
   <ul class="check-list" id="cat-sh-angkor">
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Lange bukser / nederdel til alle (templer)<span class="note">Knæ og skuldre skal dækkes ved helligdomme. Hav det i dagsrygsækken.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">USD kontanter til entré<span class="note">3-dages pas: 62 USD/person. Kun USD kontant eller USD-kort accepteret.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Solcreme og solhat (ekstra vigtigt i Cambodja)<span class="note">Angkor i juli: 34–38 °C, meget sol. Ingen skygge ved de store templer.</span></span></li>
-    <li class="check-item" onclick="toggle(this)"><div class="check-box"></div><span class="check-text">Pasfotos til Angkor-kortet (6 stk.)<span class="note">Der tages normalt digital billede ved billetsalget, men medbring evt. passfotos som backup</span></span></li>
+    <li class="check-item" data-key="sh-bukser" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Lange bukser / nederdel til alle (templer)<span class="note">Knæ + skuldre skal dækkes ved helligdomme. Hav det i dagsrygsækken.</span></span></li>
+    <li class="check-item" data-key="sh-usd-entree" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">USD til Angkor-entré<span class="note">3-dages pas: 62 USD/voksen. Kun USD kontant eller USD-kort.</span></span></li>
+    <li class="check-item" data-key="sh-sol-angkor" onclick="toggleShared(this)"><div class="check-box"></div><span class="check-text">Ekstra solcreme + solhat (Angkor i juli = 35–38 °C)<span class="note">Meget sol, lidt skygge ved de store templer</span></span></li>
   </ul>
 
 </div>
@@ -273,79 +261,194 @@
 </footer>
 
 <script>
-  const STORAGE_KEY = 'pakkeliste-v1';
+  const PERSONS = [
+    { id: 'lars',    init: 'L',  name: 'Lars' },
+    { id: 'helle',   init: 'H',  name: 'Helle' },
+    { id: 'hugo',    init: 'Hu', name: 'Hugo' },
+    { id: 'olivia',  init: 'O',  name: 'Olivia' },
+    { id: 'arthur',  init: 'A',  name: 'Arthur' },
+    { id: 'roberta', init: 'R',  name: 'Roberta' },
+  ];
 
-  function getState() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+  let currentPerson = 'alle';
+  let currentMainTab = 'personal';
+
+  // ── Storage ──────────────────────────────────────────
+  function pget(person, key) { return localStorage.getItem('pk3:' + person + ':' + key) === '1'; }
+  function pset(person, key, val) {
+    if (val) localStorage.setItem('pk3:' + person + ':' + key, '1');
+    else localStorage.removeItem('pk3:' + person + ':' + key);
   }
 
-  function saveState(state) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }
+  // ── Init: inject person-dots into each personal item ─
+  function init() {
+    document.querySelectorAll('#panel-personal .check-item[data-key]').forEach(item => {
+      const key = item.dataset.key;
+      const dotsDiv = document.createElement('div');
+      dotsDiv.className = 'person-dots';
+      PERSONS.forEach(p => {
+        const dot = document.createElement('span');
+        dot.className = 'pdot';
+        dot.dataset.person = p.id;
+        dot.title = p.name;
+        dot.textContent = p.init;
+        dot.addEventListener('click', e => {
+          e.stopPropagation();
+          const now = !pget(p.id, key);
+          pset(p.id, key, now);
+          dot.classList.toggle('checked', now);
+          refreshItemAlleState(item);
+          updateProgress();
+        });
+        dotsDiv.appendChild(dot);
+      });
+      item.querySelector('.check-box').after(dotsDiv);
 
-  function itemKey(item) {
-    return item.querySelector('.check-text').textContent.trim().slice(0, 60);
-  }
+      item.addEventListener('click', () => {
+        if (currentPerson === 'alle') return;
+        const now = !pget(currentPerson, key);
+        pset(currentPerson, key, now);
+        item.classList.toggle('checked', now);
+        updateProgress();
+      });
+    });
 
-  function toggle(item) {
-    item.classList.toggle('checked');
-    const state = getState();
-    state[itemKey(item)] = item.classList.contains('checked');
-    saveState(state);
+    applyMode();
     updateProgress();
   }
 
-  function checkAll(catId) {
+  // ── Alle-mode state on an item ────────────────────────
+  function refreshItemAlleState(item) {
+    const key = item.dataset.key;
+    const n = PERSONS.filter(p => pget(p.id, key)).length;
+    item.classList.toggle('alle-all', n === PERSONS.length);
+    item.classList.toggle('alle-partial', n > 0 && n < PERSONS.length);
+  }
+
+  // ── Apply current mode to personal panel ──────────────
+  function applyMode() {
+    const panel = document.getElementById('panel-personal');
+    if (currentPerson === 'alle') {
+      panel.classList.add('mode-alle');
+      panel.classList.remove('mode-person');
+    } else {
+      panel.classList.add('mode-person');
+      panel.classList.remove('mode-alle');
+    }
+
+    document.querySelectorAll('#panel-personal .check-item[data-key]').forEach(item => {
+      const key = item.dataset.key;
+      if (currentPerson === 'alle') {
+        item.classList.remove('checked');
+        item.querySelectorAll('.pdot').forEach(dot => {
+          dot.classList.toggle('checked', pget(dot.dataset.person, key));
+        });
+        refreshItemAlleState(item);
+      } else {
+        item.classList.remove('alle-all', 'alle-partial');
+        item.classList.toggle('checked', pget(currentPerson, key));
+      }
+    });
+  }
+
+  // ── Shared tab toggle ────────────────────────────────
+  function toggleShared(item) {
+    const key = item.dataset.key;
+    const now = !pget('shared', key);
+    pset('shared', key, now);
+    item.classList.toggle('checked', now);
+    updateProgress();
+  }
+
+  // ── Cat check-all ─────────────────────────────────────
+  function checkAllCat(catId) {
     const ul = document.getElementById('cat-' + catId);
     if (!ul) return;
-    const items = ul.querySelectorAll('.check-item');
-    const allChecked = [...items].every(i => i.classList.contains('checked'));
-    const state = getState();
-    items.forEach(item => {
-      if (allChecked) { item.classList.remove('checked'); state[itemKey(item)] = false; }
-      else { item.classList.add('checked'); state[itemKey(item)] = true; }
-    });
-    saveState(state);
+    const isShared = catId.startsWith('sh-');
+    const items = [...ul.querySelectorAll('.check-item[data-key]')];
+
+    if (isShared) {
+      const allOn = items.every(i => pget('shared', i.dataset.key));
+      items.forEach(i => { pset('shared', i.dataset.key, !allOn); i.classList.toggle('checked', !allOn); });
+    } else if (currentPerson === 'alle') {
+      const allOn = items.every(i => PERSONS.every(p => pget(p.id, i.dataset.key)));
+      items.forEach(i => {
+        PERSONS.forEach(p => pset(p.id, i.dataset.key, !allOn));
+      });
+      applyMode();
+    } else {
+      const allOn = items.every(i => pget(currentPerson, i.dataset.key));
+      items.forEach(i => { pset(currentPerson, i.dataset.key, !allOn); i.classList.toggle('checked', !allOn); });
+    }
     updateProgress();
   }
 
-  function restoreState() {
-    const state = getState();
-    document.querySelectorAll('.check-item').forEach(item => {
-      if (state[itemKey(item)]) item.classList.add('checked');
-    });
-    updateProgress();
-  }
-
-  function updateProgress() {
-    const all = document.querySelectorAll('.check-item');
-    const checked = document.querySelectorAll('.check-item.checked');
-    const pct = all.length ? Math.round(checked.length / all.length * 100) : 0;
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = checked.length + ' af ' + all.length + ' pakket (' + pct + '%)';
-  }
-
-  function resetAll() {
-    if (!confirm('Nulstil alle afkrydsninger?')) return;
-    localStorage.removeItem(STORAGE_KEY);
-    document.querySelectorAll('.check-item.checked').forEach(i => i.classList.remove('checked'));
-    updateProgress();
-  }
-
-  function switchTab(name) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('panel-' + name).classList.add('active');
-    event.target.classList.add('active');
-    updateProgress();
-  }
-
-  function switchPerson(name) {
+  // ── Person switcher ───────────────────────────────────
+  function switchPerson(personId) {
+    currentPerson = personId;
     document.querySelectorAll('.person-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('ptab-' + name).classList.add('active');
+    document.getElementById('ptab-' + personId).classList.add('active');
+    applyMode();
+    updateProgress();
   }
 
-  restoreState();
+  // ── Main tab switcher ────────────────────────────────
+  function switchMainTab(name, btn) {
+    currentMainTab = name;
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+    document.getElementById('personSelector').style.display = name === 'personal' ? '' : 'none';
+    updateProgress();
+  }
+
+  // ── Progress ──────────────────────────────────────────
+  function updateProgress() {
+    let total = 0, checked = 0, label = '';
+
+    if (currentMainTab === 'personal') {
+      const items = [...document.querySelectorAll('#panel-personal .check-item[data-key]')];
+      if (currentPerson === 'alle') {
+        total = items.length * PERSONS.length;
+        items.forEach(i => PERSONS.forEach(p => { if (pget(p.id, i.dataset.key)) checked++; }));
+        const allDone = items.filter(i => PERSONS.every(p => pget(p.id, i.dataset.key))).length;
+        label = allDone + ' af ' + items.length + ' punkter pakket af alle · ' + checked + ' af ' + total + ' afkrydsninger';
+      } else {
+        total = items.length;
+        items.forEach(i => { if (pget(currentPerson, i.dataset.key)) checked++; });
+        label = checked + ' af ' + total + ' pakket';
+      }
+    } else {
+      const items = [...document.querySelectorAll('#panel-shared .check-item[data-key]')];
+      total = items.length;
+      items.forEach(i => { if (pget('shared', i.dataset.key)) checked++; });
+      label = checked + ' af ' + total + ' klaret';
+    }
+
+    const pct = total ? Math.round(checked / total * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = label;
+  }
+
+  // ── Reset ────────────────────────────────────────────
+  function resetAll() {
+    if (!confirm('Nulstil ALLE afkrydsninger for alle personer?')) return;
+    Object.keys(localStorage).filter(k => k.startsWith('pk3:')).forEach(k => localStorage.removeItem(k));
+    document.querySelectorAll('.check-item.checked').forEach(i => i.classList.remove('checked', 'alle-all', 'alle-partial'));
+    document.querySelectorAll('.pdot.checked').forEach(d => d.classList.remove('checked'));
+    updateProgress();
+  }
+
+  // ── Restore shared items on load ───────────────────────
+  function restoreShared() {
+    document.querySelectorAll('#panel-shared .check-item[data-key]').forEach(item => {
+      item.classList.toggle('checked', pget('shared', item.dataset.key));
+    });
+  }
+
+  restoreShared();
+  init();
 </script>
 
 </body>
