@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Løbet – Fausto Coppi 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --red: #c0392b; --red-bg: #fdf2f0; --green: #2e9e5b; --max-w: 860px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: linear-gradient(160deg, #1a0a0a 0%, #2d0a0a 100%); padding: 52px 22px 44px; text-align: center; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; color: #c0392b; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .hero h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 8px; }
+    .hero-sub { font-size: 15px; color: #a1a1a6; margin-bottom: 20px; }
+    .stat-row { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 700; color: white; letter-spacing: -0.02em; }
+    .stat-label { font-size: 11px; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+    .section { padding: 32px 22px 40px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-alt { background: var(--color-section); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 18px; }
+
+    /* Stignings-kort */
+    .climb-list { display: flex; flex-direction: column; gap: 12px; }
+    .climb-card { background: white; border: 1px solid var(--color-divider); border-radius: 16px; overflow: hidden; }
+    .climb-card.kom { border-color: #f0b429; background: #fffdf0; }
+    .climb-header { display: flex; align-items: center; gap: 14px; padding: 16px 18px 12px; }
+    .climb-num { width: 32px; height: 32px; border-radius: 50%; background: var(--red); color: white; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .climb-card.kom .climb-num { background: #d4a017; }
+    .climb-title-block { flex: 1; }
+    .climb-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+    .climb-alt { font-size: 13px; color: var(--color-secondary); margin-top: 1px; }
+    .climb-kom-badge { font-size: 10px; font-weight: 800; background: #f0b429; color: #7a5c00; padding: 2px 8px; border-radius: 980px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .climb-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--color-divider); }
+    .climb-stat { padding: 10px 12px; text-align: center; border-right: 1px solid var(--color-divider); }
+    .climb-stat:last-child { border-right: none; }
+    .cs-val { font-size: 15px; font-weight: 700; }
+    .cs-key { font-size: 11px; color: var(--color-secondary); margin-top: 2px; }
+    .climb-bar-wrap { padding: 0 18px 14px; }
+    .climb-bar-track { background: #f0f0f2; border-radius: 4px; height: 6px; overflow: hidden; margin-top: 6px; }
+    .climb-bar-fill { height: 100%; border-radius: 4px; background: var(--red); }
+    .climb-card.kom .climb-bar-fill { background: #d4a017; }
+    .climb-note { padding: 0 18px 14px; font-size: 13px; color: var(--color-secondary); line-height: 1.5; }
+
+    /* Depoter */
+    .depot-list { display: flex; flex-direction: column; gap: 10px; }
+    .depot-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; background: white; border: 1px solid var(--color-divider); border-radius: 14px; }
+    .depot-km { background: var(--color-section); border-radius: 8px; padding: 6px 10px; font-size: 13px; font-weight: 800; color: var(--color-secondary); flex-shrink: 0; text-align: center; min-width: 52px; }
+    .depot-body { flex: 1; }
+    .depot-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+    .depot-desc { font-size: 13px; color: var(--color-secondary); line-height: 1.4; }
+
+    /* Kort */
+    #map { width: 100%; height: 400px; border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+    .map-note { font-size: 13px; color: var(--color-secondary); }
+
+    /* Strategi */
+    .tip-list { display: flex; flex-direction: column; gap: 10px; }
+    .tip-item { display: flex; gap: 12px; padding: 14px 16px; background: white; border: 1px solid var(--color-divider); border-radius: 14px; align-items: flex-start; }
+    .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: 14px; line-height: 1.5; }
+    .tip-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
+
+    .leaflet-popup-content-wrapper { border-radius: 12px; }
+    .leaflet-popup-content { font-family: var(--font); margin: 12px 14px; }
+    .pp-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+    .pp-sub { font-size: 12px; color: var(--color-secondary); }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 24px 22px; text-align: center; margin-top: 24px; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); text-decoration: none; }
+    @media (max-width: 520px) { .climb-stats { grid-template-columns: repeat(2, 1fr); } .climb-stat:nth-child(2) { border-right: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🏁 Løbet</span>
+    <a href="overview.html" class="nav-back">← Program</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Granfondo · Cuneo · Søndag 28. juni 2026</p>
+  <h1>La Fausto Coppi 🏔️</h1>
+  <p class="hero-sub">37. udgave · Start & mål: Piazza Galimberti, Cuneo</p>
+  <div class="stat-row">
+    <div class="stat-item"><p class="stat-num">172</p><p class="stat-label">km</p></div>
+    <div class="stat-item"><p class="stat-num">4.300</p><p class="stat-label">hm</p></div>
+    <div class="stat-item"><p class="stat-num">4</p><p class="stat-label">Stigninger</p></div>
+    <div class="stat-item"><p class="stat-num">2.481</p><p class="stat-label">m højeste punkt</p></div>
+  </div>
+</section>
+
+<!-- KORT -->
+<section class="section">
+<div class="section-inner">
+  <p class="section-label">Ruten</p>
+  <h2 class="section-title">Rutekortet</h2>
+  <div id="map"></div>
+  <p class="map-note">Ruten er vejledende. Stigningerne markeret med farve efter sværhedsgrad.</p>
+</div>
+</section>
+
+<!-- STIGNINGER -->
+<section class="section section-alt">
+<div class="section-inner">
+  <p class="section-label">Granfondo</p>
+  <h2 class="section-title">Stigninger</h2>
+  <div class="climb-list">
+
+    <!-- 1: Colle di Sampeyre -->
+    <div class="climb-card">
+      <div class="climb-header">
+        <div class="climb-num">1</div>
+        <div class="climb-title-block">
+          <p class="climb-name">Colle di Sampeyre</p>
+          <p class="climb-alt">Top: 2.284 m</p>
+        </div>
+      </div>
+      <div class="climb-stats">
+        <div class="climb-stat"><p class="cs-val">16 km</p><p class="cs-key">Længde</p></div>
+        <div class="climb-stat"><p class="cs-val">1.311 m</p><p class="cs-key">Højdemeter</p></div>
+        <div class="climb-stat"><p class="cs-val">8 %</p><p class="cs-key">Ø hældning</p></div>
+        <div class="climb-stat"><p class="cs-val">13,2 %</p><p class="cs-key">Max hældning</p></div>
+      </div>
+      <div class="climb-bar-wrap">
+        <div class="climb-bar-track"><div class="climb-bar-fill" style="width:64%"></div></div>
+      </div>
+      <p class="climb-note">Første store stigning. Depot i bunden. Sæt et roligt tempo — der er tre stigninger tilbage.</p>
+    </div>
+
+    <!-- 2: Colle d'Esischie -->
+    <div class="climb-card">
+      <div class="climb-header">
+        <div class="climb-num">2</div>
+        <div class="climb-title-block">
+          <p class="climb-name">Colle d'Esischie</p>
+          <p class="climb-alt">Top: 2.370 m</p>
+        </div>
+      </div>
+      <div class="climb-stats">
+        <div class="climb-stat"><p class="cs-val">21,4 km</p><p class="cs-key">Længde</p></div>
+        <div class="climb-stat"><p class="cs-val">1.233 m</p><p class="cs-key">Højdemeter</p></div>
+        <div class="climb-stat"><p class="cs-val">7,2 %</p><p class="cs-key">Ø hældning</p></div>
+        <div class="climb-stat"><p class="cs-val">13 %</p><p class="cs-key">Max hældning</p></div>
+      </div>
+      <div class="climb-bar-wrap">
+        <div class="climb-bar-track"><div class="climb-bar-fill" style="width:72%"></div></div>
+      </div>
+      <p class="climb-note">Kun i Granfondo. Lang og jævn — den laveste gennemsnitshældning af de fire, men 21 km er psykologisk hårdt.</p>
+    </div>
+
+    <!-- 3: Colle Fauniera — KOM -->
+    <div class="climb-card kom">
+      <div class="climb-header">
+        <div class="climb-num">3</div>
+        <div class="climb-title-block">
+          <p class="climb-name">Colle Fauniera <span class="climb-kom-badge">👑 KOM</span></p>
+          <p class="climb-alt">Top: 2.481 m · Højeste punkt i løbet</p>
+        </div>
+      </div>
+      <div class="climb-stats">
+        <div class="climb-stat"><p class="cs-val">22,3 km</p><p class="cs-key">Længde</p></div>
+        <div class="climb-stat"><p class="cs-val">1.689 m</p><p class="cs-key">Højdemeter</p></div>
+        <div class="climb-stat"><p class="cs-val">8 %</p><p class="cs-key">Ø hældning</p></div>
+        <div class="climb-stat"><p class="cs-val">14 %</p><p class="cs-key">Max hældning</p></div>
+      </div>
+      <div class="climb-bar-wrap">
+        <div class="climb-bar-track"><div class="climb-bar-fill" style="width:100%"></div></div>
+      </div>
+      <p class="climb-note">Dronningebjerget. 22 km med 1.689 hm og toppe på 14 % — her afgøres løbet. Hav gel og vand klar. Depot undervejs på stigningen.</p>
+    </div>
+
+    <!-- 4: Madonna del Colletto -->
+    <div class="climb-card">
+      <div class="climb-header">
+        <div class="climb-num">4</div>
+        <div class="climb-title-block">
+          <p class="climb-name">Madonna del Colletto</p>
+          <p class="climb-alt">Top: 1.304 m</p>
+        </div>
+      </div>
+      <div class="climb-stats">
+        <div class="climb-stat"><p class="cs-val">7,3 km</p><p class="cs-key">Længde</p></div>
+        <div class="climb-stat"><p class="cs-val">564 m</p><p class="cs-key">Højdemeter</p></div>
+        <div class="climb-stat"><p class="cs-val">8 %</p><p class="cs-key">Ø hældning</p></div>
+        <div class="climb-stat"><p class="cs-val">13 %</p><p class="cs-key">Max hældning</p></div>
+      </div>
+      <div class="climb-bar-wrap">
+        <div class="climb-bar-track"><div class="climb-bar-fill" style="width:33%"></div></div>
+      </div>
+      <p class="climb-note">Korteste stigning — men den kommer sidst når benene er røde. Depot i bunden. Smil og tænk på fadøllen i Cuneo.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- DEPOTER -->
+<section class="section">
+<div class="section-inner">
+  <p class="section-label">Forplejning</p>
+  <h2 class="section-title">Depoter (ristori)</h2>
+  <div class="depot-list">
+    <div class="depot-item">
+      <div class="depot-km">~km 49</div>
+      <div class="depot-body">
+        <p class="depot-name">Depot 1 — Foden af Colle Sampeyre</p>
+        <p class="depot-desc">Fyld drikkedunke og spis inden den lange klatring. Energi til 16 km, 8 %.</p>
+      </div>
+    </div>
+    <div class="depot-item">
+      <div class="depot-km">~km 74</div>
+      <div class="depot-body">
+        <p class="depot-name">Depot 2 — Madonna del Colletto</p>
+        <p class="depot-desc">Let depot. Tankning inden næste sektion.</p>
+      </div>
+    </div>
+    <div class="depot-item">
+      <div class="depot-km">Fauniera</div>
+      <div class="depot-body">
+        <p class="depot-name">Depot 3 — Undervejs på Colle Fauniera</p>
+        <p class="depot-desc">Depot på KOM-stigningen. 22 km klatring — tag det med, spis og drik inden de hårdeste ramper.</p>
+      </div>
+    </div>
+    <div class="depot-item">
+      <div class="depot-km">Mål</div>
+      <div class="depot-body">
+        <p class="depot-name">Mål — Piazza Galimberti, Cuneo</p>
+        <p class="depot-desc">Finishdepot + FADØL. Vel fortjent.</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--color-secondary);margin-top:14px">Husk: I løbet vil der være vand og frugt på depoterne. Eget forråd af gels er vigtigt — depotforsyningen alene er ikke nok til 172 km.</p>
+</div>
+</section>
+
+<!-- STRATEGI -->
+<section class="section section-alt">
+<div class="section-inner">
+  <p class="section-label">Til løbsdagen</p>
+  <h2 class="section-title">Strategi & tips</h2>
+  <div class="tip-list">
+    <div class="tip-item">
+      <span class="tip-icon">🍝</span>
+      <p class="tip-text"><strong>Lørdag aften: carboload</strong>Pasta, ris eller lignende. Fyld glykogenlagrene. Spis tidligt nok til at det er fordøjet.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">⏰</span>
+      <p class="tip-text"><strong>Morgenmad 2–3 timer inden start</strong>Havregrød, brød, banan + kaffe. Intet nyt dagen for løbet.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🧴</span>
+      <p class="tip-text"><strong>Chamois creme INDEN start</strong>171 km er lang — smør rigeligt på. Man fortryder det ikke.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">💧</span>
+      <p class="tip-text"><strong>Drik konstant fra start</strong>28–29 °C i Cuneo + 4.300 hm = stor sveddtab. En flaske i timen minimum. Fyld op ved hvert depot.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🔋</span>
+      <p class="tip-text"><strong>Spis inden du er sulten</strong>Første gel allerede ved km 30–40. Colle Sampeyre begynder ved ~km 50 — hav fuld tank inden. Hvert 30–40 min undervejs.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🏔️</span>
+      <p class="tip-text"><strong>Sæt roligt tempo på Sampeyre og Esischie</strong>Fauniera er KOM — gem kræfter. De fleste rider sig flove på de første to stigninger og betaler prisen på Fauniera.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🌡️</span>
+      <p class="tip-text"><strong>Hav gilet i baglommen til nedstigninger</strong>Fra 2.481 m (Fauniera) til dalen er nedstigningen lang og kold — selv i varmt vejr. Pak gilet let tilgængeligt.</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🍺</span>
+      <p class="tip-text"><strong>Madonna del Colletto er den sidste</strong>Kun 7,3 km — kør den med alt hvad du har. Derefter er det nedad til Cuneo og fadøl.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <p><a href="overview.html">← Program & pakkeliste</a> · <a href="kort.html">Cuneo-kort</a></p>
+  <p style="margin-top:8px">Kilde: <a href="https://www.faustocoppi.net/new/percorsi/" target="_blank">faustocoppi.net</a></p>
+</footer>
+
+<script>
+  const map = L.map('map').setView([44.46, 7.25], 10);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap, © CARTO', maxZoom: 19
+  }).addTo(map);
+
+  function icon(emoji, color, size) {
+    size = size || 32;
+    return L.divIcon({
+      html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;font-size:${size*0.45}px;box-shadow:0 2px 8px rgba(0,0,0,0.3);border:2px solid white">${emoji}</div>`,
+      className: '', iconSize: [size,size], iconAnchor: [size/2,size/2], popupAnchor: [0,-size/2+4]
+    });
+  }
+
+  function pp(t,s) { return `<div class="pp-title">${t}</div><div class="pp-sub">${s}</div>`; }
+
+  // Start/Mål
+  L.marker([44.3841, 7.5422], { icon: icon('🏁','#0071e3') })
+    .bindPopup(pp('Start & Mål','Piazza Galimberti, Cuneo')).addTo(map);
+
+  // Colle di Sampeyre
+  L.marker([44.417, 7.133], { icon: icon('1️⃣','#c0392b') })
+    .bindPopup(pp('Colle di Sampeyre','2.284 m · 16 km · ø 8 % · max 13,2 %')).addTo(map);
+
+  // Colle d'Esischie
+  L.marker([44.483, 7.052], { icon: icon('2️⃣','#c0392b') })
+    .bindPopup(pp("Colle d'Esischie",'2.370 m · 21,4 km · ø 7,2 % · max 13 %')).addTo(map);
+
+  // Colle Fauniera
+  L.marker([44.517, 7.018], { icon: icon('👑','#d4a017', 36) })
+    .bindPopup(pp('Colle Fauniera 👑 KOM','2.481 m · 22,3 km · ø 8 % · max 14 %')).addTo(map);
+
+  // Madonna del Colletto
+  L.marker([44.282, 7.672], { icon: icon('4️⃣','#c0392b') })
+    .bindPopup(pp('Madonna del Colletto','1.304 m · 7,3 km · ø 8 % · max 13 %')).addTo(map);
+
+  // Approx route
+  const route = L.polyline([
+    [44.3841, 7.5422],  // Cuneo start
+    [44.39, 7.50],
+    [44.40, 7.35],
+    [44.41, 7.20],
+    [44.417, 7.133],    // Sampeyre
+    [44.43, 7.09],
+    [44.46, 7.07],
+    [44.483, 7.052],    // Esischie
+    [44.50, 7.03],
+    [44.517, 7.018],    // Fauniera KOM
+    [44.50, 7.10],
+    [44.45, 7.30],
+    [44.38, 7.52],
+    [44.34, 7.59],
+    [44.282, 7.672],    // Madonna del Colletto
+    [44.31, 7.60],
+    [44.35, 7.55],
+    [44.3841, 7.5422],  // Cuneo mål
+  ], { color: '#c0392b', weight: 3, opacity: 0.65, dashArray: '6,8' }).addTo(map);
+
+  map.fitBounds(route.getBounds(), { padding: [28, 28] });
+</script>
+
+</body>
+</html>
