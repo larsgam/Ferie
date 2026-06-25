@@ -72,7 +72,7 @@
     </div>
     <div class="legend-item">
       <div class="legend-dot" style="background:#2e9e5b">🏭</div>
-      <div class="legend-body"><p class="legend-name">Officine Mattio</p><p class="legend-time">VIP-besøg · Fre 26/6 kl. 15:00</p></div>
+      <div class="legend-body"><p class="legend-name">Officine Mattio</p><p class="legend-time">Via Renzo Gandolfo 6 · VIP-besøg · Fre 26/6 kl. 15:00</p></div>
     </div>
     <div class="legend-item">
       <div class="legend-dot" style="background:#e67e22">🚗</div>
@@ -114,44 +114,42 @@
   }
 
   // Hotel Palazzo Lovera – Via Roma 37, Cuneo
-  L.marker([44.3851, 7.5424], { icon: makeIcon('🏨', '#1a1a2e') })
+  L.marker([44.3919, 7.5502], { icon: makeIcon('🏨', '#1a1a2e') })
     .bindPopup(popup('Hotel Palazzo Lovera', 'Via Roma 37, Cuneo<br>2 suiter · tæt på startlinjen', 'Check-in fre 26/6', '#1a1a2e'))
     .addTo(map);
 
-  // Piazza Galimberti – centrum af Cuneo, selve torvet
-  L.marker([44.3841, 7.5422], { icon: makeIcon('🇩🇰', '#c0392b') })
+  // Piazza Galimberti – centrum af Cuneo
+  L.marker([44.3892, 7.5481], { icon: makeIcon('🇩🇰', '#c0392b') })
     .bindPopup(popup('Dansk æresmiddag', 'Piazza Galimberti 6, Cuneo', 'Fre 26/6 kl. 20:00 · €22/pers · Ambassadør Taksøe-Jensen', '#c0392b'))
     .addTo(map);
 
-  // Rådhuset Cuneo (Municipio) – Piazza Galimberti, Salone d'Onore
-  L.marker([44.3836, 7.5418], { icon: makeIcon('🏛️', '#8e44ad') })
-    .bindPopup(popup('Velkomstceremoni for Danmark', 'Salone d\'Onore · Municipio di Cuneo<br>Piazza Galimberti', 'Lør 27/6 kl. 17:30', '#8e44ad'))
+  // Rådhuset Cuneo (Municipio) – Salone d'Onore
+  L.marker([44.3932, 7.5514], { icon: makeIcon('🏛️', '#8e44ad') })
+    .bindPopup(popup('Velkomstceremoni for Danmark', 'Salone d\'Onore · Municipio di Cuneo', 'Lør 27/6 kl. 17:30', '#8e44ad'))
     .addTo(map);
 
-  // Start/mål Fausto Coppi – typisk ved Via Roma / Piazza Galimberti
-  L.marker([44.3858, 7.5430], { icon: makeIcon('🏁', '#0071e3') })
-    .bindPopup(popup('Start & Mål – Granfondo Fausto Coppi', 'Via Roma, Cuneo', 'Søn 28/6 · 171 km', '#0071e3'))
+  // Start/mål Fausto Coppi – Via Roma
+  L.marker([44.3910, 7.5495], { icon: makeIcon('🏁', '#0071e3') })
+    .bindPopup(popup('Start & Mål – Granfondo Fausto Coppi', 'Via Roma, Cuneo', 'Søn 28/6 · 172 km', '#0071e3'))
     .addTo(map);
 
-  // Officine Mattio – cykelværksted i Cuneo-området
-  // Via Luigi Einaudi 28, Cuneo
-  L.marker([44.3920, 7.5490], { icon: makeIcon('🏭', '#2e9e5b') })
-    .bindPopup(popup('Officine Mattio', 'Via Luigi Einaudi 28, Cuneo<br>Italiensk cykelværksted', 'Fre 26/6 kl. 15:00 · VIP guests', '#2e9e5b'))
+  // Officine Mattio – Via Renzo Gandolfo 6 (Google Maps verificeret)
+  L.marker([44.4226, 7.5616], { icon: makeIcon('🏭', '#2e9e5b') })
+    .bindPopup(popup('Officine Mattio', 'Via Renzo Gandolfo 6, Cuneo<br>Italiensk cykelværksted', 'Fre 26/6 kl. 15:00 · VIP guests', '#2e9e5b'))
     .addTo(map);
 
-  // Expo / Piazza Galimberti (cykelexpo)
-  L.marker([44.3845, 7.5410], { icon: makeIcon('🚴', '#e67e22') })
+  // Expo / Piazza Galimberti (cykelexpo) – samme plads som æresmiddagen
+  L.marker([44.3888, 7.5476], { icon: makeIcon('🚴', '#e67e22') })
     .bindPopup(popup('Cykelexpo på pladsen', 'Piazza Galimberti, Cuneo<br>Energibars, gels, udstyr', 'Lør 27/6', '#e67e22'))
     .addTo(map);
 
-  // Rutelinje – antydet rute mod bjergene (Fausto Coppi-ruten)
-  // Starter ved Cuneo, mod Colle dell'Agnello / Vars
+  // Rutelinje – antydet rute mod bjergene
   const routeHint = L.polyline([
-    [44.3858, 7.5430],  // Start Cuneo
+    [44.3910, 7.5495],  // Start Cuneo
     [44.41, 7.52],
     [44.45, 7.44],
-    [44.52, 7.35],      // Mod bjergene
-    [44.62, 7.10],      // Colle di Sampeyre retning
+    [44.52, 7.35],
+    [44.62, 7.10],
   ], {
     color: '#c0392b',
     weight: 3,
@@ -159,12 +157,12 @@
     dashArray: '8,10'
   }).addTo(map);
 
-  routeHint.bindPopup('<div class="popup-title">Løbsrute (antydet)</div><div class="popup-sub">171 km · mod de piemontesiske alper</div>');
+  routeHint.bindPopup('<div class="popup-title">Løbsrute (antydet)</div><div class="popup-sub">172 km · mod de piemontesiske alper</div>');
 
-  // Fit map to markers
+  // Fit map to all markers
   const bounds = L.latLngBounds([
-    [44.3836, 7.5410],
-    [44.3920, 7.5490]
+    [44.3888, 7.5476],
+    [44.4226, 7.5616]
   ]);
   map.fitBounds(bounds, { padding: [40, 40] });
 </script>
