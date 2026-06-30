@@ -47,6 +47,17 @@
     footer p { font-size: 13px; color: var(--color-secondary); }
     a { color: var(--color-accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* Instructions */
+    .inst-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 4px; }
+    .inst-card { background: white; border: 1px solid var(--color-divider); border-radius: 14px; padding: 22px; }
+    .inst-icon { font-size: 26px; margin-bottom: 10px; }
+    .inst-title { font-size: 17px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .inst-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .inst-list li { font-size: 14px; color: var(--color-text); line-height: 1.55; padding-left: 18px; position: relative; }
+    .inst-list li::before { content: '·'; position: absolute; left: 0; color: var(--color-warm); font-weight: 700; }
+    .inst-list li strong { color: var(--color-text); }
+    .inst-tip { background: var(--color-warm-bg); border: 1px solid var(--color-warm-border); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--color-warm); margin-top: 10px; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -110,6 +121,71 @@
           <div class="week-note">Vi er hjemme søndag 2. august</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="section-inner">
+    <p class="section-label">Til Thomas og Mads</p>
+    <h2 class="section-title">Sådan passer du Wilma</h2>
+    <div class="inst-grid">
+
+      <div class="inst-card">
+        <div class="inst-icon">🥣</div>
+        <div class="inst-title">Mad & vand</div>
+        <ul class="inst-list">
+          <li>Sørg altid for <strong>vand og tørkost i skålene</strong> — hun spiser når hun er sulten og overspiser ikke</li>
+          <li>Normalt får hun <strong>ikke vores mad</strong>, og slet ikke ved bordet</li>
+          <li>Det er ok at give hende lidt en gang imellem — lidt pølse eller ost (hun elsker ost). <strong>Læg det altid i hendes skål</strong>, aldrig direkte fra bordet</li>
+          <li>Fodrer man hende ved bordet, plager hun om det ved bordet i al fremtid</li>
+        </ul>
+        <div class="inst-tip">🦴 Godbidder bruges til at lokke hende til at komme — og gives efter tur, efter hun har tisset/gjort sit i haven, og ellers bare en gang imellem.</div>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-icon">🦮</div>
+        <div class="inst-title">Gåture</div>
+        <ul class="inst-list">
+          <li><strong>2–3 ture om dagen</strong></li>
+          <li>Hun har ikke behov for lange ture, men kan godt gå langt</li>
+          <li>Hun bliver doven hvis hun ikke kommer ud. Hvis der er gået for lang tid, gider hun ikke — <strong>træk lidt i snoren</strong>, så overgiver hun sig. Bare vis hende at det er jer der bestemmer</li>
+        </ul>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-icon">😴</div>
+        <div class="inst-title">Sove</div>
+        <ul class="inst-list">
+          <li>Hun sover meget</li>
+          <li>Hun plejer at sove i <strong>foderenden af sengen</strong> om natten — prøv jer frem med hvad der passer jer</li>
+          <li>Hun har sin <strong>kurv med</strong> — den kan hun også sove i</li>
+          <li>Hvis der står en taske på gulvet lægger hun sig gerne på den — flyt den bare, eller lok hende med en godbid</li>
+          <li>Pas på: hun kan blive <strong>lidt sur</strong> hvis man løfter hende mens hun sover eller chiller</li>
+        </ul>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-icon">🎾</div>
+        <div class="inst-title">Leg</div>
+        <ul class="inst-list">
+          <li>Hun <strong>gider ikke bolde</strong> og aner ikke hvad aport betyder — prøv endelig at se om I kan lære hende det med en pind</li>
+          <li>Hun elsker sine <strong>tøjdyr</strong>. Prøv at vriste det ud af munden på hende og kast det</li>
+          <li>Godbidder er den bedste pædagogik — <strong>anerkend når hun gør som man beder om</strong>. Men forbered jer: vi er godt nede af på intelligensskalaen 😄</li>
+          <li>Hun elsker at være på <strong>stranden</strong>, men går kun i vandet ved et uheld. Kan løbe løs — men tjek om det er tilladt i sommerhalvåret</li>
+        </ul>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-icon">📋</div>
+        <div class="inst-title">Generelt</div>
+        <ul class="inst-list">
+          <li>Hun er <strong>rimelig nem</strong> generelt</li>
+          <li>Hun <strong>fælder ikke</strong></li>
+        </ul>
+        <div class="inst-tip">📱 Skriv endelig hvis der er noget — vi tjekker beskederne når vi kan fra Vietnam.</div>
+      </div>
+
     </div>
   </div>
 </section>
