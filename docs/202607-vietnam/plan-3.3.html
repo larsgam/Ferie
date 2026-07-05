@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan v3.3 · Vietnam + Cambodja (Dragon Legend Cruise)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 900px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 24px; }
+    .route-pill { background: var(--color-section); border: 1px solid var(--color-divider); border-radius: var(--radius); padding: 18px 22px; font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+    .route-pill strong { color: var(--color-accent); }
+    .route-pill .cambodja-hl { color: #b45309; font-weight: 700; }
+    .route-pill .cruise-hl { color: #0369a1; font-weight: 700; }
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr.highlight td { background: #fffaf0; font-weight: 600; }
+    .data-table tr.cambodja-row td { background: #fdf4dc; }
+    .data-table tr.changed td { background: #f0fdf4; }
+    .data-table tr.cruise-row td { background: #e0f2fe; }
+    .day-list { display: flex; flex-direction: column; gap: 2px; }
+    .day-item { display: grid; grid-template-columns: 48px 92px 100px 110px 1fr; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; }
+    .day-item:hover { background: rgba(0,0,0,0.03); }
+    .day-item.travel { background: #f0f6ff; }
+    .day-item.highlight { background: #fffaf0; }
+    .day-item.cambodja { background: #fdf4dc; }
+    .day-item.cambodja.highlight { background: #faeac4; }
+    .day-item.changed { background: #f0fdf4; outline: 2px solid #86efac; outline-offset: -2px; }
+    .day-item.cruise { background: #e0f2fe; outline: 2px solid #7dd3fc; outline-offset: -2px; }
+    .day-item.cruise.travel { background: #bae6fd; outline: 2px solid #38bdf8; outline-offset: -2px; }
+    .day-num { font-size: 20px; font-weight: 700; color: var(--color-secondary); }
+    .day-date { font-size: 13px; color: var(--color-secondary); }
+    .day-segment { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); padding: 2px 8px; border-radius: 980px; background: var(--color-section); border: 1px solid var(--color-divider); white-space: nowrap; }
+    .day-item.travel .day-segment { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+    .day-item.cambodja .day-segment { background: #fde68a; border-color: #f59e0b; color: #92400e; }
+    .day-item.cambodja.travel .day-segment { background: #fed7aa; border-color: #f97316; color: #9a3412; }
+    .day-item.changed .day-segment { background: #bbf7d0; border-color: #4ade80; color: #166534; }
+    .day-item.cruise .day-segment { background: #bae6fd; border-color: #38bdf8; color: #0369a1; }
+    .day-item.cruise.travel .day-segment { background: #7dd3fc; border-color: #0ea5e9; color: #075985; }
+    .day-place { font-size: 13px; font-weight: 600; }
+    .day-desc { font-size: 14px; line-height: 1.4; }
+    .day-hotel { font-size: 11px; color: var(--color-secondary); margin-top: 3px; display: block; }
+    .day-hotel.booked { color: #2e9e5b; }
+    .day-hotel.pending { color: #b0b0b8; font-style: italic; }
+    .day-hotel.mismatch { color: #c2410c; font-weight: 600; }
+    .day-item.has-mismatch { outline: 3px solid #ef4444; outline-offset: -2px; background: #fef2f2; }
+    .day-item.has-mismatch .day-num { color: #dc2626; }
+    .booking-status { background: var(--color-section); border: 1px solid var(--color-divider); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; }
+    .booking-status h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 12px; }
+    .bs-row { display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--color-divider); font-size: 13px; line-height: 1.4; }
+    .bs-row:last-child { border-bottom: none; }
+    .bs-icon { flex-shrink: 0; width: 18px; }
+    .bs-name { font-weight: 600; flex: 1; }
+    .bs-dates { color: var(--color-secondary); white-space: nowrap; }
+    .bs-ref { font-size: 11px; color: #b0b0b8; margin-left: 6px; }
+    .bs-warn { color: #c2410c; font-weight: 600; font-size: 12px; margin-left: 6px; }
+    .verdict { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 1px solid #7dd3fc; border-radius: var(--radius); padding: 28px 32px; margin-top: 8px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0369a1; margin-bottom: 8px; }
+    .verdict h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p { font-size: 15px; color: #374151; line-height: 1.7; }
+    .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pros, .cons { border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--color-divider); }
+    .pros { background: #f0faf2; border-color: #bfe6c8; }
+    .cons { background: #fdf6ec; border-color: #f0d9b0; }
+    .pros h4, .cons h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .pros ul, .cons ul { margin-left: 18px; }
+    .pros li, .cons li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .version-bar { background: var(--color-section); border-bottom: 1px solid var(--color-divider); padding: 16px 22px; }
+    .version-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+    .vtag { font-weight: 700; padding: 3px 12px; border-radius: 980px; font-size: 13px; }
+    .vtag-num { background: #0369a1; color: white; }
+    .cambodja-banner { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #f59e0b; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .cambodja-banner-icon { font-size: 28px; flex-shrink: 0; }
+    .cambodja-banner-text h4 { font-size: 15px; font-weight: 700; color: #92400e; margin-bottom: 4px; }
+    .cambodja-banner-text p { font-size: 14px; color: #78350f; line-height: 1.6; }
+    .cruise-banner { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 1px solid #38bdf8; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .cruise-banner-icon { font-size: 28px; flex-shrink: 0; }
+    .cruise-banner-text h4 { font-size: 15px; font-weight: 700; color: #0369a1; margin-bottom: 4px; }
+    .cruise-banner-text p { font-size: 14px; color: #075985; line-height: 1.6; }
+    .change-legend { background: #e0f2fe; border: 1px solid #7dd3fc; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: #0369a1; }
+    .change-legend strong { font-weight: 700; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    @media (max-width: 640px) { .day-item { grid-template-columns: 36px auto 1fr; } .day-date, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗺️ Plan v3.3</span>
+    <a href="planer.html" class="nav-back">← Alle planer</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Plan · Vietnam + Cambodja 2026</p>
+  <h1>Vietnam + Angkor Wat</h1>
+  <p class="hero-sub">Dragon Legend Cruise booket: 3 dage/2 nætter i Bai Tu Long Bay (9–11. jul). Direkte Ha Long → Mai Chau — ingen Hanoi-transitnat. Stadig 26 nætter.</p>
+</section>
+
+<div class="version-bar">
+  <div class="version-bar-inner">
+    <span class="vtag vtag-num">v3.3</span>
+    <span><strong>Dragon Legend Cruise</strong> — Bai Tu Long Bay + direkte Ha Long → Mai Chau</span>
+    <span style="color:var(--color-secondary)">Lavet 5. jul 2026</span>
+    <span class="vtag" style="background:#2e9e5b;color:white">Master ✅</span>
+    <a href="planer.html" style="margin-left:auto;color:var(--color-accent);text-decoration:none;font-size:14px">Alle versioner →</a>
+  </div>
+</div>
+
+<!-- RUTE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Rute-overblik</p>
+    <h2 class="section-title">26 nætter · to lande</h2>
+
+    <div class="cruise-banner">
+      <div class="cruise-banner-icon">🚢</div>
+      <div class="cruise-banner-text">
+        <h4>Dragon Legend Cruise: 3 dage/2 nætter i Bai Tu Long Bay · 9–11. jul (under booking)</h4>
+        <p>Afgang Hanoi 08:00 dag 9. jul. Bai Tu Long Bay (off-beaten-track — ikke standard Ha Long). Dag 1: kayaking Cap La, grottetur, middag om bord. Dag 2: Thien Canh Son Cave, kajak, BBQ strand, havpool. Dag 3: Vung Vieng fiskerlandsby, check-out 09:45. Direkte transfer Ha Long → Mai Chau (~3,5 t) — ingen Hanoi-transitnat.</p>
+      </div>
+    </div>
+
+    <div class="cambodja-banner">
+      <div class="cambodja-banner-icon">🛕</div>
+      <div class="cambodja-banner-text">
+        <h4>Cambodja-sidetrip: fly Hanoi → Siem Reap → Da Nang ✅ Booket</h4>
+        <p>VietJet VJ913 · 15. jul kl. 16:20 → 18:05 · Booking: 4QW3QH. 3 nætter ved Angkor Wat. Air Cambodia K6840 · 18. jul kl. 14:05 → 16:00 Da Nang. Derefter direkte til Hoi An og videre nordpå via Hue og Phong Nha til Hanoi.</p>
+      </div>
+    </div>
+
+    <div class="route-pill">
+      Hanoi 2 → <span class="cruise-hl">🚢 Bai Tu Long 2n om bord</span> → Mai Chau 1 → <strong>Pu Luong 3</strong> → ✈️ <span class="cambodja-hl">Siem Reap 3</span> → ✈️ <strong>Hoi An 5</strong> → Hue 3 → <strong>Phong Nha 2</strong> → Ninh Binh 3 → Hanoi 2
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Sted</th><th>Nætter</th><th>Highlights</th><th>Vejr</th></tr></thead>
+        <tbody>
+          <tr><td>Hanoi (start)</td><td>2</td><td>Old Quarter, streetfood, Train Street, mausoleet</td><td>Varmt, fugtigt</td></tr>
+          <tr class="cruise-row"><td>🚢 Bai Tu Long Bay</td><td>2 om bord</td><td>Dragon Legend Cruise, kayaking Cap La, Thien Canh Son Cave, BBQ strand, Vung Vieng fiskerlandsby</td><td>Vind/regn muligt — fleksibelt program</td></tr>
+          <tr><td>Mai Chau</td><td>1</td><td>Ankomst fra Ha Long direkte, pool, solnedgang over rismarkerne</td><td>Køligere, korte byger</td></tr>
+          <tr class="highlight"><td>Pu Luong</td><td>3</td><td>Risterrasser, Kho Muong + Bat Cave, bambusrafting, pool</td><td>Køligere, korte byger</td></tr>
+          <tr class="cambodja-row"><td>🛕 Siem Reap, Cambodja</td><td>3 ✅</td><td>Angkor Wat (solopgang), Angkor Thom, Bayon, Ta Prohm, Banteay Srei</td><td>Varmt og fugtigt — men grandiost</td></tr>
+          <tr class="changed highlight"><td>Hoi An</td><td>5</td><td>Gamlebyen, skrædder, madlavning, Cham Islands, Ba Na Hills (dagstur ~45 min)</td><td>Bedste vejr (tørsæson)</td></tr>
+          <tr class="changed"><td>Hue</td><td>3</td><td>Kejserbyen, kongegrave (Tu Duc, Minh Mang), parfumefloden, Thien Mu-pagoden</td><td>Godt vejr</td></tr>
+          <tr class="highlight"><td>Phong Nha</td><td>2</td><td>Dark Cave (zipline + mudderbad), Paradise Cave, Bong Lai</td><td>Tørsæson, grotter 20-22°C</td></tr>
+          <tr><td>Ninh Binh</td><td>3</td><td>Tam Coc, Trang An, Mua Cave, Bai Dinh</td><td>Varmt, fugtigt</td></tr>
+          <tr><td>Hanoi (slut)</td><td>2</td><td>Sidste shopping, streetfood</td><td>Varmt, fugtigt</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DAG FOR DAG -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">28 dage</p>
+    <h2 class="section-title">Dag for dag</h2>
+
+    <div class="change-legend">
+      <strong>Blåt = ændret fra v3.2:</strong> Dag 4–6 er nu Dragon Legend Cruise i Bai Tu Long Bay. Hanoi-transitnatten er elimineret. Dag 6 er direkte transfer Ha Long → Mai Chau.
+    </div>
+
+    <div class="booking-status">
+      <h4>🏨 Bookingstatus — alle overnatninger</h4>
+      <div class="bs-row"><span class="bs-icon">✅</span><span class="bs-name">Conifer Boutique Hotel · Hanoi</span><span class="bs-dates">7.–9. jul · 2 nætter (dag 2–3)</span><span class="bs-ref">#6767498973</span></div>
+      <div class="bs-row"><span class="bs-icon">⏳</span><span class="bs-name">Dragon Legend Cruise · Bai Tu Long Bay</span><span class="bs-dates">9.–11. jul · 2 nætter om bord (dag 4–5) — under booking</span></div>
+      <div class="bs-row"><span class="bs-icon">✅</span><span class="bs-name">Mai Chau 4 Seasons · Mai Chau</span><span class="bs-dates">11.–12. jul · 1 nat (dag 6)</span><span class="bs-ref">#6398395144</span></div>
+      <div class="bs-row"><span class="bs-icon">⚠️</span><span class="bs-name">Pu Luong Boutique Garden Spa</span><span class="bs-dates">12.–14. jul · booket 2 nætter (dag 7–8)</span><span class="bs-warn">— dag 9 (nat 14. jul) IKKE dækket! Bestil ekstra nat.</span></div>
+      <div class="bs-row"><span class="bs-icon">✅</span><span class="bs-name">Chhouy Vathna Angkor Boutique · Siem Reap</span><span class="bs-dates">15.–18. jul · 3 nætter (dag 10–12)</span><span class="bs-ref">#6762494829</span></div>
+      <div class="bs-row"><span class="bs-icon">⬜</span><span class="bs-name">Hoi An</span><span class="bs-dates">18.–23. jul · 5 nætter (dag 13–17) — ikke booket</span></div>
+      <div class="bs-row"><span class="bs-icon">⬜</span><span class="bs-name">Hue</span><span class="bs-dates">23.–26. jul · 3 nætter (dag 18–20) — ikke booket</span></div>
+      <div class="bs-row"><span class="bs-icon">⬜</span><span class="bs-name">Phong Nha</span><span class="bs-dates">26.–28. jul · 2 nætter (dag 21–22) — ikke booket</span></div>
+      <div class="bs-row"><span class="bs-icon">✅</span><span class="bs-name">ChezCao Rice Field Ecolodge · Ninh Binh</span><span class="bs-dates">29.–31. jul · 2 nætter (dag 24–25)</span><span class="bs-ref">#6999798720</span></div>
+      <div class="bs-row"><span class="bs-icon">⬜</span><span class="bs-name">Hanoi (slutnætter)</span><span class="bs-dates">31. jul–2. aug · 2 nætter (dag 26–27) — ikke booket</span></div>
+    </div>
+
+    <div class="day-list">
+      <div class="day-item travel"><span class="day-num">1</span><span class="day-date">Man 6. jul</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Afrejse CPH 16:00 → DOH 23:00<span class="day-hotel pending">🛏️ Fly</span></span></div>
+      <div class="day-item travel"><span class="day-num">2</span><span class="day-date">Tir 7. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">DOH 02:45 → HAN 13:55. Ankomst, check ind, Old Quarter om aftenen<span class="day-hotel booked">✅ Conifer Boutique Hotel · 7.–9. jul · #6767498973</span></span></div>
+      <div class="day-item"><span class="day-num">3</span><span class="day-date">Ons 8. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Streetfood-tour, Train Street, Ho Chi Minh-mausoleet, Hoan Kiem-søen · 🎨 <a href="https://www.hanoistudiogallery.com/artist/lim-khim-katy" target="_blank">Hanoi Studio Gallery</a> (Lim Khim Katy)<span class="day-hotel booked">✅ Conifer Boutique Hotel · 7.–9. jul · #6767498973</span></span></div>
+      <div class="day-item cruise travel"><span class="day-num">4</span><span class="day-date">Tor 9. jul</span><span class="day-segment">Ha Long</span><span class="day-place">Bai Tu Long</span><span class="day-desc">Dragon Legend Cruise dag 1 — afgang Hanoi 08:00. Bai Tu Long Bay, kayaking Cap La, grottetur, middag om bord<span class="day-hotel pending">⏳ Dragon Legend Cruise · 9.–11. jul (under booking)</span></span></div>
+      <div class="day-item cruise"><span class="day-num">5</span><span class="day-date">Fre 10. jul</span><span class="day-segment">Ha Long</span><span class="day-place">Bai Tu Long</span><span class="day-desc">Cruise dag 2 — Thien Canh Son Cave, kajak, BBQ strand, havpool. Squid fishing om aftenen<span class="day-hotel pending">⏳ Dragon Legend Cruise om bord</span></span></div>
+      <div class="day-item cruise travel"><span class="day-num">6</span><span class="day-date">Lør 11. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Mai Chau</span><span class="day-desc">Cruise dag 3 morgen — Vung Vieng fiskerlandsby (bamboosbåde). Check-out 09:45. Direkte transfer Ha Long → Mai Chau (~3,5 t) — ingen Hanoi-transit<span class="day-hotel booked">✅ Mai Chau 4 Seasons · 11.–12. jul · #6398395144</span></span></div>
+      <div class="day-item highlight"><span class="day-num">7</span><span class="day-date">Søn 12. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Check ud Mai Chau → Pu Luong. Guidet heldagstrek: Kho Muong + Bat Cave<span class="day-hotel booked">✅ Pu Luong Boutique Garden Spa · #5887833100</span></span></div>
+      <div class="day-item"><span class="day-num">8</span><span class="day-date">Man 13. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Bambusrafting, vandhjul ved Ban Don, pool<span class="day-hotel booked">✅ Pu Luong Boutique Garden Spa · #5887833100</span></span></div>
+      <div class="day-item has-mismatch"><span class="day-num">9</span><span class="day-date">Tir 14. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc"><span style="display:block;background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;font-weight:700;font-size:13px;padding:5px 10px;border-radius:6px;margin-bottom:5px">⚠️ INGEN BOOKING DENNE NAT — #5887833100 gælder kun 12–13. jul. Bestil ekstra nat!</span>Tredje dag i Pu Luong — morgenvandring, pool, afslapning. Tidlig sengetid: fly i morgen</div>
+      <div class="day-item cambodja travel"><span class="day-num">10</span><span class="day-date">Ons 15. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Morgen: kørsel Pu Luong → Noi Bai (~3,5 t). ✈️ VJ913 HAN 16:20 → SAI 18:05. Angkor Wat solnedgang 🛕<span class="day-hotel booked">✅ Chhouy Vathna Angkor Boutique · 15.–18. jul · #6762494829</span></span></div>
+      <div class="day-item cambodja highlight"><span class="day-num">11</span><span class="day-date">Tor 16. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Solopgang Angkor Wat · Angkor Thom · Bayon · Ta Prohm · Preah Khan<span class="day-hotel booked">✅ Chhouy Vathna Angkor Boutique · 15.–18. jul · #6762494829</span></span></div>
+      <div class="day-item cambodja"><span class="day-num">12</span><span class="day-date">Fre 17. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Banteay Srei (de fine relieffer) · Kbal Spean · afslapning ved pool om eftermiddagen<span class="day-hotel booked">✅ Chhouy Vathna Angkor Boutique · 15.–18. jul · #6762494829</span></span></div>
+      <div class="day-item cambodja travel"><span class="day-num">13</span><span class="day-date">Lør 18. jul</span><span class="day-segment">Hoi An</span><span class="day-place">→ Hoi An</span><span class="day-desc">✈️ K6840 SAI → DAD 14:05–16:00. Marble Mountains på vejen fra lufthavnen → direkte til Hoi An (~30 min)<span class="day-hotel pending">⬜ Hoi An · 18.–23. jul · 5 nætter — ikke booket</span></span></div>
+      <div class="day-item"><span class="day-num">14</span><span class="day-date">Søn 19. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Gamlebyen, lanterner om aftenen, skrædder<span class="day-hotel pending">⬜ Hoi An · 18.–23. jul · 5 nætter — ikke booket</span></span></div>
+      <div class="day-item"><span class="day-num">15</span><span class="day-date">Man 20. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Madlavningskursus<span class="day-hotel pending">⬜ Hoi An · 18.–23. jul · 5 nætter — ikke booket</span></span></div>
+      <div class="day-item highlight"><span class="day-num">16</span><span class="day-date">Tir 21. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">🏝️ Cham Islands dagstur — snorkling, strand<span class="day-hotel pending">⬜ Hoi An · 18.–23. jul · 5 nætter — ikke booket</span></span></div>
+      <div class="day-item changed highlight"><span class="day-num">17</span><span class="day-date">Ons 22. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">🌉 Ba Na Hills dagstur fra Hoi An (~45 min). Golden Bridge, fantasy-temapark, kabelbane<span class="day-hotel pending">⬜ Hoi An · 18.–23. jul · 5 nætter — ikke booket</span></span></div>
+      <div class="day-item changed travel"><span class="day-num">18</span><span class="day-date">Tor 23. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hue</span><span class="day-desc">Tog nordpå fra Da Nang (~2,5 t). Evt. Hai Van Pass med motorcykelguide. Ankomst Hue eftermiddag<span class="day-hotel pending">⬜ Hue · 23.–26. jul · 3 nætter — ikke booket</span></span></div>
+      <div class="day-item changed"><span class="day-num">19</span><span class="day-date">Fre 24. jul</span><span class="day-segment">Hue</span><span class="day-place">Hue</span><span class="day-desc">Kejserbyen (Citadel), parfumefloden, Thien Mu-pagoden<span class="day-hotel pending">⬜ Hue · 23.–26. jul · 3 nætter — ikke booket</span></span></div>
+      <div class="day-item changed"><span class="day-num">20</span><span class="day-date">Lør 25. jul</span><span class="day-segment">Hue</span><span class="day-place">Hue</span><span class="day-desc">Kongegrave: Tu Duc + Minh Mang. Dong Ba-markedet. Afslapning<span class="day-hotel pending">⬜ Hue · 23.–26. jul · 3 nætter — ikke booket</span></span></div>
+      <div class="day-item travel"><span class="day-num">21</span><span class="day-date">Søn 26. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Phong Nha</span><span class="day-desc">Tog/bus nordpå (~3 t). Eftermiddag: Bong Lai-dalen + The Duck Stop<span class="day-hotel pending">⬜ Phong Nha · 26.–28. jul · 2 nætter — ikke booket</span></span></div>
+      <div class="day-item highlight"><span class="day-num">22</span><span class="day-date">Man 27. jul</span><span class="day-segment">Phong Nha</span><span class="day-place">Phong Nha</span><span class="day-desc">🦇 Dark Cave (zipline + mudderbad) + Paradise Cave<span class="day-hotel pending">⬜ Phong Nha · 26.–28. jul · 2 nætter — ikke booket</span></span></div>
+      <div class="day-item travel"><span class="day-num">23</span><span class="day-date">Tir 28. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Ninh Binh</span><span class="day-desc">Nattog/bus nordpå (~7 t) → Ninh Binh<span class="day-hotel booked">✅ ChezCao Rice Field Ecolodge · 29.–31. jul · #6999798720</span></span></div>
+      <div class="day-item"><span class="day-num">24</span><span class="day-date">Ons 29. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Bådtur Tam Coc, cykling mellem bjergene, Mua Cave (500 trin)<span class="day-hotel booked">✅ ChezCao Rice Field Ecolodge · 29.–31. jul · #6999798720</span></span></div>
+      <div class="day-item"><span class="day-num">25</span><span class="day-date">Tor 30. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Trang An, Bai Dinh-pagoden<span class="day-hotel booked">✅ ChezCao Rice Field Ecolodge · 29.–31. jul · #6999798720</span></span></div>
+      <div class="day-item travel"><span class="day-num">26</span><span class="day-date">Fre 31. jul</span><span class="day-segment">Hanoi</span><span class="day-place">→ Hanoi</span><span class="day-desc">Tog til Hanoi (~2 t). Første aften tilbage — streetfood<span class="day-hotel pending">⬜ Hanoi · 31. jul–2. aug · 2 nætter — ikke booket</span></span></div>
+      <div class="day-item"><span class="day-num">27</span><span class="day-date">Lør 1. aug</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Sidste dag, shopping, Old Quarter, streetfood · 🎨 <a href="https://www.hanoistudiogallery.com/artist/lim-khim-katy" target="_blank">Hanoi Studio Gallery</a> (Lim Khim Katy)<span class="day-hotel pending">⬜ Hanoi · 31. jul–2. aug · 2 nætter — ikke booket</span></span></div>
+      <div class="day-item travel"><span class="day-num">28</span><span class="day-date">Søn 2. aug</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Hjemrejse ✈️ QR977 HAN 19:30 → DOH 22:20 (søn) · 10t20m layover · QR159 DOH 08:40 (man) → CPH 14:05</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMMENLIGNING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">v3.3 vs. v3.2</p>
+    <h2 class="section-title">Hvad ændrer sig</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th></th><th>Plan v3.2</th><th>Plan v3.3</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dag 4 (Tor 9. jul)</strong></td><td>Transfer til cruise, kajak, grottetur, badning</td><td class="cruise-row" style="background:#e0f2fe">🚢 Dragon Legend Cruise dag 1 — afgang Hanoi 08:00. Kayaking Cap La, grottetur, middag om bord</td></tr>
+          <tr><td><strong>Dag 5 (Fre 10. jul)</strong></td><td>Cruise dag 2, retur Hanoi (transitnat)</td><td class="cruise-row" style="background:#e0f2fe">🚢 Cruise dag 2 — Thien Canh Son Cave, kajak, BBQ strand, havpool</td></tr>
+          <tr><td><strong>Dag 6 (Lør 11. jul)</strong></td><td>Kørsel Hanoi → Mai Chau</td><td class="cruise-row" style="background:#e0f2fe">🚢 Cruise dag 3 morgen → Vung Vieng → direkte Ha Long → Mai Chau (~3,5 t)</td></tr>
+          <tr><td><strong>Hanoi-transitnat</strong></td><td>1 nat (nat 10.–11. jul)</td><td class="cruise-row" style="background:#e0f2fe">Elimineret ✅</td></tr>
+          <tr><td><strong>Cruise</strong></td><td>Ikke booket (generisk)</td><td class="cruise-row" style="background:#e0f2fe">Dragon Legend Cruise · Bai Tu Long Bay (off-beaten-track)</td></tr>
+          <tr><td><strong>Rute Ha Long → Mai Chau</strong></td><td>Via Hanoi (lang omvej)</td><td class="cruise-row" style="background:#e0f2fe">Direkte (~3,5 t)</td></tr>
+          <tr><td><strong>Cambodja-fly</strong></td><td>✅ Booket — uændret</td><td>✅ Booket — uændret</td></tr>
+          <tr><td><strong>Nætter i alt</strong></td><td>26</td><td>26</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col2" style="margin-top:16px">
+      <div class="pros">
+        <h4>✅ Hvad v3.3 vinder</h4>
+        <ul>
+          <li><strong>Bai Tu Long Bay</strong> — off-beaten-track alternativ til det overfyldte standard Ha Long Bay. Roligere, grønnere, færre turistbåde.</li>
+          <li><strong>Ingen Hanoi-transitnat</strong> — Sparer en søvnforstyrret natovergang i en storby. Direkte Ha Long → Mai Chau er ~3,5 t og langt hyggeligere.</li>
+          <li><strong>Dragon Legend Cruise</strong> — 3 dage/2 nætter med kajak, grottetur, BBQ strand, havpool og squid fishing. Professionelt program.</li>
+          <li><strong>Renere rute</strong> — Ingen unødvendig baglæns Hanoi-omvej. Cruisen slutter i Ha Long og kører direkte sydvest mod Mai Chau.</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>⚖️ Hvad det kræver</h4>
+        <ul>
+          <li><strong>Privat transfer Ha Long → Mai Chau</strong> — Ikke standard ruterute. Skal arrangeres med cruise-operatøren eller separat chauffør (~3,5 t, ~$80–120).</li>
+          <li><strong>Afgang Hanoi 08:00 dag 9. jul</strong> — Tidlig start fra Conifer Hotel (check-ud 7. jul). Husk at koordinere pickup-adresse med hotellet.</li>
+          <li><strong>Under booking</strong> — Bekræftelse afventer. Har fleksibel afbestilling indtil booking er låst.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-label">Konklusion</p>
+      <h3>Bedre cruise, smartere rute ✅</h3>
+      <p>Dragon Legend Cruise i Bai Tu Long Bay er et klart opgrader fra generisk Ha Long-cruise. Den direkte transfer til Mai Chau eliminerer en unødvendig Hanoi-transitnat og sparer en hel dag på logistik. <strong>Plan v3.3 er nu master.</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam + Cambodja · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px">Se også: <a href="plan-3.2.html">Plan v3.2</a> · <a href="planer.html">Alle planer</a> · <a href="overview.html">Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>
