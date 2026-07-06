@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detaljer pr. dag · Vietnam + Cambodja 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --color-green: #2e9e5b; --color-green-bg: #f4fbf6; --color-green-border: #b8e4c7;
+      --color-amber-bg: #fdf6ec; --color-amber-border: #f0d9b0; --color-amber-text: #b45309;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 840px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 56px 22px 48px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 16px; color: #a1a1a6; max-width: 560px; margin: 0 auto; line-height: 1.5; }
+
+    /* Day index */
+    .index-wrap { background: var(--color-section); border-bottom: 1px solid var(--color-divider); padding: 20px 22px; }
+    .index-inner { max-width: var(--max-w); margin: 0 auto; }
+    .index-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 12px; }
+    .index-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+    .index-grid a { display: flex; align-items: center; justify-content: center; min-width: 34px; height: 34px; padding: 0 6px; border-radius: 9px; background: var(--color-bg); border: 1px solid var(--color-divider); font-size: 13px; font-weight: 600; color: var(--color-text); text-decoration: none; }
+    .index-grid a:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+    .index-grid a.travel { background: #f0f6ff; border-color: #c2dbff; }
+    .index-grid a.cambodja { background: #fdf4dc; border-color: #f0d9b0; }
+
+    .section { padding: 26px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    /* Day card */
+    .day { scroll-margin-top: 60px; border: 1px solid var(--color-divider); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+    .day-head { display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: var(--color-section); border-bottom: 1px solid var(--color-divider); }
+    .day-n { font-size: 13px; font-weight: 700; color: white; background: var(--color-secondary); border-radius: 980px; padding: 3px 11px; flex-shrink: 0; }
+    .day-head.travel .day-n { background: #1e40af; }
+    .day-head.cambodja .day-n { background: #b45309; }
+    .day-title { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+    .day-date { font-size: 13px; color: var(--color-secondary); margin-top: 1px; }
+    .day-badge { margin-left: auto; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 10px; border-radius: 980px; background: #e5e5ea; color: var(--color-secondary); }
+    .day-head.travel .day-badge { background: #dbeafe; color: #1e40af; }
+    .day-head.cambodja .day-badge { background: #fde68a; color: #92400e; }
+
+    .day-body { padding: 6px 20px 16px; }
+    .block { padding: 14px 0; border-bottom: 1px solid var(--color-divider); }
+    .block:last-child { border-bottom: none; }
+    .block-h { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 9px; }
+    .block-body { font-size: 14.5px; line-height: 1.6; }
+    .block-body p { margin-bottom: 6px; }
+    .block-body p:last-child { margin-bottom: 0; }
+    .block-body strong { font-weight: 600; }
+    .muted { color: var(--color-secondary); }
+
+    .bk { border-radius: 12px; padding: 11px 14px; margin-bottom: 8px; border: 1px solid; }
+    .bk:last-child { margin-bottom: 0; }
+    .bk.ok { background: var(--color-green-bg); border-color: var(--color-green-border); }
+    .bk.todo { background: var(--color-amber-bg); border-color: var(--color-amber-border); }
+    .bk-name { font-weight: 600; font-size: 14.5px; }
+    .bk-meta { font-size: 13px; color: var(--color-secondary); margin-top: 3px; line-height: 1.5; }
+    .ref { display: inline-block; background: #f0f6ff; border: 1px solid #c2dbff; border-radius: 6px; font-size: 12px; color: #1d4ed8; padding: 1px 7px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+    .pill-ok { display:inline-block; font-size: 11px; font-weight: 700; color: var(--color-green); }
+    .pill-todo { display:inline-block; font-size: 11px; font-weight: 700; color: var(--color-amber-text); }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .maplink { font-size: 12px; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    @media (max-width: 600px) { .day-title { font-size: 16px; } .block-body { font-size: 14px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">📋 Detaljer pr. dag</span>
+    <a href="plan-3.4.html" class="nav-back">← Masterplan</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Vietnam + Cambodja 2026 · v3.4</p>
+  <h1>Detaljer pr. dag</h1>
+  <p class="hero-sub">Bookinger, bekræftelsesnumre, praktik og aktiviteter — dag for dag. Fyldes løbende ud efterhånden som mere booking-info kommer ind.</p>
+</section>
+
+<div class="index-wrap">
+  <div class="index-inner">
+    <p class="index-label">Hop til dag</p>
+    <div class="index-grid">
+      <a class="travel" href="#dag-1">1</a>
+      <a href="#dag-2">2</a>
+      <a href="#dag-3">3</a>
+      <a class="travel" href="#dag-4">4</a>
+      <a class="travel" href="#dag-5">5</a>
+      <a class="travel" href="#dag-6">6</a>
+      <a href="#dag-7">7</a>
+      <a href="#dag-8">8</a>
+      <a href="#dag-9">9</a>
+      <a class="travel cambodja" href="#dag-10">10</a>
+      <a class="cambodja" href="#dag-11">11</a>
+      <a class="cambodja" href="#dag-12">12</a>
+      <a class="travel" href="#dag-13">13</a>
+      <a href="#dag-14">14</a>
+      <a href="#dag-15">15</a>
+      <a href="#dag-16">16</a>
+      <a href="#dag-17">17</a>
+      <a href="#dag-18">18</a>
+      <a class="travel" href="#dag-19">19</a>
+      <a href="#dag-20">20</a>
+      <a class="travel" href="#dag-21">21</a>
+      <a href="#dag-22">22</a>
+      <a href="#dag-23">23</a>
+      <a class="travel" href="#dag-24">24</a>
+      <a href="#dag-25">25</a>
+      <a class="travel" href="#dag-26">26</a>
+      <a href="#dag-27">27</a>
+      <a class="travel" href="#dag-28">28</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <!-- DAG 1 -->
+    <div class="day" id="dag-1">
+      <div class="day-head travel"><span class="day-n">Dag 1</span><div><div class="day-title">✈️ Afrejse København</div><div class="day-date">Man 6. jul · transit</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🎟️ Fly</div><div class="block-body"><p><strong>QR160</strong> CPH 16:00 → DOH 23:00. Videre natten over mod Hanoi.</p></div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Lang dag i luften — pas + e-visa klar. Doha-layover på vej ud er kort (viderefly QR976 kl. 02:45).</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 2 -->
+    <div class="day" id="dag-2">
+      <div class="day-head travel"><span class="day-n">Dag 2</span><div><div class="day-title">Ankomst Hanoi</div><div class="day-date">Tir 7. jul · Hanoi</div></div><span class="day-badge">Hanoi</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🎟️ Fly</div><div class="block-body"><p><strong>QR976</strong> DOH 02:45 → HAN 13:55.</p></div></div>
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Conifer Boutique Hotel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">7.–9. jul · 2 nætter · 3 værelser m. morgenmad · 9 Ly Dao Thanh, Hoan Kiem · <span class="ref">#6767498973</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Bookinger &amp; aktiviteter</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Privat vandretur i Hanoi City <span class="pill-todo">⏳ Afventer operatør</span></div><div class="bk-meta">7. jul kl. 18:30 · 6 personer · Tripadvisor/Viator · <span class="ref">#1801707463</span> · ref 1419424851. Indløsningsinstruktioner følger med billetterne.</div></div>
+          <p class="muted" style="font-size:13px">Lufthavns-taxi ved ankomst booket via Booking.com (til QR976, ank. 13:55).</p>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ankomst, check ind, første aften i Old Quarter. Rolig start efter den lange rejse.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 3 -->
+    <div class="day" id="dag-3">
+      <div class="day-head"><span class="day-n">Dag 3</span><div><div class="day-title">Hanoi</div><div class="day-date">Ons 8. jul · Hanoi</div></div><span class="day-badge">Hanoi</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Conifer Boutique Hotel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">7.–9. jul · <span class="ref">#6767498973</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Streetfood-tour, Train Street, Ho Chi Minh-mausoleet, Hoan Kiem-søen. Kunst: <a href="https://www.hanoistudiogallery.com/artist/lim-khim-katy" target="_blank">Hanoi Studio Gallery</a> (Lim Khim Katy, 23-25 Mac Dinh Chi, Ba Dinh).</p></div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book cruisen i dag hvis ikke gjort — afgang i morgen tidlig fra hotellet.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 4 -->
+    <div class="day" id="dag-4">
+      <div class="day-head travel"><span class="day-n">Dag 4</span><div><div class="day-title">🚢 Bai Tu Long — cruise dag 1</div><div class="day-date">Tor 9. jul · Ha Long</div></div><span class="day-badge">Cruise</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Cruise · Bai Tu Long Bay <span class="pill-todo">⬜ Ikke booket</span></div><div class="bk-meta">9.–11. jul · 2 nætter om bord. Kandidater: Indochina Junk (Thomas' anbefaling) / V'Cruise (Mariannes forslag). Vælg fleksibel afbestilling (tyfon-risiko).</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Hentes om morgenen på Conifer. Koordinér pickup-adresse med rederiet. ~3,5 t transfer til Ha Long.</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Bai Tu Long Bay (off-beaten-track — roligere end standard Ha Long). Kayaking ved Cap La, grottetur, middag om bord.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 5 -->
+    <div class="day" id="dag-5">
+      <div class="day-head travel"><span class="day-n">Dag 5</span><div><div class="day-title">🚢 Bai Tu Long — cruise dag 2</div><div class="day-date">Fre 10. jul · Ha Long</div></div><span class="day-badge">Cruise</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Cruise · Bai Tu Long Bay <span class="pill-todo">⬜ Ikke booket</span></div><div class="bk-meta">2. nat om bord.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Thien Canh Son Cave, kajak, BBQ på strand, havpool. Squid fishing om aftenen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 6 -->
+    <div class="day" id="dag-6">
+      <div class="day-head travel"><span class="day-n">Dag 6</span><div><div class="day-title">Cruise → Mai Chau</div><div class="day-date">Lør 11. jul · transit</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Mai Chau 4 Seasons Hotel &amp; Resort <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">11.–12. jul · 1 nat · 3 dbl-værelser m. morgenmad, bjergudsigt · ingen afbestilling · cykler kan lånes · <span class="ref">#6398395144</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Cruise-checkout ~09:45 (Vung Vieng fiskerlandsby om morgenen). Herefter <strong>direkte transfer Ha Long → Mai Chau (~3,5 t)</strong> — ingen Hanoi-transitnat. Arrangeres med rederi/chauffør (~$80–120).</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ankomst Mai Chau, pool, solnedgang over rismarkerne.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 7 -->
+    <div class="day" id="dag-7">
+      <div class="day-head"><span class="day-n">Dag 7</span><div><div class="day-title">Mai Chau → Pu Luong</div><div class="day-date">Søn 12. jul · Pu Luong</div></div><span class="day-badge">Pu Luong</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Pu Luong Boutique Garden Spa &amp; Travel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">12.–15. jul · <strong>3 nætter</strong> · 2 værelser + 1 junior suite m. bjergudsigt, morgenmad · Don village, Ba Thuoc, Thanh Hoa · <span class="ref">#5887833100</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Taxi Mai Chau 4 Seasons → Pu Luong <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">12. jul kl. 16:00 · minibus (op til 6) · Booking.com · <span class="ref">#342962352</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Guidet heldagstrek: Kho Muong + Bat Cave. (Evt. værelsesskift til to studios der passer børnene bedre efter et par dage.)</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 8 -->
+    <div class="day" id="dag-8">
+      <div class="day-head"><span class="day-n">Dag 8</span><div><div class="day-title">Pu Luong</div><div class="day-date">Man 13. jul · Pu Luong</div></div><span class="day-badge">Pu Luong</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Pu Luong Boutique Garden Spa <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">12.–15. jul · <span class="ref">#5887833100</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Bambusrafting, vandhjul ved Ban Don, pool og afslapning.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 9 -->
+    <div class="day" id="dag-9">
+      <div class="day-head"><span class="day-n">Dag 9</span><div><div class="day-title">Pu Luong</div><div class="day-date">Tir 14. jul · Pu Luong</div></div><span class="day-badge">Pu Luong</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Pu Luong Boutique Garden Spa <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">3. nat (14.–15. jul) er nu dækket · <span class="ref">#5887833100</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Tredje dag i Pu Luong — morgenvandring, pool, afslapning. Tidlig sengetid: fly i morgen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 10 -->
+    <div class="day" id="dag-10">
+      <div class="day-head travel cambodja"><span class="day-n">Dag 10</span><div><div class="day-title">Pu Luong → Siem Reap ✈️🛕</div><div class="day-date">Ons 15. jul · Cambodja</div></div><span class="day-badge">Cambodja</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chhouy Vathna Angkor Boutique <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">15.–18. jul · 3 nætter · 1 familieværelse (4 pers) + 1 deluxe 2-pers m. pooludsigt · uden morgenmad · #208 Taphoul Road, Siem Reap · <span class="ref">#6762494829</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Fly &amp; transport</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Taxi Pu Luong → Noi Bai lufthavn (HAN) <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">15. jul kl. 09:00 · ~4 t · minibus · Booking.com · <span class="ref">#928272805</span></div></div>
+          <p><strong>✈️ VietJet VJ913</strong> HAN 16:20 → SAI (Siem Reap) 18:05 · <span class="ref">4QW3QH</span></p>
+          <div class="bk ok"><div class="bk-name">Lufthavns-pickup Siem Reap <span class="pill-ok">✓ Aftalt</span></div><div class="bk-meta">Henter i bil kl. 18:05 · ~30 USD for alle · aftalt på WhatsApp.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Angkor Wat ved solnedgang om aftenen. 🛕</p></div></div>
+        <div class="block"><div class="block-h">🍜 Mad</div><div class="block-body"><p>Middag i Pub Street-området (~10 min gang fra hotellet).</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 11 -->
+    <div class="day" id="dag-11">
+      <div class="day-head cambodja"><span class="day-n">Dag 11</span><div><div class="day-title">Angkor Wat</div><div class="day-date">Tor 16. jul · Siem Reap</div></div><span class="day-badge">Cambodja</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chhouy Vathna Angkor Boutique <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">15.–18. jul · <span class="ref">#6762494829</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Tuktuk 2 dage <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">100 USD for to dage (dag 11–12). <span class="pill-todo">Guide mangler at blive booket.</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Solopgang Angkor Wat · Angkor Thom · Bayon · Ta Prohm · Preah Khan.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 12 -->
+    <div class="day" id="dag-12">
+      <div class="day-head cambodja"><span class="day-n">Dag 12</span><div><div class="day-title">Banteay Srei</div><div class="day-date">Fre 17. jul · Siem Reap</div></div><span class="day-badge">Cambodja</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chhouy Vathna Angkor Boutique <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">15.–18. jul · <span class="ref">#6762494829</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book transport til lufthavnen i Siem Reap (til fly i morgen 14:05).</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Banteay Srei (de fine relieffer) · Kbal Spean · afslapning ved pool om eftermiddagen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 13 -->
+    <div class="day" id="dag-13">
+      <div class="day-head travel"><span class="day-n">Dag 13</span><div><div class="day-title">Siem Reap → Hoi An ✈️</div><div class="day-date">Lør 18. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">18.–24. jul · <strong>6 nætter</strong> · 3-værelses Deluxe Suite (6 voksne) · An Bang beach, Hoi An Tay · check-in fra 19:00 · morgenmad inkl. · <strong>non-refundable</strong> · +84 235 220 8888 · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Fly &amp; transport</div><div class="block-body">
+          <p><strong>✈️ Air Cambodia K6840</strong> SAI → DAD 14:05 → 16:00.</p>
+          <div class="bk ok"><div class="bk-name">Lufthavns-transfer Da Nang → hotel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">Bestilt via The Pearl (7-personers van, ~119 kr) — tjek hotellets bekræftelse.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Marble Mountains på vejen fra lufthavnen → videre til An Bang / Hoi An (~30 min).</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 14 -->
+    <div class="day" id="dag-14">
+      <div class="day-head"><span class="day-n">Dag 14</span><div><div class="day-title">Hoi An</div><div class="day-date">Søn 19. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">18.–24. jul · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Gamlebyen, lanterner om aftenen, skrædder (mål tages).</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 15 -->
+    <div class="day" id="dag-15">
+      <div class="day-head"><span class="day-n">Dag 15</span><div><div class="day-title">Hoi An · madlavningskursus</div><div class="day-date">Man 20. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">18.–24. jul · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Bookinger &amp; aktiviteter</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An Cooking Class · 6 personer <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">Inkluderet i hotelbookingen. To tider at vælge mellem: 12:00–14:00 eller 14:00–16:00. 4 signaturretter + husets kaffe-flan.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Madlavningskursus på The Pearl Zone. Resten af dagen til strand/gamleby.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 16 -->
+    <div class="day" id="dag-16">
+      <div class="day-head"><span class="day-n">Dag 16</span><div><div class="day-title">🏝️ Cham Islands</div><div class="day-date">Tir 21. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">18.–24. jul · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Cham Islands dagstur — snorkling og strand.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 17 -->
+    <div class="day" id="dag-17">
+      <div class="day-head"><span class="day-n">Dag 17</span><div><div class="day-title">🌉 Ba Na Hills</div><div class="day-date">Ons 22. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">18.–24. jul · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ba Na Hills dagstur fra Hoi An (~45 min). Golden Bridge, fantasy-temapark, kabelbane.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 18 -->
+    <div class="day" id="dag-18">
+      <div class="day-head"><span class="day-n">Dag 18</span><div><div class="day-title">Hoi An · strand</div><div class="day-date">Tor 23. jul · Hoi An</div></div><span class="day-badge">Hoi An</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">The Pearl Hoi An <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">Sidste nat (6. nat) · <span class="ref">BBA26070620885606</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ekstra dag i Hoi An — An Bang beach, skrædder-afhentning, pool og afslapning før togturen i morgen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 19 -->
+    <div class="day" id="dag-19">
+      <div class="day-head travel"><span class="day-n">Dag 19</span><div><div class="day-title">Hoi An → Hue 🚂</div><div class="day-date">Fre 24. jul · Hue</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Rosaleen Boutique Hotel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">24.–26. jul · 2 nætter · 3 værelser (to m. enkeltsenge), morgenmad inkl. · <strong>fuld afbestilling mulig</strong> · pool på 2. sal · 1.448 kr</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Heritage Train Da Nang → Hue <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">24. jul kl. 15:15 (vær der 14:55) · 6 pers · 3,5 t · GetYourGuide · <span class="ref">GYG6H78H7XFW</span> · PIN 5TrAuRgx. Afgang: Da Nang Station, 202 Hai Phong, Thanh Khe.</div></div>
+          <p class="muted" style="font-size:13px">⚠️ Medbring pas/ID. Togets QR-billet sendes via WhatsApp — GetYourGuide-koden gælder <strong>ikke</strong> ved check-in. Ingen refusion ved forsinket fremmøde.</p>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Formiddag i Hoi An / afrejse fra The Pearl. Togtur langs Hai Van-kysten til Hue om eftermiddagen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 20 -->
+    <div class="day" id="dag-20">
+      <div class="day-head"><span class="day-n">Dag 20</span><div><div class="day-title">Hue</div><div class="day-date">Lør 25. jul · Hue</div></div><span class="day-badge">Hue</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Rosaleen Boutique Hotel <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">24.–26. jul · fuld afbestilling mulig</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book bus/bil Hue → Phong Nha til i morgen (~4 t) via Vexere-appen. Bus kører kl. 9:00 og 9:30 (+ sidst på eftermiddagen/aften). Bus ~500 kr for 6; privat bil ~2.500 kr.</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Kejserbyen (Citadel), kongegrave, parfumefloden, Thien Mu-pagoden. Én effektiv dag i Hue.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 21 -->
+    <div class="day" id="dag-21">
+      <div class="day-head travel"><span class="day-n">Dag 21</span><div><div class="day-title">Hue → Phong Nha</div><div class="day-date">Søn 26. jul · Phong Nha</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chay Lap Farmstay Phong Nha <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">26.–29. jul · <strong>3 nætter</strong> · 3 værelser (dobbelt/twin m. bjergudsigt), morgenmad inkl. · check-in fra 14:00 · <strong>non-refundable</strong> · +84 359 797 188 · Thôn Chày, Phúc Trạch, Bố Trạch, Quảng Bình · <span class="ref">#3504197613091930328</span> · PIN 874963 · check-in-nr. 676042539</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Bus/bil Hue → Phong Nha <span class="pill-todo">⬜ Bookes på Vexere</span></div><div class="bk-meta">~4 t. Bus stopper ved samme hotel (Chay Lap-området). Bus kl. 9:00/9:30.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ankomst Phong Nha. Eftermiddag: Bong Lai-dalen + The Duck Stop.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 22 -->
+    <div class="day" id="dag-22">
+      <div class="day-head"><span class="day-n">Dag 22</span><div><div class="day-title">🦇 Phong Nha · grotter</div><div class="day-date">Man 27. jul · Phong Nha</div></div><span class="day-badge">Phong Nha</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chay Lap Farmstay Phong Nha <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">26.–29. jul · <span class="ref">#3504197613091930328</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Dark Cave (zipline + mudderbad) + Paradise Cave. Grotter holder 20-22°C.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 23 -->
+    <div class="day" id="dag-23">
+      <div class="day-head"><span class="day-n">Dag 23</span><div><div class="day-title">Phong Nha</div><div class="day-date">Tir 28. jul · Phong Nha</div></div><span class="day-badge">Phong Nha</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">Chay Lap Farmstay Phong Nha <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">3. nat · <span class="ref">#3504197613091930328</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book bus/bil Phong Nha → Ninh Binh til i morgen (~5-6 t). Nattog kan ikke betale sig (ankomst kl. 5).</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Ekstra dag i Phong Nha — flere grotter, aktiviteter eller ro på farmstayet.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 24 -->
+    <div class="day" id="dag-24">
+      <div class="day-head travel"><span class="day-n">Dag 24</span><div><div class="day-title">Phong Nha → Ninh Binh</div><div class="day-date">Ons 29. jul · Ninh Binh</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">ChezCao Rice Field Ecolodge <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">29.–31. jul · 2 nætter · 2 værelser (4+2 pers), morgenmad inkl., bjergudsigt, restaurant · <strong>fuld afbestilling frem til check-in</strong> · Núi Vàng, Ninh Bình · <span class="ref">#6999798720</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Bus/bil Phong Nha → Ninh Binh <span class="pill-todo">⬜ Bookes</span></div><div class="bk-meta">~5-6 t.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Dagskørsel nordpå til Ninh Binh. Check ind på ecolodgen.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 25 -->
+    <div class="day" id="dag-25">
+      <div class="day-head"><span class="day-n">Dag 25</span><div><div class="day-title">Ninh Binh</div><div class="day-date">Tor 30. jul · Ninh Binh</div></div><span class="day-badge">Ninh Binh</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk ok"><div class="bk-name">ChezCao Rice Field Ecolodge <span class="pill-ok">✓ Booket</span></div><div class="bk-meta">29.–31. jul · <span class="ref">#6999798720</span></div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Bådtur Tam Coc, cykling mellem bjergene, Mua Cave (500 trin), Trang An, Bai Dinh-pagoden.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 26 -->
+    <div class="day" id="dag-26">
+      <div class="day-head travel"><span class="day-n">Dag 26</span><div><div class="day-title">Ninh Binh → Hanoi</div><div class="day-date">Fre 31. jul · Hanoi</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Hanoi (slutnætter) <span class="pill-todo">⬜ Ikke booket</span></div><div class="bk-meta">31. jul–2. aug · 2 nætter — hotel skal bookes.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">🎟️ Transport</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Bus/bil/tog Ninh Binh → Hanoi <span class="pill-todo">⬜ Bookes</span></div><div class="bk-meta">~2,5 t.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Tilbage i Hanoi. Første aften — streetfood i Old Quarter.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 27 -->
+    <div class="day" id="dag-27">
+      <div class="day-head"><span class="day-n">Dag 27</span><div><div class="day-title">Hanoi · sidste dag</div><div class="day-date">Lør 1. aug · Hanoi</div></div><span class="day-badge">Hanoi</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🏨 Overnatning</div><div class="block-body">
+          <div class="bk todo"><div class="bk-name">Hanoi (slutnætter) <span class="pill-todo">⬜ Ikke booket</span></div><div class="bk-meta">31. jul–2. aug · 2 nætter.</div></div>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book transport Hanoi → lufthavn til i morgen aften.</p></div></div>
+        <div class="block"><div class="block-h">📖 Om dagen</div><div class="block-body"><p>Sidste dag: shopping, Old Quarter, streetfood. Kunst: <a href="https://www.hanoistudiogallery.com/artist/lim-khim-katy" target="_blank">Hanoi Studio Gallery</a>.</p></div></div>
+      </div>
+    </div>
+
+    <!-- DAG 28 -->
+    <div class="day" id="dag-28">
+      <div class="day-head travel"><span class="day-n">Dag 28</span><div><div class="day-title">✈️ Hjemrejse</div><div class="day-date">Søn 2. aug · transit</div></div><span class="day-badge">Transit</span></div>
+      <div class="day-body">
+        <div class="block"><div class="block-h">🎟️ Fly</div><div class="block-body">
+          <p><strong>QR977</strong> HAN 19:30 → DOH 22:20 (søn) · 10t 20m layover · <strong>QR159</strong> DOH 08:40 (man) → CPH 14:05. Hjemkomst mandag 3. august. <span class="ref">85238Q</span></p>
+        </div></div>
+        <div class="block"><div class="block-h">📋 Praktisk</div><div class="block-body"><p>Book transport Hanoi → lufthavn i god tid. Lang Doha-layover — planlæg lounge/hvile.</p></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam + Cambodja · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px">Se også: <a href="plan-3.4.html">Masterplan v3.4</a> · <a href="overnatning.html">Overnatning</a> · <a href="fly.html">Fly</a> · <a href="overview.html">Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

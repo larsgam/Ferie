@@ -150,12 +150,12 @@ function addMarker(cat, lat, lng, title, body, link) {
   return m;
 }
 
-// ── RUTE-LINJE (master v3.2) ─────────────────────────────
-// Overland: Hanoi → Ha Long → Hanoi → Pu Luong
+// ── RUTE-LINJE (master v3.4) ─────────────────────────────
+// Overland: Hanoi → Bai Tu Long → direkte Mai Chau → Pu Luong (ingen Hanoi-transit)
 L.polyline([
   [21.0285, 105.8542], // Hanoi
-  [20.9101, 107.1839], // Ha Long Bay
-  [21.0285, 105.8542], // Hanoi (transit)
+  [20.9101, 107.1839], // Bai Tu Long Bay (cruise)
+  [20.6600, 105.0900], // Mai Chau
   [20.4500, 105.1600], // Pu Luong
 ], { color: '#2e9e5b', weight: 2.5, opacity: 0.6, dashArray: '6,8' }).addTo(map);
 
@@ -181,15 +181,20 @@ L.polyline([
   [21.0285, 105.8542], // Hanoi
 ], { color: '#2e9e5b', weight: 2.5, opacity: 0.6, dashArray: '6,8' }).addTo(map);
 
-// ── OVERNATNING (master v3.2) ─────────────────────────────
+// ── OVERNATNING (master v3.4) ─────────────────────────────
 addMarker('hjem', 21.0285, 105.8542,
   '🏨 Hanoi',
-  'Dag 2–3 (7.–9. jul) + transitnat dag 5 + slut dag 26–27 (31. jul–2. aug).<br>Conifer Boutique Hotel (booket ✅).',
+  'Dag 2–3 (7.–9. jul) · Conifer Boutique Hotel (booket ✅).<br>Slut dag 26–27 (31. jul–2. aug) · ikke booket endnu.',
+  null
+);
+addMarker('hjem', 20.6600, 105.0900,
+  '🏨 Mai Chau',
+  'Dag 6 (11.–12. jul) · 1 nat.<br>Direkte fra Ha Long, pool, rismarker.<br>Mai Chau 4 Seasons (booket ✅).',
   null
 );
 addMarker('hjem', 20.4500, 105.1600,
   '🏨 Pu Luong',
-  'Dag 7–9 (12.–15. jul) · 3 nætter.<br>Risterrasser, trekking og eco-lodge.<br>Pu Luong Boutique Garden Spa (booket ✅ — ekstra nat mangler ⚠️).',
+  'Dag 7–9 (12.–15. jul) · 3 nætter.<br>Risterrasser, trekking og eco-lodge.<br>Pu Luong Boutique Garden Spa (booket ✅ · #5887833100).',
   'research/pu-luong.html'
 );
 addMarker('hjem', 13.3671, 103.8448,
@@ -199,17 +204,17 @@ addMarker('hjem', 13.3671, 103.8448,
 );
 addMarker('hjem', 15.8801, 108.3380,
   '🏨 Hoi An (An Bang Beach)',
-  'Dag 13–17 (18.–23. jul) · 5 nætter.<br>Gamlebyen, skrædder, Cham Islands, Ba Na Hills dagstur.<br>Ikke booket endnu.',
+  'Dag 13–18 (18.–24. jul) · 6 nætter.<br>Gamlebyen, skrædder, Cham Islands, Ba Na Hills, madlavning.<br>The Pearl Hoi An (booket ✅ · BBA26070620885606).',
   'research/hoi-an-restauranter-aktiviteter.html'
 );
 addMarker('hjem', 16.4637, 107.5909,
   '🏨 Hue',
-  'Dag 18–20 (23.–26. jul) · 3 nætter.<br>Kejserbyen, kongegrave, parfumefloden, Thien Mu.<br>Ikke booket endnu.',
+  'Dag 19–20 (24.–26. jul) · 2 nætter.<br>Kejserbyen, kongegrave, parfumefloden, Thien Mu.<br>Rosaleen Boutique Hotel (booket ✅).',
   'research/hue-restauranter-aktiviteter.html'
 );
 addMarker('hjem', 17.5880, 106.2840,
   '🏨 Phong Nha',
-  'Dag 21–22 (26.–28. jul) · 2 nætter.<br>Dark Cave (zipline + mudderbad), Paradise Cave.<br>Ikke booket endnu.',
+  'Dag 21–23 (26.–29. jul) · 3 nætter.<br>Dark Cave (zipline + mudderbad), Paradise Cave.<br>Chay Lap Farmstay (booket ✅ · #3504197613091930328).',
   'research/phong-nha.html'
 );
 addMarker('hjem', 20.2506, 105.9745,
