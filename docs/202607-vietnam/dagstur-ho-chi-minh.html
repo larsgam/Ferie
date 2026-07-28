@@ -94,6 +94,12 @@
         <div class="card-meta">8,8 (845 anm.) · morgenmad + massage inkl. · ~3.746 kr/2 nætter</div>
         <div class="card-tip">💡 Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.</div>
       </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H3</span><span class="card-title">Homestay TITO</span></div>
+        <div class="card-body">Ægte familiedrevet homestay i en stille gyde i District 3 (nær Tan Dinh). 3 små dobbeltværelser (2+2+2). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.</div>
+        <div class="card-meta">9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6 · fri afbestilling</div>
+        <div class="card-tip">💡 District 3, men gåafstand til seværdighederne + District 1. Mest personligt/autentisk af de tre.</div>
+      </div>
     </div>
   </div>
 
@@ -160,6 +166,11 @@
   <div class="list-block">
     <div class="list-h"><span class="list-dot" style="background:#c026d3"></span>🛍️ Shopping til de unge</div>
     <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C1</span><span class="card-title">Cafe Apartment (42 Nguyen Hue)</span></div>
+        <div class="card-body">Den berømte gamle boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. (Samme sted som kvarter B2.)</div>
+        <div class="card-tip">💡 Tag elevatoren op (lille gebyr) — hver etage er en ny cafe/butik.</div>
+      </div>
       <div class="card">
         <div class="card-top"><span class="card-num" style="background:#c026d3">C2</span><span class="card-title">Saigon Square</span></div>
         <div class="card-body">Hal med billig streetwear, sko, tasker og kopivarer — populær blandt unge lokale. Prut om prisen.</div>
@@ -233,6 +244,9 @@ addM('hotel','H1', 10.7662031, 106.6900979, 'Cashew Inn',
 addM('hotel','H2', 10.7716918, 106.6940370, "Alagon D'antique Boutique Hotel & Spa",
   '8,8 (845 anm.) · pool + spa, morgenmad + massage inkl. · ~3.746 kr/2 nætter. Boutique i antik-stil, meget centralt nær Ben Thanh.',
   'Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.');
+addM('hotel','H3', 10.786987, 106.691667, 'Homestay TITO',
+  '9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6. Ægte familiedrevet homestay i stille gyde i District 3 (nær Tan Dinh). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.',
+  '3 små dobbeltværelser (2+2+2). District 3 men gåafstand til seværdighederne + District 1.');
 
 // ── SEVÆRDIGHEDER ─────────────────────────────────────────
 addM('sight','A1', 10.7797, 106.6922, 'War Remnants Museum',
@@ -266,6 +280,9 @@ addM('hood','B4', 10.7670, 106.6918, 'Bui Vien gågade',
   'Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.');
 
 // ── SHOPPING ──────────────────────────────────────────────
+addM('shop','C1', 10.77395, 106.70435, 'Cafe Apartment (42 Nguyen Hue)',
+  'Den berømte gamle boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. (Samme sted som kvarter B2.)',
+  'Tag elevatoren op (lille gebyr) — hver etage er en ny cafe/butik.');
 addM('shop','C2', 10.7736, 106.6969, 'Saigon Square',
   'Hal med billig streetwear, sko, tasker og kopivarer — populær blandt unge lokale. Prut om prisen.',
   'Kontanter (VND) virker bedst. 100 m fra Ben Thanh.');
@@ -281,6 +298,10 @@ addM('shop','U2', 10.7774175, 106.7021148, 'UNIQLO – Dong Khoi (flagship)',
 addM('shop','HM', 10.7781404, 106.7016688, 'H&M – Vincom Center Dong Khoi',
   'Vincom Center, Đồng Khởi/72 Lê Thánh Tôn. 3,8★ (1.857 anm.). Åbent til 22:00. Ligger klods op ad Uniqlo Dong Khoi.',
   'Uniqlo (U2) + H&M i samme mall-klynge — teenager-shopping på ét stop.');
+
+// ── ZOOM TIL ALLE MARKØRER ────────────────────────────────
+const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop];
+map.fitBounds(L.featureGroup(allMarkers).getBounds().pad(0.12));
 
 // ── FILTER-KNAPPER ────────────────────────────────────────
 const active = { hotel:true, sight:true, hood:true, shop:true };
