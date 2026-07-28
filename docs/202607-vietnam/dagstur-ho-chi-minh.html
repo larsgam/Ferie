@@ -38,6 +38,19 @@
     .pop-tip { font-size: 12px; color: #0f766e; margin-top: 5px; }
     .pop-gm { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: #16a34a; text-decoration: none; }
     footer { max-width: 1100px; margin: 0 auto; padding: 8px 18px 40px; font-size: 13px; color: var(--secondary); }
+    /* Lister under kortet */
+    .lists { max-width: 1100px; margin: 8px auto 0; padding: 0 18px; }
+    .list-block { margin-bottom: 30px; }
+    .list-h { display: flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 14px; }
+    .list-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+    .card { border: 1px solid var(--divider); border-radius: 14px; padding: 14px 16px; background: var(--bg); }
+    .card-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+    .card-num { font-size: 11px; font-weight: 800; color: white; padding: 2px 8px; border-radius: 980px; flex-shrink: 0; }
+    .card-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+    .card-body { font-size: 13px; color: #3a3a3c; line-height: 1.55; }
+    .card-tip { font-size: 12.5px; color: #0f766e; margin-top: 6px; }
+    .card-meta { font-size: 12px; color: var(--secondary); margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -63,6 +76,104 @@
 </div>
 
 <div id="map"></div>
+
+<div class="lists">
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#2563eb"></span>🏨 Hoteller</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H1</span><span class="card-title">Cashew Inn</span></div>
+        <div class="card-body">Lille personligt hotel i Pham Ngu Lao/Bui Vien — livligt backpacker-kvarter. Tættere på Bui Vien-natteliv, lidt længere til Dong Khoi.</div>
+        <div class="card-meta">9,3 (82 anm.) · ~1.162 kr/2 nætter · fri afbestilling</div>
+        <div class="card-tip">💡 Bedst hvis I vil have puls og gåafstand til Bui Vien om aftenen.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H2</span><span class="card-title">Alagon D'antique Boutique Hotel &amp; Spa</span></div>
+        <div class="card-body">Boutique i antik-stil, meget centralt nær Ben Thanh. Pool + spa.</div>
+        <div class="card-meta">8,8 (845 anm.) · morgenmad + massage inkl. · ~3.746 kr/2 nætter</div>
+        <div class="card-tip">💡 Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#0f766e"></span>📸 Seværdigheder</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A1</span><span class="card-title">War Remnants Museum</span></div>
+        <div class="card-body">Stærkt, gribende museum om Vietnamkrigen. Teenagere husker det.</div>
+        <div class="card-meta">~1,5 t · åbent dagligt 7:30–18:00</div>
+        <div class="card-tip">💡 Start her tidligt (køligt + få folk). Kan være voldsomt for de yngste.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A2</span><span class="card-title">Reunification Palace</span></div>
+        <div class="card-body">Præsidentpaladset frosset i 1975 — kampvogne i haven, krigsbunker i kælderen, retro-interiør. God story.</div>
+        <div class="card-meta">~1 t · åbent 8:00–16:30</div>
+        <div class="card-tip">💡 5 min gåtur fra War Remnants — tag dem samlet.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A3</span><span class="card-title">Notre-Dame + Centralpostkontoret</span></div>
+        <div class="card-body">Smukt kolonialt postkontor (Eiffel-æra) med gammel Saigon-charme. Katedralens ydre er under restaurering.</div>
+        <div class="card-meta">~30 min</div>
+        <div class="card-tip">💡 Postkontoret indeni er det bedste — send et postkort hjem.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A4</span><span class="card-title">Ben Thanh Market</span></div>
+        <div class="card-body">Ikonisk marked: souvenirs, kaffe, tørrede frugter, streetfood. Turistet men klassisk. Natmarkedet udenfor tænder efter kl. 18.</div>
+        <div class="card-tip">💡 Prut om prisen (start ~40%). Streetfood-stader inde til frokost.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A5</span><span class="card-title">Bitexco Saigon Skydeck</span></div>
+        <div class="card-body">Skyline-udsigt fra 49. etage. Ærligt: pænt men ikke et must — Landmark 81 er højere men uden for D1.</div>
+        <div class="card-tip">💡 Bedst ved solnedgang. Spring over hvis tiden er knap.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#7c3aed"></span>🚶 Kvarterer &amp; gader</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B1</span><span class="card-title">Dong Khoi &amp; Operaen</span></div>
+        <div class="card-body">Den koloniale rygrad: Saigon Opera House, gamle hoteller, boutiques og cafeer. Elegant og gåvenligt.</div>
+        <div class="card-tip">💡 Fin strækning at slentre om aftenen mod Nguyen Hue.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B2</span><span class="card-title">Nguyen Hue gågade + "Cafe Apartment"</span></div>
+        <div class="card-body">Springvandsboulevard, og den berømte Cafe Apartment (42 Nguyen Hue): en gammel boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. Livligt om aftenen.</div>
+        <div class="card-tip">💡 Tag elevatoren op (lille gebyr) eller gå trappen — hver etage er en ny cafe.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B3</span><span class="card-title">Tan Dinh (den lyserøde kirke)</span></div>
+        <div class="card-body">Den knaldlyserøde Tan Dinh-kirke + Tan Dinh-marked. Mere lokalt hverdagsliv, mindre turistet.</div>
+        <div class="card-tip">💡 God for fotos + et kig ind i et rigtigt Saigon-marked.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B4</span><span class="card-title">Bui Vien gågade</span></div>
+        <div class="card-body">Backpacker-neon, gadebarer, gademusik. Vildt og livligt om aftenen. Til de ældste; ærligt lidt rå.</div>
+        <div class="card-tip">💡 Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#c026d3"></span>🛍️ Shopping til de unge</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C2</span><span class="card-title">Saigon Square</span></div>
+        <div class="card-body">Hal med billig streetwear, sko, tasker og kopivarer — populær blandt unge lokale. Prut om prisen.</div>
+        <div class="card-tip">💡 Kontanter (VND) virker bedst. 100 m fra Ben Thanh.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C3</span><span class="card-title">Nguyen Trai-gaden</span></div>
+        <div class="card-body">Lokal streetwear- og modestrækning mod District 5. Rigtige butikker frem for turistboder.</div>
+        <div class="card-tip">💡 Godt hvis de unge vil have vietnamesisk streetwear.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <footer>Tip: ruten (rækkefølge + frokoststop) bygger jeg når I har valgt hvilke stop I vil have med. Dette er geografi-overblikket.</footer>
 
