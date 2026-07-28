@@ -89,7 +89,7 @@
 <div id="map"></div>
 
 <script>
-const map = L.map('map').setView([18.5, 106.5], 7);
+const map = L.map('map').setView([15.8, 106.2], 6);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -150,7 +150,7 @@ function addMarker(cat, lat, lng, title, body, link) {
   return m;
 }
 
-// ── RUTE-LINJE (master v3.4) ─────────────────────────────
+// ── RUTE-LINJE (master v3.5) ─────────────────────────────
 // Overland: Hanoi → Bai Tu Long → direkte Mai Chau → Pu Luong (ingen Hanoi-transit)
 L.polyline([
   [21.0285, 105.8542], // Hanoi
@@ -172,19 +172,30 @@ L.polyline([
   [15.8801, 108.3380], // Hoi An
 ], { color: '#f59e0b', weight: 2, opacity: 0.7, dashArray: '4,6' }).addTo(map);
 
-// Overland nordpå: Hoi An → Hue → Phong Nha → Ninh Binh → Hanoi
+// Overland nordpå: Hoi An → Hue → Phong Nha
 L.polyline([
   [15.8801, 108.3380], // Hoi An
   [16.4637, 107.5909], // Hue
   [17.5880, 106.2840], // Phong Nha
-  [20.2506, 105.9745], // Ninh Binh
-  [21.0285, 105.8542], // Hanoi
 ], { color: '#2e9e5b', weight: 2.5, opacity: 0.6, dashArray: '6,8' }).addTo(map);
 
-// ── OVERNATNING (master v3.4) ─────────────────────────────
+// Fly syd: Dong Hoi (Phong Nha) → Ho Chi Minh City → taxi til Ben Tre (Mekong)
+L.polyline([
+  [17.5880, 106.2840], // Dong Hoi / Phong Nha
+  [10.8188, 106.6520], // Ho Chi Minh City (Tan Son Nhat)
+  [10.2333, 106.3833], // Ben Tre (Mekong)
+], { color: '#f59e0b', weight: 2, opacity: 0.7, dashArray: '4,6' }).addTo(map);
+
+// Fly hjem: Ho Chi Minh City → Hanoi (videre med QR977)
+L.polyline([
+  [10.8188, 106.6520], // Ho Chi Minh City
+  [21.0285, 105.8542], // Hanoi/Noi Bai
+], { color: '#f59e0b', weight: 2, opacity: 0.55, dashArray: '4,6' }).addTo(map);
+
+// ── OVERNATNING (master v3.5) ─────────────────────────────
 addMarker('hjem', 21.0285, 105.8542,
-  '🏨 Hanoi',
-  'Dag 2–3 (7.–9. jul) · Conifer Boutique Hotel (booket ✅).<br>Slut dag 26–27 (31. jul–2. aug) · ikke booket endnu.',
+  '🏨 Hanoi (start)',
+  'Dag 2–3 (7.–9. jul) · Conifer Boutique Hotel (booket ✅).<br>Dag 28 (2. aug): mellemlanding fra HCMC før hjemflyet QR977.',
   null
 );
 addMarker('hjem', 20.6600, 105.0900,
@@ -217,10 +228,15 @@ addMarker('hjem', 17.5880, 106.2840,
   'Dag 21–23 (26.–29. jul) · 3 nætter.<br>Dark Cave (zipline + mudderbad), Paradise Cave.<br>Chay Lap Farmstay (booket ✅ · #3504197613091930328).',
   'research/phong-nha.html'
 );
-addMarker('hjem', 20.2506, 105.9745,
-  '🏨 Ninh Binh',
-  'Dag 24–25 (29.–31. jul) · 2 nætter.<br>Tam Coc, Trang An, Mua Cave.<br>ChezCao Rice Field Ecolodge (booket ✅).',
-  'research/ninh-binh.html'
+addMarker('hjem', 10.2333, 106.3833,
+  '🌴 Ben Tre (Mekong)',
+  'Dag 24–25 (29.–31. jul) · 2 nætter.<br>Fly VDH → SGN (VJ261) + taxi. Flodbåde, kokosøer, frugtplantager.<br>Mango Home Riverside Eco-Resort (booket ✅ · #5731122582).',
+  null
+);
+addMarker('hjem', 10.8231, 106.6297,
+  '🏙️ Ho Chi Minh City',
+  'Dag 26–27 (31. jul–2. aug) · 2 nætter.<br>War Remnants, Reunification Palace, Ben Thanh.<br>Hotel ikke booket endnu ⬜. Hjemfly VN212 SGN → HAN 2. aug.',
+  null
 );
 
 // ── AKTIVITETER ───────────────────────────────────────────
@@ -294,20 +310,32 @@ addMarker('planlagt', 17.6167, 106.3000,
   'research/phong-nha.html'
 );
 
-// Ninh Binh
-addMarker('planlagt', 20.2264, 105.9423,
-  'Tam Coc',
-  'Dag 25 (30. jul).<br>Bådtur i flodlejet forbi tre naturlige grotter i kalkstensbjerge.',
+// Ben Tre / Mekong-deltaet
+addMarker('planlagt', 10.2333, 106.3833,
+  'Mekong-flodbåde, Ben Tre',
+  'Dag 25 (30. jul).<br>Sampan-både mellem kokosøerne, smalle kanaler, frugtplantager.',
   null
 );
-addMarker('planlagt', 20.2150, 105.9107,
-  'Trang An',
-  'Dag 25 (30. jul).<br>UNESCO-verdensarv. Bådtur med tunnelpassager og templer.',
+addMarker('planlagt', 10.2450, 106.3550,
+  'Kokos- & honningværksteder',
+  'Dag 25 (30. jul).<br>Lokale værksteder: kokosslik, honning og traditionelt håndværk langs floden.',
   null
 );
-addMarker('planlagt', 20.3052, 105.8952,
-  'Bai Dinh Pagode',
-  'Dag 25 (30. jul).<br>Vietnams største buddhistiske tempelkompleks.',
+
+// Ho Chi Minh City
+addMarker('planlagt', 10.7797, 106.6922,
+  'War Remnants Museum',
+  'Dag 27 (1. aug).<br>Stærkt museum om Vietnamkrigen — et must i Saigon.',
+  null
+);
+addMarker('planlagt', 10.7770, 106.6953,
+  'Reunification Palace',
+  'Dag 27 (1. aug).<br>Det tidligere sydvietnamesiske præsidentpalads, frosset i 1975.',
+  null
+);
+addMarker('planlagt', 10.7721, 106.6980,
+  'Notre-Dame & Ben Thanh',
+  'Dag 27 (1. aug).<br>Katedralen, det gamle postkontor og Ben Thanh-markedet i centrum.',
   null
 );
 

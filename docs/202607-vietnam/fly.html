@@ -39,21 +39,25 @@
     .flight-card.outbound { border-color: var(--blue-border); }
     .flight-card.return { border-color: var(--green-border); }
     .flight-card.cambodja { border-color: var(--purple-border); }
+    .flight-card.domestic { border-color: var(--gold-border); }
 
     .fc-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
     .outbound .fc-header { background: var(--blue-bg); }
     .return .fc-header { background: var(--green-bg); }
     .cambodja .fc-header { background: var(--purple-bg); }
+    .domestic .fc-header { background: var(--gold-bg); }
 
     .fc-label { font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
     .outbound .fc-label { color: var(--blue); }
     .return .fc-label { color: var(--green); }
     .cambodja .fc-label { color: var(--purple); }
+    .domestic .fc-label { color: var(--gold); }
 
     .fc-ref { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 980px; }
     .outbound .fc-ref { background: var(--blue-border); color: var(--blue); }
     .return .fc-ref { background: var(--green-border); color: var(--green); }
     .cambodja .fc-ref { background: var(--purple-border); color: var(--purple); }
+    .domestic .fc-ref { background: var(--gold-border); color: var(--gold); }
 
     .fc-body { padding: 16px 18px; }
     .fc-leg { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; margin-bottom: 10px; }
@@ -100,7 +104,7 @@
 <div class="hero">
   <p class="hero-eyebrow">Vietnam · Cambodja · 2026</p>
   <h1>✈️ Alle fly</h1>
-  <p class="hero-sub">6 flyvninger · 4 bookinger · Qatar Airways + VietJet + Air Cambodia</p>
+  <p class="hero-sub">8 flyvninger · 6 bookinger · Qatar Airways + VietJet + Air Cambodia + Vietnam Airlines</p>
 </div>
 
 <!-- UD -->
@@ -246,8 +250,88 @@
   </div>
 </section>
 
-<!-- HJEM -->
+<!-- INDENRIGS SYD -->
 <section class="section">
+  <div class="inner">
+    <p class="section-label">Indenrigsfly · syd</p>
+    <h2 class="section-title">Til Mekong & retur til Hanoi</h2>
+    <div class="flight-group">
+
+      <!-- VDH → SGN -->
+      <div class="flight-card domestic">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Dong Hoi → Ho Chi Minh City · Ons 29. jul</span>
+          <span class="fc-ref">3FYMHN</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">VDH</div>
+              <div class="leg-city">Dong Hoi (Phong Nha)</div>
+              <div class="leg-time">08:40</div>
+              <div class="leg-date">Ons 29. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">1t 35m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">VJ 261</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất, HCMC</div>
+              <div class="leg-time">10:15</div>
+              <div class="leg-date">Ons 29. jul</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> VietJet Air · direkte</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 20 kg indchecket + 7 kg håndbagage pr. person</div>
+            <div class="fc-meta-item"><strong>Note:</strong> Taxi videre til Ben Tre (Mekong-deltaet)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SGN → HAN -->
+      <div class="flight-card domestic">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Ho Chi Minh City → Hanoi · Søn 2. aug</span>
+          <span class="fc-ref">FHFQ7P</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất T3, HCMC</div>
+              <div class="leg-time">12:00</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">2t 10m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">VN 212</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">HAN</div>
+              <div class="leg-city">Noi Bai Int'l T1, Hanoi</div>
+              <div class="leg-time">14:10</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+          </div>
+          <div class="fc-connection">Skift i Hanoi til hjemfly QR977 kl. 19:30 · <strong>5t 20m</strong> — flyt fra domestic (T1) til international (T2)</div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> Vietnam Airlines · Airbus A350-900</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 23 kg indchecket pr. person</div>
+            <div class="fc-meta-item"><strong>Booking:</strong> trip.com #1271086295760674</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HJEM -->
+<section class="section section-alt">
   <div class="inner">
     <p class="section-label">Hjemrejse</p>
     <h2 class="section-title">Hanoi → København</h2>
@@ -314,17 +398,17 @@
 </section>
 
 <!-- OVERBLIK -->
-<section class="section section-alt">
+<section class="section">
   <div class="inner">
     <p class="section-label">Overblik</p>
     <h2 class="section-title">Samlet</h2>
     <div class="summary-grid">
       <div class="sum-card">
-        <div class="sum-num">4</div>
+        <div class="sum-num">6</div>
         <div class="sum-label">Bookinger</div>
       </div>
       <div class="sum-card">
-        <div class="sum-num">6</div>
+        <div class="sum-num">8</div>
         <div class="sum-label">Flyvninger</div>
       </div>
       <div class="sum-card">
