@@ -100,6 +100,12 @@
         <div class="card-meta">9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6 · fri afbestilling</div>
         <div class="card-tip">💡 District 3, men gåafstand til seværdighederne + District 1. Mest personligt/autentisk af de tre.</div>
       </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H4</span><span class="card-title">Sono Sallute Luxury Hotel</span></div>
+        <div class="card-body">Nyere luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne (tæt på Alagon). Ledigt for jeres datoer.</div>
+        <div class="card-meta">9,3 (124 anm.) · ~3.754 kr/2 nætter (2 værelser) · <a href="https://www.booking.com/hotel/vn/sono-sanlute-luxury.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0" target="_blank">booking.com →</a></div>
+        <div class="card-tip">💡 Tjek præcis værelseskombination/pris for 6 i linket.</div>
+      </div>
     </div>
   </div>
 
@@ -159,6 +165,12 @@
         <div class="card-top"><span class="card-num" style="background:#7c3aed">B4</span><span class="card-title">Bui Vien gågade</span></div>
         <div class="card-body">Backpacker-neon, gadebarer, gademusik. Vildt og livligt om aftenen. Til de ældste; ærligt lidt rå.</div>
         <div class="card-tip">💡 Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B5</span><span class="card-title">Book Street (Đường Sách Nguyễn Văn Bình)</span></div>
+        <div class="card-body">Charmerende bilfri boggade lige ved katedralen og postkontoret: boghandlere, små forlag, kaffevogne og lys mellem træerne. Rolig, hyggelig og fotogen.</div>
+        <div class="card-meta"><a href="https://www.vietnamairlines.com/us/en/plan-book/travel/travel-guide/ho-chi-minh-city-book-street" target="_blank">Vietnam Airlines rejseguide →</a></div>
+        <div class="card-tip">💡 Ligger klods op ad Notre-Dame + postkontoret (A3) — tag dem samlet.</div>
       </div>
     </div>
   </div>
@@ -225,13 +237,14 @@ function makeIcon(cat, label) {
   });
 }
 
-function addM(cat, label, lat, lng, title, body, tip) {
+function addM(cat, label, lat, lng, title, body, tip, link, linkText) {
   const gm = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
   const html = `
     <div class="pop-badge" style="background:${COLORS[cat]}">${label} · ${CAT_LABEL[cat]}</div>
     <div class="pop-title">${title}</div>
     <div class="pop-body">${body}</div>
     ${tip ? `<div class="pop-tip">💡 ${tip}</div>` : ''}
+    ${link ? `<a class="pop-gm" style="color:#0071e3;display:block" href="${link}" target="_blank">🔗 ${linkText || 'Læs mere'} →</a>` : ''}
     <a class="pop-gm" href="${gm}" target="_blank">📍 Åbn i Google Maps →</a>`;
   const m = L.marker([lat,lng], { icon: makeIcon(cat,label) }).bindPopup(html);
   layers[cat].push(m); m.addTo(map);
@@ -246,7 +259,12 @@ addM('hotel','H2', 10.7716918, 106.6940370, "Alagon D'antique Boutique Hotel & S
   'Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.');
 addM('hotel','H3', 10.786987, 106.691667, 'Homestay TITO',
   '9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6. Ægte familiedrevet homestay i stille gyde i District 3 (nær Tan Dinh). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.',
-  '3 små dobbeltværelser (2+2+2). District 3 men gåafstand til seværdighederne + District 1.');
+  '3 små dobbeltværelser (2+2+2). District 3 men gåafstand til seværdighederne + District 1.',
+  'https://www.booking.com/hotel/vn/homestay-tito.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0', 'Se på booking.com');
+addM('hotel','H4', 10.772475, 106.694789, 'Sono Sallute Luxury Hotel',
+  '9,3 (124 anm.) · luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne. Ledigt for jeres datoer. ~3.754 kr/2 nætter (2 værelser — tjek præcis værelseskombination i linket).',
+  'Nyere luksushotel — pænt og centralt. Ligger tæt på Alagon (H2).',
+  'https://www.booking.com/hotel/vn/sono-sanlute-luxury.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0', 'Se på booking.com');
 
 // ── SEVÆRDIGHEDER ─────────────────────────────────────────
 addM('sight','A1', 10.7797, 106.6922, 'War Remnants Museum',
@@ -278,6 +296,10 @@ addM('hood','B3', 10.7900, 106.6893, 'Tan Dinh (den lyserøde kirke)',
 addM('hood','B4', 10.7670, 106.6918, 'Bui Vien gågade',
   'Backpacker-neon, gadebarer, gademusik. Vildt og livligt om aftenen. Til de ældste; ærligt lidt rå.',
   'Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.');
+addM('hood','B5', 10.780963, 106.7000734, 'Book Street (Đường Sách Nguyễn Văn Bình)',
+  'Charmerende bilfri boggade lige ved katedralen og postkontoret: rækker af boghandlere, små forlag, kaffevogne og lys mellem træerne. Rolig, hyggelig og fotogen — perfekt lille afstikker sammen med A3.',
+  'Ligger klods op ad Notre-Dame + postkontoret (A3) — tag dem samlet.',
+  'https://www.vietnamairlines.com/us/en/plan-book/travel/travel-guide/ho-chi-minh-city-book-street', 'Vietnam Airlines rejseguide');
 
 // ── SHOPPING ──────────────────────────────────────────────
 addM('shop','C1', 10.77395, 106.70435, 'Cafe Apartment (42 Nguyen Hue)',
