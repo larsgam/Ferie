@@ -64,7 +64,7 @@
 
 <div class="head">
   <h1>Saigon på én dag — seværdigheder, kvarterer & hoteller</h1>
-  <p>Oversigtskort over District 1. Blå = de to hotelkandidater · teal = seværdigheder · lilla = kvarterer · magenta = shopping. Cu Chi-tunnelerne (fredag eftm.) ligger ~40 km NV og er ikke med her. Tryk på en markør for info + Google Maps-link.</p>
+  <p>Oversigtskort over District 1. Blå = de to hotelkandidater · teal = seværdigheder · lilla = kvarterer · magenta = shopping · rød = mad. Cu Chi-tunnelerne (fredag eftm.) ligger ~40 km NV og er ikke med her. Tryk på en markør for info + Google Maps-link.</p>
 </div>
 
 <div class="toolbar">
@@ -72,6 +72,7 @@
   <button class="filter-btn" data-cat="sight" style="background:#0f766e">📸 Seværdigheder</button>
   <button class="filter-btn" data-cat="hood" style="background:#7c3aed">🚶 Kvarterer</button>
   <button class="filter-btn" data-cat="shop" style="background:#c026d3">🛍️ Shopping</button>
+  <button class="filter-btn" data-cat="food" style="background:#dc2626">🍕 Mad</button>
   <a class="act-btn act-find" href="#" id="findMe">📡 Find mig</a>
 </div>
 
@@ -214,20 +215,32 @@
     </div>
   </div>
 
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#dc2626"></span>🍕 Mad</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#dc2626">🍕</span><span class="card-title">Pizza 4P's Ben Thanh</span></div>
+        <div class="card-body">8 Thủ Khoa Huân, lige over for Ben Thanh Market. Den populære vietnamesisk-japanske pizzakæde med hjemmelavet ost — kendt for høj kvalitet. Kun ~200 m fra hotellerne.</div>
+        <div class="card-meta">Åbent til midnat (søn til 23) · <a href="https://pizza4ps.com/vn/location/933/" target="_blank">pizza4ps.com →</a></div>
+        <div class="card-tip">💡 Book gerne bord i forvejen — stedet er ofte fyldt.</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer>Tip: ruten (rækkefølge + frokoststop) bygger jeg når I har valgt hvilke stop I vil have med. Dette er geografi-overblikket.</footer>
 
 <script>
-const COLORS = { hotel:'#2563eb', sight:'#0f766e', hood:'#7c3aed', shop:'#c026d3' };
-const CAT_LABEL = { hotel:'Hotel', sight:'Seværdighed', hood:'Kvarter', shop:'Shopping' };
+const COLORS = { hotel:'#2563eb', sight:'#0f766e', hood:'#7c3aed', shop:'#c026d3', food:'#dc2626' };
+const CAT_LABEL = { hotel:'Hotel', sight:'Seværdighed', hood:'Kvarter', shop:'Shopping', food:'Mad' };
 
 const map = L.map('map', { scrollWheelZoom: true }).setView([10.7762, 106.6962], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
 }).addTo(map);
 
-const layers = { hotel:[], sight:[], hood:[], shop:[] };
+const layers = { hotel:[], sight:[], hood:[], shop:[], food:[] };
 
 function makeIcon(cat, label) {
   return L.divIcon({
@@ -321,12 +334,18 @@ addM('shop','HM', 10.7781404, 106.7016688, 'H&M – Vincom Center Dong Khoi',
   'Vincom Center, Đồng Khởi/72 Lê Thánh Tôn. 3,8★ (1.857 anm.). Åbent til 22:00. Ligger klods op ad Uniqlo Dong Khoi.',
   'Uniqlo (U2) + H&M i samme mall-klynge — teenager-shopping på ét stop.');
 
+// ── MAD ───────────────────────────────────────────────────
+addM('food','🍕', 10.7726, 106.6961, "Pizza 4P's Ben Thanh",
+  '8 Thủ Khoa Huân, lige over for Ben Thanh Market. Den populære vietnamesisk-japanske pizzakæde med hjemmelavet ost — kendt for høj kvalitet. Åbent til midnat (søndag til 23). Book gerne bord i forvejen.',
+  'Kun ~200 m fra hotellerne (H2/H4) — nemt aften-stop.',
+  'https://pizza4ps.com/vn/location/933/', 'Se på pizza4ps.com');
+
 // ── ZOOM TIL ALLE MARKØRER ────────────────────────────────
-const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop];
+const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop, ...layers.food];
 map.fitBounds(L.featureGroup(allMarkers).getBounds().pad(0.12));
 
 // ── FILTER-KNAPPER ────────────────────────────────────────
-const active = { hotel:true, sight:true, hood:true, shop:true };
+const active = { hotel:true, sight:true, hood:true, shop:true, food:true };
 function render(cat){ layers[cat].forEach(m => active[cat] ? m.addTo(map) : map.removeLayer(m)); }
 document.querySelectorAll('.filter-btn').forEach(btn => {
   const c = btn.dataset.cat;
