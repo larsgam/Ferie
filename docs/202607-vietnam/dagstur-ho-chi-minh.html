@@ -64,7 +64,7 @@
 
 <div class="head">
   <h1>Saigon på én dag — seværdigheder, kvarterer & hoteller</h1>
-  <p>Oversigtskort over District 1. Blå = de to hotelkandidater · teal = seværdigheder · lilla = kvarterer · magenta = shopping · rød = mad. Cu Chi-tunnelerne (fredag eftm.) ligger ~40 km NV og er ikke med her. Tryk på en markør for info + Google Maps-link.</p>
+  <p>Oversigtskort over District 1. Grøn ✅ = jeres bookede hotel (Sono Sallute) · blå = øvrige hotelkandidater · teal = seværdigheder · lilla = kvarterer · magenta = shopping · rød = mad. Cu Chi-tunnelerne (fredag eftm.) ligger ~40 km NV og er ikke med her. Tryk på en markør for info + Google Maps-link.</p>
 </div>
 
 <div class="toolbar">
@@ -73,6 +73,7 @@
   <button class="filter-btn" data-cat="hood" style="background:#7c3aed">🚶 Kvarterer</button>
   <button class="filter-btn" data-cat="shop" style="background:#c026d3">🛍️ Shopping</button>
   <button class="filter-btn" data-cat="food" style="background:#dc2626">🍕 Mad</button>
+  <button class="filter-btn" data-cat="booket" style="background:#059669">✅ Booket hotel</button>
   <a class="act-btn act-find" href="#" id="findMe">📡 Find mig</a>
 </div>
 
@@ -102,10 +103,10 @@
         <div class="card-tip">💡 District 3, men gåafstand til seværdighederne + District 1. Mest personligt/autentisk af de tre.</div>
       </div>
       <div class="card">
-        <div class="card-top"><span class="card-num" style="background:#2563eb">H4</span><span class="card-title">Sono Sallute Luxury Hotel</span></div>
-        <div class="card-body">Nyere luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne (tæt på Alagon). Ledigt for jeres datoer.</div>
-        <div class="card-meta">9,3 (124 anm.) · ~3.754 kr/2 nætter (2 værelser) · <a href="https://www.booking.com/hotel/vn/sono-sanlute-luxury.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0" target="_blank">booking.com →</a></div>
-        <div class="card-tip">💡 Tjek præcis værelseskombination/pris for 6 i linket.</div>
+        <div class="card-top"><span class="card-num" style="background:#059669">H4 ✅</span><span class="card-title">Sono Sallute Luxury Hotel — BOOKET</span></div>
+        <div class="card-body"><b>Vores hotel i HCMC.</b> Nyere luksushotel meget centralt i District 1 (Lý Tự Trọng), gåafstand til Ben Thanh og seværdighederne. Ind fre 31. juli (14–23.30), ud søn 2. august (senest 12). 2 nætter · 2 værelser · 6 voksne: ét 4-personers m. balkon + ét Superior dobbelt.</div>
+        <div class="card-meta">Booking.com-nr. 5360315797 · i alt VND 6.320.098 (~1.650 kr, betales på hotellet) · gratis afbestilling frem til 31/7 kl. 14 · <a href="https://www.booking.com/hotel/vn/sono-sanlute-luxury.html" target="_blank">booking.com →</a></div>
+        <div class="card-tip">💡 Morgenmad koster VND 200.000 pr. person pr. nat (tilkøb). Booking garanteret med kreditkort.</div>
       </div>
     </div>
   </div>
@@ -238,15 +239,15 @@
 <footer>Tip: ruten (rækkefølge + frokoststop) bygger jeg når I har valgt hvilke stop I vil have med. Dette er geografi-overblikket.</footer>
 
 <script>
-const COLORS = { hotel:'#2563eb', sight:'#0f766e', hood:'#7c3aed', shop:'#c026d3', food:'#dc2626' };
-const CAT_LABEL = { hotel:'Hotel', sight:'Seværdighed', hood:'Kvarter', shop:'Shopping', food:'Mad' };
+const COLORS = { hotel:'#2563eb', sight:'#0f766e', hood:'#7c3aed', shop:'#c026d3', food:'#dc2626', booket:'#059669' };
+const CAT_LABEL = { hotel:'Hotel', sight:'Seværdighed', hood:'Kvarter', shop:'Shopping', food:'Mad', booket:'Booket hotel' };
 
 const map = L.map('map', { scrollWheelZoom: true }).setView([10.7762, 106.6962], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
 }).addTo(map);
 
-const layers = { hotel:[], sight:[], hood:[], shop:[], food:[] };
+const layers = { hotel:[], sight:[], hood:[], shop:[], food:[], booket:[] };
 
 function makeIcon(cat, label) {
   return L.divIcon({
@@ -280,10 +281,10 @@ addM('hotel','H3', 10.786987, 106.691667, 'Homestay TITO',
   '9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6. Ægte familiedrevet homestay i stille gyde i District 3 (nær Tan Dinh). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.',
   '3 små dobbeltværelser (2+2+2). District 3 men gåafstand til seværdighederne + District 1.',
   'https://www.booking.com/hotel/vn/homestay-tito.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0', 'Se på booking.com');
-addM('hotel','H4', 10.772475, 106.694789, 'Sono Sallute Luxury Hotel',
-  '9,3 (124 anm.) · luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne. Ledigt for jeres datoer. ~3.754 kr/2 nætter (2 værelser — tjek præcis værelseskombination i linket).',
-  'Nyere luksushotel — pænt og centralt. Ligger tæt på Alagon (H2).',
-  'https://www.booking.com/hotel/vn/sono-sanlute-luxury.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0', 'Se på booking.com');
+addM('booket','H4 ✅', 10.772475, 106.694789, 'Sono Sallute Luxury Hotel — BOOKET ✅',
+  '<b>Bekræftet booking</b> (Booking.com-nr. 5360315797). Ind fre 31. juli (14–23.30), ud søn 2. august (senest 12). 2 nætter · 2 værelser · 6 voksne: ét 4-personers m. balkon + ét Superior dobbelt. I alt VND 6.320.098 (~1.650 kr) — betales på hotellet. Gratis afbestilling frem til 31/7 kl. 14. Beliggenhed: Lý Tự Trọng, District 1.',
+  'Jeres hotel i HCMC — luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne.',
+  'https://www.booking.com/hotel/vn/sono-sanlute-luxury.html', 'Se på booking.com');
 
 // ── SEVÆRDIGHEDER ─────────────────────────────────────────
 addM('sight','A1', 10.7797, 106.6922, 'War Remnants Museum',
@@ -351,11 +352,11 @@ addM('food','🍜', 10.77125, 106.69565, 'Phở Việt Nam',
   'https://guide.michelin.com/us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/pho-viet-nam-district-1', 'Se i Michelin Guide');
 
 // ── ZOOM TIL ALLE MARKØRER ────────────────────────────────
-const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop, ...layers.food];
+const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop, ...layers.food, ...layers.booket];
 map.fitBounds(L.featureGroup(allMarkers).getBounds().pad(0.12));
 
 // ── FILTER-KNAPPER ────────────────────────────────────────
-const active = { hotel:true, sight:true, hood:true, shop:true, food:true };
+const active = { hotel:true, sight:true, hood:true, shop:true, food:true, booket:true };
 function render(cat){ layers[cat].forEach(m => active[cat] ? m.addTo(map) : map.removeLayer(m)); }
 document.querySelectorAll('.filter-btn').forEach(btn => {
   const c = btn.dataset.cat;
