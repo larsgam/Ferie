@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do & bookinger – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 800px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 540px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 44px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+    .section-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 18px; }
+    .urgent .section-label { color: #c0392b; }
+    .check-list { list-style: none; }
+    .check-item { display: flex; gap: 14px; padding: 16px 18px; background: var(--color-section); border: 1px solid var(--color-divider); border-radius: 14px; margin-bottom: 10px; align-items: flex-start; }
+    .check-box { width: 22px; height: 22px; border: 2px solid var(--color-secondary); border-radius: 6px; flex-shrink: 0; margin-top: 1px; }
+    .check-text { font-size: 15px; line-height: 1.55; }
+    .check-text strong { font-weight: 700; }
+    .check-text .note { display: block; font-size: 13px; color: var(--color-secondary); margin-top: 3px; }
+    .urgent .check-item { background: #fdf2f0; border-color: #f3c9c2; }
+    .urgent .check-box { border-color: #c0392b; }
+    .info-banner { background: #f0f6ff; border: 1px solid #c2dbff; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    .booked-item { display: flex; gap: 14px; padding: 16px 18px; background: #f4fbf6; border: 1px solid #b8e4c7; border-radius: 14px; margin-bottom: 10px; align-items: flex-start; }
+    .booked-check { width: 22px; height: 22px; background: #2e9e5b; border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; font-weight: 700; }
+    .booked-label { display: inline-block; background: #2e9e5b; color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 980px; margin-left: 6px; vertical-align: middle; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">✅ To-do</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Vietnam 2026</p>
+  <h1>To-do & bookinger</h1>
+  <p class="hero-sub">Hvad der skal afklares og bookes inden afrejse 6. juli.</p>
+</section>
+
+<section class="section urgent">
+  <div class="section-inner">
+    <div class="info-banner">ℹ️ Master-planen er nu <a href="plan-3.2.html">v3.2</a>: Pu Luong 3 nætter → Angkor Wat 3 nætter → <strong>Hoi An 5n</strong> → Hue 3n → Phong Nha 2n → Ninh Binh 3n → Hanoi. Da Nang droppet som overnatningssted. Indenrigsfly DAD→HAN bortfalder (tog Ninh Binh→Hanoi i stedet).</div>
+
+    <p class="section-label" style="color:#2e9e5b">Booket</p>
+    <h2 class="section-title" style="margin-bottom:16px">Bekræftede fly ✅</h2>
+    <ul class="check-list" style="margin-bottom:24px">
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>CPH → Hanoi (Qatar Airways) <span class="booked-label">Booket</span></strong><span class="note">Man. 6. jul. 16:00 · Booking: Travelis #4497407</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Hanoi → Siem Reap <span class="booked-label">Booket</span></strong><span class="note">Ons. 15. jul. · 16:20–18:05 · VietJet VJ913 · Booking: 4QW3QH</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Siem Reap → Da Nang <span class="booked-label">Booket</span></strong><span class="note">Lør. 18. jul. · 14:05–16:00 · Air Cambodia K6840</span></span></li>
+    </ul>
+
+    <p class="section-label" style="color:#2e9e5b">Booket</p>
+    <h2 class="section-title" style="margin-bottom:16px">Bekræftede hoteller ✅</h2>
+    <ul class="check-list" style="margin-bottom:32px">
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Conifer Boutique Hotel · Hanoi <span class="booked-label">Booket</span></strong><span class="note">7.–9. jul · 2 nætter · 3 værelser · Bekræft. #6767498973</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Mai Chau 4 Seasons Hotel & Resort · Mai Chau <span class="booked-label">Booket</span></strong><span class="note">11.–12. jul · 1 nat · 3 værelser · Bekræft. #6398395144</span></span></li>
+      <li class="booked-item" style="background:#fff7ed;border-color:#fed7aa"><div class="booked-check" style="background:#c2410c">⚠</div><span class="check-text"><strong>Pu Luong Boutique Garden Spa & Travel · Pu Luong <span class="booked-label" style="background:#c2410c">Mismatch!</span></strong><span class="note">Booket 12.–14. jul · 2 nætter · #5887833100 — <strong style="color:#c2410c">Plan 3.2 kræver 3 nætter (dag 7–9). Nat 14. jul ikke dækket — bestil ekstra nat!</strong></span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Chhouy Vathna Angkor Boutique · Siem Reap 🛕 <span class="booked-label">Booket</span></strong><span class="note">15.–18. jul · 3 nætter · 2 værelser · Bekræft. #6762494829</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>ChezCao Rice Field Ecolodge · Ninh Binh <span class="booked-label">Booket</span></strong><span class="note">29.–31. jul · 2 nætter · 2 værelser · Bekræft. #6999798720</span></span></li>
+    </ul>
+
+    <p class="section-label">Book snart</p>
+    <h2 class="section-title">Haster</h2>
+    <ul class="check-list">
+      <li class="check-item" style="background:#fff7ed;border-color:#fed7aa"><span class="check-box" style="border-color:#c2410c"></span><span class="check-text"><strong style="color:#c2410c">⚠️ Book ekstra nat Pu Luong (HASTER)</strong><span class="note">Booking #5887833100 dækker kun 12.–14. jul (2 nætter). Plan 3.2 kræver 3 nætter — nat 14. jul mangler. Kontakt Pu Luong Boutique Garden Spa & Travel.</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Afklar Hugos flybillet</strong><span class="note">Travelis #4497407 dækker kun 5 personer. Book samme Qatar-afgange (QR160/QR976 ud, QR985/QR159 hjem) hvis muligt</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>E-visum til alle 6 (Vietnam)</strong><span class="note">Inkl. Hugo. Danske statsborgere: e-visum 25 USD, 30 dage single entry</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>E-visum til alle 6 (Cambodja)</strong><span class="note">36 USD pr. person online via evisa.gov.kh — nu nødvendigt da Cambodia er med</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book Ha Long Bay cruise</strong><span class="note">9.–11. jul · 1 nat / 2 dage. Vælg fleksibel afbestilling (tyfon-risiko). Lan Ha Bay er mindre turistet alternativ</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book hotel Hoi An</strong><span class="note">18.–23. jul · 5 nætter · 2–3 værelser (6 pers.)</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book hotel Hue</strong><span class="note">23.–26. jul · 3 nætter · 2–3 værelser</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book hotel Phong Nha</strong><span class="note">26.–28. jul · 2 nætter · 2–3 værelser</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book hotel Hanoi (slutnætter)</strong><span class="note">31. jul–2. aug · 2 nætter · 2–3 værelser</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--color-accent)">Før afrejse</p>
+    <h2 class="section-title">Inden vi tager af sted</h2>
+    <ul class="check-list">
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Tjek visum-krav</strong><span class="note">E-visum (25 USD, 30 dage single entry) eller visum on arrival</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Tjek vaccinationer</strong><span class="note">Hepatitis A/B, tetanus, evt. japansk hjernebetændelse. Kontakt læge/rejseklinik — kræver tid mellem doser</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Rejseforsikring</strong><span class="note">Dækker den 26 dage i Sydøstasien?</span></span></li>
+      <li class="booked-item"><div class="booked-check">✓</div><span class="check-text"><strong>Pu Luong-ophold <span class="booked-label">Booket</span></strong><span class="note">Pu Luong Boutique Garden Spa & Travel · 12.–14. jul · Bekræft. #5887833100</span></span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text"><strong>Book Hai Van Pass motorcykeltur</strong><span class="note">Guidet tur Hue → Da Nang over passet</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--color-secondary)">Praktisk</p>
+    <h2 class="section-title">At huske</h2>
+    <ul class="check-list">
+      <li class="check-item"><span class="check-box"></span><span class="check-text">Hav kontanter (vietnamesiske dong) — mange steder tager ikke kort</span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text">Monsunperiode i Nordvietnam — pak regnjakke og vandtæt taske</span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text">Grab-app (Sydøstasiens Uber) — installer inden afrejse</span></li>
+      <li class="check-item"><span class="check-box"></span><span class="check-text">Solcreme og myggespray — vigtigt i regnsæsonen</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

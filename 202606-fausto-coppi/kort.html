@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kort – Fausto Coppi 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --red: #c0392b; --max-w: 860px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    #map { width: 100%; height: calc(100vh - 48px - 140px); min-height: 380px; }
+
+    .legend { max-width: var(--max-w); margin: 0 auto; padding: 18px 22px 32px; }
+    .legend-title { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 12px; }
+    .legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+    .legend-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: var(--color-section); border-radius: 12px; }
+    .legend-dot { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .legend-body { flex: 1; min-width: 0; }
+    .legend-name { font-size: 14px; font-weight: 600; line-height: 1.2; }
+    .legend-time { font-size: 12px; color: var(--color-secondary); margin-top: 2px; }
+
+    /* Custom Leaflet popup */
+    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); border: none; }
+    .leaflet-popup-content { margin: 14px 16px; font-family: var(--font); }
+    .popup-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .popup-sub { font-size: 13px; color: var(--color-secondary); line-height: 1.4; }
+    .popup-time { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 980px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">📍 Cuneo – kort</span>
+    <a href="overview.html" class="nav-back">← Program</a>
+  </div>
+</nav>
+
+<div id="map"></div>
+
+<div class="legend">
+  <p class="legend-title">Steder</p>
+  <div class="legend-grid">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1a0a0a">🏨</div>
+      <div class="legend-body"><p class="legend-name">Hotel Palazzo Lovera</p><p class="legend-time">Via Roma 37 · Check-in fre 26/6</p></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#0071e3">🏁</div>
+      <div class="legend-body"><p class="legend-name">Start/Mål – Fausto Coppi</p><p class="legend-time">Søn 28/6 · 171 km</p></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#c0392b">🇩🇰</div>
+      <div class="legend-body"><p class="legend-name">Dansk æresmiddag</p><p class="legend-time">Piazza Galimberti 6 · Fre 26/6 kl. 20:00 · €22</p></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#8e44ad">🏛️</div>
+      <div class="legend-body"><p class="legend-name">Velkomstceremoni DK</p><p class="legend-time">Rådhuset, Salone d'Onore · Lør 27/6 kl. 17:30</p></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2e9e5b">🏭</div>
+      <div class="legend-body"><p class="legend-name">Officine Mattio</p><p class="legend-time">Via Renzo Gandolfo 6 · VIP-besøg · Fre 26/6 kl. 15:00</p></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#e67e22">🚗</div>
+      <div class="legend-body"><p class="legend-name">Expo på Piazza Galimberti</p><p class="legend-time">Lør 27/6 · energibars, gels, udstyr</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cuneo centrum
+  const map = L.map('map').setView([44.3845, 7.5426], 14);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap, © CARTO',
+    maxZoom: 19
+  }).addTo(map);
+
+  function makeIcon(emoji, color) {
+    return L.divIcon({
+      html: `<div style="
+        width:36px;height:36px;border-radius:50%;
+        background:${color};
+        display:flex;align-items:center;justify-content:center;
+        font-size:16px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.3);
+        border:2px solid white;
+      ">${emoji}</div>`,
+      className: '',
+      iconSize: [36, 36],
+      iconAnchor: [18, 18],
+      popupAnchor: [0, -20]
+    });
+  }
+
+  function popup(title, sub, time, color) {
+    return `<div class="popup-title">${title}</div>
+            <div class="popup-sub">${sub}</div>
+            ${time ? `<span class="popup-time" style="background:${color}20;color:${color}">${time}</span>` : ''}`;
+  }
+
+  // Hotel Palazzo Lovera – Via Roma 37, Cuneo
+  L.marker([44.3919, 7.5502], { icon: makeIcon('🏨', '#1a1a2e') })
+    .bindPopup(popup('Hotel Palazzo Lovera', 'Via Roma 37, Cuneo<br>2 suiter · tæt på startlinjen', 'Check-in fre 26/6', '#1a1a2e'))
+    .addTo(map);
+
+  // Piazza Galimberti – centrum af Cuneo
+  L.marker([44.3892, 7.5481], { icon: makeIcon('🇩🇰', '#c0392b') })
+    .bindPopup(popup('Dansk æresmiddag', 'Piazza Galimberti 6, Cuneo', 'Fre 26/6 kl. 20:00 · €22/pers · Ambassadør Taksøe-Jensen', '#c0392b'))
+    .addTo(map);
+
+  // Rådhuset Cuneo (Municipio) – Salone d'Onore
+  L.marker([44.3932, 7.5514], { icon: makeIcon('🏛️', '#8e44ad') })
+    .bindPopup(popup('Velkomstceremoni for Danmark', 'Salone d\'Onore · Municipio di Cuneo', 'Lør 27/6 kl. 17:30', '#8e44ad'))
+    .addTo(map);
+
+  // Start/mål Fausto Coppi – Via Roma
+  L.marker([44.3910, 7.5495], { icon: makeIcon('🏁', '#0071e3') })
+    .bindPopup(popup('Start & Mål – Granfondo Fausto Coppi', 'Via Roma, Cuneo', 'Søn 28/6 · 172 km', '#0071e3'))
+    .addTo(map);
+
+  // Officine Mattio – Via Renzo Gandolfo 6 (Google Maps verificeret)
+  L.marker([44.4226, 7.5616], { icon: makeIcon('🏭', '#2e9e5b') })
+    .bindPopup(popup('Officine Mattio', 'Via Renzo Gandolfo 6, Cuneo<br>Italiensk cykelværksted', 'Fre 26/6 kl. 15:00 · VIP guests', '#2e9e5b'))
+    .addTo(map);
+
+  // Expo / Piazza Galimberti (cykelexpo) – samme plads som æresmiddagen
+  L.marker([44.3888, 7.5476], { icon: makeIcon('🚴', '#e67e22') })
+    .bindPopup(popup('Cykelexpo på pladsen', 'Piazza Galimberti, Cuneo<br>Energibars, gels, udstyr', 'Lør 27/6', '#e67e22'))
+    .addTo(map);
+
+  // Rutelinje – antydet rute mod bjergene
+  const routeHint = L.polyline([
+    [44.3910, 7.5495],  // Start Cuneo
+    [44.41, 7.52],
+    [44.45, 7.44],
+    [44.52, 7.35],
+    [44.62, 7.10],
+  ], {
+    color: '#c0392b',
+    weight: 3,
+    opacity: 0.5,
+    dashArray: '8,10'
+  }).addTo(map);
+
+  routeHint.bindPopup('<div class="popup-title">Løbsrute (antydet)</div><div class="popup-sub">172 km · mod de piemontesiske alper</div>');
+
+  // Fit map to all markers
+  const bounds = L.latLngBounds([
+    [44.3888, 7.5476],
+    [44.4226, 7.5616]
+  ]);
+  map.fitBounds(bounds, { padding: [40, 40] });
+</script>
+
+</body>
+</html>

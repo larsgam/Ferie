@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan v3.1 · Vietnam + Cambodja (Angkor Wat)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 900px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 24px; }
+    .route-pill { background: var(--color-section); border: 1px solid var(--color-divider); border-radius: var(--radius); padding: 18px 22px; font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+    .route-pill strong { color: var(--color-accent); }
+    .route-pill .cambodja-hl { color: #b45309; font-weight: 700; }
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr.highlight td { background: #fffaf0; font-weight: 600; }
+    .data-table tr.cambodja-row td { background: #fdf4dc; }
+    .data-table tr.changed td { background: #f0fdf4; }
+    .day-list { display: flex; flex-direction: column; gap: 2px; }
+    .day-item { display: grid; grid-template-columns: 48px 92px 100px 110px 1fr; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; }
+    .day-item:hover { background: rgba(0,0,0,0.03); }
+    .day-item.travel { background: #f0f6ff; }
+    .day-item.highlight { background: #fffaf0; }
+    .day-item.cambodja { background: #fdf4dc; }
+    .day-item.cambodja.highlight { background: #faeac4; }
+    .day-item.changed { background: #f0fdf4; outline: 2px solid #86efac; outline-offset: -2px; }
+    .day-num { font-size: 20px; font-weight: 700; color: var(--color-secondary); }
+    .day-date { font-size: 13px; color: var(--color-secondary); }
+    .day-segment { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); padding: 2px 8px; border-radius: 980px; background: var(--color-section); border: 1px solid var(--color-divider); white-space: nowrap; }
+    .day-item.travel .day-segment { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+    .day-item.cambodja .day-segment { background: #fde68a; border-color: #f59e0b; color: #92400e; }
+    .day-item.cambodja.travel .day-segment { background: #fed7aa; border-color: #f97316; color: #9a3412; }
+    .day-item.changed .day-segment { background: #bbf7d0; border-color: #4ade80; color: #166534; }
+    .day-place { font-size: 13px; font-weight: 600; }
+    .day-desc { font-size: 14px; line-height: 1.4; }
+    .day-hotel { font-size: 11px; color: var(--color-secondary); margin-top: 3px; display: block; }
+    .day-hotel.booked { color: #2e9e5b; }
+    .day-hotel.pending { color: #b0b0b8; font-style: italic; }
+    .verdict { background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%); border: 1px solid #b3d4f0; border-radius: var(--radius); padding: 28px 32px; margin-top: 8px; }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+    .verdict p { font-size: 15px; color: #374151; line-height: 1.7; }
+    .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pros, .cons { border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--color-divider); }
+    .pros { background: #f0faf2; border-color: #bfe6c8; }
+    .cons { background: #fdf6ec; border-color: #f0d9b0; }
+    .pros h4, .cons h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .pros ul, .cons ul { margin-left: 18px; }
+    .pros li, .cons li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .version-bar { background: var(--color-section); border-bottom: 1px solid var(--color-divider); padding: 16px 22px; }
+    .version-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+    .vtag { font-weight: 700; padding: 3px 12px; border-radius: 980px; font-size: 13px; }
+    .vtag-num { background: #0071e3; color: white; }
+    .vtag-alt { background: #7c3aed; color: white; }
+    .version-bar .vdate { color: var(--color-secondary); }
+    .version-bar .vall { margin-left: auto; color: var(--color-accent); text-decoration: none; }
+    .version-bar .vall:hover { text-decoration: underline; }
+    .cambodja-banner { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #f59e0b; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 28px; display: flex; gap: 14px; align-items: flex-start; }
+    .cambodja-banner-icon { font-size: 28px; flex-shrink: 0; }
+    .cambodja-banner-text h4 { font-size: 15px; font-weight: 700; color: #92400e; margin-bottom: 4px; }
+    .cambodja-banner-text p { font-size: 14px; color: #78350f; line-height: 1.6; }
+    .change-legend { background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: #166534; }
+    .change-legend strong { font-weight: 700; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    @media (max-width: 640px) { .day-item { grid-template-columns: 36px auto 1fr; } .day-date, .day-place { display:none; } .col2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗺️ Plan v3.1</span>
+    <a href="planer.html" class="nav-back">← Alle planer</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Plan · Vietnam + Cambodja 2026</p>
+  <h1>Vietnam + Angkor Wat</h1>
+  <p class="hero-sub">Logistikoptimering af v3.0: Pu Luong direkte til lufthavnen (ingen Hanoi-transitnat) · Da Nang lufthavn direkte til Hoi An ved ankomst fra Cambodja. Cambodja-fly booket ✅. Stadig 26 nætter.</p>
+</section>
+
+<div class="version-bar">
+  <div class="version-bar-inner">
+    <span class="vtag vtag-num">v3.1</span>
+    <span><strong>Logistikoptimering</strong> — Pu Luong → lufthavn direkte · Hoi An ved ankomst</span>
+    <span class="vdate">Lavet 22. jun 2026</span>
+    <span class="vtag" style="background:#2e9e5b;color:white">Master ✅</span>
+    <a href="planer.html" class="vall">Alle versioner →</a>
+  </div>
+</div>
+
+<!-- RUTE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Rute-overblik</p>
+    <h2 class="section-title">26 nætter · to lande</h2>
+
+    <div class="cambodja-banner">
+      <div class="cambodja-banner-icon">🛕</div>
+      <div class="cambodja-banner-text">
+        <h4>Cambodja-sidetrip: fly Hanoi → Siem Reap → Da Nang ✅ Booket</h4>
+        <p>VietJet VJ913 · 15. jul kl. 16:20 → 18:05 · Booking: 4QW3QH. 3 nætter ved Angkor Wat. Air Cambodia K6840 · 18. jul kl. 14:05 → 16:00 Da Nang. Derefter direkte til Hoi An og videre nordpå via Hue og Phong Nha til Hanoi.</p>
+      </div>
+    </div>
+
+    <div class="route-pill">
+      Hanoi 2 → Ha Long 1 → (Hanoi-transit 1) → <strong>Pu Luong 3</strong> → ✈️ <span class="cambodja-hl">Siem Reap 3</span> → ✈️ Hoi An 4 → Da Nang 2 → Hue 2 → <strong>Phong Nha 2</strong> → Ninh Binh 3 → Hanoi 2
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Sted</th><th>Nætter</th><th>Highlights</th><th>Vejr</th></tr></thead>
+        <tbody>
+          <tr><td>Hanoi (start)</td><td>2</td><td>Old Quarter, streetfood, Train Street, mausoleet</td><td>Varmt, fugtigt</td></tr>
+          <tr><td>Ha Long / Lan Ha Bay</td><td>1</td><td>Cruise, kajak, grottetur</td><td>Book fleksibelt (tyfon)</td></tr>
+          <tr class="highlight"><td>Pu Luong</td><td>3</td><td>Risterrasser, Kho Muong + Bat Cave, bambusrafting, pool</td><td>Køligere, korte byger</td></tr>
+          <tr class="cambodja-row"><td>🛕 Siem Reap, Cambodja</td><td>3 ✅</td><td>Angkor Wat (solopgang), Angkor Thom, Bayon, Ta Prohm, Banteay Srei</td><td>Varmt og fugtigt — men grandiost</td></tr>
+          <tr class="changed"><td>Hoi An</td><td>4</td><td>Gamlebyen, skrædder, madlavning, Cham Islands — <em>ankomst direkte fra lufthavnen</em></td><td>Bedste vejr (tørsæson)</td></tr>
+          <tr class="changed"><td>Da Nang</td><td>2</td><td>Ba Na Hills (Golden Bridge), My Khe Beach</td><td>Bedste vejr</td></tr>
+          <tr><td>Hue</td><td>2</td><td>Kejserbyen, kongegrave, parfumefloden</td><td>Godt vejr</td></tr>
+          <tr class="highlight"><td>Phong Nha</td><td>2</td><td>Dark Cave (zipline + mudderbad), Paradise Cave, Bong Lai</td><td>Tørsæson, grotter 20-22°C</td></tr>
+          <tr><td>Ninh Binh</td><td>3</td><td>Tam Coc, Trang An, Mua Cave, Bai Dinh</td><td>Varmt, fugtigt</td></tr>
+          <tr><td>Hanoi (slut)</td><td>2</td><td>Sidste shopping, streetfood</td><td>Varmt, fugtigt</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DAG FOR DAG -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">28 dage</p>
+    <h2 class="section-title">Dag for dag</h2>
+
+    <div class="change-legend">
+      <strong>Grønt = ændret fra v3.0:</strong> Dag 9 er nu Pu Luong nat 3 (ingen Hanoi-transitnat). Dag 10 starter med kørsel til lufthavnen. Dag 13 går direkte fra Da Nang lufthavn til Hoi An. Dag 14 er første hele dag i Hoi An.
+    </div>
+
+    <div class="day-list">
+      <div class="day-item travel"><span class="day-num">1</span><span class="day-date">Man 6. jul</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Afrejse CPH 16:00 → DOH 23:00<span class="day-hotel pending">🛏️ Fly</span></span></div>
+      <div class="day-item travel"><span class="day-num">2</span><span class="day-date">Tir 7. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">DOH 02:45 → HAN 13:55. Ankomst, check ind, Old Quarter om aftenen<span class="day-hotel booked">🏨 Conifer Boutique Hotel</span></span></div>
+      <div class="day-item"><span class="day-num">3</span><span class="day-date">Ons 8. jul</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Streetfood-tour, Train Street, Ho Chi Minh-mausoleet, Hoan Kiem-søen<span class="day-hotel booked">🏨 Conifer Boutique Hotel</span></span></div>
+      <div class="day-item travel"><span class="day-num">4</span><span class="day-date">Tor 9. jul</span><span class="day-segment">Ha Long</span><span class="day-place">Ha Long</span><span class="day-desc">Transfer til cruise, kajak, grottetur, badning<span class="day-hotel pending">🚢 Cruise-skib (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">5</span><span class="day-date">Fre 10. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hanoi</span><span class="day-desc">Cruise dag 2, retur Hanoi (transitnat)<span class="day-hotel pending">🏨 Hanoi transithotel (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">6</span><span class="day-date">Lør 11. jul</span><span class="day-segment">Mai Chau</span><span class="day-place">Mai Chau</span><span class="day-desc">Kørsel Hanoi → Mai Chau. Ankomst, pool, solnedgang over rismarkerne<span class="day-hotel booked">🏨 Mai Chau 4 Seasons Hotel & Resort</span></span></div>
+      <div class="day-item highlight"><span class="day-num">7</span><span class="day-date">Søn 12. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Check ud Mai Chau → Pu Luong. Guidet heldagstrek: Kho Muong + Bat Cave<span class="day-hotel booked">🏨 Pu Luong Boutique Garden Spa & Travel</span></span></div>
+      <div class="day-item"><span class="day-num">8</span><span class="day-date">Man 13. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Bambusrafting, vandhjul ved Ban Don, pool<span class="day-hotel booked">🏨 Pu Luong Boutique Garden Spa & Travel</span></span></div>
+      <div class="day-item changed"><span class="day-num">9</span><span class="day-date">Tir 14. jul</span><span class="day-segment">Pu Luong</span><span class="day-place">Pu Luong</span><span class="day-desc">Tredje dag i Pu Luong — morgenvandring, pool, afslapning. Tidlig sengetid: fly i morgen<span class="day-hotel booked">🏨 Pu Luong Boutique Garden Spa & Travel</span></span></div>
+      <div class="day-item cambodja travel changed"><span class="day-num">10</span><span class="day-date">Ons 15. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Morgen: kørsel Pu Luong → Noi Bai (~3,5 t). ✈️ VJ913 HAN 16:20 → SAI 18:05. Angkor Wat solnedgang 🛕<span class="day-hotel booked">🏨 Chhouy Vathna Angkor Boutique</span></span></div>
+      <div class="day-item cambodja highlight"><span class="day-num">11</span><span class="day-date">Tor 16. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Solopgang Angkor Wat · Angkor Thom · Bayon · Ta Prohm · Preah Khan<span class="day-hotel booked">🏨 Chhouy Vathna Angkor Boutique</span></span></div>
+      <div class="day-item cambodja"><span class="day-num">12</span><span class="day-date">Fre 17. jul</span><span class="day-segment">Cambodja</span><span class="day-place">Siem Reap</span><span class="day-desc">Banteay Srei (de fine relieffer) · Kbal Spean · afslapning ved pool om eftermiddagen<span class="day-hotel booked">🏨 Chhouy Vathna Angkor Boutique</span></span></div>
+      <div class="day-item cambodja travel changed"><span class="day-num">13</span><span class="day-date">Lør 18. jul</span><span class="day-segment">Hoi An</span><span class="day-place">→ Hoi An</span><span class="day-desc">✈️ K6840 SAI → DAD 14:05–16:00. Marble Mountains på vejen fra lufthavnen → direkte til Hoi An (~30 min)<span class="day-hotel pending">🏨 Hoi An (ikke booket)</span></span></div>
+      <div class="day-item changed"><span class="day-num">14</span><span class="day-date">Søn 19. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Gamlebyen, lanterner om aftenen, skrædder<span class="day-hotel pending">🏨 Hoi An (ikke booket)</span></span></div>
+      <div class="day-item"><span class="day-num">15</span><span class="day-date">Man 20. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">Madlavningskursus<span class="day-hotel pending">🏨 Hoi An (ikke booket)</span></span></div>
+      <div class="day-item highlight"><span class="day-num">16</span><span class="day-date">Tir 21. jul</span><span class="day-segment">Hoi An</span><span class="day-place">Hoi An</span><span class="day-desc">🏝️ Cham Islands dagstur — snorkling, strand<span class="day-hotel pending">🏨 Hoi An (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">17</span><span class="day-date">Ons 22. jul</span><span class="day-segment">Da Nang</span><span class="day-place">Da Nang</span><span class="day-desc">→ Da Nang (~30 min). Ba Na Hills (Golden Bridge) 🌉<span class="day-hotel pending">🏨 Da Nang (ikke booket)</span></span></div>
+      <div class="day-item"><span class="day-num">18</span><span class="day-date">Tor 23. jul</span><span class="day-segment">Da Nang</span><span class="day-place">Da Nang</span><span class="day-desc">My Khe Beach, afslapning, streetfood<span class="day-hotel pending">🏨 Da Nang (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">19</span><span class="day-date">Fre 24. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Hue</span><span class="day-desc">Tog nordpå. Evt. Hai Van Pass med guide på motorcykel → Hue<span class="day-hotel pending">🏨 Hue (ikke booket)</span></span></div>
+      <div class="day-item"><span class="day-num">20</span><span class="day-date">Lør 25. jul</span><span class="day-segment">Hue</span><span class="day-place">Hue</span><span class="day-desc">Kejserbyen, kongegrave, parfumefloden<span class="day-hotel pending">🏨 Hue (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">21</span><span class="day-date">Søn 26. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Phong Nha</span><span class="day-desc">Tog/bus nordpå (~3 t). Eftermiddag: Bong Lai-dalen + The Duck Stop<span class="day-hotel pending">🏨 Phong Nha (ikke booket)</span></span></div>
+      <div class="day-item highlight"><span class="day-num">22</span><span class="day-date">Man 27. jul</span><span class="day-segment">Phong Nha</span><span class="day-place">Phong Nha</span><span class="day-desc">🦇 Dark Cave (zipline + mudderbad) + Paradise Cave<span class="day-hotel pending">🏨 Phong Nha (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">23</span><span class="day-date">Tir 28. jul</span><span class="day-segment">Transit</span><span class="day-place">→ Ninh Binh</span><span class="day-desc">Nattog/bus nordpå (~7 t) → Ninh Binh<span class="day-hotel booked">🏨 ChezCao Rice Field Ecolodge</span></span></div>
+      <div class="day-item"><span class="day-num">24</span><span class="day-date">Ons 29. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Bådtur Tam Coc, cykling mellem bjergene, Mua Cave (500 trin)<span class="day-hotel booked">🏨 ChezCao Rice Field Ecolodge</span></span></div>
+      <div class="day-item"><span class="day-num">25</span><span class="day-date">Tor 30. jul</span><span class="day-segment">Ninh Binh</span><span class="day-place">Ninh Binh</span><span class="day-desc">Trang An, Bai Dinh-pagoden<span class="day-hotel booked">🏨 ChezCao Rice Field Ecolodge</span></span></div>
+      <div class="day-item travel"><span class="day-num">26</span><span class="day-date">Fre 31. jul</span><span class="day-segment">Hanoi</span><span class="day-place">→ Hanoi</span><span class="day-desc">Tog til Hanoi (~2 t). Første aften tilbage — streetfood<span class="day-hotel pending">🏨 Hanoi (ikke booket)</span></span></div>
+      <div class="day-item"><span class="day-num">27</span><span class="day-date">Lør 1. aug</span><span class="day-segment">Hanoi</span><span class="day-place">Hanoi</span><span class="day-desc">Sidste dag, shopping, Old Quarter, streetfood<span class="day-hotel pending">🏨 Hanoi (ikke booket)</span></span></div>
+      <div class="day-item travel"><span class="day-num">28</span><span class="day-date">Søn 2. aug</span><span class="day-segment">Transit</span><span class="day-place">✈️</span><span class="day-desc">Hjemrejse ✈️ QR977 HAN 19:30 → DOH 22:20 (søn) · 10t20m layover · QR159 DOH 08:40 (man) → CPH 14:05</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMMENLIGNING -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">v3.1 vs. v3.0</p>
+    <h2 class="section-title">Hvad ændrer sig</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th></th><th>Plan v3.0</th><th>Plan v3.1</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dag 9 (14. jul)</strong></td><td>Kørsel Pu Luong → Hanoi. Transitnat på hotel i Hanoi</td><td class="changed" style="background:#f0fdf4">3. nat i Pu Luong. Morgenvandring + pool. Ingen hotelskifte</td></tr>
+          <tr><td><strong>Dag 10 (15. jul)</strong></td><td>Fly fra Hanoi kl. 16:20</td><td class="changed" style="background:#f0fdf4">Morgenkørsel Pu Luong → Noi Bai (~3,5 t), fly kl. 16:20</td></tr>
+          <tr><td><strong>Dag 13 (18. jul)</strong></td><td>Land Da Nang 16:00. Marble Mountains. Overnat i Da Nang</td><td class="changed" style="background:#f0fdf4">Land Da Nang 16:00. Marble Mountains på vejen → direkte til Hoi An</td></tr>
+          <tr><td><strong>Dag 14 (19. jul)</strong></td><td>Transfer Da Nang → Hoi An (~30 min). Gamlebyen</td><td class="changed" style="background:#f0fdf4">Fuld dag i Hoi An. Gamlebyen, lanterner, skrædder</td></tr>
+          <tr><td><strong>Pu Luong nætter</strong></td><td>2</td><td class="changed" style="background:#f0fdf4">3</td></tr>
+          <tr><td><strong>Da Nang nætter</strong></td><td>1 + 2 = 3</td><td class="changed" style="background:#f0fdf4">2</td></tr>
+          <tr><td><strong>Hoi An nætter</strong></td><td>3</td><td class="changed" style="background:#f0fdf4">4</td></tr>
+          <tr><td><strong>Hanoi transithotel (dag 9)</strong></td><td>Ja (ikke booket)</td><td class="changed" style="background:#f0fdf4">Ingen — elimineret</td></tr>
+          <tr><td><strong>Cambodja-fly</strong></td><td>✅ Booket — uændret</td><td>✅ Booket — uændret</td></tr>
+          <tr><td><strong>Nætter i alt</strong></td><td>26</td><td>26</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col2" style="margin-top:16px">
+      <div class="pros">
+        <h4>✅ Hvad v3.1 vinder</h4>
+        <ul>
+          <li><strong>Ingen unødvendig transitnat</strong> — I sover i Pu Luong nat 9 i stedet for at pakke og køre til Hanoi for én nat.</li>
+          <li><strong>Hoi An fra dag 1</strong> — Ankomst direkte fra Da Nang lufthavn. Marble Mountains er på vejen, så intet misses.</li>
+          <li><strong>Renere rute</strong> — Da Nang → Hoi An → Da Nang-zigzagen er fjernet. Da Nang-dagene samlet til sidst.</li>
+          <li><strong>En booking sparet</strong> — Hanoi transithotel dag 9 udgår helt.</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>⚖️ Hvad det kræver</h4>
+        <ul>
+          <li><strong>Dag 10: tidlig start</strong> — Afgang Pu Luong senest kl. 10:30 for at nå flyet kl. 16:20 komfortabelt (~3,5 t kørsel).</li>
+          <li><strong>Pu Luong nat 3</strong> — Pas på ikke at overbooke dag 9; det er en rolig dag før flydag, ikke en ny aktivitetsdag.</li>
+          <li><strong>Marble Mountains om aftenen</strong> — Besøget på dag 13 sker ca. kl. 16:30–17:30. Stedet lukker kl. 17:30, så det er snævert. Alternativt: gem Marble Mountains til en anden dag fra Hoi An/Da Nang.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-label">Konklusion</p>
+      <h3>Enklere logistik — samme oplevelse ✅</h3>
+      <p>To enkle justeringer fjerner en unødvendig hotelskifte og en ufornuftig frem-og-tilbage-transfer. Cambodja-fly er booket og uændret. Ruten er nu: Pu Luong 3n → Noi Bai direkte → Siem Reap 3n → Da Nang lufthavn → Hoi An 4n → Da Nang 2n → nordpå. <strong>Plan v3.1 er nu master.</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam + Cambodja · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px">Se også: <a href="plan-3.0.html">Plan v3.0</a> · <a href="planer.html">Alle planer</a> · <a href="overview.html">Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fly – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --bg: #ffffff; --section: #f5f5f7; --text: #1d1d1f; --secondary: #6e6e73;
+      --accent: #0071e3; --divider: #d2d2d7; --max-w: 780px;
+      --green: #16a34a; --green-bg: #f0fdf4; --green-border: #bbf7d0;
+      --blue: #0071e3; --blue-bg: #eff6ff; --blue-border: #bfdbfe;
+      --red: #c0392b; --red-bg: #fef2f2; --red-border: #fecaca;
+      --purple: #7c3aed; --purple-bg: #f5f3ff; --purple-border: #ddd6fe;
+      --gold: #d97706; --gold-bg: #fffbeb; --gold-border: #fde68a;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--accent); text-decoration: none; }
+
+    .hero { background: linear-gradient(160deg, #0c1a2e 0%, #1a2d4a 100%); padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; color: #60a5fa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: white; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .hero-sub { font-size: 16px; color: #94a3b8; }
+
+    .section { padding: 40px 22px; }
+    .section-alt { background: var(--section); }
+    .inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(20px, 3vw, 26px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; }
+
+    /* Flight card */
+    .flight-group { display: flex; flex-direction: column; gap: 14px; margin-bottom: 6px; }
+    .flight-card { border-radius: 16px; border: 1px solid var(--divider); overflow: hidden; background: white; }
+    .flight-card.outbound { border-color: var(--blue-border); }
+    .flight-card.return { border-color: var(--green-border); }
+    .flight-card.cambodja { border-color: var(--purple-border); }
+    .flight-card.domestic { border-color: var(--gold-border); }
+
+    .fc-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .outbound .fc-header { background: var(--blue-bg); }
+    .return .fc-header { background: var(--green-bg); }
+    .cambodja .fc-header { background: var(--purple-bg); }
+    .domestic .fc-header { background: var(--gold-bg); }
+
+    .fc-label { font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+    .outbound .fc-label { color: var(--blue); }
+    .return .fc-label { color: var(--green); }
+    .cambodja .fc-label { color: var(--purple); }
+    .domestic .fc-label { color: var(--gold); }
+
+    .fc-ref { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 980px; }
+    .outbound .fc-ref { background: var(--blue-border); color: var(--blue); }
+    .return .fc-ref { background: var(--green-border); color: var(--green); }
+    .cambodja .fc-ref { background: var(--purple-border); color: var(--purple); }
+    .domestic .fc-ref { background: var(--gold-border); color: var(--gold); }
+
+    .fc-body { padding: 16px 18px; }
+    .fc-leg { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .fc-leg:last-of-type { margin-bottom: 0; }
+    .leg-airport { text-align: left; }
+    .leg-airport.right { text-align: right; }
+    .leg-code { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .leg-city { font-size: 12px; color: var(--secondary); margin-top: 2px; }
+    .leg-time { font-size: 20px; font-weight: 700; margin-top: 4px; }
+    .leg-date { font-size: 11px; color: var(--secondary); }
+    .leg-middle { text-align: center; }
+    .leg-duration { font-size: 12px; font-weight: 600; color: var(--secondary); }
+    .leg-line { display: flex; align-items: center; gap: 4px; margin: 4px 0; }
+    .leg-line-bar { flex: 1; height: 1px; background: var(--divider); }
+    .leg-arrow { font-size: 10px; color: var(--secondary); }
+    .leg-stops { font-size: 11px; color: var(--secondary); }
+    .fc-divider { border: none; border-top: 1px dashed var(--divider); margin: 12px 0; }
+    .fc-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+    .fc-meta-item { font-size: 12px; color: var(--secondary); }
+    .fc-meta-item strong { color: var(--text); }
+    .fc-connection { background: var(--section); border-radius: 10px; padding: 8px 14px; margin: 10px 0; font-size: 12px; color: var(--secondary); text-align: center; }
+    .fc-connection strong { color: var(--text); }
+
+    /* Summary row */
+    .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+    .sum-card { background: var(--section); border-radius: 14px; padding: 18px; text-align: center; }
+    .sum-num { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .sum-label { font-size: 12px; color: var(--secondary); }
+
+    footer { background: var(--section); border-top: 1px solid var(--divider); padding: 28px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--secondary); }
+    a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">✈️ Flyoversigt</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">Vietnam · Cambodja · 2026</p>
+  <h1>✈️ Alle fly</h1>
+  <p class="hero-sub">8 flyvninger · 6 bookinger · Qatar Airways + VietJet + Air Cambodia + Vietnam Airlines</p>
+</div>
+
+<!-- UD -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Udrejse</p>
+    <h2 class="section-title">København → Hanoi</h2>
+    <div class="flight-group">
+
+      <div class="flight-card outbound">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Udrejse · Man 6. jul → Tir 7. jul</span>
+          <span class="fc-ref">85238Q</span>
+        </div>
+        <div class="fc-body">
+          <!-- Leg 1: CPH → DOH -->
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">CPH</div>
+              <div class="leg-city">København Kastrup</div>
+              <div class="leg-time">16:00</div>
+              <div class="leg-date">Man 6. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">~6h</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">QR 160</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">DOH</div>
+              <div class="leg-city">Hamad Int'l, Doha</div>
+              <div class="leg-time">23:00</div>
+              <div class="leg-date">Man 6. jul</div>
+            </div>
+          </div>
+          <div class="fc-connection">Mellemlanding i Doha · <strong>3t 45m</strong> forbindelsestid</div>
+          <!-- Leg 2: DOH → HAN -->
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">DOH</div>
+              <div class="leg-city">Hamad Int'l, Doha</div>
+              <div class="leg-time">02:45</div>
+              <div class="leg-date">Tir 7. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">~7h</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">QR 976</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">HAN</div>
+              <div class="leg-city">Noi Bai Int'l, Hanoi</div>
+              <div class="leg-time">13:55</div>
+              <div class="leg-date">Tir 7. jul</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Total:</strong> 16t 55m · 1 stop</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 30 kg pr. person</div>
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> Qatar Airways</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAMBODJA -->
+<section class="section section-alt">
+  <div class="inner">
+    <p class="section-label">Sidetrip</p>
+    <h2 class="section-title">Cambodja-fly</h2>
+    <div class="flight-group">
+
+      <!-- HAN → SAI -->
+      <div class="flight-card cambodja">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Hanoi → Ho Chi Minh City · Ons 15. jul</span>
+          <span class="fc-ref">4QW3QH</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">HAN</div>
+              <div class="leg-city">Noi Bai Int'l, Hanoi</div>
+              <div class="leg-time">16:20</div>
+              <div class="leg-date">Ons 15. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">1t 45m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">VJ 913</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất, HCMC</div>
+              <div class="leg-time">18:05</div>
+              <div class="leg-date">Ons 15. jul</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> VietJet Air</div>
+            <div class="fc-meta-item"><strong>Note:</strong> Videre med ground transport til Siem Reap</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAI → DAD -->
+      <div class="flight-card cambodja">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Ho Chi Minh City → Da Nang · Lør 18. jul</span>
+          <span class="fc-ref">4QW3QH</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất, HCMC</div>
+              <div class="leg-time">14:05</div>
+              <div class="leg-date">Lør 18. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">1t 55m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">K6 840</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">DAD</div>
+              <div class="leg-city">Da Nang Int'l</div>
+              <div class="leg-time">16:00</div>
+              <div class="leg-date">Lør 18. jul</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> Air Cambodia</div>
+            <div class="fc-meta-item"><strong>Note:</strong> Marble Mountains → direkte til Hoi An (~30 min)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDENRIGS SYD -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Indenrigsfly · syd</p>
+    <h2 class="section-title">Til Mekong & retur til Hanoi</h2>
+    <div class="flight-group">
+
+      <!-- VDH → SGN -->
+      <div class="flight-card domestic">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Dong Hoi → Ho Chi Minh City · Ons 29. jul</span>
+          <span class="fc-ref">3FYMHN</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">VDH</div>
+              <div class="leg-city">Dong Hoi (Phong Nha)</div>
+              <div class="leg-time">08:40</div>
+              <div class="leg-date">Ons 29. jul</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">1t 35m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">VJ 261</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất, HCMC</div>
+              <div class="leg-time">10:15</div>
+              <div class="leg-date">Ons 29. jul</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> VietJet Air · direkte</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 20 kg indchecket + 7 kg håndbagage pr. person</div>
+            <div class="fc-meta-item"><strong>Note:</strong> Taxi videre til Ben Tre (Mekong-deltaet)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SGN → HAN -->
+      <div class="flight-card domestic">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Ho Chi Minh City → Hanoi · Søn 2. aug</span>
+          <span class="fc-ref">FHFQ7P</span>
+        </div>
+        <div class="fc-body">
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">SGN</div>
+              <div class="leg-city">Tân Sơn Nhất T3, HCMC</div>
+              <div class="leg-time">12:00</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">2t 10m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">VN 212</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">HAN</div>
+              <div class="leg-city">Noi Bai Int'l T1, Hanoi</div>
+              <div class="leg-time">14:10</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+          </div>
+          <div class="fc-connection">Skift i Hanoi til hjemfly QR977 kl. 19:30 · <strong>5t 20m</strong> — flyt fra domestic (T1) til international (T2)</div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> Vietnam Airlines · Airbus A350-900</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 23 kg indchecket pr. person</div>
+            <div class="fc-meta-item"><strong>Booking:</strong> trip.com #1271086295760674</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HJEM -->
+<section class="section section-alt">
+  <div class="inner">
+    <p class="section-label">Hjemrejse</p>
+    <h2 class="section-title">Hanoi → København</h2>
+    <div class="flight-group">
+
+      <div class="flight-card return">
+        <div class="fc-header">
+          <span class="fc-label">✈️ Hjemrejse · Søn 2. aug → Man 3. aug</span>
+          <span class="fc-ref">85238Q</span>
+        </div>
+        <div class="fc-body">
+          <!-- Leg 1: HAN → DOH -->
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">HAN</div>
+              <div class="leg-city">Noi Bai Int'l, Hanoi</div>
+              <div class="leg-time">19:30</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">6t 50m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">QR 977</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">DOH</div>
+              <div class="leg-city">Hamad Int'l, Doha</div>
+              <div class="leg-time">22:20</div>
+              <div class="leg-date">Søn 2. aug</div>
+            </div>
+          </div>
+          <div class="fc-connection">Mellemlanding i Doha · <strong>10t 20m</strong> forbindelsestid · 💡 God mulighed for at se Doha — Hamad Airport har lounge, pool og gratis city tours for transitpassagerer</div>
+          <!-- Leg 2: DOH → CPH -->
+          <div class="fc-leg">
+            <div class="leg-airport">
+              <div class="leg-code">DOH</div>
+              <div class="leg-city">Hamad Int'l, Doha</div>
+              <div class="leg-time">08:40</div>
+              <div class="leg-date">Man 3. aug</div>
+            </div>
+            <div class="leg-middle">
+              <div class="leg-duration">6t 25m</div>
+              <div class="leg-line"><div class="leg-line-bar"></div><div class="leg-arrow">→</div></div>
+              <div class="leg-stops">QR 159</div>
+            </div>
+            <div class="leg-airport right">
+              <div class="leg-code">CPH</div>
+              <div class="leg-city">København Kastrup · T2</div>
+              <div class="leg-time">14:05</div>
+              <div class="leg-date">Man 3. aug</div>
+            </div>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-meta-item"><strong>Total:</strong> 23t 35m · 1 stop</div>
+            <div class="fc-meta-item"><strong>Bagage:</strong> 30 kg pr. person</div>
+            <div class="fc-meta-item"><strong>Flyselskab:</strong> Qatar Airways</div>
+            <div class="fc-meta-item"><strong>Fly:</strong> Boeing 787-9 + Boeing 787-8</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OVERBLIK -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Overblik</p>
+    <h2 class="section-title">Samlet</h2>
+    <div class="summary-grid">
+      <div class="sum-card">
+        <div class="sum-num">6</div>
+        <div class="sum-label">Bookinger</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-num">8</div>
+        <div class="sum-label">Flyvninger</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-num">30 kg</div>
+        <div class="sum-label">Bagage (Qatar)</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-num">Man 3/8</div>
+        <div class="sum-label">Hjemkomst CPH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Cambodja · Juli–August 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

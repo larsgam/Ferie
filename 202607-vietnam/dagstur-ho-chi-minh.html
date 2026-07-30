@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ho Chi Minh City · dagstur-kort</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --bg: #ffffff; --section: #f5f5f7; --text: #1d1d1f; --secondary: #6e6e73;
+      --accent: #0071e3; --divider: #d2d2d7;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 18px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--accent); text-decoration: none; }
+    .head { max-width: 1100px; margin: 0 auto; padding: 18px 18px 6px; }
+    .head h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .head p { font-size: 14px; color: var(--secondary); line-height: 1.5; }
+    .toolbar { max-width: 1100px; margin: 0 auto; padding: 12px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .filter-btn { border: none; border-radius: 980px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .filter-btn.off { opacity: 0.35; }
+    .act-btn { border: none; border-radius: 980px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .act-gmaps { background: #16a34a; color: white; }
+    .act-find { background: #2563eb; color: white; }
+    #map { height: 74vh; min-height: 460px; max-width: 1100px; margin: 6px auto 24px; border-radius: 16px; border: 1px solid var(--divider); }
+    .pin { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.35); font-weight: 700; color: white; font-size: 12px; }
+    .pin span { transform: rotate(45deg); }
+    .leaflet-popup-content-wrapper { border-radius: 12px; }
+    .leaflet-popup-content { margin: 12px 14px; font-family: var(--font); }
+    .pop-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 8px; border-radius: 980px; color: white; margin-bottom: 6px; }
+    .pop-title { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+    .pop-body { font-size: 12.5px; color: #444; line-height: 1.55; }
+    .pop-tip { font-size: 12px; color: #0f766e; margin-top: 5px; }
+    .pop-gm { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: #16a34a; text-decoration: none; }
+    footer { max-width: 1100px; margin: 0 auto; padding: 8px 18px 40px; font-size: 13px; color: var(--secondary); }
+    /* Lister under kortet */
+    .lists { max-width: 1100px; margin: 8px auto 0; padding: 0 18px; }
+    .list-block { margin-bottom: 30px; }
+    .list-h { display: flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 14px; }
+    .list-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+    .card { border: 1px solid var(--divider); border-radius: 14px; padding: 14px 16px; background: var(--bg); }
+    .card-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+    .card-num { font-size: 11px; font-weight: 800; color: white; padding: 2px 8px; border-radius: 980px; flex-shrink: 0; }
+    .card-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+    .card-body { font-size: 13px; color: #3a3a3c; line-height: 1.55; }
+    .card-tip { font-size: 12.5px; color: #0f766e; margin-top: 6px; }
+    .card-meta { font-size: 12px; color: var(--secondary); margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗺️ Ho Chi Minh City · dagstur</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<div class="head">
+  <h1>Saigon på én dag — seværdigheder, kvarterer & hoteller</h1>
+  <p>Oversigtskort over District 1. Grøn ✅ = jeres bookede hotel (Sono Sallute) · blå = øvrige hotelkandidater · teal = seværdigheder · lilla = kvarterer · magenta = shopping · rød = mad. Cu Chi-tunnelerne (fredag eftm.) ligger ~40 km NV og er ikke med her. Tryk på en markør for info + Google Maps-link.</p>
+</div>
+
+<div class="toolbar">
+  <button class="filter-btn" data-cat="hotel" style="background:#2563eb">🏨 Hoteller</button>
+  <button class="filter-btn" data-cat="sight" style="background:#0f766e">📸 Seværdigheder</button>
+  <button class="filter-btn" data-cat="hood" style="background:#7c3aed">🚶 Kvarterer</button>
+  <button class="filter-btn" data-cat="shop" style="background:#c026d3">🛍️ Shopping</button>
+  <button class="filter-btn" data-cat="food" style="background:#dc2626">🍕 Mad</button>
+  <button class="filter-btn" data-cat="booket" style="background:#059669">✅ Booket hotel</button>
+  <a class="act-btn act-find" href="#" id="findMe">📡 Find mig</a>
+</div>
+
+<div id="map"></div>
+
+<div class="lists">
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#2563eb"></span>🏨 Hoteller</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H1</span><span class="card-title">Cashew Inn</span></div>
+        <div class="card-body">Lille personligt hotel i Pham Ngu Lao/Bui Vien — livligt backpacker-kvarter. Tættere på Bui Vien-natteliv, lidt længere til Dong Khoi.</div>
+        <div class="card-meta">9,3 (82 anm.) · ~1.162 kr/2 nætter · fri afbestilling</div>
+        <div class="card-tip">💡 Bedst hvis I vil have puls og gåafstand til Bui Vien om aftenen.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H2</span><span class="card-title">Alagon D'antique Boutique Hotel &amp; Spa</span></div>
+        <div class="card-body">Boutique i antik-stil, meget centralt nær Ben Thanh. Pool + spa.</div>
+        <div class="card-meta">8,8 (845 anm.) · morgenmad + massage inkl. · ~3.746 kr/2 nætter</div>
+        <div class="card-tip">💡 Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#2563eb">H3</span><span class="card-title">Homestay TITO</span></div>
+        <div class="card-body">Ægte familiedrevet homestay i en stille gyde i District 3 (nær Tan Dinh). 3 små dobbeltværelser (2+2+2). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.</div>
+        <div class="card-meta">9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6 · fri afbestilling</div>
+        <div class="card-tip">💡 District 3, men gåafstand til seværdighederne + District 1. Mest personligt/autentisk af de tre.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#059669">H4 ✅</span><span class="card-title">Sono Sallute Luxury Hotel — BOOKET</span></div>
+        <div class="card-body"><b>Vores hotel i HCMC.</b> Nyere luksushotel meget centralt i District 1 (Lý Tự Trọng), gåafstand til Ben Thanh og seværdighederne. Ind fre 31. juli (14–23.30), ud søn 2. august (senest 12). 2 nætter · 2 værelser · 6 voksne: ét 4-personers m. balkon + ét Superior dobbelt.</div>
+        <div class="card-meta">Booking.com-nr. 5360315797 · i alt VND 6.320.098 (~1.650 kr, betales på hotellet) · gratis afbestilling frem til 31/7 kl. 14 · <a href="https://www.booking.com/hotel/vn/sono-sanlute-luxury.html" target="_blank">booking.com →</a></div>
+        <div class="card-tip">💡 Morgenmad koster VND 200.000 pr. person pr. nat (tilkøb). Booking garanteret med kreditkort.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#0f766e"></span>📸 Seværdigheder</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A1</span><span class="card-title">War Remnants Museum</span></div>
+        <div class="card-body">Stærkt, gribende museum om Vietnamkrigen. Teenagere husker det.</div>
+        <div class="card-meta">~1,5 t · åbent dagligt 7:30–18:00</div>
+        <div class="card-tip">💡 Start her tidligt (køligt + få folk). Kan være voldsomt for de yngste.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A2</span><span class="card-title">Reunification Palace</span></div>
+        <div class="card-body">Præsidentpaladset frosset i 1975 — kampvogne i haven, krigsbunker i kælderen, retro-interiør. God story.</div>
+        <div class="card-meta">~1 t · åbent 8:00–16:30</div>
+        <div class="card-tip">💡 5 min gåtur fra War Remnants — tag dem samlet.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A3</span><span class="card-title">Notre-Dame + Centralpostkontoret</span></div>
+        <div class="card-body">Smukt kolonialt postkontor (Eiffel-æra) med gammel Saigon-charme. Katedralens ydre er under restaurering.</div>
+        <div class="card-meta">~30 min</div>
+        <div class="card-tip">💡 Postkontoret indeni er det bedste — send et postkort hjem.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A4</span><span class="card-title">Ben Thanh Market</span></div>
+        <div class="card-body">Ikonisk marked: souvenirs, kaffe, tørrede frugter, streetfood. Turistet men klassisk. Natmarkedet udenfor tænder efter kl. 18.</div>
+        <div class="card-tip">💡 Prut om prisen (start ~40%). Streetfood-stader inde til frokost.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#0f766e">A5</span><span class="card-title">Bitexco Saigon Skydeck</span></div>
+        <div class="card-body">Skyline-udsigt fra 49. etage. Ærligt: pænt men ikke et must — Landmark 81 er højere men uden for D1.</div>
+        <div class="card-tip">💡 Bedst ved solnedgang. Spring over hvis tiden er knap.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#7c3aed"></span>🚶 Kvarterer &amp; gader</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B1</span><span class="card-title">Dong Khoi &amp; Operaen</span></div>
+        <div class="card-body">Den koloniale rygrad: Saigon Opera House, gamle hoteller, boutiques og cafeer. Elegant og gåvenligt.</div>
+        <div class="card-tip">💡 Fin strækning at slentre om aftenen mod Nguyen Hue.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B2</span><span class="card-title">Nguyen Hue gågade + "Cafe Apartment"</span></div>
+        <div class="card-body">Springvandsboulevard, og den berømte Cafe Apartment (42 Nguyen Hue): en gammel boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. Livligt om aftenen.</div>
+        <div class="card-tip">💡 Tag elevatoren op (lille gebyr) eller gå trappen — hver etage er en ny cafe.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B3</span><span class="card-title">Tan Dinh (den lyserøde kirke)</span></div>
+        <div class="card-body">Den knaldlyserøde Tan Dinh-kirke + Tan Dinh-marked. Mere lokalt hverdagsliv, mindre turistet.</div>
+        <div class="card-tip">💡 God for fotos + et kig ind i et rigtigt Saigon-marked.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B4</span><span class="card-title">Bui Vien gågade</span></div>
+        <div class="card-body">Backpacker-neon, gadebarer, gademusik. Vildt og livligt om aftenen. Til de ældste; ærligt lidt rå.</div>
+        <div class="card-tip">💡 Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#7c3aed">B5</span><span class="card-title">Book Street (Đường Sách Nguyễn Văn Bình)</span></div>
+        <div class="card-body">Charmerende bilfri boggade lige ved katedralen og postkontoret: boghandlere, små forlag, kaffevogne og lys mellem træerne. Rolig, hyggelig og fotogen.</div>
+        <div class="card-meta"><a href="https://www.vietnamairlines.com/us/en/plan-book/travel/travel-guide/ho-chi-minh-city-book-street" target="_blank">Vietnam Airlines rejseguide →</a></div>
+        <div class="card-tip">💡 Ligger klods op ad Notre-Dame + postkontoret (A3) — tag dem samlet.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#c026d3"></span>🛍️ Shopping til de unge</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C1</span><span class="card-title">Cafe Apartment (42 Nguyen Hue)</span></div>
+        <div class="card-body">Den berømte gamle boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. (Samme sted som kvarter B2.)</div>
+        <div class="card-tip">💡 Tag elevatoren op (lille gebyr) — hver etage er en ny cafe/butik.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C2</span><span class="card-title">Saigon Square</span></div>
+        <div class="card-body">Hal med billig streetwear, sko, tasker og kopivarer — populær blandt unge lokale. Prut om prisen.</div>
+        <div class="card-tip">💡 Kontanter (VND) virker bedst. 100 m fra Ben Thanh.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">C3</span><span class="card-title">Nguyen Trai-gaden</span></div>
+        <div class="card-body">Lokal streetwear- og modestrækning mod District 5. Rigtige butikker frem for turistboder.</div>
+        <div class="card-tip">💡 Godt hvis de unge vil have vietnamesisk streetwear.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">U1</span><span class="card-title">UNIQLO – Saigon Centre</span></div>
+        <div class="card-body">65-67 Lê Lợi, i Saigon Centre (Takashimaya-mall). Midt i seværdigheds-klyngen ved Nguyen Hue.</div>
+        <div class="card-meta">4,3★ · åbent til 21:30</div>
+        <div class="card-tip">💡 Ligger 100 m fra Nguyen Hue — nemt at flette ind i lørdags-ruten.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">U2</span><span class="card-title">UNIQLO – Dong Khoi (flagship)</span></div>
+        <div class="card-body">Parkson Saigon Tourist Plaza, 35Bis-45 Lê Thánh Tôn. Den store flagship-butik.</div>
+        <div class="card-meta">4,4★ (2.020 anm.) · åbent til 22:00</div>
+        <div class="card-tip">💡 Størst af de to og åben længst — god som aften-stop.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#c026d3">HM</span><span class="card-title">H&amp;M – Vincom Center Dong Khoi</span></div>
+        <div class="card-body">Vincom Center, Đồng Khởi/72 Lê Thánh Tôn. Ligger klods op ad Uniqlo Dong Khoi.</div>
+        <div class="card-meta">3,8★ (1.857 anm.) · åbent til 22:00</div>
+        <div class="card-tip">💡 Uniqlo (U2) + H&amp;M i samme mall-klynge — al teenager-shopping på ét stop.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-block">
+    <div class="list-h"><span class="list-dot" style="background:#dc2626"></span>🍕 Mad</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#dc2626">🍕</span><span class="card-title">Pizza 4P's Ben Thanh</span></div>
+        <div class="card-body">8 Thủ Khoa Huân, lige over for Ben Thanh Market. Den populære vietnamesisk-japanske pizzakæde med hjemmelavet ost — kendt for høj kvalitet. Kun ~200 m fra hotellerne.</div>
+        <div class="card-meta">Åbent til midnat (søn til 23) · <a href="https://pizza4ps.com/vn/location/933/" target="_blank">pizza4ps.com →</a></div>
+        <div class="card-tip">💡 Book gerne bord i forvejen — stedet er ofte fyldt.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-num" style="background:#dc2626">🍜</span><span class="card-title">Phở Việt Nam</span></div>
+        <div class="card-body">14 Phạm Hồng Thái, lige ved Ben Thanh-rundkørslen. Michelin Guide-noteret phở med hjemmelavede risnudler og mange oksekødsudskæringer. Autentisk og casual — 3 min gang fra hotellerne.</div>
+        <div class="card-meta">~80.000–100.000 VND/skål · åbent 06–03 · <a href="https://guide.michelin.com/us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/pho-viet-nam-district-1" target="_blank">Michelin Guide →</a></div>
+        <div class="card-tip">💡 Perfekt morgenmad eller sen-aften phø — åbent næsten døgnet rundt.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Tip: ruten (rækkefølge + frokoststop) bygger jeg når I har valgt hvilke stop I vil have med. Dette er geografi-overblikket.</footer>
+
+<script>
+const COLORS = { hotel:'#2563eb', sight:'#0f766e', hood:'#7c3aed', shop:'#c026d3', food:'#dc2626', booket:'#059669' };
+const CAT_LABEL = { hotel:'Hotel', sight:'Seværdighed', hood:'Kvarter', shop:'Shopping', food:'Mad', booket:'Booket hotel' };
+
+const map = L.map('map', { scrollWheelZoom: true }).setView([10.7762, 106.6962], 15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+}).addTo(map);
+
+const layers = { hotel:[], sight:[], hood:[], shop:[], food:[], booket:[] };
+
+function makeIcon(cat, label) {
+  return L.divIcon({
+    className: '',
+    html: `<div class="pin" style="background:${COLORS[cat]}"><span>${label}</span></div>`,
+    iconSize: [30,30], iconAnchor: [15,30], popupAnchor: [0,-30]
+  });
+}
+
+function addM(cat, label, lat, lng, title, body, tip, link, linkText) {
+  const gm = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  const html = `
+    <div class="pop-badge" style="background:${COLORS[cat]}">${label} · ${CAT_LABEL[cat]}</div>
+    <div class="pop-title">${title}</div>
+    <div class="pop-body">${body}</div>
+    ${tip ? `<div class="pop-tip">💡 ${tip}</div>` : ''}
+    ${link ? `<a class="pop-gm" style="color:#0071e3;display:block" href="${link}" target="_blank">🔗 ${linkText || 'Læs mere'} →</a>` : ''}
+    <a class="pop-gm" href="${gm}" target="_blank">📍 Åbn i Google Maps →</a>`;
+  const m = L.marker([lat,lng], { icon: makeIcon(cat,label) }).bindPopup(html);
+  layers[cat].push(m); m.addTo(map);
+}
+
+// ── HOTELLER ──────────────────────────────────────────────
+addM('hotel','H1', 10.7662031, 106.6900979, 'Cashew Inn',
+  '9,3 (82 anm.) · ~1.162 kr/2 nætter · fri afbestilling. Lille personligt hotel i Pham Ngu Lao/Bui Vien — livligt backpacker-kvarter, tættere på Bui Vien-natteliv, lidt længere til Dong Khoi.',
+  'Bedst hvis I vil have puls og gåafstand til Bui Vien om aftenen.');
+addM('hotel','H2', 10.7716918, 106.6940370, "Alagon D'antique Boutique Hotel & Spa",
+  '8,8 (845 anm.) · pool + spa, morgenmad + massage inkl. · ~3.746 kr/2 nætter. Boutique i antik-stil, meget centralt nær Ben Thanh.',
+  'Bedst hvis I vil bo midt i det hele med pool + spa efter en varm dag.');
+addM('hotel','H3', 10.786987, 106.691667, 'Homestay TITO',
+  '9,2 (203 anm.) · personale 9,8 · ~1.430 kr/2 nætter for 6. Ægte familiedrevet homestay i stille gyde i District 3 (nær Tan Dinh). Værtinden Ms Phuong roses meget. Ledigt for jeres datoer.',
+  '3 små dobbeltværelser (2+2+2). District 3 men gåafstand til seværdighederne + District 1.',
+  'https://www.booking.com/hotel/vn/homestay-tito.html?checkin=2026-07-31&checkout=2026-08-02&group_adults=6&no_rooms=2&group_children=0', 'Se på booking.com');
+addM('booket','H4 ✅', 10.772475, 106.694789, 'Sono Sallute Luxury Hotel — BOOKET ✅',
+  '<b>Bekræftet booking</b> (Booking.com-nr. 5360315797). Ind fre 31. juli (14–23.30), ud søn 2. august (senest 12). 2 nætter · 2 værelser · 6 voksne: ét 4-personers m. balkon + ét Superior dobbelt. I alt VND 6.320.098 (~1.650 kr) — betales på hotellet. Gratis afbestilling frem til 31/7 kl. 14. Beliggenhed: Lý Tự Trọng, District 1.',
+  'Jeres hotel i HCMC — luksushotel meget centralt i District 1, gåafstand til Ben Thanh og seværdighederne.',
+  'https://www.booking.com/hotel/vn/sono-sanlute-luxury.html', 'Se på booking.com');
+
+// ── SEVÆRDIGHEDER ─────────────────────────────────────────
+addM('sight','A1', 10.7797, 106.6922, 'War Remnants Museum',
+  'Stærkt, gribende museum om Vietnamkrigen. Teenagere husker det. ~1,5 t. Åbent dagligt 7:30–18:00.',
+  'Start her tidligt (køligt + få folk). Kan være voldsomt for de yngste.');
+addM('sight','A2', 10.7772, 106.6958, 'Reunification Palace',
+  'Præsidentpaladset frosset i 1975 — kampvogne i haven, krigsbunker i kælderen, retro-interiør. God story. ~1 t. Åbent 8:00–16:30.',
+  '5 min gåtur fra War Remnants — tag dem samlet.');
+addM('sight','A3', 10.7797, 106.6990, 'Notre-Dame + Centralpostkontoret',
+  'Smukt kolonialt postkontor (Eiffel-æra) med gammel Saigon-charme. Katedralens ydre er under restaurering. Hurtigt foto/bummel ~30 min.',
+  'Postkontoret indeni er det bedste — send et postkort hjem.');
+addM('sight','A4', 10.7722, 106.6980, 'Ben Thanh Market',
+  'Ikonisk marked: souvenirs, kaffe, tørrede frugter, streetfood. Turistet men klassisk. Natmarkedet udenfor tænder efter kl. 18.',
+  'Prut om prisen (start ~40%). Streetfood-stader inde til frokost.');
+addM('sight','A5', 10.7717, 106.7044, 'Bitexco Saigon Skydeck',
+  'Skyline-udsigt fra 49. etage. Ærligt: pænt men ikke et must — Landmark 81 er højere men uden for D1.',
+  'Bedst ved solnedgang. Spring over hvis tiden er knap.');
+
+// ── KVARTERER ─────────────────────────────────────────────
+addM('hood','B1', 10.7767, 106.7025, 'Dong Khoi & Operaen',
+  'Den koloniale rygrad: Saigon Opera House, gamle hoteller, boutiques og cafeer. Elegant og gåvenligt.',
+  'Fin strækning at slentre om aftenen mod Nguyen Hue.');
+addM('hood','B2', 10.7743, 106.7038, 'Nguyen Hue gågade + "Cafe Apartment"',
+  'Springvandsboulevard, og den berømte Cafe Apartment (42 Nguyen Hue): en gammel boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. Livligt om aftenen.',
+  'Tag elevatoren op (lille gebyr) eller gå trappen — hver etage er en ny cafe.');
+addM('hood','B3', 10.7900, 106.6893, 'Tan Dinh (den lyserøde kirke)',
+  'Den knaldlyserøde Tan Dinh-kirke + Tan Dinh-marked. Mere lokalt hverdagsliv, mindre turistet.',
+  'God for fotos + et kig ind i et rigtigt Saigon-marked.');
+addM('hood','B4', 10.7670, 106.6918, 'Bui Vien gågade',
+  'Backpacker-neon, gadebarer, gademusik. Vildt og livligt om aftenen. Til de ældste; ærligt lidt rå.',
+  'Sjovest 20:00–23:00. Hold øje med de yngste i mylderet.');
+addM('hood','B5', 10.780963, 106.7000734, 'Book Street (Đường Sách Nguyễn Văn Bình)',
+  'Charmerende bilfri boggade lige ved katedralen og postkontoret: rækker af boghandlere, små forlag, kaffevogne og lys mellem træerne. Rolig, hyggelig og fotogen — perfekt lille afstikker sammen med A3.',
+  'Ligger klods op ad Notre-Dame + postkontoret (A3) — tag dem samlet.',
+  'https://www.vietnamairlines.com/us/en/plan-book/travel/travel-guide/ho-chi-minh-city-book-street', 'Vietnam Airlines rejseguide');
+
+// ── SHOPPING ──────────────────────────────────────────────
+addM('shop','C1', 10.77395, 106.70435, 'Cafe Apartment (42 Nguyen Hue)',
+  'Den berømte gamle boligblok fyldt med indie-cafeer og småbutikker etage for etage. Stort teen-hit. (Samme sted som kvarter B2.)',
+  'Tag elevatoren op (lille gebyr) — hver etage er en ny cafe/butik.');
+addM('shop','C2', 10.7736, 106.6969, 'Saigon Square',
+  'Hal med billig streetwear, sko, tasker og kopivarer — populær blandt unge lokale. Prut om prisen.',
+  'Kontanter (VND) virker bedst. 100 m fra Ben Thanh.');
+addM('shop','C3', 10.7676, 106.6845, 'Nguyen Trai-gaden',
+  'Lokal streetwear- og modestrækning mod District 5. Rigtige butikker frem for turistboder.',
+  'Godt hvis de unge vil have vietnamesisk streetwear.');
+addM('shop','U1', 10.7734937, 106.7007577, 'UNIQLO – Saigon Centre',
+  '65-67 Lê Lợi, i Saigon Centre (Takashimaya-mall). 4,3★. Åbent til 21:30. Midt i seværdigheds-klyngen ved Nguyen Hue.',
+  'Ligger 100 m fra Nguyen Hue — nemt at flette ind i lørdags-ruten.');
+addM('shop','U2', 10.7774175, 106.7021148, 'UNIQLO – Dong Khoi (flagship)',
+  'Parkson Saigon Tourist Plaza, 35Bis-45 Lê Thánh Tôn. 4,4★ (2.020 anm.) — den store flagship-butik. Åbent til 22:00.',
+  'Størst af de to og åben længst — god som aften-stop.');
+addM('shop','HM', 10.7781404, 106.7016688, 'H&M – Vincom Center Dong Khoi',
+  'Vincom Center, Đồng Khởi/72 Lê Thánh Tôn. 3,8★ (1.857 anm.). Åbent til 22:00. Ligger klods op ad Uniqlo Dong Khoi.',
+  'Uniqlo (U2) + H&M i samme mall-klynge — teenager-shopping på ét stop.');
+
+// ── MAD ───────────────────────────────────────────────────
+addM('food','🍕', 10.7726, 106.6961, "Pizza 4P's Ben Thanh",
+  '8 Thủ Khoa Huân, lige over for Ben Thanh Market. Den populære vietnamesisk-japanske pizzakæde med hjemmelavet ost — kendt for høj kvalitet. Åbent til midnat (søndag til 23). Book gerne bord i forvejen.',
+  'Kun ~200 m fra hotellerne (H2/H4) — nemt aften-stop.',
+  'https://pizza4ps.com/vn/location/933/', 'Se på pizza4ps.com');
+addM('food','🍜', 10.77125, 106.69565, 'Phở Việt Nam',
+  '14 Phạm Hồng Thái, Bến Thành — lige ved Ben Thanh-rundkørslen. Michelin Guide-noteret phở med hjemmelavede risnudler og mange oksekødsudskæringer. ~80.000–100.000 VND/skål, aircondition, kort tages. Åbent 06–03.',
+  'Autentisk phở i verdensklasse, 3 min gang fra hotellerne.',
+  'https://guide.michelin.com/us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/pho-viet-nam-district-1', 'Se i Michelin Guide');
+
+// ── ZOOM TIL ALLE MARKØRER ────────────────────────────────
+const allMarkers = [...layers.hotel, ...layers.sight, ...layers.hood, ...layers.shop, ...layers.food, ...layers.booket];
+map.fitBounds(L.featureGroup(allMarkers).getBounds().pad(0.12));
+
+// ── FILTER-KNAPPER ────────────────────────────────────────
+const active = { hotel:true, sight:true, hood:true, shop:true, food:true, booket:true };
+function render(cat){ layers[cat].forEach(m => active[cat] ? m.addTo(map) : map.removeLayer(m)); }
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  const c = btn.dataset.cat;
+  btn.addEventListener('click', () => { active[c] = !active[c]; btn.classList.toggle('off', !active[c]); render(c); });
+});
+
+// ── FIND MIG ──────────────────────────────────────────────
+let meMarker = null;
+document.getElementById('findMe').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(pos => {
+    const { latitude, longitude } = pos.coords;
+    if (meMarker) map.removeLayer(meMarker);
+    meMarker = L.circleMarker([latitude, longitude], { radius: 8, color: '#fff', weight: 2, fillColor: '#2563eb', fillOpacity: 1 }).addTo(map);
+    map.setView([latitude, longitude], 16);
+  });
+});
+</script>
+
+</body>
+</html>

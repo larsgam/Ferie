@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vine og drikkevarer – Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: linear-gradient(160deg, #2c1a4e 0%, #4a1942 50%, #7b2d4f 100%); padding: 72px 22px 60px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #c4a8d4; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #c9b8d4; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    /* Highlight strip */
+    .must-taste {
+      background: linear-gradient(135deg, #4a1942 0%, #7b2d4f 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 0;
+    }
+    .must-taste h2 { color: white; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+    .must-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .must-item { background: rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 16px; }
+    .must-item-icon { font-size: 22px; margin-bottom: 6px; }
+    .must-item-name { font-size: 14px; font-weight: 700; color: white; margin-bottom: 2px; }
+    .must-item-desc { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+    /* Wine cards */
+    .wine-grid { display: grid; gap: 18px; }
+    .wine-card {
+      background: var(--color-section);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      border: 1px solid var(--color-divider);
+      border-left: 4px solid;
+    }
+    .wine-card.red { border-left-color: #8b1a2f; }
+    .wine-card.white { border-left-color: #c8a84b; }
+    .wine-card.sweet { border-left-color: #7b4f12; }
+    .wine-card.spirit { border-left-color: #2c5f2e; }
+    .wine-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .wine-name { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+    .wine-sub { font-size: 13px; color: var(--color-secondary); margin-top: 2px; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 980px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .badge-local { background: #f3e8ff; color: #6b21a8; }
+    .badge-region { background: #fef3c7; color: #92400e; }
+    .badge-musttry { background: #dcfce7; color: #166534; }
+    .badge-unique { background: #fee2e2; color: #991b1b; }
+    .wine-body { font-size: 14px; color: var(--color-text); line-height: 1.7; }
+    .wine-body ul { margin: 8px 0 0 18px; }
+    .wine-body li { margin-bottom: 4px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Bodega cards */
+    .bodega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .bodega-card { background: var(--color-section); border-radius: var(--radius); padding: 20px 24px; border: 1px solid var(--color-divider); }
+    .bodega-card.featured { border-color: #6b21a8; background: #faf5ff; }
+    .bodega-icon { font-size: 28px; margin-bottom: 10px; }
+    .bodega-name { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .bodega-name a { color: var(--color-text); }
+    .bodega-name a:hover { color: var(--color-accent); }
+    .bodega-meta { font-size: 13px; color: var(--color-secondary); margin-bottom: 8px; }
+    .bodega-desc { font-size: 13px; color: var(--color-text); line-height: 1.6; }
+
+    /* Order guide */
+    .order-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .order-card { background: var(--color-section); border-radius: 14px; padding: 18px 20px; }
+    .order-time { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .order-drink { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .order-desc { font-size: 13px; color: var(--color-secondary); line-height: 1.5; }
+
+    /* Frigiliana special */
+    .cana-card {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      color: white;
+      margin-top: 0;
+    }
+    .cana-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .cana-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+    .cana-card ul { margin: 8px 0 0 18px; }
+    .cana-card li { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.85); }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🍷 Vine og drikkevarer</span>
+    <a href="../overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Andalusien 2026</p>
+  <h1>Vine og drikkevarer</h1>
+  <p class="hero-sub">Axarquía og Málagas vinregion er en af Spaniens ældste — og en af de mindst kendte uden for landet</p>
+</section>
+
+<!-- MUST TASTE -->
+<section class="section" style="background:#1d1d1f">
+  <div class="section-inner">
+    <div class="must-taste">
+      <h2>Det skal I smage</h2>
+      <div class="must-list">
+        <div class="must-item">
+          <div class="must-item-icon">🍇</div>
+          <p class="must-item-name">Moscatel seco</p>
+          <p class="must-item-desc">Tør hvidvin fra Axarquía — blomstret og frisk</p>
+        </div>
+        <div class="must-item">
+          <div class="must-item-icon">🍯</div>
+          <p class="must-item-name">Málaga Dulce</p>
+          <p class="must-item-desc">Sød Moscatel-dessertvin — enestående til ost</p>
+        </div>
+        <div class="must-item">
+          <div class="must-item-icon">🥃</div>
+          <p class="must-item-name">Ron/aguardiente de caña</p>
+          <p class="must-item-desc">Lavet i Frigiliana — det eneste sted i Europa</p>
+        </div>
+        <div class="must-item">
+          <div class="must-item-icon">🍺</div>
+          <p class="must-item-name">Alhambra Reserva 1925</p>
+          <p class="must-item-desc">Lokal premium-øl fra Granada</p>
+        </div>
+        <div class="must-item">
+          <div class="must-item-icon">🍸</div>
+          <p class="must-item-name">Vermut con anchoa</p>
+          <p class="must-item-desc">Aperitif-kulturen er stærk i Andalusien</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VINE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Vine</p>
+    <h2 class="section-title">Málaga DO og Axarquía</h2>
+
+    <div class="wine-grid">
+
+      <div class="wine-card sweet">
+        <div class="wine-header">
+          <div>
+            <p class="wine-name">Moscatel de Alejandría</p>
+            <p class="wine-sub">Axarquías signaturdruesort</p>
+          </div>
+          <span class="badge badge-local">Lokal druetype</span>
+        </div>
+        <div class="wine-body">
+          <p>Moscatel-druerne dyrkes på de stejle, stenede bjergskråninger i Axarquía-regionen — præcis det område I befinder jer i. Druerne tørres i solen efter høst for at koncentrere sukkeret, en teknik kaldet <em>pasificación</em>.</p>
+          <ul>
+            <li><strong>Moscatel seco:</strong> Tør hvid, blomstret og frisk med noter af appelsin og jasmin. Overraskende anderledes end søde Moscatel-vine</li>
+            <li><strong>Málaga Dulce:</strong> Den klassiske søde udgave — rig, honningagtig, med rosinsødme. Drik til dessert eller gedeost med honning</li>
+            <li><strong>Moscatel "Naturalmente Dulce":</strong> Ikke-forstærket sød vin med mere frugtig friskhed end den klassiske Dulce</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="wine-card sweet">
+        <div class="wine-header">
+          <div>
+            <p class="wine-name">Pedro Ximénez (PX)</p>
+            <p class="wine-sub">Málaga DO</p>
+          </div>
+          <span class="badge badge-region">Málaga DO</span>
+        </div>
+        <div class="wine-body">
+          <p>Den anden store Málaga-druetype. Bruges til søde vine med karamel, figen og chokoladekompleksitet — dybere og mørkere end Moscatel. Fremragende til is eller mørk chokolade.</p>
+          <ul>
+            <li><strong>Pajarete:</strong> Traditionel fortified Málaga-vin af PX og Moscatel, lagret i solera-system. Sjælden og historisk</li>
+            <li><strong>Seco Añejo:</strong> Tør lagret PX — nøddetoner, rav og en let bitterhed</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="wine-card red">
+        <div class="wine-header">
+          <div>
+            <p class="wine-name">Sierras de Málaga DO</p>
+            <p class="wine-sub">Tørre røde og hvide vine</p>
+          </div>
+          <span class="badge badge-region">Axarquía sub-zone</span>
+        </div>
+        <div class="wine-body">
+          <p>Siden 2001 har Sierras de Málaga DO gjort det muligt at lave tørre vine i regionen. Axarquía-sub-zonen dækker præcis bjergene omkring Frigiliana. Her produceres:</p>
+          <ul>
+            <li><strong>Røde:</strong> Typisk Romé (lokal sort), Syrah og Cabernet Sauvignon. Kraftige, varme vine med mørk frugt</li>
+            <li><strong>Hvide:</strong> Moscatel seco og Chardonnay. Friske og aromatiske</li>
+            <li><strong>Rosé:</strong> Primært af Romé og Syrah — frugtrig og tør</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BODEGAS -->
+<section class="section" style="background:var(--color-section); padding-top:0">
+  <div class="section-inner">
+    <p class="section-label">Besøg</p>
+    <h2 class="section-title">Lokale bodegas</h2>
+
+    <div class="bodega-grid">
+
+      <div class="bodega-card featured">
+        <div class="bodega-icon">🍷</div>
+        <p class="bodega-name"><a href="https://www.bentomiz.com" target="_blank">Bodegas Bentomiz</a></p>
+        <p class="bodega-meta">Sayalonga · ~20 min fra Frigiliana</p>
+        <p class="bodega-desc">En af Axarquías bedste bodegas med fantastisk udsigt. Producerer fremragende tør Moscatel (<em>Ariyanas</em>), sød Moscatel og Sierras de Málaga-vine. Vingårdsbesøg og smagninger kan bookes. <strong>Meget anbefalet.</strong></p>
+      </div>
+
+      <div class="bodega-card">
+        <div class="bodega-icon">🌿</div>
+        <p class="bodega-name"><a href="https://www.samsarawines.com" target="_blank">Bodega Samsara</a></p>
+        <p class="bodega-meta">Cómpeta · ~25 min fra Frigiliana</p>
+        <p class="bodega-desc">Lille økologisk bodega i Cómpeta. Drevet af et britisk par. Moscatel, Romé og Syrah. Hyggelig og uformel atmosfære — kan kombineres med besøg i Cómpeta.</p>
+      </div>
+
+      <div class="bodega-card">
+        <div class="bodega-icon">🏔️</div>
+        <p class="bodega-name">Bodegas Dimobe / Compañía de Vinos Málaga</p>
+        <p class="bodega-meta">Moclinejo · ~15 min fra Frigiliana</p>
+        <p class="bodega-desc">En af de store Axarquía-producenter. Brede sortiment af Moscatel i alle stilarter — tør, halvsød og sød. Findes i mange lokale supermarkeder og restauranter.</p>
+      </div>
+
+      <div class="bodega-card">
+        <div class="bodega-icon">🛒</div>
+        <p class="bodega-name">Mercadona og lokale vinbutikker</p>
+        <p class="bodega-meta">Nerja</p>
+        <p class="bodega-desc">Lokale Axarquía-vine som Ariyanas (Bentomiz) og Dimobe-serien fås i Mercadona og specialbutikker i Nerja centrum. Priser fra 7–15 EUR per flaske.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FRIGILIANA SUGAR CANE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Unik i Europa</p>
+    <h2 class="section-title">Frigilianas sukkerrørshistorie</h2>
+
+    <div class="cana-card">
+      <h3>🌿 Det eneste sukkerrørsmølle i Europa</h3>
+      <p>Frigiliana er det eneste sted i Europa med en fungerende sukkerrørsmølle (<em>trapiche</em>). Compañía Industrial Azucarera har produceret sukker og sukkerrørsprodukter her siden 1500-tallet — baseret på en teknologi maurerne bragte til Andalusien.</p>
+      <ul>
+        <li><strong>Miel de caña:</strong> Mørk, tyktflydende sukkerrørsirup med en dyb, rå sødme. Bruges i madlavning og til at dryppe over frisk ost. Køb et glas på markedet eller i butikker i Frigiliana</li>
+        <li><strong>Ron de caña / aguardiente:</strong> Lokal sukkerrørsbrændevin. Produceret i begrænsede mængder, stærkere og mere "rå" end vestindisk rom — tættere på Latin-Amerikanskstil. Spørg i lokale barer</li>
+        <li><strong>Chacoli:</strong> Svagt fermenteret, lavalkoholisk sukkerrørsdrik (ligner et "must"). Traditionel og sæsonbestemt</li>
+      </ul>
+      <p style="margin-top:12px">Fabriksbutikken ved møllen i Frigiliana sælger alle produkterne direkte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HVAD BESTILLER MAN HVORNÅR -->
+<section class="section" style="background:var(--color-section); padding-top:0">
+  <div class="section-inner">
+    <p class="section-label">Praktisk guide</p>
+    <h2 class="section-title">Hvad bestiller man hvornår?</h2>
+
+    <div class="order-grid">
+      <div class="order-card">
+        <p class="order-time">Morgenmad / formiddag</p>
+        <p class="order-drink">Café solo eller con leche</p>
+        <p class="order-desc">Spanierne drikker sjældent noget andet til morgenmad. Stærk espresso eller med mælk.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Frokost-aperitif</p>
+        <p class="order-drink">Vermut (Vermouth)</p>
+        <p class="order-desc">Stærk tradition i Andalusien — rød eller hvid vermut på is med en oliven eller ansjos. Bestil "un vermut" ca. kl. 12–13.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Til frokost</p>
+        <p class="order-drink">Tinto de verano eller lokal vin</p>
+        <p class="order-desc">Tinto de verano = rødvin med citrusvand (som sangria, men lettere). Eller bestil en flaske lokal Axarquía-vin.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Tapas og snacks</p>
+        <p class="order-drink">Cerveza — Alhambra</p>
+        <p class="order-desc">Alhambra Reserva 1925 er den lokale premium-øl fra Granada. Mere karakter end Mahou/San Miguel. Serveres altid med en gratis tapa.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Til aftensmad</p>
+        <p class="order-drink">Lokal rødvin eller Moscatel seco</p>
+        <p class="order-desc">Tør Moscatel fra Axarquía til fisk og skaldyr. Lokal rød (Romé/Syrah) til kød og gryderetter.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Efter maden</p>
+        <p class="order-drink">Málaga Dulce eller PX</p>
+        <p class="order-desc">En lille glas sød Moscatel eller Pedro Ximénez til dessert eller som digestif. Typisk serveres det i et lille glas på is eller ved stuetemperatur.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Til ost og tapas</p>
+        <p class="order-drink">Fino Sherry</p>
+        <p class="order-desc">Tør, nøddeagtig hvidvin fra Jerez — ikke fra regionen, men allestedsnærværende i andalusiske barer og perfekt til jamón og manchego.</p>
+      </div>
+      <div class="order-card">
+        <p class="order-time">Lokalt unikum</p>
+        <p class="order-drink">Ron de caña fra Frigiliana</p>
+        <p class="order-desc">Spørg specifikt efter det i barer i Frigiliana. Ikke alle har det, men det er det mest lokale I kan få.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRISER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Priser og tips</p>
+    <h2 class="section-title">Hvad koster det?</h2>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px;">
+      <div style="background:var(--color-section); border-radius:var(--radius); padding:20px 24px;">
+        <p style="font-size:28px; font-weight:700; letter-spacing:-0.03em; margin-bottom:4px;">1–2 EUR</p>
+        <p style="font-size:14px; color:var(--color-secondary);">Café con leche, øl (cañita) eller glas vin på en lokal bar</p>
+      </div>
+      <div style="background:var(--color-section); border-radius:var(--radius); padding:20px 24px;">
+        <p style="font-size:28px; font-weight:700; letter-spacing:-0.03em; margin-bottom:4px;">3–5 EUR</p>
+        <p style="font-size:14px; color:var(--color-secondary);">Glas lokal Axarquía-vin eller Vermut på restaurant</p>
+      </div>
+      <div style="background:var(--color-section); border-radius:var(--radius); padding:20px 24px;">
+        <p style="font-size:28px; font-weight:700; letter-spacing:-0.03em; margin-bottom:4px;">7–15 EUR</p>
+        <p style="font-size:14px; color:var(--color-secondary);">Flaske lokal Axarquía-vin (Ariyanas, Dimobe) i butik</p>
+      </div>
+      <div style="background:var(--color-section); border-radius:var(--radius); padding:20px 24px;">
+        <p style="font-size:28px; font-weight:700; letter-spacing:-0.03em; margin-bottom:4px;">4–8 EUR</p>
+        <p style="font-size:14px; color:var(--color-secondary);">Glas Málaga Dulce eller PX på restaurant</p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; background:#fef9e7; border:1px solid #f0d060; border-radius:12px; padding:16px 20px; font-size:14px; color:#5c4500; line-height:1.6;">
+      <strong>Tip:</strong> I lokale andalusiske barer (<em>bares de barrio</em>) — væk fra de turistede pladser — er en øl, et glas vin eller en vermut næsten altid under 1,50 EUR, og de fleste steder serverer en gratis tapa med enhver drink.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Familieferie · Påske 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Andalusien oversigt</a></p>
+</footer>
+
+</body>
+</html>

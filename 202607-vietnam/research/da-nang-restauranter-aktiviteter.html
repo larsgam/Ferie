@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Da Nang – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 980px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .sub-title { font-size: 19px; font-weight: 700; margin: 28px 0 14px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+
+    .warning-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #7f1d1d; line-height: 1.6; margin: 16px 0; }
+    .warning-box strong { color: #991b1b; }
+    .tip-box { background: #fef9e7; border: 1px solid #f0d060; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #5c4500; line-height: 1.6; margin: 16px 0; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body li { margin-bottom: 4px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🏖️ Da Nang</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Da Nang</h1>
+  <p class="hero-sub">Restauranter og aktiviteter. Research lavet feb 2026. Da Nang, 3 dage (dag 22-25 i rejseplanen, ca. 27.-30. juli 2026).</p>
+</section>
+
+<!-- RESTAURANTER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+
+    <h3 class="sub-title">Michelin Guide / Bib Gourmand</h3>
+    <p style="font-size:14px; color:var(--color-secondary); margin-bottom:14px">Da Nang er med i Michelin Guide Vietnam (lanceret 2023). Følgende restauranter er listet:</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Ba Dieu (Tran Tong Street)</strong></td><td>Mi Quang</td><td>Michelin-anbefalet. En af de mest berømte Mi Quang-spisesteder i Da Nang. Serverer Da Nangs signaturnudelret med kurkumafarvede nudler, rejer, svinekød, urter og sprøde riscracker. Autentisk gaderestaurant.</td><td>Under 100.000 VND (~30 DKK)</td><td><a href="https://guide.michelin.com/vn/en/da-nang-region/da-nang/restaurant/ba-dieu-tran-tong-street" target="_blank">Michelin Guide ↗</a></td></tr>
+          <tr><td>2</td><td><strong>Olivia's Prime</strong></td><td>Vietnamesisk/Finere</td><td>Michelin-anbefalet. Moderne vietnamesisk køkken med høj kvalitet. Mere raffineret oplevelse i Da Nang.</td><td>$$</td><td><a href="https://guide.michelin.com/vn/en/da-nang-region/da-nang/restaurant/olivia-s-prime" target="_blank">Michelin Guide ↗</a></td></tr>
+          <tr><td>3</td><td><strong>Pho Khoi Hoi</strong></td><td>Pho</td><td>Michelin-anbefalet. Kendt for deres pho - en klassisk vietnamesisk nudelsuppe med oksekød eller kylling. Enkel indretning, fantastisk bouillon.</td><td>Under 100.000 VND (~30 DKK)</td><td><a href="https://guide.michelin.com/vn/en/da-nang-region/da-nang/restaurant/pho-khoi-hoi" target="_blank">Michelin Guide ↗</a></td></tr>
+          <tr><td>4</td><td><strong>Lamai Garden</strong></td><td>Vietnamesisk</td><td>Michelin-anbefalet. Haveinspireret restaurant med vietnamesisk køkken. Hyggelig atmosfære.</td><td>$$</td><td><a href="https://guide.michelin.com/vn/en/da-nang-region/da-nang/restaurant/lamai-garden" target="_blank">Michelin Guide ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Seafood-restauranter</h3>
+    <p style="font-size:14px; color:var(--color-secondary); margin-bottom:14px">Da Nang er berømt for fisk og skaldyr direkte fra havet. Seafood-restauranterne langs kysten er en must-do oplevelse.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td><strong>Be Man Seafood</strong></td><td>Seafood</td><td>En af Da Nangs mest populære seafood-restauranter. Kæmpe udvalg af levende skaldyr, fisk og krebs som du vælger fra akvarier og isbade. Grillet, dampet eller stegt efter ønske. Sidder udendørs under baldakiner. Hummer, krabber, blæksprutte, kammuslinger, tigerrejer. Meget populær hos lokale og turister.</td><td>200.000-500.000 VND/person (~55-140 DKK)</td><td><a href="https://www.tripadvisor.com/Restaurant_Review-g298085-d4782777-Reviews-Be_Man-Da_Nang.html" target="_blank">TripAdvisor ↗</a></td></tr>
+          <tr><td>6</td><td><strong>Hai San Pho</strong> (Seafood Street)</td><td>Seafood</td><td>"Seafood Street" - en hel gade (Man Thai) med seafood-restauranter langs Son Tra-halvøens kyst. Mange restauranter side om side. Vælg skaldyr fra displays udendørs. Friskest muligt - fisket samme dag. Fantastisk solnedgangsview.</td><td>150.000-400.000 VND/person (~40-110 DKK)</td><td>Søg "Man Thai Seafood Street Da Nang"</td></tr>
+          <tr><td>7</td><td><strong>Nha Hang Seafood Be Anh</strong></td><td>Seafood</td><td>Populært lokalt sted ved My Khe Beach-området. Kendt for grillede kammuslinger med løg og jordnødder, dampede blåmuslinger i citrongræs, og stegt blæksprutte. God pris-kvalitet.</td><td>150.000-350.000 VND/person (~40-100 DKK)</td><td>Søg "Be Anh Seafood Da Nang"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Lokale specialiteter (Mi Quang &amp; Banh Xeo)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td><strong>Mi Quang Ba Mua</strong></td><td>Mi Quang</td><td>Legendaryisk Mi Quang-restaurant i Da Nang. Kurkuma-nudler med rejer, svinekød, vagtelæg, friske urter og sprøde riscracker. Et must-try. Enkelt lokalt spisested - autentisk og billigt. Åbner tidligt, lukker når det er udsolgt.</td><td>Under 50.000 VND (~14 DKK)</td><td>Søg "Mi Quang Ba Mua Da Nang"</td></tr>
+          <tr><td>9</td><td><strong>Banh Xeo Ba Duong</strong></td><td>Banh Xeo</td><td>Da Nangs mest berømte banh xeo-restaurant. Sprøde rispapir-pandekager fyldt med rejer, svinekød, bønner og bønnespirer. Rulles i rispapir med friske urter og dyppes i sød nuoc mam-sauce. Teenagere elsker det interaktive aspekt (man ruller selv). Altid travlt - populær hos lokale.</td><td>30.000-60.000 VND/stk (~8-17 DKK)</td><td>Søg "Banh Xeo Ba Duong Da Nang"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Gode middagssteder</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Navn</th><th>Type</th><th>Beskrivelse</th><th>Pris</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td><strong>Fatfish Restaurant &amp; Lounge</strong></td><td>Seafood/International</td><td>Moderne restaurant med udsigt over havet ved My Khe Beach. Frisk seafood, BBQ, vietnamesisk og vestlig mad. God atmosfære om aftenen. Velegnet til familier. Cocktails og smoothies til de voksne.</td><td>200.000-400.000 VND/person (~55-110 DKK)</td><td>Søg "Fatfish Da Nang"</td></tr>
+          <tr><td>11</td><td><strong>Brilliant Seafood Restaurant</strong></td><td>Seafood/Vietnamesisk</td><td>Stort, populært seafood-sted. Mange retter at vælge imellem. Live-seafood du selv vælger. Gode anmeldelser for service og kvalitet. Ligger tæt på centrum.</td><td>200.000-500.000 VND/person (~55-140 DKK)</td><td>Søg "Brilliant Seafood Da Nang"</td></tr>
+          <tr><td>12</td><td><strong>Madame Lan</strong></td><td>Vietnamesisk</td><td>Elegant vietnamesisk restaurant i kolonialstil-bygning. Bredt udvalg af vietnamesisk mad - fra pho til spring rolls til seafood. Velegnet til familier der vil prøve mange forskellige retter. Aircondition (rart i juli-varmen). God introduktion til vietnamesisk køkken.</td><td>100.000-250.000 VND/person (~28-70 DKK)</td><td>Søg "Madame Lan Da Nang"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Tips til at spise i Da Nang</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🦞</div><div class="card-title">Seafood-sæson</div><p class="card-body">Juli er fremragende for fisk og skaldyr - havet er roligt, fiskerne sejler ud dagligt.</p></div>
+      <div class="card"><div class="card-icon">💰</div><div class="card-title">Prisforhandling</div><p class="card-body">På seafood-restauranter prissættes skaldyr pr. kilo. Aftal prisen FØR tilberedning.</p></div>
+      <div class="card"><div class="card-icon">⚖️</div><div class="card-title">Bestil efter vægt</div><p class="card-body">Peg på de skaldyr du vil have i displayet, personalet vejer det og fortæller prisen.</p></div>
+      <div class="card"><div class="card-icon">🍜</div><div class="card-title">Mi Quang</div><p class="card-body">Da Nangs absolutte signaturret. Adskiller sig fra andre nudleretter ved de karakteristiske kurkuma-gule nudler og den minimale bouillon.</p></div>
+      <div class="card"><div class="card-icon">🥞</div><div class="card-title">Banh Xeo</div><p class="card-body">Da Nang-versionen er crispier og mindre end Saigon-versionen. Serveres med et bjerg af friske urter.</p></div>
+      <div class="card"><div class="card-icon">🕐</div><div class="card-title">Spisetider</div><p class="card-body">Mange lokale steder åbner tidligt (6-7) og lukker tidligt (14-15). Seafood-restauranter serverer typisk aftensmad fra 17:00.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter og seværdigheder</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">My Khe Beach</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Forbes har kåret My Khe til "en af verdens 6 smukkeste strande." 30 km lang kyststrækning med blødt hvidt sand, azurblåt vand og bjerge i baggrunden. I juli er det absolut højsæson med 30-35°C, havtemp 28-31°C og 12+ timers sol dagligt.</p>
+        <p><strong>Bedste område:</strong> Strækningen ud for Vo Nguyen Giap-gaden (Da Nangs strand-boulevard) har flest faciliteter: liggestole, parasoller, omklædningsrum, brusere, caféer og restauranter. Området mellem Pham Van Dong-broen og Son Tra-halvøen er mest velholdt.</p>
+        <p><strong>Faciliteter:</strong> Liggestole og parasol kan lejes for ca. 50.000-100.000 VND (14-28 DKK). Omklædning og brusere tilgængelige. Livredder på vagt i dagtimerne.</p>
+        <p><strong>Vandaktiviteter:</strong> Surfing (udlejning af boards), jetski, parasailing, SUP (stand up paddle), kajak, bananbåd. Udlejere langs stranden.</p>
+        <p><strong>Tips:</strong> Gå tidligt om morgenen (6-8) for at se lokale dyrke motion og tai chi. Solnedgang (17:30-18:30 i juli) er magisk. OBS: Lejlighedsvis gopler juni-august - spørg livredder.</p>
+        <p><strong>Pris:</strong> Gratis adgang til stranden. Vandaktiviteter: jetski ca. 500.000-800.000 VND/15 min (~140-220 DKK), parasailing ca. 600.000-1.000.000 VND (~165-275 DKK).</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Marble Mountains (Ngu Hanh Son)</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Fem marmor- og kalkstensbjerge opkaldt efter de fem elementer (metal, træ, vand, ild, jord). Fyldt med grotter, pagoder, buddhistiske templer og fantastisk udsigt. Et af Da Nangs mest ikoniske steder.</p>
+        <p><strong>Vigtigste at se:</strong> <strong>Thuy Son</strong> (vandbjerget) er det største og mest besøgte. Highlights: <strong>Huyen Khong-grotten</strong> (kæmpe grotte med buddhastatuer og naturligt lysindfald fra loftet - spektakulært!), <strong>Am Phu-grotten</strong> (helvedes-grotte med dramatiske skulpturer - teenagere elsker den), <strong>Linh Ung Pagoda</strong>, udsigtsplatformen på toppen (panoramaudsigt over Da Nang, strand og bjerge).</p>
+        <p><strong>Praktisk info:</strong> Der er elevator op (15.000 VND) eller trapper (ca. 156 trin). Brug gode sko - marmortrinene kan være glatte. Ca. 2-3 timer for et grundigt besøg. Tag vand med.</p>
+        <p><strong>Bedste tid:</strong> Tidlig morgen (7-8) inden varmen og de store turistgrupper. Undgå middag - stenhellerne bliver brændende varme.</p>
+        <p><strong>Pris:</strong> Entre: 40.000 VND/voksen (~11 DKK). Elevator: 15.000 VND. Am Phu-grotte: 20.000 VND ekstra.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Non Nuoc Beach</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Ligger direkte ved foden af Marble Mountains. Bredere og mere rolig end My Khe. Smukt med klipperne som baggrund. Perfekt at kombinere med Marble Mountains-besøg.</p>
+        <p><strong>Praktisk info:</strong> 7 km fra Da Nang centrum. Færre faciliteter end My Khe men også færre turister. God til en rolig stranddag efter Marble Mountains. Kendt for Non Nuoc stenskulptur-landsbyen i nærheden (håndlavet marmorskulptur).</p>
+        <p><strong>Tips:</strong> Kombiner: Marble Mountains om morgenen (7-10), derefter Non Nuoc Beach resten af dagen.</p>
+        <p><strong>Pris:</strong> Gratis adgang</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Ba Na Hills og Golden Bridge</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Temapark og resort i Truong Son-bjergene, 1.487 meter over havet, ca. 25 km vest for Da Nang centrum. Berømt for <strong>Golden Bridge</strong> (Cau Vang) - den ikoniske bro der "holdes" af to gigantiske stenhænder. Også French Village (kolonistilsbygning), forlystelsespark, templer og fantastisk udsigt. Temperaturen er 5-10°C lavere end i Da Nang - behageligt i juli!</p>
+        <p><strong>Svævebane:</strong> Verdens længste og højeste enkelttråds-svævebane (5.801 m, 1.368 m stigning). Selve turen op er en oplevelse - ca. 20 min med spektakulær udsigt over junglen.</p>
+        <p><strong>Hvad man kan lave:</strong> Golden Bridge (fotostop), French Village (gader, cafeer, underholdning), Fantasy Park (indendørs forlystelsespark med adskillige attraktioner - gratis med entre), Debay Wine Cellar (fransk vinkælder fra 1923), Le Jardin d'Amour (blomsterhaver), Linh Ung Pagoda (stor buddhastatue).</p>
+        <p><strong>Hvor lang tid:</strong> Brug en hel dag (6-8 timer). Åbner kl. 7:00 - kom tidligt for at undgå køer til svævebanen og få de bedste fotos ved Golden Bridge uden masser af mennesker.</p>
+        <p><strong>Praktisk info:</strong> Transport: Taxa/Grab ca. 30-40 min fra Da Nang centrum (ca. 300.000-400.000 VND/tur, ~85-110 DKK). Medbring let jakke (køligere i bjergene). Spis frokost deroppe - der er mange restauranter (men dyrere end i byen).</p>
+        <p><strong>Pris:</strong> Billetter: 900.000 VND/voksen (~250 DKK), 750.000 VND/barn 1-1,4 m (~210 DKK). Inkluderer svævebane og alle attraktioner. Book online for rabat.</p>
+        <p><strong>Tips til familien:</strong> Fantasy Park er overraskende sjovt for teenagere (bumper cars, 4D-biograf, arkadespil). Golden Bridge er mest magisk tidligt morgen eller sen eftermiddag. Weekender er travlest - I er der en tirsdag-torsdag, perfekt!</p>
+        <p><a href="https://banahills.sunworld.vn/en" target="_blank">Ba Na Hills officiel hjemmeside ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Son Tra Peninsula (Monkey Mountain)</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Halvø nord for Da Nang med tropisk regnskov, fantastiske strande, en kæmpe pagode og vilde aber. Kaldet "Monkey Mountain" af de amerikanske soldater under Vietnamkrigen. Naturreservat med den sjældne Red-shanked Douc langur - en af verdens smukkeste aber med rød, sort, hvid og grå pels.</p>
+        <p><strong>Aber:</strong> <strong>Red-shanked Douc langurs</strong> ses bedst tidlig morgen (6-8) eller sen eftermiddag (15-17) langs vejene i bjergene. Kør langsomt og hold øje med trætoppene. De er sky men kan ses tæt på fra vejen. De lever KUN her og i et par andre steder i Vietnam/Laos. Også makaquer (mindre sky, nysgerrige).</p>
+        <p><strong>Linh Ung Pagoda:</strong> Kæmpe pagodekompleks med en 67 meter høj Lady Buddha-statue (højeste i Vietnam) med udsigt over Da Nang Bay. Gratis entre. Spektakulær fotomulighed.</p>
+        <p><strong>Strande:</strong> <strong>Bai But</strong> (Buddha Beach): afsondret strand i bugten. <strong>Bai Rang</strong>: hvid sand, klart vand. <strong>Tien Sa Beach</strong>: populær, faciliteter tilgængelige. Vandaktiviteter: jetski, parasailing, SUP, kajak, bananbåd.</p>
+        <p><strong>Hvordan man kommer derhen:</strong> Taxa/Grab fra Da Nang centrum: 20-30 min. Lej scooter (men stejle bjergveje - kun for erfarne). Organiser en privat guide med bil for hele halvøen (ca. 500.000-800.000 VND, ~140-220 DKK for halv dag).</p>
+        <p><strong>Praktisk info:</strong> Brug en halv til hel dag. Ruten: Linh Ung Pagoda → udsigtsplatforme langs vejen → abespotting → strand + vandaktiviteter. Medbring vand og snacks. Solcreme!</p>
+        <p><strong>Pris:</strong> Gratis adgang til halvøen og Linh Ung Pagoda. Vandaktiviteter ved strandene: varierer.</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Dragon Bridge (Cau Rong)</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Da Nangs ikoniske bro formet som en kæmpe drage der strækker sig 666 meter over Han-floden. Om aftenen er den oplyst i skiftende farver. <strong>Hver lørdag og søndag kl. 21:00</strong> spyr dragen ild og vand i et 15-minutters show! Fuldstændig vanvittigt og unikt.</p>
+        <p><strong>Praktisk info:</strong> Showet er gratis. Stil jer på østsiden (My Khe-siden) af broen for bedste udsigt og for at undgå at blive våde af vandsprayet. Kom kl. 20:30 for at få en god plads. Showet trækker store folkemængder.</p>
+        <p><strong>Tips:</strong> <strong>I er i Da Nang tirsdag-torsdag</strong> ifølge planen - det betyder desværre INGEN ildshow (kun lør/søn). Overvej at tilpasse rejseplanen så mindst én aften i Da Nang falder på en lørdag eller søndag. Alternativt er broen stadig smuk oplyst om aftenen.</p>
+        <p><strong>Pris:</strong> Gratis</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">Han Market (Cho Han)</p>
+      <div class="activity-body">
+        <p><strong>Beskrivelse:</strong> Da Nangs ældste og mest berømte marked. To etager med alt fra tørret fisk og krydderier til tøj, souvenirs, kaffe og lokale snacks. Mere autentisk end turistmarkeder. God mulighed for at købe vietnamesisk kaffe, tørrede frugter, nudler og souvenirs.</p>
+        <p><strong>Praktisk info:</strong> Åbent dagligt ca. 6:00-18:00. Ligger centralt ved Han-floden. 2. sal har tøj og souvenirs. Stueetagen har mad og friske varer.</p>
+        <p><strong>Tips:</strong> Forhandl altid på pris (start med 50% af første tilbud). Madstaderne på 1. sal er gode til frokost - prøv banh mi, bun cha, eller friske smoothies. Kombiner med en gåtur langs Han River Promenade.</p>
+        <p><strong>Pris:</strong> Gratis entre</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Vandaktiviteter</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Aktivitet</th><th>Beskrivelse</th><th>Pris (ca.)</th><th>Hvor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jetski</strong></td><td>15-30 min tur langs kysten. Spændende for teenagere! Kræver normalt min. 16 år for at køre selv.</td><td>500.000-1.000.000 VND (~140-275 DKK)</td><td>My Khe Beach, Son Tra-strande</td></tr>
+          <tr><td><strong>Parasailing</strong></td><td>Flyv over havet i faldskærm trukket af speedbåd. Fantastisk udsigt.</td><td>600.000-1.000.000 VND (~165-275 DKK)</td><td>My Khe Beach, Son Tra</td></tr>
+          <tr><td><strong>SUP (Stand Up Paddle)</strong></td><td>Rolig paddling langs kysten. God for alle niveauer.</td><td>200.000-400.000 VND/time (~55-110 DKK)</td><td>My Khe Beach, Son Tra</td></tr>
+          <tr><td><strong>Surfing</strong></td><td>Juli har moderate bølger - gode for begyndere/øvede. Surfboard-udlejning og lektioner tilgængelige.</td><td>Board-leje: 200.000 VND/time (~55 DKK), lektion: 500.000+ VND (~140+ DKK)</td><td>My Khe Beach</td></tr>
+          <tr><td><strong>Bananbåd</strong></td><td>Sjov gruppetur på oppustelig banan trukket af speedbåd. Perfekt for familien.</td><td>200.000-300.000 VND/person (~55-85 DKK)</td><td>Son Tra-strande</td></tr>
+          <tr><td><strong>Kajak</strong></td><td>Udforsk kysten i kajak. Kan lejes ved flere strande.</td><td>150.000-300.000 VND/time (~40-85 DKK)</td><td>My Khe, Son Tra</td></tr>
+          <tr><td><strong>Snorkling/dykning</strong></td><td>Bedre ved Cham Islands (fra Hoi An), men muligt ved Son Tra.</td><td>Varierer</td><td>Son Tra</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Vejr i juli - fordele</h3>
+    <div class="card-grid">
+      <div class="card" style="background:white"><div class="card-icon">🌡️</div><div class="card-title">Temperatur</div><p class="card-body">30-35°C i luften, 28-31°C i havet. Solrigt og varmt.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">☀️</div><div class="card-title">Sol</div><p class="card-body">12+ timers dagslys, 8-9 timers solskin. Bedste strand-sæson!</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🌦️</div><div class="card-title">Regn</div><p class="card-body">Minimal regn i juli (tørsæson i Central Vietnam). Kort regnbyge kan forekomme men sjældent.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">🌊</div><div class="card-title">Hav</div><p class="card-body">Roligt hav, perfekt til svømning og vandaktiviteter. Bølger moderate - gode til surfing.</p></div>
+      <div class="card" style="background:white"><div class="card-icon">💡</div><div class="card-title">Tip</div><p class="card-body">Juli er højsæson (vietnamesisk skoleferie). Book Ba Na Hills-billetter og populære restauranter i forvejen. Brug solcreme SPF 50+ og hat - solen er intens!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">3 dage</p>
+    <h2 class="section-title">Foreslået 3-dages program for Da Nang</h2>
+    <div class="tip-box">
+      <strong>Tip:</strong> Baseret på <a href="../planer.html">rejseplanen</a> (Da Nang-dagene)
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Plan</th><th>Highlights</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dag 1</strong> (tir 28. jul)</td><td>Marble Mountains om morgenen (7-10) → Non Nuoc Beach (10-14) → My Khe Beach om eftermiddagen → seafood-middag</td><td>Mi Quang til frokost (Ba Dieu eller Ba Mua), seafood til middag (Be Man eller Seafood Street)</td></tr>
+          <tr><td><strong>Dag 2</strong> (ons 29. jul)</td><td>Ba Na Hills heldagstur (7-16) → Dragon Bridge om aftenen (oplyst men intet ildshow på onsdag)</td><td>Tidlig afgang, Golden Bridge, Fantasy Park, French Village. Middag: Madame Lan eller Fatfish</td></tr>
+          <tr><td><strong>Dag 3</strong> (tor 30. jul)</td><td>Son Tra Peninsula (morgen: Linh Ung Pagoda, abespotting) → strand + vandaktiviteter (jetski, SUP, parasailing) → Han Market om eftermiddagen</td><td>Banh Xeo Ba Duong til frokost, afslutningsmiddag: Brilliant Seafood</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warning-box">
+      <strong>Dragon Bridge ildshow:</strong> Ildshowet er kun lørdag og søndag kl. 21:00. Med den nuværende plan (tirsdag-torsdag i Da Nang) misser I det. Overvej at bytte Hue- og Da Nang-dagene, så I er i Da Nang over en weekend.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

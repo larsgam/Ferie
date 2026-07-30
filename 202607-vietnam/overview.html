@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietnam · Juli 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-accent-warm: #2e9e5b;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 980px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--color-secondary); font-size: 13px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--color-text); }
+    .hero { background: linear-gradient(175deg, #eef6e6 0%, #f5f5f7 100%); padding: 80px 22px 72px; text-align: center; }
+    .hero-eyebrow { font-size: 17px; font-weight: 600; color: var(--color-accent-warm); letter-spacing: 0.01em; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; }
+    .hero-sub { font-size: 21px; color: var(--color-secondary); max-width: 600px; margin: 0 auto 36px; line-height: 1.5; }
+    .hero-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .badge { background: white; border: 1px solid var(--color-divider); border-radius: 980px; padding: 8px 18px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .section { padding: 60px 22px; }
+    .section-alt { background: var(--color-section); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-warm); margin-bottom: 8px; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 28px; }
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .link-card { background: white; border: 1px solid var(--color-divider); border-radius: 14px; padding: 20px; text-decoration: none; color: var(--color-text); transition: all 0.2s; display: flex; align-items: center; gap: 14px; }
+    .link-card:hover { border-color: var(--color-accent); box-shadow: 0 4px 16px rgba(0,113,227,0.12); }
+    .link-card.featured { border-color: var(--color-accent-warm); background: #f4fbf6; }
+    .link-icon { font-size: 28px; flex-shrink: 0; }
+    .link-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .link-desc { font-size: 13px; color: var(--color-secondary); }
+    .pill { display:inline-block; background: var(--color-accent-warm); color:white; font-size:10px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:2px 7px; border-radius:980px; margin-left:6px; vertical-align:middle; }
+    .people-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .person-card { background: white; border: 1px solid var(--color-divider); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; flex: 1; min-width: 150px; }
+    .person-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--color-section); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .person-name { font-size: 16px; font-weight: 600; }
+    .person-detail { font-size: 13px; color: var(--color-secondary); margin-top: 2px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: white; border-radius: var(--radius); padding: 28px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .card-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 8px; }
+    .card-title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 8px; }
+    .info-list { list-style: none; }
+    .info-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--color-divider); font-size: 15px; gap: 16px; }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list .key { color: var(--color-secondary); flex-shrink: 0; }
+    .info-list .val { font-weight: 500; text-align: right; }
+    .warn-banner { background: #fffaf0; border: 1px solid #f0d9b0; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; line-height: 1.6; margin-top: 16px; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); text-decoration: none; }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🇻🇳 Vietnam · Juli 2026</span>
+    <ul class="nav-links">
+      <li><a href="#planer">Planer</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#deltagere">Deltagere</a></li>
+      <li><a href="#praktisk">Praktisk</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Familieferie · Sydøstasien</p>
+  <h1>Vietnam</h1>
+  <p class="hero-sub">26 nætter fra Nord- til Sydvietnam — fra Hanoi og Ha Long Bay over risterrasser, grotter og kejserbyer til Mekong-deltaet og Saigon (+ Angkor Wat).</p>
+  <div class="hero-badges">
+    <span class="badge">📅 6. juli – 3. august 2026</span>
+    <span class="badge">📍 Nord → Syd + Cambodja</span>
+    <span class="badge">👨‍👩‍👧‍👦 6 personer</span>
+    <span class="badge">✈️ Fly booket ✅</span>
+  </div>
+</section>
+
+<!-- PLANER -->
+<section class="section" id="planer">
+  <div class="section-inner">
+    <p class="section-label">Rejseplaner</p>
+    <h2 class="section-title">Planer</h2>
+    <div class="link-grid">
+      <a href="planer.html" class="link-card featured">
+        <span class="link-icon">🗂️</span>
+        <div><p class="link-title">Rejseplaner <span class="pill">Master: v3.5</span></p><p class="link-desc">Versionsoversigt — alle planer med skema og gældende master</p></div>
+      </a>
+      <a href="detaljer.html" class="link-card featured">
+        <span class="link-icon">📋</span>
+        <div><p class="link-title">Detaljer pr. dag <span class="pill">Nyt</span></p><p class="link-desc">Bookinger, bekræftelsesnumre, praktik og aktiviteter — dag for dag</p></div>
+      </a>
+      <a href="kort.html" class="link-card">
+        <span class="link-icon">📍</span>
+        <div><p class="link-title">Interaktivt kort</p><p class="link-desc">Alle steder på ét kort</p></div>
+      </a>
+      <a href="dagstur-ho-chi-minh.html" class="link-card">
+        <span class="link-icon">🗺️</span>
+        <div><p class="link-title">Saigon dagstur-kort <span class="pill">Nyt</span></p><p class="link-desc">HCMC-seværdigheder, kvarterer + hotelkandidater</p></div>
+      </a>
+      <a href="todo.html" class="link-card">
+        <span class="link-icon">✅</span>
+        <div><p class="link-title">To-do & bookinger</p><p class="link-desc">Hvad der skal bookes — og hvornår</p></div>
+      </a>
+      <a href="overnatning.html" class="link-card featured">
+        <span class="link-icon">🏨</span>
+        <div><p class="link-title">Overnatning</p><p class="link-desc">Alle hoteller med adresse, Google Maps og bookingnumre</p></div>
+      </a>
+      <a href="wilma.html" class="link-card">
+        <span class="link-icon">🐶</span>
+        <div><p class="link-title">Wilma – hundepasning</p><p class="link-desc">Ugeoversigt: Mads og Thomas dækker uge 28–31</p></div>
+      </a>
+      <a href="fly.html" class="link-card">
+        <span class="link-icon">✈️</span>
+        <div><p class="link-title">Fly</p><p class="link-desc">Alle fly — ud, hjem og Cambodja-sidetrip</p></div>
+      </a>
+      <a href="pakkeliste.html" class="link-card">
+        <span class="link-icon">🎒</span>
+        <div><p class="link-title">Pakkeliste</p><p class="link-desc">Pr. person + fælles ting — interaktiv checkliste</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section section-alt" id="research">
+  <div class="section-inner">
+    <p class="section-label">Destinationer & emner</p>
+    <h2 class="section-title">Research</h2>
+    <div class="link-grid">
+      <a href="research/pu-luong.html" class="link-card featured">
+        <span class="link-icon">🌾</span>
+        <div><p class="link-title">Pu Luong <span class="pill">Nyt</span></p><p class="link-desc">Alternativ til Sapa — lodges, trekruter, Mai Chau-vurdering</p></div>
+      </a>
+      <a href="research/phong-nha.html" class="link-card featured">
+        <span class="link-icon">🦇</span>
+        <div><p class="link-title">Phong Nha <span class="pill">Nyt</span></p><p class="link-desc">Verdens største grotter, Dark Cave, 2-dages forslag</p></div>
+      </a>
+      <a href="research/hanoi-restauranter-aktiviteter.html" class="link-card">
+        <span class="link-icon">🏙️</span>
+        <div><p class="link-title">Hanoi</p><p class="link-desc">Streetfood, seværdigheder, teenagervenlige ture</p></div>
+      </a>
+      <a href="research/ninh-binh.html" class="link-card">
+        <span class="link-icon">⛰️</span>
+        <div><p class="link-title">Ninh Binh</p><p class="link-desc">Tam Coc, Trang An, Mua Cave, gedespecialiteter</p></div>
+      </a>
+      <a href="research/hue-restauranter-aktiviteter.html" class="link-card">
+        <span class="link-icon">🏯</span>
+        <div><p class="link-title">Hue</p><p class="link-desc">Kejserlig cuisine, Imperial City, kongegrave</p></div>
+      </a>
+      <a href="research/hoi-an-restauranter-aktiviteter.html" class="link-card">
+        <span class="link-icon">🏮</span>
+        <div><p class="link-title">Hoi An</p><p class="link-desc">Gamlebyen, skrædder, strande, madlavning</p></div>
+      </a>
+      <a href="research/da-nang-restauranter-aktiviteter.html" class="link-card">
+        <span class="link-icon">🌉</span>
+        <div><p class="link-title">Da Nang</p><p class="link-desc">My Khe Beach, Marble Mountains, Ba Na Hills</p></div>
+      </a>
+      <a href="research/sapa-restauranter-aktiviteter.html" class="link-card">
+        <span class="link-icon">🏔️</span>
+        <div><p class="link-title">Sapa</p><p class="link-desc">Spisesteder, trekking, landsbyer (alternativ overvejet)</p></div>
+      </a>
+      <a href="research/strande-central-vietnam.html" class="link-card">
+        <span class="link-icon">🏖️</span>
+        <div><p class="link-title">Strande i Central Vietnam</p><p class="link-desc">An Bang, My Khe, Lang Co og flere</p></div>
+      </a>
+      <a href="vejr-og-rejsetips.html" class="link-card">
+        <span class="link-icon">🌦️</span>
+        <div><p class="link-title">Vejr & rejsetips</p><p class="link-desc">Vejr efter region, praktiske tips til juli/august</p></div>
+      </a>
+      <a href="rejsebureauer-sammenligning.html" class="link-card">
+        <span class="link-icon">🧳</span>
+        <div><p class="link-title">Rejsebureauer</p><p class="link-desc">Nyhavn, Viktors Farmor, Kipling m.fl. vs. vores plan</p></div>
+      </a>
+      <a href="mad.html" class="link-card featured">
+        <span class="link-icon">🍜</span>
+        <div><p class="link-title">Mad & streetfood <span class="pill">Nyt</span></p><p class="link-desc">Must-try retter, gadekøkken-tips, nyttige sætninger</p></div>
+      </a>
+      <a href="historie.html" class="link-card featured">
+        <span class="link-icon">📜</span>
+        <div><p class="link-title">Vietnams historie <span class="pill">Nyt</span></p><p class="link-desc">Fra Kina-dominans til Đổi Mới — kompakt overblik</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DELTAGERE -->
+<section class="section" id="deltagere">
+  <div class="section-inner">
+    <p class="section-label">Rejsegruppen</p>
+    <h2 class="section-title">Deltagere</h2>
+    <div class="people-grid">
+      <div class="person-card"><div class="person-avatar">👨</div><div><p class="person-name">Lars</p><p class="person-detail">54 år</p></div></div>
+      <div class="person-card"><div class="person-avatar">👩</div><div><p class="person-name">Helle</p><p class="person-detail">54 år</p></div></div>
+      <div class="person-card"><div class="person-avatar">👧</div><div><p class="person-name">Olivia</p><p class="person-detail">19 år</p></div></div>
+      <div class="person-card"><div class="person-avatar">👦</div><div><p class="person-name">Arthur</p><p class="person-detail">16 år</p></div></div>
+      <div class="person-card"><div class="person-avatar">🧒</div><div><p class="person-name">Roberta</p><p class="person-detail">14 år</p></div></div>
+      <div class="person-card"><div class="person-avatar">🧑</div><div><p class="person-name">Hugo</p><p class="person-detail">Egen booking</p></div></div>
+    </div>
+    <div class="warn-banner">⚠️ <strong>Bookingen (Travelis #4497407) dækker kun de første 5.</strong> Hugos flybillet skal afklares/bookes separat — og e-visum søges til alle 6.</div>
+  </div>
+</section>
+
+<!-- PRAKTISK -->
+<section class="section section-alt" id="praktisk">
+  <div class="section-inner">
+    <p class="section-label">Logistik</p>
+    <h2 class="section-title">Praktisk info</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">✈️</span>
+        <p class="card-label">Fly</p>
+        <p class="card-title">Qatar Airways</p>
+        <ul class="info-list" style="margin-top:12px">
+          <li><span class="key">Udrejse</span><span class="val">CPH → DOH → HAN</span></li>
+          <li><span class="key">Dato ud</span><span class="val">Man 6. juli, 16:00</span></li>
+          <li><span class="key">Hjemrejse</span><span class="val">HAN → DOH → CPH</span></li>
+          <li><span class="key">Dato hjem</span><span class="val">Man 3. aug, 14:05</span></li>
+          <li><span class="key">Booking</span><span class="val">Travelis #4497407</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">🧳</span>
+        <p class="card-label">Praktisk</p>
+        <p class="card-title">Bagage & varighed</p>
+        <ul class="info-list" style="margin-top:12px">
+          <li><span class="key">Varighed</span><span class="val">26 nætter</span></li>
+          <li><span class="key">Passagerer</span><span class="val">6 (Hugo separat)</span></li>
+          <li><span class="key">Indchecket</span><span class="val">30 kg pr. person</span></li>
+          <li><span class="key">Kabine</span><span class="val">7 kg pr. person</span></li>
+          <li><span class="key">Layover Doha</span><span class="val">~3t 45m (ud) / 10t 20m (hjem)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../home.html">← Alle rejser</a></p>
+</footer>
+
+</body>
+</html>

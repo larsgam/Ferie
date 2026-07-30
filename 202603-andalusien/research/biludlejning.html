@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biludlejning – Andalusien 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 480px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+
+    /* Verdict card */
+    .verdict {
+      background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%);
+      border: 1px solid #b3d4f0;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+    .verdict-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+    .verdict h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .verdict p { font-size: 15px; color: #374151; line-height: 1.6; }
+    .verdict ul { margin: 10px 0 0 18px; }
+    .verdict ul li { font-size: 15px; color: #374151; line-height: 1.7; }
+
+    /* Provider cards */
+    .provider-grid { display: grid; gap: 16px; }
+    .provider-card {
+      background: var(--color-section);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      border: 1px solid var(--color-divider);
+    }
+    .provider-card.recommended { border-color: #0071e3; background: #f0f7ff; }
+    .provider-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .provider-name { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+    .provider-name a { color: var(--color-accent); text-decoration: none; }
+    .provider-name a:hover { text-decoration: underline; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 980px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+    .badge-recommended { background: #0071e3; color: white; }
+    .badge-terminal { background: #6e6e73; color: white; }
+    .badge-broker { background: #34c759; color: white; }
+    .provider-meta { font-size: 13px; color: var(--color-secondary); margin-bottom: 14px; }
+    .pro-con { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pro-con-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .pro-con-col ul { list-style: none; }
+    .pro-con-col ul li { font-size: 13px; line-height: 1.6; color: var(--color-text); padding-left: 16px; position: relative; }
+    .pro-con-col ul li::before { position: absolute; left: 0; }
+    .pros li::before { content: "✓"; color: #34c759; font-weight: 700; }
+    .cons li::before { content: "✗"; color: #ff3b30; }
+    .price-est { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 14px; color: var(--color-secondary); }
+    .price-est strong { color: var(--color-text); }
+
+    /* Comparison table */
+    .table-wrap { overflow-x: auto; margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead th { text-align: left; padding: 10px 14px; background: #1d1d1f; color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    thead th:first-child { border-radius: 10px 0 0 0; }
+    thead th:last-child { border-radius: 0 10px 0 0; }
+    tbody tr:nth-child(even) { background: var(--color-section); }
+    tbody td { padding: 10px 14px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    tbody tr.highlight td { background: #f0f7ff; font-weight: 500; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Tips */
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .tip-card { background: var(--color-section); border-radius: var(--radius); padding: 20px; }
+    .tip-icon { font-size: 28px; margin-bottom: 10px; }
+    .tip-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .tip-body { font-size: 13px; color: var(--color-secondary); line-height: 1.6; }
+
+    /* Km table */
+    .km-card { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; }
+    .km-card table { margin-top: 12px; }
+
+    /* Warning */
+    .warning { background: #fff3cd; border: 1px solid #ffc107; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #664d03; line-height: 1.6; margin-bottom: 24px; }
+    .warning strong { font-weight: 700; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    footer a { color: var(--color-accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .pro-con { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🚗 Biludlejning</span>
+    <a href="../overview.html" class="nav-back">← Andalusien</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Andalusien 2026</p>
+  <h1>Biludlejning</h1>
+  <p class="hero-sub">Málaga Airport (AGP) · 28. marts – 6. april · 9 dage · 5 personer</p>
+</section>
+
+<!-- KONKLUSION -->
+<section class="section">
+  <div class="section-inner">
+    <div class="verdict">
+      <p class="verdict-label">Anbefaling</p>
+      <h3>MalagaCar.com — stor 5-sæders SUV</h3>
+      <ul>
+        <li>Fuld forsikring med nul selvrisiko inkluderet i grundprisen</li>
+        <li>Gratis ekstra fører inkluderet</li>
+        <li>Ubegrænset kilometer</li>
+        <li>24h service med gratis shuttle fra terminalen</li>
+        <li>OBS: +35 EUR natsurcharge (23:00–08:00) — gælder ved 23:05-ankomst</li>
+      </ul>
+    </div>
+
+    <div class="warning">
+      <strong>Booket:</strong> MalagaCar #1823255 — Nissan Qashqai/Hyundai Tucson eller tilsvarende · 643 EUR · Afhentning lør 28. mar ~23:00, aflevering man 6. apr ~10:30
+    </div>
+
+    <p class="section-label">Sammenligning</p>
+    <h2 class="section-title">Bilstørrelser</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kategori</th>
+            <th>Eksempler</th>
+            <th>Passer til</th>
+            <th>Est. pris (9 dage)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>Stor 5-sæders SUV ✓</strong></td>
+            <td>VW Tiguan, SEAT Tarraco, Skoda Kodiaq</td>
+            <td>5 pers + moderat bagage</td>
+            <td>~650–850 EUR</td>
+          </tr>
+          <tr>
+            <td>Stationcar</td>
+            <td>Skoda Octavia Combi, VW Passat Variant</td>
+            <td>5 pers + moderat bagage</td>
+            <td>~550–750 EUR</td>
+          </tr>
+          <tr>
+            <td>7-sæders MPV</td>
+            <td>Peugeot 5008, VW Caddy Maxi</td>
+            <td>5 pers + meget bagage</td>
+            <td>~950–1.150 EUR</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--color-secondary);margin-top:10px">SUV anbefales frem for stationcar — bedre vejfrigang på smallere bjergveje.</p>
+  </div>
+</section>
+
+<!-- UDBYDERE -->
+<section class="section" style="background:var(--color-section); padding-top:0">
+  <div class="section-inner">
+    <p class="section-label">Udbydere</p>
+    <h2 class="section-title">Detaljeret gennemgang</h2>
+
+    <div class="provider-grid">
+
+      <!-- MalagaCar -->
+      <div class="provider-card recommended">
+        <div class="provider-header">
+          <div>
+            <p class="provider-name"><a href="https://www.malagacar.com" target="_blank">MalagaCar.com</a></p>
+            <p class="provider-meta">Off-airport · Gratis orange shuttle (~15 min) · 24h drift</p>
+          </div>
+          <span class="badge badge-recommended">Anbefalet</span>
+        </div>
+        <div class="pro-con">
+          <div class="pro-con-col pros">
+            <h4>Fordele</h4>
+            <ul>
+              <li>Fuld forsikring inkl. dæk, glas, understel</li>
+              <li>Nul selvrisiko inkluderet</li>
+              <li>Gratis ekstra fører</li>
+              <li>Ubegrænset kilometer</li>
+              <li>24h shuttle uanset ankomsttid</li>
+            </ul>
+          </div>
+          <div class="pro-con-col cons">
+            <h4>Ulemper</h4>
+            <ul>
+              <li>+35 EUR natsurcharge (23–08)</li>
+              <li>~15 min shuttletur med bagage</li>
+              <li>Off-airport — ikke i terminalen</li>
+            </ul>
+          </div>
+        </div>
+        <p class="price-est">Estimeret pris: <strong>~650–850 EUR alt inkl.</strong></p>
+      </div>
+
+      <!-- Marbesol -->
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <p class="provider-name"><a href="https://www.marbesol.com/en/" target="_blank">Marbesol</a></p>
+            <p class="provider-meta">Off-airport · Gratis shuttle · Max 2.000 km</p>
+          </div>
+          <span class="badge badge-terminal">Alternativ</span>
+        </div>
+        <div class="pro-con">
+          <div class="pro-con-col pros">
+            <h4>Fordele</h4>
+            <ul>
+              <li>Total forsikring inkl. dæk, glas, batteri, kobling</li>
+              <li>Konkurrencedygtig pris</li>
+              <li>2.000 km rigeligt til turen</li>
+            </ul>
+          </div>
+          <div class="pro-con-col cons">
+            <h4>Ulemper</h4>
+            <ul>
+              <li>Kun kreditkort — ikke Amex</li>
+              <li>Ikke forudbetalte/virtuelle kort</li>
+              <li>+35 EUR natsurcharge</li>
+            </ul>
+          </div>
+        </div>
+        <p class="price-est">Estimeret pris: <strong>~600–800 EUR</strong></p>
+      </div>
+
+      <!-- Sixt -->
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <p class="provider-name"><a href="https://www.sixt.dk" target="_blank">Sixt</a> (terminalen)</p>
+            <p class="provider-meta">I terminalen ved bagagebåndet · Åbent til 01:00</p>
+          </div>
+          <span class="badge badge-terminal">I terminal</span>
+        </div>
+        <div class="pro-con">
+          <div class="pro-con-col pros">
+            <h4>Fordele</h4>
+            <ul>
+              <li>Ingen shuttle — direkte fra bagagehallen</li>
+              <li>Åbent til 01:00 — ingen natsurcharge</li>
+            </ul>
+          </div>
+          <div class="pro-con-col cons">
+            <h4>Ulemper</h4>
+            <ul>
+              <li>Super CDW: +20–30 EUR/dag ekstra</li>
+              <li>Ekstra fører: ~10–15 EUR/dag</li>
+              <li>Aggressivt upsalg ved skranken</li>
+              <li>200–400 EUR dyrere end MalagaCar</li>
+            </ul>
+          </div>
+        </div>
+        <p class="price-est">Estimeret pris: <strong>~850–1.200 EUR alt inkl.</strong></p>
+      </div>
+
+      <!-- DiscoverCars -->
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <p class="provider-name"><a href="https://www.discovercars.com/spain/malaga-airport" target="_blank">DiscoverCars.com</a></p>
+            <p class="provider-meta">Sammenligning · Viser realpris inkl. forsikring</p>
+          </div>
+          <span class="badge badge-broker">Broker</span>
+        </div>
+        <div class="pro-con">
+          <div class="pro-con-col pros">
+            <h4>Fordele</h4>
+            <ul>
+              <li>Sammenligner 20+ udbydere</li>
+              <li>Viser realpris inkl. forsikring</li>
+              <li>Nyttigt til sammenligning</li>
+            </ul>
+          </div>
+          <div class="pro-con-col cons">
+            <h4>Ulemper</h4>
+            <ul>
+              <li>Forsikring +7–12 EUR/dag via DC</li>
+              <li>Ikke altid billigst direkte</li>
+            </ul>
+          </div>
+        </div>
+        <p class="price-est">Estimeret pris: <strong>~450–750 EUR + forsikring</strong></p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px; background:#fff0f0; border:1px solid #ffb3b3; border-radius:12px; padding:16px 20px; font-size:14px; color:#5c1a1a; line-height:1.6;">
+      <strong>Undgå: Goldcar og Record Go</strong> — Dokumenterede mønstre med pres til unødvendig forsikring og opdigtede skader ved aflevering.
+    </div>
+  </div>
+</section>
+
+<!-- PRAKTISKE RÅD -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Praktisk</p>
+    <h2 class="section-title">Råd og tips</h2>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🛡️</div>
+        <p class="tip-title">Forsikring</p>
+        <p class="tip-body">Basis CDW har typisk 800–1.500 EUR selvrisiko. MalagaCar inkluderer fuld forsikring. Tjek om dit kreditkort dækker selvrisikoen som backup.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⛽</div>
+        <p class="tip-title">Brændstof</p>
+        <p class="tip-body">Vælg altid full-to-full. Undgå "prepaid full tank". Fotografér måleren ved afhentning. Diesel er billigere end benzin i Spanien.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📸</div>
+        <p class="tip-title">Dokumentation</p>
+        <p class="tip-body">Optag video af hele bilen (eksterior + interiør) inden I kører — del til cloud med tidsstempel. Notér alle ridser på formularen.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💳</div>
+        <p class="tip-title">Depositum</p>
+        <p class="tip-body">Alle udbydere blokerer typisk 1.000–2.000 EUR på kreditkortet i hele lejeperioden. Sørg for kortet har plads hertil.</p>
+      </div>
+    </div>
+
+    <div class="km-card" style="margin-top:24px;">
+      <p class="tip-title" style="font-size:16px; margin-bottom:4px;">Estimerede kilometer</p>
+      <p style="font-size:13px;color:var(--color-secondary);margin-bottom:0">Dagturene fra Frigiliana:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Destination</th><th>Tur-retur</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Granada / Alhambra</td><td>~200 km</td></tr>
+            <tr><td>Caminito del Rey</td><td>~150 km</td></tr>
+            <tr><td>Ronda + Setenil</td><td>~270 km</td></tr>
+            <tr><td>Málaga</td><td>~120 km</td></tr>
+            <tr><td>Daglig kørsel i området</td><td>~100–150 km</td></tr>
+            <tr class="highlight"><td><strong>Estimeret total</strong></td><td><strong>~800–1.000 km</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Andalusien · Familieferie · Påske 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Andalusien oversigt</a></p>
+</footer>
+
+</body>
+</html>

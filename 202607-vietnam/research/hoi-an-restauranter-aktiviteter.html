@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoi An – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-section: #f5f5f7;
+      --color-text: #1d1d1f;
+      --color-secondary: #6e6e73;
+      --color-accent: #0071e3;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px;
+      --max-w: 860px;
+    }
+
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .sub-title { font-size: 19px; font-weight: 700; margin: 28px 0 14px; }
+
+    .note-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px 20px; font-size: 14px; color: #1e3a8a; line-height: 1.6; margin-bottom: 24px; }
+    .note-box ul { margin: 6px 0 0 18px; }
+
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body p { margin-bottom: 8px; }
+    .activity-body ul { margin: 4px 0 8px 18px; }
+    .activity-body ol { margin: 4px 0 8px 20px; }
+    .activity-body li { margin-bottom: 4px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table th { text-align: left; padding: 10px 12px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .data-table th:first-child { border-radius: 8px 0 0 8px; }
+    .data-table th:last-child { border-radius: 0 8px 8px 0; }
+    .data-table td { padding: 12px 12px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🏮 Hoi An</span>
+    <a href="../overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Research · Vietnam 2026</p>
+  <h1>Hoi An</h1>
+  <p class="hero-sub">Restauranter og aktiviteter. Research lavet feb 2026. Hoi An har 5 dage i rejseplanen (dag 14-19, 19.-24. juli 2026).</p>
+</section>
+
+<!-- RESTAURANTER -->
+<section class="section">
+  <div class="section-inner">
+    <div class="note-box">
+      <strong>Prisguide:</strong>
+      <ul>
+        <li>Budget: under 100.000 VND / 27 DKK pr. person</li>
+        <li>Mellem: 100.000-300.000 VND / 27-80 DKK pr. person</li>
+        <li>Over middel: 300.000-600.000 VND / 80-160 DKK pr. person</li>
+      </ul>
+    </div>
+
+    <p class="section-label">Mad</p>
+    <h2 class="section-title">Restauranter</h2>
+
+    <h3 class="sub-title">Lokale specialiteter (must-try)</h3>
+
+    <div class="activity">
+      <p class="activity-title">1. Banh Mi Phuong</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Banh mi (vietnamesisk sandwich) - streetfood</p>
+        <p>Berømt efter Anthony Bourdains besøg ("the best banh mi in the world"). Frisklaget brød med adskillige fyldninger - prøv den klassiske med svinekød, pate, urter og chili. Forvent kø, men det går hurtigt. Perfekt til frokost eller hurtig snack.</p>
+        <p><strong>Pris:</strong> Budget (15.000-30.000 VND / 4-8 DKK per sandwich) · <strong>Adresse:</strong> 2B Phan Chu Trinh, Hoi An · <a href="https://www.facebook.com/BanhMiPhuong.HoiAn/" target="_blank">Facebook ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">2. White Rose Restaurant (White Rose Dumpling)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Lokale specialiteter - white rose dumplings</p>
+        <p>Den eneste restaurant der producerer de berømte "white rose" dumplings (banh bao banh vac) - en Hoi An-specialitet af rismel fyldt med rejer, formet som hvide roser. Familien har lavet dem i generationer og leverer til hele byen. Simpel restaurant, men autentisk oplevelse.</p>
+        <p><strong>Pris:</strong> Budget-mellem (40.000-80.000 VND / 11-22 DKK) · <strong>Adresse:</strong> 533 Hai Ba Trung, Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d1641536-Reviews-White_Rose_Restaurant-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">3. Cao Lau Thanh</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Cao lau - Hoi An-specialitet</p>
+        <p>Simpelt lokalt spisested specialiseret i cao lau - den ikoniske Hoi An-nudelret med tykke nudler, svinekød, urter og sprøde croutoner. Vandet til nudlerne kommer angiveligt fra en bestemt brønd i byen. Autentisk og billigt.</p>
+        <p><strong>Pris:</strong> Budget (30.000-50.000 VND / 8-14 DKK) · <strong>Adresse:</strong> Tran Phu Street, gamlebyen · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d8464041-Reviews-Cao_Lau_Thanh-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">4. Madam Khanh - The Banh Mi Queen</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Banh mi - streetfood</p>
+        <p>Alternativ til Banh Mi Phuong og mindst lige så god ifølge mange lokale. Ofte kortere kø. Madam Khanh har lavet banh mi i over 30 år. Prøv begge og lad familien stemme om den bedste!</p>
+        <p><strong>Pris:</strong> Budget (15.000-30.000 VND / 4-8 DKK) · <strong>Adresse:</strong> 115 Tran Cao Van, Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d3412159-Reviews-Madam_Khanh_The_Banh_Mi_Queen-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Sit-down restauranter</h3>
+
+    <div class="activity">
+      <p class="activity-title">5. Morning Glory Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk - street food i restaurantformat</p>
+        <p>Ejet af den berømte kok Ms. Vy (som også driver cooking school). Serverer street food-retter i pæne omgivelser. Fremragende cao lau, white rose, og banh xeo (vietnamesisk pandekage). Populært, så reserver bord eller kom tidligt. Teenagerne vil elske variationen i menuen.</p>
+        <p><strong>Pris:</strong> Mellem (100.000-200.000 VND / 27-54 DKK) · <strong>Adresse:</strong> 106 Nguyen Thai Hoc, Hoi An · <a href="http://www.restaurant-hoian.com/" target="_blank">morninggloryrestaurant.com ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">6. Vy's Market Restaurant &amp; Cooking School</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk - markedsrestaurant</p>
+        <p>Også ejet af Ms. Vy. Åbent koncept med live cooking stations der ligner et marked. Man kan se maden blive tilberedt. Fantastisk for teenagere der kan gå rundt og vælge fra forskellige stande. Bred menu med lokale specialiteter.</p>
+        <p><strong>Pris:</strong> Mellem (100.000-250.000 VND / 27-67 DKK) · <strong>Adresse:</strong> Nguyen Hoang Street, Hoi An · <a href="https://tastevietnam.com/vys-market-restaurant/" target="_blank">tastevietnam.com ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">7. Mango Mango</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk-international fusion</p>
+        <p>Flot beliggenhed med udsigt over Thu Bon-floden. God til aften med familien - terrasseplatsen er magisk når lanterner lyser op. Bred menu der appellerer til alle aldre. Serverer både vietnamesisk og vestlig mad.</p>
+        <p><strong>Pris:</strong> Mellem-over middel (150.000-350.000 VND / 40-95 DKK) · <strong>Adresse:</strong> Nguyen Hoang Street (ved flodbredden), Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d2312918-Reviews-Mango_Mango-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">8. Secret Garden Restaurant</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Vietnamesisk hjemmelavet</p>
+        <p>Hyggeligt, skjult sted med autentisk hjemmelavet vietnamesisk mad. Rolig atmosfære i en gammel bygning med have. Menuen skifter og retter er lavet med lokale ingredienser. God kombination af pris og kvalitet.</p>
+        <p><strong>Pris:</strong> Mellem (80.000-180.000 VND / 22-49 DKK) · <strong>Adresse:</strong> 132/2 Tran Phu, Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d4953853-Reviews-The_Secret_Garden-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">9. Nu Eatery</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Moderne vietnamesisk</p>
+        <p>Lille, kreativ restaurant med moderne twist på vietnamesiske klassikere. Tapas-format gør det muligt at smage mange retter. Perfekt for teenagere der gerne vil prøve lidt af alt. Ofte nævnt som en af Hoi Ans bedste.</p>
+        <p><strong>Pris:</strong> Mellem-over middel (150.000-300.000 VND / 40-80 DKK) · <strong>Adresse:</strong> 10A Nguyen Thi Minh Khai, Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d7215498-Reviews-Nu_Eatery-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">An Bang Beach-restauranter</h3>
+
+    <div class="activity">
+      <p class="activity-title">10. Soul Kitchen</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Strandrestaurant - international/vietnamesisk</p>
+        <p>Populær strandbar/-restaurant direkte på An Bang Beach. Liggestole, pool, cocktails og god mad. Afslappet stemning. Teenagerne kan bade og spise i skiftevis. God til en hel stranddag.</p>
+        <p><strong>Pris:</strong> Mellem-over middel (100.000-300.000 VND / 27-80 DKK) · <strong>Adresse:</strong> An Bang Beach, Hoi An · <a href="https://www.facebook.com/SoulKitchenAnBang/" target="_blank">Facebook ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">11. La Plage</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Strandrestaurant - fransk-vietnamesisk</p>
+        <p>Stilfuld strandrestaurant med direkte havudsigt. Blanding af fransk og vietnamesisk køkken. Friske seafood-retter og gode salater. Mere "voksen" atmosfære men teenagere er velkomne. God til en lidt finere strandfrokost.</p>
+        <p><strong>Pris:</strong> Over middel (200.000-400.000 VND / 54-108 DKK) · <strong>Adresse:</strong> An Bang Beach, Hoi An · <a href="https://www.laplagehoian.com/" target="_blank">laplagehoian.com ↗</a></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Streetfood og natmarked</h3>
+
+    <div class="activity">
+      <p class="activity-title">12. Hoi An Night Market (madstande)</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Streetfood - natmarked</p>
+        <p>Natmarkedet på An Hoi-halvøen (overfor gamlebyen) har mange madstande. Prøv banh mi, cao lau, banh xeo, og grillet seafood. Billigt, livligt og sjovt for hele familien. Køb også en lanterne som souvenir.</p>
+        <p><strong>Pris:</strong> Budget (20.000-80.000 VND / 5-22 DKK) · <strong>Adresse:</strong> Nguyen Hoang Street, An Hoi · <a href="https://www.tripadvisor.com/Attraction_Review-g298082-d7225498-Reviews-Hoi_An_Night_Market-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">13. Com Ga Ba Buoi</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Com ga (kyllingris) - lokalt spisested</p>
+        <p>Hoi Ans berømte kyllingris - en yderligere lokalspecialitet. Simpelt lokalt sted med fantastisk com ga (ris kogt i kyllingebouillon med gurkemeje, toppet med revet kylling og urter). Billigt og mættende.</p>
+        <p><strong>Pris:</strong> Budget (30.000-50.000 VND / 8-14 DKK) · <strong>Adresse:</strong> 22 Phan Chu Trinh, Hoi An · <a href="https://www.tripadvisor.com/Restaurant_Review-g298082-d8637438-Reviews-Com_Ga_Ba_Buoi-Hoi_An_Quang_Nam_Province.html" target="_blank">TripAdvisor ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <p class="activity-title">14. Reaching Out Tea House</p>
+      <div class="activity-body">
+        <p><strong>Type:</strong> Tehus / cafe</p>
+        <p>Unikt tehus drevet af døve og hørehæmmede medarbejdere. Man bestiller via papir og blyant. Roligt, meditativt sted med fantastisk te og kaffe. Socialt projekt der støtter handicappede. Giver en helt anden oplevelse - god til en stille pause fra turismen.</p>
+        <p><strong>Pris:</strong> Budget-mellem (40.000-100.000 VND / 11-27 DKK) · <strong>Adresse:</strong> 131 Tran Phu, Hoi An · <a href="https://reachingoutvietnam.com/tea-house/" target="_blank">reachingoutvietnam.com ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AKTIVITETER -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Oplevelser</p>
+    <h2 class="section-title">Aktiviteter</h2>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">1. Hoi An Ancient Town - gamlebyen (UNESCO)</p>
+      <div class="activity-body">
+        <p>Hoi Ans gamle bydel er UNESCO-verdensarv og Vietnams bedst bevarede historiske handelsby. Gul arkitektur, kinesiske forsamlingshaller, japansk bro, templer og gamle handelshuse. Billetsystemet giver adgang til udvalgte attraktioner.</p>
+        <ul>
+          <li><strong>Billetsystem:</strong> Køb et "Old Town Ticket" (120.000 VND / ca. 33 DKK pr. person) som giver adgang til 5 udvalgte attraktioner ud af ca. 20+ muligheder (forsamlingshaller, museer, gamle huse, håndværksværksteder). Vælg efter interesse.</li>
+          <li><strong>Bedste tid:</strong> Tidlig morgen (7-9) for tomme gader og gode fotos, ELLER sen eftermiddag/aften for lanterner og atmosfære. Undgå middag (varme + folkemængder).</li>
+          <li><strong>Tip:</strong> Gamlebyen er bilfri fra ca. 9-11 og 15-21. Gå på tværs og lad jer fare vild i sidegaderne.</li>
+          <li><strong>Juli-note:</strong> Varmt (33-35 grader), så planlæg strand/pool midt på dagen.</li>
+        </ul>
+        <p><a href="http://www.hoianworldheritage.org.vn/" target="_blank">hoianworldheritage.org.vn ↗</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">2. Japanese Covered Bridge (Chua Cau)</p>
+      <div class="activity-body">
+        <p>Hoi Ans mest ikoniske vartegn - en overdækket japansk bro fra 1590'erne der forbinder det japanske og kinesiske kvarter. Broen har et lille tempel indeni. Pryder Vietnams 20.000 VND-seddel.</p>
+        <ul>
+          <li>Inkluderet i Old Town-billetten (tæller som 1 af 5 attraktioner)</li>
+          <li>Bedst besøgt tidlig morgen for fotos uden folkemængder</li>
+          <li>Om aftenen er broen smukt oplyst</li>
+          <li>Kort besøg (15-20 min), kombiner med gamlebyvandring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">3. Lanterne-aftener og fuldmånefestival</p>
+      <div class="activity-body">
+        <p>Hoi An er berømt for sine farverige silkelanterner. Hver aften er gamlebyen oplyst af lanterner, men den store oplevelse er fuldmånefestivalen (Hoi An Lantern Festival) den 14. dag i hver månekalendermåned, hvor al elektrisk belysning slukkes og hele byen kun oplyses af lanterner og stearinlys.</p>
+        <ul>
+          <li><strong>Fuldmånefestival juli 2026:</strong> Tjek dato (falder typisk midt i måneden efter månekalenderen - sandsynligvis omkring 20.-22. juli 2026, check nøjagtig dato tættere på)</li>
+          <li>Selv uden festival er aftener i gamlebyen magiske med lanterner</li>
+          <li>Sæt papir-lanterne ud på Thu Bon-floden (5.000-10.000 VND)</li>
+          <li>Bedste lanterne-oplevelse: kl. 19-22</li>
+          <li>Køb egen silkelanterne som souvenir (50.000-200.000 VND)</li>
+        </ul>
+        <p>Søg på "Hoi An Lantern Festival 2026 dates"</p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">4. Skræddersyet tøj</p>
+      <div class="activity-body">
+        <p>Hoi An er verdensberømt for hurtig, billig skræddersy. Man vælger stof og design, og tøjet sys på 24-48 timer. Kjoler, jakkesæt, jakker, bukser - alt kan laves. Perfekt for teenagere der vil have unikt tøj.</p>
+        <p><strong>Anbefalede skrædderforretninger:</strong></p>
+        <ul>
+          <li><strong>Yaly Couture</strong> - Hoi Ans mest kendte. Høj kvalitet, lidt dyrere, pålidelig. Flere butikker i byen. <a href="https://yfrfraly.com/" target="_blank">yfrfraly.com ↗</a></li>
+          <li><strong>A Dong Silk</strong> - Godt ry, bredt stofudvalg, rimelige priser. <a href="http://www.adongsilk.com/" target="_blank">adongsilk.com ↗</a></li>
+          <li><strong>BeBe Tailor</strong> - Populær blandt turister, god til kjoler og skjorter. God service.</li>
+          <li><strong>Kimmy Custom Tailor</strong> - Mindre butik med personlig service, godt for teenagere.</li>
+        </ul>
+        <p><strong>Sådan fungerer det:</strong></p>
+        <ol>
+          <li>Besøg butikken dag 1 - vælg stof, design (medbring billeder fra Pinterest/Instagram)</li>
+          <li>Mål tages</li>
+          <li>Første prøvning efter 12-24 timer</li>
+          <li>Tilretninger</li>
+          <li>Færdigt tøj afhentes dag 2-3</li>
+        </ol>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li>Gå til 2-3 butikker og sammenlign priser og stof</li>
+          <li>Bestil tidligt på opholdet så der er tid til justeringer</li>
+          <li>Typiske priser: skjorte 200-400.000 VND (54-108 DKK), kjole 400-800.000 VND (108-216 DKK), jakkesæt 1.500.000-3.000.000 VND (405-810 DKK)</li>
+          <li>Teenagere elsker det - de kan designe deres eget tøj!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">5. An Bang Beach</p>
+      <div class="activity-body">
+        <p>Hoi Ans bedste strand - bred, hvid sandstrand med palmeskygge, strandcafeer og roligt vand. Bedre vedligeholdt end Cua Dai Beach (som har erosionsproblemer).</p>
+        <ul>
+          <li>5 km fra gamlebyen, 15-20 minutter på cykel</li>
+          <li>Liggestole og parasol typisk gratis ved køb af mad/drikke</li>
+          <li>Vandaktiviteter: kajak, SUP</li>
+          <li>Juli: 28-31 grader, havtemperatur 29 grader</li>
+          <li>Planlæg en hel stranddag - kombiner med frokost på Soul Kitchen eller La Plage</li>
+          <li>Cykel derhen (de fleste hoteller låner/lejer cykler ud)</li>
+        </ul>
+        <p>Se strandresearch i <a href="strande-central-vietnam.html">Strande i Central Vietnam</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">6. Cham Islands - snorklingdagstur</p>
+      <div class="activity-body">
+        <p>Cu Lao Cham er en øgruppe 15 km ud for kysten - UNESCO Biosphere Reserve med 277 koralarter og 250 fiskearter. Dagstur med speedbåd, snorkling, strand og frokost. Et af turens højdepunkter for teenagerne.</p>
+        <ul>
+          <li><strong>Sæson:</strong> Juni-august er BEDSTE tid - roligt hav, god sigtbarhed</li>
+          <li><strong>Transport:</strong> Speedbåd fra Cua Dai Pier (20-30 min) eller træbåd (50-60 min)</li>
+          <li><strong>Pris:</strong> 500.000-800.000 VND (135-216 DKK) pr. person inkl. snorkeling, frokost, transport</li>
+          <li><strong>Operatører:</strong> Book via hotel eller lokalt rejsebureau i Hoi An. Populære operatører: Cham Island Diving Center, Hoi An Express, Blue Coral Diving</li>
+          <li><strong>Program (typisk):</strong> Afgang kl. 8, snorkling 2-3 spots, frokost på øen, strandtid, retur kl. 14-15</li>
+          <li><strong>Tip:</strong> Book 2-3 dage i forvejen i juli (populært). Tag søsygemedicin med til speedbåden</li>
+          <li><strong>Aldersgrænse:</strong> Ingen reel grænse for snorkling - alle 3 teenagere kan deltage</li>
+        </ul>
+        <p>Se også <a href="strande-central-vietnam.html">Strande i Central Vietnam</a></p>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">7. Madlavningskursus (Cooking Class)</p>
+      <div class="activity-body">
+        <p>Hoi An er Vietnams kulinariske hovedstad og madlavningskurser er en topaktivitet. Typisk program: besøg lokalt marked, lær om ingredienser, tilbered 3-5 retter, spis maden. Fantastisk familieaktivitet.</p>
+        <p><strong>Anbefalede cooking classes:</strong></p>
+        <ul>
+          <li><strong>Red Bridge Cooking School</strong> - Den mest kendte. Bådtur langs floden til skolen, markedsbesøg, fantastiske faciliteter. Halv dag. <a href="https://www.visithoian.com/red-bridge-cooking-school.html" target="_blank">visithoian.com/red-bridge ↗</a></li>
+          <li><strong>Thuan Tinh Island Cooking Tour</strong> - Båd til privat ø, intim oplevelse, max 10 deltagere. Meget personligt. Ofte nævnt som den bedste.</li>
+          <li><strong>Morning Glory Cooking School (Ms. Vy)</strong> - Drevet af restaurantejer Ms. Vy. Centralt i byen. God for dem der vil have det tæt på hotellet.</li>
+          <li><strong>Tra Que Water Wheel Cooking Class</strong> - I Tra Que-landsbyen mellem grøntsagshaverne. Kombiner med landsbybesøg.</li>
+        </ul>
+        <ul>
+          <li><strong>Typisk program:</strong> Kl. 8:30-13:00 (morgenhold) eller 14:00-17:30 (eftermiddagshold)</li>
+          <li><strong>Pris:</strong> 600.000-900.000 VND (160-243 DKK) pr. person</li>
+          <li><strong>Tip:</strong> Morgenholdet inkluderer markedsbesøg og er bedst. Book 2-3 dage i forvejen.</li>
+          <li><strong>Teenagerne:</strong> Alle aldre velkommen - det er hands-on og sjovt!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">8. Cykling i rismarker</p>
+      <div class="activity-body">
+        <p>Hoi An er omgivet af flade rismarker og små landsbyer. En cykeltur ud af byen giver et helt andet Vietnam end gamlebyen. Grønne marker, vandbøfler, lokalt landsbyliv.</p>
+        <ul>
+          <li><strong>På egen hånd:</strong> Lej cykler fra hotellet (50.000-100.000 VND/dag / 14-27 DKK). Kør mod Tra Que Vegetable Village eller ud langs floden mod Cam Thanh.</li>
+          <li><strong>Guidet tur:</strong> Flere operatører tilbyder guidede cykelture (halv dag). Giver mere indsigt og finder de bedste ruter: Grasshopper Adventures, Heaven and Earth Bicycle Tours, Hoi An Free Tour (cykling)</li>
+          <li><strong>Bedste tid:</strong> Tidlig morgen (6-9) eller sen eftermiddag (15:30-17:30) - undgå middagsvarme</li>
+          <li><strong>Rute-forslag:</strong> Gamlebyen → Tra Que Village → rismarker → An Bang Beach (ca. 15 km rundtur)</li>
+          <li><strong>Juli-note:</strong> Rismarkerne er FANTASTISK grønne i juli (regnsæson = grønt!)</li>
+          <li><strong>Tip:</strong> Fladt terræn, let for alle niveauer. Perfekt for teenagere.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">9. Bådtur på Thu Bon-floden</p>
+      <div class="activity-body">
+        <p>Thu Bon-floden løber gennem Hoi An og er byens livsnerve. En bådtur giver et smukt perspektiv på byen, især ved solnedgang med lanterner.</p>
+        <p><strong>Muligheder:</strong></p>
+        <ul>
+          <li>Kort tur (30-45 min) fra gamlebyen - se byen fra vandet, sæt lanterne ud (ca. 100.000 VND / 27 DKK)</li>
+          <li>Længere tur til Cam Thanh (kokosnøddelandsby) med runde bambusbåde (basket boats) - sjov, aktiv oplevelse</li>
+          <li>Solnedgangstur - mest stemningsfuld</li>
+        </ul>
+        <ul>
+          <li><strong>Basket boats i Cam Thanh:</strong> Lokale fiskere pagajer jer rundt i runde bambusbåde i kokosnøddepalmerne. Sjovt, lidt vådt, og meget fotogent. Teenagerne vil elske det.</li>
+          <li><strong>Pris:</strong> 100.000-300.000 VND (27-80 DKK) pr. person afhængigt af tur</li>
+          <li><strong>Tip:</strong> Kombiner bådtur med lanterne-aften for den ultimative Hoi An-oplevelse</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">10. Hoi An Night Market</p>
+      <div class="activity-body">
+        <p>Livligt natmarked på An Hoi-halvøen (kryds broen fra gamlebyen). Madsection, souvenirs, lanterner, tøj og håndværk. Livlig stemning hver aften.</p>
+        <ul>
+          <li>Åbent hver aften ca. 17:00-22:00</li>
+          <li>Gratis adgang</li>
+          <li>Madstande i den ene ende, souvenirs i den anden</li>
+          <li>Forhandl altid om pris på souvenirs (start med 50% af udbudspris)</li>
+          <li>Køb lanterne-souvenirs her (billigere end i butikkerne)</li>
+          <li>Prøv banh trang nuong (vietnamesisk "pizza" - rismel-pandekage med æg og toppings)</li>
+          <li><strong>Teenagerne:</strong> Sjov shopping, spil og streetfood</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">11. Tra Que Vegetable Village</p>
+      <div class="activity-body">
+        <p>Traditionel grøntsagslandsby 3 km nordøst for Hoi An. Bønderne dyrker urter og grøntsager med 300 år gamle metoder. Mange cooking classes bruger ingredienser herfra.</p>
+        <ul>
+          <li>3 km fra gamlebyen - let cykeltur (15 min)</li>
+          <li>Tilbyder "farming experience": hjælp med at plante, vande og høste</li>
+          <li>Kombiner med cooking class der starter i landsbyen</li>
+          <li>Frokost med lokalt dyrkede råvarer inkluderet i de fleste ture</li>
+          <li><strong>Pris:</strong> Gratis at cykle igennem, guidet oplevelse ca. 200.000-400.000 VND (54-108 DKK)</li>
+          <li><strong>Tip:</strong> Perfekt at kombinere med cykeltur i rismarkerne</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">12. Cam Thanh Coconut Village - bambusbåde</p>
+      <div class="activity-body">
+        <p>Landsby 4 km sydøst for Hoi An omgivet af kokosnøddepalmer og vandveje. Berømt for de runde bambusbåde (basket boats/thung chai) som lokale fiskere bruger. En af Hoi Ans sjoveste aktiviteter.</p>
+        <ul>
+          <li>Cykel fra Hoi An (20 min) eller book en tur</li>
+          <li>Tur i basket boat: 30-45 min, en fisker padler og underviser jer</li>
+          <li>Nogle fiskere laver tricks med båden (spinning!) - teenagerne vil elske det</li>
+          <li>Kombiner med krabfiskeri og madlavning</li>
+          <li><strong>Pris:</strong> 100.000-200.000 VND (27-54 DKK) pr. person</li>
+          <li><strong>Bedste tid:</strong> Tidlig morgen eller sen eftermiddag</li>
+          <li><strong>Tip:</strong> Tag vandtæt pose til telefonen - det kan blive vådt!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">13. Marble Mountains (halvdagstur fra Hoi An)</p>
+      <div class="activity-body">
+        <p>Fem kalkstens- og marmorbjerge mellem Hoi An og Da Nang. Grotter, templer, pagoder og fantastisk udsigt fra toppen. Kan besøges som halvdagstur fra Hoi An eller på vejen til/fra Da Nang.</p>
+        <ul>
+          <li>20 km fra Hoi An (30 min i bil/scooter)</li>
+          <li>Elevator op (15.000 VND) eller trap (god motion)</li>
+          <li>Besøg Huyen Khong-grotten med naturligt lys fra oven - spektakulært</li>
+          <li>Am Phu-grotten: "helvedes grotte" med spooky statuer - teenagerne elsker det</li>
+          <li>Tidsforslag: 2-3 timer</li>
+          <li><strong>Pris:</strong> Entre 40.000 VND (11 DKK) + elevator 15.000 VND (4 DKK)</li>
+          <li><strong>Tip:</strong> Gå tidligt (inden kl. 9) - færre turister og køligere. Medbring vand.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">14. My Son Sanctuary (halvdagstur)</p>
+      <div class="activity-body">
+        <p>UNESCO-verdensarv - ruinerne af Cham-civilisationens hinduistiske tempelby fra det 4.-14. århundrede. Vietnams svar på Angkor Wat (i mindre skala). Fascinerende for historieinteresserede.</p>
+        <ul>
+          <li>40 km fra Hoi An (1 times kørsel)</li>
+          <li>Halv- eller heldagstur. De fleste vælger morgentur (6:00-12:00) for at undgå middagsvarme</li>
+          <li>Guidet tur anbefales for historisk kontekst</li>
+          <li>Traditionel Cham-dans-opvisning om morgenen (kl. 9:30 og 10:30)</li>
+          <li><strong>Pris:</strong> Entre 150.000 VND (40 DKK). Guidet tur fra Hoi An: ca. 400.000-600.000 VND (108-160 DKK) inkl. transport</li>
+          <li><strong>Teenagerne:</strong> Interessant hvis de er til historie/ruiner. Ellers kan det springes over.</li>
+          <li><strong>Juli-note:</strong> Meget varmt - medbring hat, solcreme og masser af vand</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="activity" style="background:white">
+      <p class="activity-title">15. Vandaktiviteter og teenagervenlige oplevelser</p>
+      <div class="activity-body">
+        <p>Ud over de planlagte aktiviteter er her ekstra muligheder for teenagere:</p>
+        <ul>
+          <li><strong>SUP (Stand Up Paddleboarding):</strong> Tilbydes på An Bang Beach og Thu Bon-floden. Ca. 200.000-400.000 VND (54-108 DKK) pr. time</li>
+          <li><strong>Kajak på Thu Bon-floden:</strong> Roligt vand, flot natur. Halvdagstur ca. 400.000 VND (108 DKK)</li>
+          <li><strong>Hoi An Lune Performing Center:</strong> Akrobatik-show "Teh Dar" eller "A O Show" - Cirque du Soleil-agtig oplevelse med vietnamesisk kultur. Forestillinger om aftenen. Fantastisk for hele familien. <a href="https://luneproduction.com/" target="_blank">luneproduction.com ↗</a> · Pris: 600.000-1.200.000 VND (160-324 DKK)</li>
+          <li><strong>Lanternemaleri-workshop:</strong> Lav jeres egen Hoi An-lanterne. Flere workshops i gamlebyen. Ca. 150.000-250.000 VND (40-67 DKK)</li>
+          <li><strong>Streetfood-tour om aftenen:</strong> Guidet vandring med 8-10 smagsprøver. Perfekt for madglade teenagere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">5 dage</p>
+    <h2 class="section-title">Foreslået 5-dages plan for Hoi An</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dag</th><th>Morgen</th><th>Eftermiddag</th><th>Aften</th></tr></thead>
+        <tbody>
+          <tr><td>1 (19. jul)</td><td>Ankomst fra Hanoi, check ind</td><td>Gamlebyen - vandring, Japanese Bridge, Old Town Ticket</td><td>Lanterner langs floden, natmarked</td></tr>
+          <tr><td>2 (20. jul)</td><td>Skrædder-shopping (bestil tøj!)</td><td>Fri eftermiddag / pool</td><td>Afhent tøj til 1. prøvning, restaurant Morning Glory</td></tr>
+          <tr><td>3 (21. jul)</td><td>Madlavningskursus (Red Bridge)</td><td>An Bang Beach</td><td>Bådtur ved solnedgang, basket boats Cam Thanh</td></tr>
+          <tr><td>4 (22. jul)</td><td>Cykeltur: rismarker → Tra Que → An Bang Beach</td><td>Stranddag, SUP/kajak</td><td>Skrædder - afhent færdigt tøj, natmarked</td></tr>
+          <tr><td>5 (23. jul)</td><td>Cham Islands dagstur (snorkling, strand)</td><td>← dagstur hele dagen →</td><td>Afskedsaften i gamlebyen, lanterne på floden</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="../overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

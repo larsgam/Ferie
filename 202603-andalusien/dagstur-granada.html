@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Granada · Dagstur 31. marts 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; flex-direction: column; height: 100vh; }
+
+    #header {
+      background: #1a1a2e;
+      color: white;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    #header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+    #header-right { display: flex; align-items: center; gap: 8px; }
+
+    .header-btn {
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    #gmaps-btn { background: #16a34a; }
+    #gmaps-btn:active { background: #15803d; }
+    #gps-btn { background: #2563eb; }
+    #gps-btn:active { background: #1d4ed8; }
+
+    #map { flex: 1; }
+
+    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.2); max-width: 280px; }
+    .leaflet-popup-content { margin: 13px 15px; }
+    .popup-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; color: white; margin-bottom: 6px;
+    }
+    .popup-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; line-height: 1.3; }
+    .popup-time { font-size: 11px; color: #888; margin-bottom: 6px; font-weight: 500; }
+    .popup-body { font-size: 12px; color: #333; line-height: 1.6; }
+    .popup-tip { margin-top: 7px; font-size: 11px; color: #555; background: #f5f5f7; border-radius: 6px; padding: 5px 8px; }
+    .popup-tip b { color: #111; }
+
+    /* Nummererede markør-ikoner */
+    .stop-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      border: 2.5px solid rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <h1>📍 Granada · 31. marts 2026</h1>
+  <div id="header-right">
+    <a id="gmaps-btn" class="header-btn" href="https://www.google.com/maps/dir/?api=1&origin=37.1770,-3.6010&destination=37.1810,-3.5935&waypoints=37.1762,-3.5990|37.1818,-3.5922|37.1792,-3.5908|37.1760,-3.5993|37.1830,-3.5848|37.1785,-3.5950&travelmode=walking" target="_blank">🗺️ Google Maps</a>
+    <button id="gps-btn" class="header-btn">📡 Find mig</button>
+  </div>
+</div>
+
+<div id="map"></div>
+
+<script>
+const map = L.map('map').setView([37.177, -3.598], 15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+}).addTo(map);
+
+// ── GPS ──────────────────────────────────────────────────────────────────────
+let gpsMarker = null;
+document.getElementById('gps-btn').addEventListener('click', () => {
+  if (!navigator.geolocation) { alert('Geolocation ikke tilgængeligt'); return; }
+  navigator.geolocation.getCurrentPosition(pos => {
+    const latlng = [pos.coords.latitude, pos.coords.longitude];
+    if (gpsMarker) gpsMarker.setLatLng(latlng);
+    else {
+      gpsMarker = L.circleMarker(latlng, {
+        radius: 9, fillColor: '#2563eb', color: 'white', weight: 2.5,
+        fillOpacity: 1
+      }).addTo(map).bindPopup('📡 Du er her');
+    }
+    map.setView(latlng, 16);
+  }, () => alert('Kunne ikke hente position'));
+});
+
+// ── Hjælpefunktion: nummereret ikon ─────────────────────────────────────────
+function stopIcon(num, color) {
+  return L.divIcon({
+    className: '',
+    html: `<div class="stop-icon" style="background:${color}">${num}</div>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -18]
+  });
+}
+
+// Farver pr. type
+const C_SEV   = '#0f766e';   // seværdighed (teal)
+const C_KV    = '#7c3aed';   // kvarter (lilla)
+const C_MAD   = '#dc2626';   // mad (rød)
+const C_KAFFE = '#b45309';   // kaffestop (brun)
+
+// ── STOP 1 — Catedral + Capilla Real ────────────────────────────────────────
+L.marker([37.1762, -3.5990], { icon: stopIcon('1', C_SEV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_SEV}">Stop 1 · Seværdighed</div>
+    <div class="popup-title">Catedral + Capilla Real</div>
+    <div class="popup-time">⏰ 09:30 — lukker 13:30!</div>
+    <div class="popup-body">
+      Granadas renæssancekatedral + Ferdinand og Isabellas gravsted.
+      Kronjuveler og Isabellas private kunstsamling i Capilla Real.
+    </div>
+    <div class="popup-tip"><b>OBS Semana Santa:</b> Lukker kl. 13:30. Første stop!</div>
+  `);
+
+// ── STOP 2 — Albaicín + Mirador San Nicolás ─────────────────────────────────
+L.marker([37.1818, -3.5922], { icon: stopIcon('2', C_SEV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_SEV}">Stop 2 · Seværdighed</div>
+    <div class="popup-title">Albaicín + Mirador San Nicolás</div>
+    <div class="popup-time">⏰ 10:30 — ca. 60 min</div>
+    <div class="popup-body">
+      Mørisk kvarter med smalle kalkede gader op ad bakken. Gå mod
+      <b>Mirador San Nicolás</b> øverst — bedste udsigt over Alhambra med Sierra Nevada bag.
+    </div>
+    <div class="popup-tip"><b>Tip:</b> Tidligt på dagen er det stille og lokalt.</div>
+  `);
+
+// ── STOP 3 — El Bañuelo ──────────────────────────────────────────────────────
+L.marker([37.1792, -3.5908], { icon: stopIcon('3', C_SEV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_SEV}">Stop 3 · Seværdighed</div>
+    <div class="popup-title">El Bañuelo (arabisk bad)</div>
+    <div class="popup-time">⏰ 11:30 — ca. 30 min</div>
+    <div class="popup-body">
+      Granadas bedst bevarede møriske bad fra 1000-tallet. Stjerneformede
+      lyshuller i hvælvingerne intakte. Lille, roligt, aldrig fyldt.
+    </div>
+    <div class="popup-tip"><b>Tip:</b> Gratis indgang. Ligger ved Carrera del Darro.</div>
+  `);
+
+// ── STOP 4 — Frokost: Calle Navas ───────────────────────────────────────────
+L.marker([37.1760, -3.5993], { icon: stopIcon('4', C_MAD) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_MAD}">Stop 4 · Frokost</div>
+    <div class="popup-title">Calle Navas</div>
+    <div class="popup-time">⏰ ca. 14:00</div>
+    <div class="popup-body">
+      <b>Bodegas Castañeda</b> — bodega fra 1800-tallet, riojavine fra egetønder.<br><br>
+      <b>Bar Los Diamantes</b> — friteret fisk + skaldyr, stående bardisk.
+    </div>
+    <div class="popup-tip"><b>Granada-regel:</b> Gratis tapa med hver drink.</div>
+  `);
+
+// ── STOP 5 — Sacromonte ──────────────────────────────────────────────────────
+L.marker([37.1830, -3.5848], { icon: stopIcon('5', C_SEV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_SEV}">Stop 5 · Seværdighed</div>
+    <div class="popup-title">Sacromonte</div>
+    <div class="popup-time">⏰ 15:00 — ca. 45 min</div>
+    <div class="popup-body">
+      Gitano-kvarter med huleboliger hugget ind i klippesiden.
+      Gå op ad <b>Camino del Sacromonte</b> for udsigt og stemning.
+    </div>
+    <div class="popup-tip"><b>Tip:</b> Gå op ad vejen — intet behov for at betale museum.</div>
+  `);
+
+// ── STOP 6 — Carrera del Darro + Calderería Nueva ───────────────────────────
+L.marker([37.1785, -3.5950], { icon: stopIcon('6', C_KV) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_KV}">Stop 6 · Kvarter</div>
+    <div class="popup-title">Carrera del Darro + Calderería Nueva</div>
+    <div class="popup-time">⏰ 16:00 — slentretempo</div>
+    <div class="popup-body">
+      <b>Carrera del Darro</b> langs floden med Alhambra ovenover.<br>
+      <b>Calderería Nueva</b> — te, krydderier, håndværk, souvenirs.
+    </div>
+    <div class="popup-tip"><b>Shopping:</b> Calderería Nueva er god for teenagerne.</div>
+  `);
+
+// ── STOP 7 — Kaffestop: Placeta San Miguel Bajo ──────────────────────────────
+L.marker([37.1810, -3.5935], { icon: stopIcon('7', C_KAFFE) })
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:${C_KAFFE}">Stop 7 · Kaffestop</div>
+    <div class="popup-title">Placeta San Miguel Bajo</div>
+    <div class="popup-time">⏰ ca. 16:30</div>
+    <div class="popup-body">
+      Lokal plads i Albaicín — terrasser, kaffe og en øl i solen.
+      Ingen turistmenuer. Lokale kommer her.
+    </div>
+    <div class="popup-tip"><b>Tip:</b> Udsigt over tage og tårne fra terrassen.</div>
+  `);
+
+// ── PARKERING ────────────────────────────────────────────────────────────────
+L.marker([37.1770, -3.6010], {
+  icon: L.divIcon({
+    className: '',
+    html: `<div class="stop-icon" style="background:#374151">🅿</div>`,
+    iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -18]
+  })
+})
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-badge" style="background:#374151">Parkering</div>
+    <div class="popup-title">START · Parking San Agustín</div>
+    <div class="popup-body">
+      Bedste parkering til dette program — tæt på Catedral og gåafstand til alt.
+      Parkering betales med app eller automat.
+    </div>
+  `);
+
+// ── RUTE-POLYLINE ─────────────────────────────────────────────────────────────
+// Parkering → 1 Catedral → 2 Albaicín → 3 Bañuelo → 4 Frokost → 5 Sacromonte → 6 Darro → 7 Kaffestop
+const route = [
+  [37.1770, -3.6010],   // Parkering
+  [37.1762, -3.5990],   // A2 Catedral
+  [37.1818, -3.5922],   // A1 Albaicín / Mirador
+  [37.1792, -3.5908],   // A3 Bañuelo
+  [37.1760, -3.5993],   // Frokost Calle Navas
+  [37.1830, -3.5848],   // A4 Sacromonte
+  [37.1785, -3.5950],   // B1 Carrera del Darro
+  [37.1810, -3.5935],   // Kaffestop Placeta San Miguel
+];
+
+L.polyline(route, {
+  color: '#2563eb',
+  weight: 4,
+  opacity: 0.7,
+  dashArray: '8, 6',
+  lineJoin: 'round'
+}).addTo(map);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mad – Vietnam 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-accent-warm: #2e9e5b;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 980px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1a2e1a; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e9e6e; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1b8a1; max-width: 560px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 24px; }
+    .dish-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .dish { background: var(--color-section); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); position: relative; }
+    .dish.must-try { border-color: var(--color-accent-warm); border-width: 2px; }
+    .dish-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .dish-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+    .dish-names { flex: 1; }
+    .dish-name-da { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+    .dish-name-vn { font-size: 13px; color: var(--color-secondary); margin-top: 2px; font-style: italic; }
+    .dish-desc { font-size: 14px; line-height: 1.6; color: var(--color-text); margin-bottom: 8px; }
+    .dish-note { font-size: 13px; color: var(--color-secondary); line-height: 1.5; }
+    .tag-must { display: inline-block; background: var(--color-accent-warm); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 980px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .activity { background: var(--color-section); border-radius: var(--radius); padding: 24px 28px; border: 1px solid var(--color-divider); margin-bottom: 16px; }
+    .activity-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .activity-body { font-size: 14px; line-height: 1.7; }
+    .activity-body ul { margin: 4px 0 0 18px; }
+    .activity-body li { margin-bottom: 6px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .card { background: white; border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--color-divider); }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card-body { font-size: 14px; color: var(--color-secondary); line-height: 1.6; }
+    .divider { border: none; border-top: 1px solid var(--color-divider); margin: 32px 0; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🍜 Mad i Vietnam</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Madguide · Vietnam 2026</p>
+  <h1>Hvad skal vi spise?</h1>
+  <p class="hero-sub">De vigtigste retter — til brug foran gadekøkkenet eller på restauranten.</p>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Start på dagen</p>
+    <h2 class="section-title">Morgenmad &amp; streetfood</h2>
+    <div class="dish-grid">
+
+      <div class="dish must-try">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🥖</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Vietnamesisk sandwich</div>
+            <div class="dish-name-vn">Bánh mì</div>
+          </div>
+        </div>
+        <p class="dish-desc">Sprød baguette fyldt med pâté, forskellige kødpålæg, pickled gulerødder og daikon, frisk koriander og chili. Arv fra den franske kolonitid — nu en af verdens bedste sandwicher.</p>
+        <p class="dish-note">💡 Koster typisk 20.000–40.000 VND (~7–14 kr). Bed om "không có rau mùi" hvis nogen ikke kan lide koriander.</p>
+      </div>
+
+      <div class="dish must-try">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🥞</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Dampede riskager med fyld</div>
+            <div class="dish-name-vn">Bánh cuốn</div>
+          </div>
+        </div>
+        <p class="dish-desc">Tynde, bløde risdejsruller dampet på stedet, fyldt med hakket svinekød og tørrede svampe. Serveres med en let dipping-sauce og stegt skalotteløg.</p>
+        <p class="dish-note">💡 Populær morgenmadret i Hanoi. Ses bedst ved gadekøkkener tidligt om morgenen.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-header">
+          <div class="dish-icon">🍚</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Klæbrigt ris med topping</div>
+            <div class="dish-name-vn">Xôi</div>
+          </div>
+        </div>
+        <p class="dish-desc">Dampet klæbrigt ris med forskellige toppings: stegt løg, mungbønner, kogt kylling eller søde varianter med sesamfrø og kokosnødde. Fyldende morgenmad.</p>
+        <p class="dish-note">💡 Find det ved kurve/stativer langs gaden tidligt om morgenen. Peg på hvad du vil have.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-header">
+          <div class="dish-icon">🥣</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Vietnamesisk risengrød</div>
+            <div class="dish-name-vn">Cháo</div>
+          </div>
+        </div>
+        <p class="dish-desc">Blød risengrød kogt i fond — serveres med kylling, svinekød eller fisk. Toppet med ingefær, frisk løg og sesamolie. Mild og behagelig for maven.</p>
+        <p class="dish-note">💡 God hvile-ret og nem at justere smagen på. God mulighed hvis maven er øm.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Bouillon og nudler</p>
+    <h2 class="section-title">Supper</h2>
+    <div class="dish-grid">
+
+      <div class="dish must-try" style="background:white">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🍲</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Oksenudelsuppe</div>
+            <div class="dish-name-vn">Phở bò</div>
+          </div>
+        </div>
+        <p class="dish-desc">Vietnams nationalret. Klar bouillon kogt i timer på okseben med stjerneanis og kanel, risnudler og oksekød. Serveres med bord-friske krydderurter, limeskiver, bønnespirespirer og chili.</p>
+        <p class="dish-note">💡 Spis det i Hanoi — hjemstaven for phở. Phở gà = kyllingeversion. Tilføj selv hoisin og chili-sauce fra bordet.</p>
+      </div>
+
+      <div class="dish must-try" style="background:white">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🍜</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Grillet svinekød med nudler</div>
+            <div class="dish-name-vn">Bún chả</div>
+          </div>
+        </div>
+        <p class="dish-desc">Hanois svar på grill-BBQ: røgede frikadeller og skiver af grillet svinekød serveret i en let sød-sur dipping-sauce med glasnudler, friske krydderurter og nem-spring rolls ved siden.</p>
+        <p class="dish-note">💡 Serveret i Hanoi-stil: kød, sauce og nudler adskilt — dyp nudelerne i saucen selv.</p>
+      </div>
+
+      <div class="dish must-try" style="background:white">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🍝</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Hoi An-nudler</div>
+            <div class="dish-name-vn">Cao lầu</div>
+          </div>
+        </div>
+        <p class="dish-desc">Unik ret fra Hoi An — tykke, seje nudler med svinekød, svineskind, krydderurter og riscroutoner. Saucen er tyk og aromatisk. Laves angiveligt kun med vand fra en bestemt brønd i Hoi An.</p>
+        <p class="dish-note">💡 Kan kun smages autentisk i Hoi An. Spis det mens vi er der!</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🌶️</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Krydret oksenudelsuppe fra Hue</div>
+            <div class="dish-name-vn">Bún bò Huế</div>
+          </div>
+        </div>
+        <p class="dish-desc">Fyldigere og mere krydret end phở. Tyk lemongras-bouillon med oksekød, svineskank og tykke, runde risnudler. Rødt af annatto-olie og chili.</p>
+        <p class="dish-note">⚠️ Kan være ret stærk. Bed om "ít cay" (ikke særlig stærkt) hvis nødvendigt.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🦀</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Tomat-krabbesuppe</div>
+            <div class="dish-name-vn">Bún riêu</div>
+          </div>
+        </div>
+        <p class="dish-desc">Rød, tomatbaseret bouillon med krabbetofu-klumper, rejer, og risnudler. Syrlig og umami-fyldig. Serveres med tamarind-sauce, fermenteret rejesauce og friske krydderurter.</p>
+        <p class="dish-note">⚠️ Indeholder skaldyr (krabbe, rejer). Tjek allergi inden bestilling.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🥗</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Centralvietnamitiske nudler</div>
+            <div class="dish-name-vn">Mì Quảng</div>
+          </div>
+        </div>
+        <p class="dish-desc">Gule gurkemeje-nudler med meget lidt bouillon — næsten tør. Serveres med kylling eller rejer, riscroutoner, jordnødder og masser af friske urter. En ret fuld af teksturer.</p>
+        <p class="dish-note">💡 Typisk centralvietnamitisk — find det i Da Nang og Hoi An.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Til frokost og aftensmad</p>
+    <h2 class="section-title">Hauptretter</h2>
+    <div class="dish-grid">
+
+      <div class="dish must-try">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🥗</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Friske forårsruller</div>
+            <div class="dish-name-vn">Gỏi cuốn</div>
+          </div>
+        </div>
+        <p class="dish-desc">Klare rispaper-ruller med rejer, svinekød, risnudler, salat og friske krydderurter. Let, frisk og sund — serveres med jordnøddesauce eller hoisin.</p>
+        <p class="dish-note">💡 Friske (ikke stegte). Perfekt i varmen. God snack-mulighed overalt.</p>
+      </div>
+
+      <div class="dish must-try">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🥩</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Brudt ris med grillet svinekød</div>
+            <div class="dish-name-vn">Cơm tấm</div>
+          </div>
+        </div>
+        <p class="dish-desc">Sydvietnamitisk specialitet: grillet marineret svinekotelet over "brudt" jasminris, med dampet æg-og-svinekød-terrine, svineskind og syltet grøntsag. Alt samlet med sød-syrlig dipping-sauce.</p>
+        <p class="dish-note">💡 Populær til alle måltider i Sydvietnam. Kig efter "Cơm tấm"-skilte tidligt om morgenen.</p>
+      </div>
+
+      <div class="dish must-try">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🥞</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Sprød vietnamesisk pandekage</div>
+            <div class="dish-name-vn">Bánh xèo</div>
+          </div>
+        </div>
+        <p class="dish-desc">Stor, sprød, gurkemeje-gul pandekage af rismel og kokosmælk, fyldt med rejer, svinekød og bønnespirespirer. Brydes i stykker og pakkes ind i salatblade med friske urter.</p>
+        <p class="dish-note">💡 Navnet betyder "sizzling cake" — lydmalende for den lyd den laver i panden. Sjovt at spise.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-header">
+          <div class="dish-icon">🥟</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Stegte forårsruller</div>
+            <div class="dish-name-vn">Chả giò / Nem rán</div>
+          </div>
+        </div>
+        <p class="dish-desc">Sprøde, friturestegte rispaper-ruller fyldt med svinekød, glasnudler, svampe og grøntsager. Klassisk forret eller snack — dyp i nuoc cham.</p>
+        <p class="dish-note">💡 "Nem rán" i nord, "Chả giò" i syd. Samme ret — forskelligt navn.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-header">
+          <div class="dish-icon">🐟</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Karameliseret braised fisk</div>
+            <div class="dish-name-vn">Cá kho tộ</div>
+          </div>
+        </div>
+        <p class="dish-desc">Fisk (typisk havkat) braiseret i en lerkrukke med karamel, fiskesauce og peber. Sød, salt og dyb umami-smag. Serveres over ris.</p>
+        <p class="dish-note">💡 Kerneretten i sydvietnamesisk hjemmemadlavning. Find det på simple familierestauranter.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-header">
+          <div class="dish-icon">🥩</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Wok-stegt oksekød</div>
+            <div class="dish-name-vn">Bò lúc lắc</div>
+          </div>
+        </div>
+        <p class="dish-desc">Tern af mørbrad hurtigt wok-stegt ved høj varme med oyster sauce, hvidløg og peber. Serveret på salat og tomater med lime-peber-sauce til dyp.</p>
+        <p class="dish-note">💡 "Shaking beef" — populær både som restaurant- og gaderet. Mild og børnevenlig.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Til at gå rundt med</p>
+    <h2 class="section-title">Snacks, desserter &amp; drikke</h2>
+    <div class="dish-grid">
+
+      <div class="dish must-try" style="background:white">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">☕</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Vietnamesisk iskaffe</div>
+            <div class="dish-name-vn">Cà phê sữa đá</div>
+          </div>
+        </div>
+        <p class="dish-desc">Stærk, langsomt dryppet Robusta-kaffe over masser af is med kondenseret mælk. Sød, intens og perfekt i varmen. En af verdens bedste kaffeoplevelser.</p>
+        <p class="dish-note">💡 Cà phê đen đá = sort iskaffe. Cà phê trứng = æggekaffe (Hanoi-specialitet, varm og cremet).</p>
+      </div>
+
+      <div class="dish must-try" style="background:white">
+        <div class="tag-must">Must try</div>
+        <div class="dish-header">
+          <div class="dish-icon">🧁</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Grillet rispaper pizza</div>
+            <div class="dish-name-vn">Bánh tráng nướng</div>
+          </div>
+        </div>
+        <p class="dish-desc">Tyndt rispaper grillet over kul og toppet med æg, grønne løg, tørret rejer og chili-sauce. Sprød, billig og vanedannende. Kælenavnet er "Vietnamese pizza".</p>
+        <p class="dish-note">💡 Klassisk Dalat-streetfood, nu overalt. Perfekt aften-snack på gaden. Koster 15.000–25.000 VND.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🍮</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Vietnamesiske søde supper</div>
+            <div class="dish-name-vn">Chè</div>
+          </div>
+        </div>
+        <p class="dish-desc">En hel kategori af søde dessertretter: farvede gelé-lag, kokosmælk, mungbønner, søde kartofler, tapioka-perler og is. Serveret varmt, koldt eller over crushed ice.</p>
+        <p class="dish-note">💡 Kig efter chè-boder — billigt, farverigt og sjovt at prøve. Chokolade er det ikke — men god sommer-dessert.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🧃</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Frisk sukkerørsaft</div>
+            <div class="dish-name-vn">Nước mía</div>
+          </div>
+        </div>
+        <p class="dish-desc">Sukkerrør presses i store maskiner på gaden — resulterer i en frisk, lys og naturligt sød juice. Ofte tilsat kumquat og is.</p>
+        <p class="dish-note">💡 Ultrabillig (~10.000 VND) og perfekt i varmen. Blandede meldinger om hygienje — vælg steder med mange lokale kunder.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🍓</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Frisk tropisk frugt-smoothie</div>
+            <div class="dish-name-vn">Sinh tố</div>
+          </div>
+        </div>
+        <p class="dish-desc">Blendede frugtsmoothies med is og kondenseret mælk: mango, jackfrugt, passionfrugt, avocado eller jordbær. Tykt, fyldigt og sødt.</p>
+        <p class="dish-note">💡 Sinh tố bơ = avocadosmoothie. Overraskende god. Find juice-boder i markeder og langs gaden.</p>
+      </div>
+
+      <div class="dish" style="background:white">
+        <div class="dish-header">
+          <div class="dish-icon">🍺</div>
+          <div class="dish-names">
+            <div class="dish-name-da">Frisk fadøl</div>
+            <div class="dish-name-vn">Bia hơi</div>
+          </div>
+        </div>
+        <p class="dish-desc">Vietnams svar på mikrobrygget – brygget dagligt og leveret frisk til gade-barer om morgenen. Let, lys, lav-alkohol og koster ca. 5.000–10.000 VND pr. glas (~2–4 kr).</p>
+        <p class="dish-note">💡 Drik det ved plasticstoler på fortovet i Hanois Old Quarter. Verdens billigste øl. Børn kan drikke citronsaft ved siden af.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Praktisk</p>
+    <h2 class="section-title">Tips til gadekøkkenet</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">👀</div>
+        <div class="card-title">Kig efter køer</div>
+        <p class="card-body">Lange køer af lokale = godt tegn. Tomme restauranter med laminerede turistmenuer = gå videre.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🪑</div>
+        <div class="card-title">Plastikstole er okay</div>
+        <p class="card-body">De bedste gadekøkkener har bitte små plastikstole og borde direkte på fortovet. Lav stol = autentisk.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👆</div>
+        <div class="card-title">Peg og bestil</div>
+        <p class="card-body">Mange steder er der kun ét eller to retter. Peg på hvad naboen spiser, og nik. Virker altid.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💵</div>
+        <div class="card-title">Priser</div>
+        <p class="card-body">Gaderet: 30.000–80.000 VND (~10–28 kr). Restaurant: 80.000–200.000 VND. Turistrestaurant: det dobbelte.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <div class="card-title">Urter hører til</div>
+        <p class="card-body">Mange retter serveres med tallerken friske urter. Dem putter man selv i. Spørg om koriander kan udelades: "Không rau mùi".</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🫙</div>
+        <div class="card-title">Saucerne på bordet</div>
+        <p class="card-body">Hoisin, sriracha, chili i eddike og nuoc cham (fiskesauce-citrus-mix) står fremme. Tilsæt selv — eksperimenter.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧊</div>
+        <div class="card-title">Is i drinks</div>
+        <p class="card-body">Is er generelt okay i byerne — men undgå is fra ukendte gadehandlere uden køl. Flaske-/dåsevand er altid sikkert.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤧</div>
+        <div class="card-title">Allergi og kost</div>
+        <p class="card-body">Fiskesauce er i næsten alt. Jordnødder er udbredte. Skaldyr er hyppige. Vegetarisk: kig efter "chay"-restauranter (buddhistisk vegetarkøkken).</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="activity">
+      <p class="activity-title">Nyttige ord at kende</p>
+      <div class="activity-body">
+        <ul>
+          <li><strong>Không cay</strong> — ikke stærkt</li>
+          <li><strong>Ít cay</strong> — lidt stærkt</li>
+          <li><strong>Không rau mùi</strong> — ingen koriander</li>
+          <li><strong>Tôi bị dị ứng với…</strong> — jeg er allergisk overfor…</li>
+          <li><strong>Ngon lắm!</strong> — det smager godt!</li>
+          <li><strong>Tính tiền</strong> — regningen tak</li>
+          <li><strong>Bao nhiêu tiền?</strong> — hvad koster det?</li>
+          <li><strong>Chay</strong> — vegetarisk</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+</body>
+</html>

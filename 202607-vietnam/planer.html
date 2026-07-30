@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejseplaner · versionsoversigt – Vietnam 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #ffffff; --color-section: #f5f5f7; --color-text: #1d1d1f;
+      --color-secondary: #6e6e73; --color-accent: #0071e3; --color-master: #2e9e5b;
+      --color-divider: #d2d2d7;
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --radius: 18px; --max-w: 940px;
+    }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    nav { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-divider); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-back { font-size: 13px; color: var(--color-accent); text-decoration: none; }
+    .nav-back:hover { text-decoration: underline; }
+    .hero { background: #1d1d1f; padding: 64px 22px 56px; text-align: center; }
+    .hero-eyebrow { font-size: 13px; font-weight: 600; color: #6e6e73; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: white; margin-bottom: 14px; }
+    .hero-sub { font-size: 17px; color: #a1a1a6; max-width: 560px; margin: 0 auto; line-height: 1.5; }
+    .section { padding: 52px 22px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px; }
+    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 22px; }
+    /* MASTER CARD */
+    .master-card { background: linear-gradient(135deg, #eafaf0 0%, #d6f0e0 100%); border: 1px solid #aee0c0; border-radius: var(--radius); padding: 28px 32px; }
+    .master-flag { display: inline-flex; align-items: center; gap: 6px; background: var(--color-master); color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; border-radius: 980px; margin-bottom: 14px; }
+    .master-card h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .master-card .master-meta { font-size: 14px; color: #2a6b45; margin-bottom: 14px; }
+    .master-card .master-route { background: rgba(255,255,255,0.6); border-radius: 12px; padding: 14px 18px; font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .master-card .master-route strong { color: #1d6b3f; }
+    .master-btn { display: inline-block; background: var(--color-master); color: white; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 980px; text-decoration: none; }
+    .master-btn:hover { background: #277e49; text-decoration: none; }
+    /* TABLE */
+    .table-wrap { overflow-x: auto; }
+    .ver-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .ver-table th { text-align: left; padding: 12px 14px; background: var(--color-section); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-secondary); }
+    .ver-table th:first-child { border-radius: 8px 0 0 8px; }
+    .ver-table th:last-child { border-radius: 0 8px 8px 0; }
+    .ver-table td { padding: 16px 14px; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.5; }
+    .ver-table tr:last-child td { border-bottom: none; }
+    .ver-table tr.is-master td { background: #f2fbf5; }
+    .ver-num { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+    .ver-name { font-weight: 600; }
+    .ver-name a { color: var(--color-text); }
+    .ver-name a:hover { color: var(--color-accent); }
+    .ver-desc { font-size: 13px; color: var(--color-secondary); margin-top: 4px; }
+    .vtag { display:inline-block; font-weight: 700; padding: 3px 11px; border-radius: 980px; font-size: 12px; white-space: nowrap; }
+    .vtag-master { background: var(--color-master); color: white; }
+    .vtag-archived { background: #c7c7cc; color: #1d1d1f; }
+    .open-link { font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; white-space: nowrap; }
+    .open-link:hover { text-decoration: underline; }
+    .legend { font-size: 13px; color: var(--color-secondary); line-height: 1.7; margin-top: 18px; }
+    /* MAP */
+    .map-toggles { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .map-toggle { border: none; border-radius: 980px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .map-toggle.off { opacity: 0.35; }
+    #plan-map { height: 460px; border-radius: var(--radius); border: 1px solid var(--color-divider); overflow: hidden; }
+    .leaflet-popup-content-wrapper { border-radius: 10px; }
+    .leaflet-popup-content { margin: 10px 14px; }
+    .map-pop-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .map-pop-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 980px; color: white; margin-bottom: 6px; }
+    .map-pop-body { font-size: 12px; color: #444; line-height: 1.5; }
+    .map-pop-plans { font-size: 11px; color: var(--color-secondary); margin-top: 6px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { background: var(--color-section); border-top: 1px solid var(--color-divider); padding: 32px 22px; text-align: center; }
+    footer p { font-size: 13px; color: var(--color-secondary); }
+    @media (max-width: 640px) { .hide-sm { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">🗂️ Rejseplaner</span>
+    <a href="overview.html" class="nav-back">← Vietnam</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Versionsoversigt · Vietnam 2026</p>
+  <h1>Rejseplaner</h1>
+  <p class="hero-sub">Alle versioner af rejseplanen — med navn, nummer, dato og hvilken der er den nuværende master.</p>
+</section>
+
+<!-- MASTER -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Nuværende master</p>
+    <h2 class="section-title">Den gældende plan</h2>
+    <div class="master-card">
+      <span class="master-flag">★ Master · v3.5</span>
+      <h3>Vietnam + Cambodja + Mekong — sydlig finale</h3>
+      <p class="master-meta">Lavet 28. jul 2026 · 26 nætter · Ninh Binh droppet, slutter i Mekong + Saigon (mangler HCMC-hotel + cruise)</p>
+      <div class="master-route">
+        Hanoi 2 → <strong>🚢 Bai Tu Long 2n om bord</strong> → Mai Chau 1 → <strong>Pu Luong 3</strong> → ✈️ Siem Reap 3 → ✈️ <strong>Hoi An 6</strong> → Hue 2 → <strong>Phong Nha 3</strong> → ✈️ <strong>Ben Tre (Mekong) 2</strong> → <strong>Ho Chi Minh City 2</strong> → ✈️ hjem via Hanoi
+      </div>
+      <a href="plan-3.5.html" class="master-btn">Åbn master-planen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- KORT -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Geografisk sammenligning</p>
+    <h2 class="section-title">Kort: master vs. øvrige planer</h2>
+    <p style="font-size:15px; color:var(--color-secondary); line-height:1.6; margin-bottom:18px;">
+      Grønne stop = master-planen (v1.1), forbundet i rejserækkefølge. ★ markerer steder der <em>kun</em> er på master. De farvede markører viser, hvor de øvrige planer afviger.
+    </p>
+    <div class="map-toggles">
+      <button class="map-toggle" data-group="master" style="background:#2e9e5b">★ Master (v1.1)</button>
+      <button class="map-toggle" data-group="v10" style="background:#d97706">v1.0 · Sapa</button>
+      <button class="map-toggle" data-group="v20" style="background:#7c3aed">v2.0 · Syd</button>
+    </div>
+    <div id="plan-map"></div>
+  </div>
+</section>
+
+<!-- SKEMA -->
+<section class="section" style="background:var(--color-section)">
+  <div class="section-inner">
+    <p class="section-label">Alle versioner</p>
+    <h2 class="section-title">Skema</h2>
+    <div class="table-wrap">
+      <table class="ver-table">
+        <thead>
+          <tr><th>Version</th><th>Navn &amp; beskrivelse</th><th class="hide-sm">Dato</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-master">
+            <td><span class="ver-num">3.5</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.5.html">Vietnam + Cambodja + Mekong — sydlig finale</a></div>
+              <div class="ver-desc">Ninh Binh droppet. Fly Dong Hoi → Ho Chi Minh City 29. jul (#3FYMHN), 2 nætter i Mekong-deltaet (Ben Tre, Mango Home Riverside ✅) + 2 nætter i HCMC (hotel mangler), hjemfly VN212 HCMC → Hanoi 2. aug (PNR FHFQ7P). Stadig 26 nætter. <a href="detaljer.html">Detaljer pr. dag</a>.</div>
+            </td>
+            <td class="hide-sm">28. jul 2026</td>
+            <td><span class="vtag vtag-master">★ Master</span></td>
+            <td><a href="plan-3.5.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">3.4</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.4.html">Vietnam + Cambodja — bookinger låst</a></div>
+              <div class="ver-desc">Overnatninger booket (6. jul): The Pearl Hoi An 6n, Rosaleen Hue 2n, Chay Lap Phong Nha 3n. Sluttede med Ninh Binh 2n + Hanoi 2n. Supersedet af v3.5 (sydlig finale via Mekong + Saigon).</div>
+            </td>
+            <td class="hide-sm">6. jul 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-3.4.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">3.3</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.3.html">Vietnam + Cambodja — Dragon Legend Cruise</a></div>
+              <div class="ver-desc">Dragon Legend Cruise 3 dage/2 nætter i Bai Tu Long Bay (9–11. jul). Direkte Ha Long → Mai Chau — ingen Hanoi-transitnat. Supersedet af v3.4 (bookinger låst).</div>
+            </td>
+            <td class="hide-sm">5. jul 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-3.3.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">3.2</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.2.html">Vietnam + Cambodja — Da Nang droppet</a></div>
+              <div class="ver-desc">Dropper Da Nang som overnatningssted: Hoi An 5n (Ba Na Hills som dagstur), Hue opgraderet til 3n. Cambodia-fly booket ✅. Stadig 26 nætter. Supersedet af v3.3 (Dragon Legend Cruise).</div>
+            </td>
+            <td class="hide-sm">22. jun 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-3.2.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">3.1</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.1.html">Vietnam + Cambodja — logistikoptimeret</a></div>
+              <div class="ver-desc">Justerer v3.0: Pu Luong 3 nætter, Da Nang lufthavn → direkte til Hoi An. Supersedet af v3.2.</div>
+            </td>
+            <td class="hide-sm">22. jun 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-3.1.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">3.0</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-3.0.html">Vietnam + Cambodja (Angkor Wat)</a></div>
+              <div class="ver-desc">Sidetrip til Cambodja med fly fra Hanoi. 3 nætter ved Angkor Wat, fly til Da Nang og tog nordpå. Supersedet af v3.1 (logistikoptimering).</div>
+            </td>
+            <td class="hide-sm">17. jun 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-3.0.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">1.1</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-1.1.html">Nord og mellem Vietnam — incl Pu Luong og Phong Nha</a></div>
+              <div class="ver-desc">Revision af v1.0: Sapa → Pu Luong (mindre turistet), tilføjer Phong Nha (grotter, 2 nætter), −1 dag Hanoi, −1 dag Da Nang. Stadig 26 nætter. Supersedet af v3.x (Cambodia tilføjet).</div>
+            </td>
+            <td class="hide-sm">11. jun 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-1.1.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">1.0</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-1.0.html">Nord og mellem Vietnam</a></div>
+              <div class="ver-desc">Den oprindelige plan (Plan A). Fokus på Nord- og Centralvietnam, dropper syden for at undgå monsunregn. 26 nætter med Sapa, Ninh Binh, Hoi An, Hue, Da Nang.</div>
+            </td>
+            <td class="hide-sm">15. feb 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-1.0.html" class="open-link">Åbn →</a></td>
+          </tr>
+          <tr>
+            <td><span class="ver-num">2.0</span></td>
+            <td>
+              <div class="ver-name"><a href="plan-2.0.html">Nord og Syd</a></div>
+              <div class="ver-desc">Det klassiske alternativ (Plan B). Hele landet fra Hanoi til Mekong og Phu Quoc. Dækker syden (HCMC, Cu Chi, Mekong), men kæmper med monsunregn i juli og en lang returomvej til Hanoi.</div>
+            </td>
+            <td class="hide-sm">15. feb 2026</td>
+            <td><span class="vtag vtag-archived">Arkiveret</span></td>
+            <td><a href="plan-2.0.html" class="open-link">Åbn →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend">
+      <strong>Sådan læses versionsnumrene:</strong> Hovednummeret (1 / 2) = rute-koncept. <strong>1.x</strong> = nord + central-konceptet · <strong>2.x</strong> = hele landet nord → syd. Under-nummeret tæller revisioner inden for samme koncept (1.0 → 1.1). Kun én plan er <strong>master</strong> ad gangen — den gældende, som bookinger følger.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>Vietnam · Familieferie · Juli 2026</p>
+  <p style="margin-top:6px"><a href="overview.html">← Vietnam oversigt</a></p>
+</footer>
+
+<script>
+const map = L.map('plan-map', { scrollWheelZoom: false }).setView([19.3, 105.6], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+}).addTo(map);
+
+const GROUP_COLORS = { master: '#2e9e5b', v10: '#d97706', v20: '#7c3aed' };
+
+function makePin(color, star) {
+  const inner = star
+    ? `<text x="14" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="${color}">★</text>`
+    : `<circle cx="14" cy="14" r="5.5" fill="white"/>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">
+    <path d="M14 0C6.3 0 0 6.3 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.3 21.7 0 14 0z" fill="${color}" stroke="white" stroke-width="2"/>
+    <circle cx="14" cy="14" r="7" fill="white"/>${inner}</svg>`;
+  return L.divIcon({ html: svg, className: '', iconSize: [28, 40], iconAnchor: [14, 40], popupAnchor: [0, -42] });
+}
+
+function popupHtml(group, title, body, plans) {
+  const color = GROUP_COLORS[group];
+  const tag = { master: '★ Master · v1.1', v10: 'v1.0', v20: 'v2.0' }[group];
+  return `<div>
+    <div class="map-pop-title">${title}</div>
+    <div class="map-pop-tag" style="background:${color}">${tag}</div>
+    <div class="map-pop-body">${body}</div>
+    <div class="map-pop-plans">På planerne: ${plans}</div>
+  </div>`;
+}
+
+const groups = { master: [], v10: [], v20: [] };
+
+function addPlace(group, lat, lng, title, body, plans, star) {
+  const m = L.marker([lat, lng], { icon: makePin(GROUP_COLORS[group], star) })
+    .bindPopup(popupHtml(group, title, body, plans));
+  groups[group].push(m);
+  return m;
+}
+
+// ── MASTER (v1.1) — i rejserækkefølge ──
+addPlace('master', 21.0285, 105.8542, '🏙️ Hanoi', 'Start 3 nætter + slut 2 nætter. Old Quarter, streetfood.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 20.9101, 107.1839, '⛵ Ha Long Bay', 'Cruise 1 nat — kajak, grottetur, badning.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 20.4500, 105.1600, '🌾 Pu Luong', 'Risterrasser, Kho Muong + Bat Cave, bambusrafting. 3 nætter. Erstatter Sapa.', 'Kun v1.1', true);
+addPlace('master', 20.2506, 105.9745, '⛰️ Ninh Binh', 'Tam Coc, Trang An, Mua Cave. 3 nætter.', 'v1.1, v1.0', false);
+addPlace('master', 17.5880, 106.2840, '🦇 Phong Nha', 'Verdens største grotter — Dark Cave, Paradise Cave. 2 nætter.', 'Kun v1.1', true);
+addPlace('master', 16.4637, 107.5909, '🏯 Hue', 'Kejserbyen, kongegrave, parfumefloden. 2 nætter.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 16.0544, 108.2022, '🌉 Da Nang', 'My Khe Beach, Marble Mountains, Ba Na Hills. 3 nætter.', 'v1.1, v1.0, v2.0', false);
+addPlace('master', 15.8801, 108.3380, '🏮 Hoi An', 'Gamlebyen, skrædder, strand, madlavning, Cham Islands. 6 nætter.', 'v1.1, v1.0, v2.0', false);
+
+// ── MASTER RUTELINJE (overland) + returfly ──
+const masterRoute = [
+  [21.0285,105.8542],[20.9101,107.1839],[21.0285,105.8542],[20.4500,105.1600],
+  [20.2506,105.9745],[17.5880,106.2840],[16.4637,107.5909],[16.0544,108.2022],[15.8801,108.3380]
+];
+const routeLine = L.polyline(masterRoute, { color: '#2e9e5b', weight: 3, opacity: 0.7 });
+const returnLine = L.polyline([[15.8801,108.3380],[21.0285,105.8542]], { color: '#2e9e5b', weight: 2, opacity: 0.4, dashArray: '4,8' });
+
+// ── v1.0-only (amber) ──
+addPlace('v10', 22.3364, 103.8438, '🏔️ Sapa', 'Bjerg-trekking, risterrasser. Master bruger Pu Luong i stedet.', 'v1.0 og v2.0 (ikke master)', false);
+
+// ── v2.0-only (lilla) ──
+addPlace('v20', 12.2388, 109.1967, '🏖️ Nha Trang', 'Strandby, snorkling, øhop.', 'Kun v2.0', false);
+addPlace('v20', 10.8231, 106.6297, '🏛️ Ho Chi Minh City', 'Krigsmuseet, Cu Chi-tunnelerne, Ben Thanh Market.', 'Kun v2.0', false);
+addPlace('v20', 10.0452, 105.7469, '🛶 Mekong-deltaet', 'Flydende markeder, bådture, tropisk frugt.', 'Kun v2.0', false);
+addPlace('v20', 10.2897, 103.9842, '🌴 Phu Quoc', 'Strandafslapning, snorkling.', 'Kun v2.0', false);
+
+// ── TÆND/SLUK (default: master + v1.0 på, v2.0 af) ──
+const active = { master: true, v10: true, v20: false };
+
+function renderGroup(g) {
+  groups[g].forEach(m => active[g] ? m.addTo(map) : map.removeLayer(m));
+  if (g === 'master') {
+    if (active.master) { routeLine.addTo(map); returnLine.addTo(map); }
+    else { map.removeLayer(routeLine); map.removeLayer(returnLine); }
+  }
+}
+['master','v10','v20'].forEach(renderGroup);
+
+document.querySelectorAll('.map-toggle').forEach(btn => {
+  const g = btn.dataset.group;
+  btn.classList.toggle('off', !active[g]);
+  btn.addEventListener('click', () => {
+    active[g] = !active[g];
+    btn.classList.toggle('off', !active[g]);
+    renderGroup(g);
+  });
+});
+</script>
+
+</body>
+</html>
